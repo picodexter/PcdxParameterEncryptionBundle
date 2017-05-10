@@ -7,5 +7,9 @@
     <services>
         <service id="pcdx_parameter_encryption.encryption.caesar_cipher" class="Picodexter\ParameterEncryptionBundle\Encryption\CaesarCipher">
         </service>
+
+        <service id="pcdx_parameter_encryption.encryption.decrypter.caesar" class="Picodexter\ParameterEncryptionBundle\Encryption\Decrypter\CaesarDecrypter">
+            <argument type="service" id="pcdx_parameter_encryption.encryption.caesar_cipher" />
+        </service>
     </services>
 </container>

@@ -20,9 +20,7 @@ interface DecrypterInterface
      * Decrypt value.
      *
      * @param string $encryptedValue
-     * @param int    $encryptionRotationAmount Rotation amount from encrypter.
-     *                                         Automatically gets reversed for decryption.
      * @return string
      */
-    public function decryptValue($encryptedValue, $encryptionRotationAmount = 13);
+    public function decryptValue($encryptedValue);
 }

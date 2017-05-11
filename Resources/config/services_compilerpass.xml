@@ -10,6 +10,7 @@
 
         <service id="pcdx_parameter_encryption.encryption.decrypter.caesar" class="Picodexter\ParameterEncryptionBundle\Encryption\Decrypter\CaesarDecrypter">
             <argument type="service" id="pcdx_parameter_encryption.encryption.caesar_cipher" />
+            <argument>13</argument>
         </service>
     </services>
 </container>

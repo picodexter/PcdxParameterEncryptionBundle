@@ -24,22 +24,28 @@ class CaesarDecrypter implements DecrypterInterface
     private $cipher;
 
     /**
+     * @var int
+     */
+    private $rotationAmount;
+
+    /**
      * Constructor.
      *
      * @param CaesarCipherInterface $cipher
+     * @param int                   $encrypterRotationAmount Rotation amount from encrypter.
+     *                                                       Automatically gets reversed for decryption.
      */
-    public function __construct(CaesarCipherInterface $cipher)
+    public function __construct(CaesarCipherInterface $cipher, $encrypterRotationAmount = 13)
     {
         $this->cipher = $cipher;
+        $this->rotationAmount = (int) $encrypterRotationAmount * -1;
     }
 
     /**
      * @inheritDoc
      */
-    public function decryptValue($encryptedValue, $rotationAmount = 13)
+    public function decryptValue($encryptedValue)
     {
-        $rotationAmount = (int) $rotationAmount * -1;
-
-        return $this->cipher->apply($encryptedValue, $rotationAmount);
+        return $this->cipher->apply($encryptedValue, $this->rotationAmount);
     }
 }

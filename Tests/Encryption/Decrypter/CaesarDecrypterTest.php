@@ -22,17 +22,11 @@ class CaesarDecrypterTest extends \PHPUnit_Framework_TestCase
     private $cipher;
 
     /**
-     * @var CaesarDecrypter
-     */
-    private $decrypter;
-
-    /**
      * PHPUnit: setUp.
      */
     public function setUp()
     {
-        $this->cipher = $this->createCaesarCipherMock();
-        $this->decrypter = new CaesarDecrypter($this->cipher);
+        $this->cipher = $this->createCaesarCipherInterfaceMock();
     }
 
     /**
@@ -40,12 +34,13 @@ class CaesarDecrypterTest extends \PHPUnit_Framework_TestCase
      */
     public function tearDown()
     {
-        $this->decrypter = null;
         $this->cipher = null;
     }
 
     public function testDecryptValueSuccessNoRotationAmount()
     {
+        $decrypter = new CaesarDecrypter($this->cipher);
+
         $this->cipher->expects($this->once())
             ->method('apply')
             ->with(
@@ -54,13 +49,15 @@ class CaesarDecrypterTest extends \PHPUnit_Framework_TestCase
             )
             ->will($this->returnValue('foo'));
 
-        $decryptedValue = $this->decrypter->decryptValue('foo');
+        $decryptedValue = $decrypter->decryptValue('foo');
 
         $this->assertSame('foo', $decryptedValue);
     }
 
     public function testDecryptValueSuccessWithRotationAmount()
     {
+        $decrypter = new CaesarDecrypter($this->cipher, 7);
+
         $this->cipher->expects($this->once())
             ->method('apply')
             ->with(
@@ -69,15 +66,15 @@ class CaesarDecrypterTest extends \PHPUnit_Framework_TestCase
             )
             ->will($this->returnValue('foo'));
 
-        $decryptedValue = $this->decrypter->decryptValue('foo', 7);
+        $decryptedValue = $decrypter->decryptValue('foo');
 
         $this->assertSame('foo', $decryptedValue);
     }
 
     /**
-     * Create mock for CaesarCipher.
+     * Create mock for CaesarCipherInterface.
      */
-    private function createCaesarCipherMock()
+    private function createCaesarCipherInterfaceMock()
     {
         return $this->getMockBuilder(CaesarCipherInterface::class)->getMock();
     }

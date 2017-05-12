@@ -19,6 +19,10 @@
             </argument>
         </service>
 
+        <service id="pcdx_parameter_encryption.replacement.parameter_replacer" class="Picodexter\ParameterEncryptionBundle\Replacement\ParameterReplacer">
+            <argument type="service" id="pcdx_parameter_encryption.replacement.parameter_replacement_fetcher" />
+        </service>
+
         <service id="pcdx_parameter_encryption.replacement.pattern.value_prefix_replacement" class="Picodexter\ParameterEncryptionBundle\Replacement\Pattern\ValuePrefixReplacementPattern">
             <argument>&lt;!#PPE!01#!&gt;</argument>
         </service>

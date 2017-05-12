@@ -118,7 +118,7 @@ class DecrypterReplacementSourceTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for DecrypterInterface.
      *
-     * @return \PHPUnit_Framework_MockObject_MockObject
+     * @return DecrypterInterface|\PHPUnit_Framework_MockObject_MockObject
      */
     private function createDecrypterInterfaceMock()
     {
@@ -128,7 +128,7 @@ class DecrypterReplacementSourceTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for ReplacementPatternInterface.
      *
-     * @return \PHPUnit_Framework_MockObject_MockObject
+     * @return ReplacementPatternInterface|\PHPUnit_Framework_MockObject_MockObject
      */
     private function createReplacementPatternInterfaceMock()
     {

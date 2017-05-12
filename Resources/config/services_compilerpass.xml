@@ -16,5 +16,10 @@
         <service id="pcdx_parameter_encryption.replacement.pattern.value_prefix_replacement" class="Picodexter\ParameterEncryptionBundle\Replacement\Pattern\ValuePrefixReplacementPattern">
             <argument>&lt;!#PPE!01#!&gt;</argument>
         </service>
+
+        <service id="pcdx_parameter_encryption.replacement.source.decrypter.caesar_rot13" class="Picodexter\ParameterEncryptionBundle\Replacement\Source\DecrypterReplacementSource">
+            <argument type="service" id="pcdx_parameter_encryption.encryption.decrypter.caesar.rot13" />
+            <argument type="service" id="pcdx_parameter_encryption.replacement.pattern.value_prefix_replacement" />
+        </service>
     </services>
 </container>

@@ -13,6 +13,11 @@
             <argument>13</argument>
         </service>
 
+        <service id="pcdx_parameter_encryption.encryption.encrypter.caesar.rot13" class="Picodexter\ParameterEncryptionBundle\Encryption\Encrypter\CaesarEncrypter">
+            <argument type="service" id="pcdx_parameter_encryption.encryption.caesar_cipher" />
+            <argument>13</argument>
+        </service>
+
         <service id="pcdx_parameter_encryption.replacement.parameter_replacement_fetcher" class="Picodexter\ParameterEncryptionBundle\Replacement\ParameterReplacementFetcher">
             <argument type="collection">
                 <argument type="service" id="pcdx_parameter_encryption.replacement.source.decrypter.caesar_rot13" />

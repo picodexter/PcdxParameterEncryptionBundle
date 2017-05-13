@@ -39,36 +39,43 @@ class CaesarDecrypterTest extends \PHPUnit_Framework_TestCase
 
     public function testDecryptValueSuccessNoRotationAmount()
     {
+        $encryptedValue = 'foo';
+        $preparedValue = 'decrypted foo';
+
         $decrypter = new CaesarDecrypter($this->cipher);
 
         $this->cipher->expects($this->once())
             ->method('apply')
             ->with(
-                $this->identicalTo('foo'),
+                $this->identicalTo($encryptedValue),
                 $this->identicalTo(-13)
             )
-            ->will($this->returnValue('foo'));
+            ->will($this->returnValue($preparedValue));
 
-        $decryptedValue = $decrypter->decryptValue('foo');
+        $decryptedValue = $decrypter->decryptValue($encryptedValue);
 
-        $this->assertSame('foo', $decryptedValue);
+        $this->assertSame($preparedValue, $decryptedValue);
     }
 
     public function testDecryptValueSuccessWithRotationAmount()
     {
-        $decrypter = new CaesarDecrypter($this->cipher, 7);
+        $encryptedValue = 'foo';
+        $preparedValue = 'decrypted foo';
+        $encrypterRotationAmount = 7;
+
+        $decrypter = new CaesarDecrypter($this->cipher, $encrypterRotationAmount);
 
         $this->cipher->expects($this->once())
             ->method('apply')
             ->with(
-                $this->identicalTo('foo'),
-                $this->identicalTo(-7)
+                $this->identicalTo($encryptedValue),
+                $this->identicalTo(-1 * $encrypterRotationAmount)
             )
-            ->will($this->returnValue('foo'));
+            ->will($this->returnValue($preparedValue));
 
-        $decryptedValue = $decrypter->decryptValue('foo');
+        $decryptedValue = $decrypter->decryptValue($encryptedValue);
 
-        $this->assertSame('foo', $decryptedValue);
+        $this->assertSame($preparedValue, $decryptedValue);
     }
 
     /**

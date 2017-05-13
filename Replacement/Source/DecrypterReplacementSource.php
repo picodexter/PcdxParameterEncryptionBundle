@@ -25,6 +25,11 @@ class DecrypterReplacementSource implements ReplacementSourceInterface
     private $decrypter;
 
     /**
+     * @var string|null
+     */
+    private $encryptionKey;
+
+    /**
      * @var ReplacementPatternInterface
      */
     private $replacementPattern;
@@ -34,11 +39,16 @@ class DecrypterReplacementSource implements ReplacementSourceInterface
      *
      * @param DecrypterInterface          $decrypter
      * @param ReplacementPatternInterface $replacementPattern
+     * @param string|null                 $encryptionKey
      */
-    public function __construct(DecrypterInterface $decrypter, ReplacementPatternInterface $replacementPattern)
-    {
+    public function __construct(
+        DecrypterInterface $decrypter,
+        ReplacementPatternInterface $replacementPattern,
+        $encryptionKey = null
+    ) {
         $this->decrypter = $decrypter;
         $this->replacementPattern = $replacementPattern;
+        $this->encryptionKey = $encryptionKey;
     }
 
     /**
@@ -46,8 +56,10 @@ class DecrypterReplacementSource implements ReplacementSourceInterface
      */
     public function getReplacedValueForParameter($key, $value)
     {
-        return $this->decrypter
-            ->decryptValue($this->replacementPattern->getValueWithoutPatternForParameter($key, $value));
+        return $this->decrypter->decryptValue(
+            $this->replacementPattern->getValueWithoutPatternForParameter($key, $value),
+            $this->encryptionKey
+        );
     }
 
     /**

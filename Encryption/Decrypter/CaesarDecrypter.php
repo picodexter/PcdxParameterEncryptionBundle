@@ -44,7 +44,7 @@ class CaesarDecrypter implements DecrypterInterface
     /**
      * @inheritDoc
      */
-    public function decryptValue($encryptedValue, $encryptionKey = null)
+    public function decryptValue($encryptedValue, $decryptionKey = null)
     {
         return $this->cipher->apply($encryptedValue, $this->rotationAmount);
     }

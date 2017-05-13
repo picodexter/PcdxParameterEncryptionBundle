@@ -20,8 +20,8 @@ interface DecrypterInterface
      * Decrypt value.
      *
      * @param string      $encryptedValue
-     * @param string|null $encryptionKey
+     * @param string|null $decryptionKey
      * @return string
      */
-    public function decryptValue($encryptedValue, $encryptionKey = null);
+    public function decryptValue($encryptedValue, $decryptionKey = null);
 }

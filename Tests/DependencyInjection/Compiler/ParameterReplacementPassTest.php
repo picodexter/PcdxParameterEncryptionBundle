@@ -25,17 +25,14 @@ class ParameterReplacementPassTest extends \PHPUnit_Framework_TestCase
         $parameterBag = new ParameterBag();
 
         $container = $this->createContainerBuilderMock();
-        $passContainer = $this->createContainerBuilderMock();
         $parameterReplacer = $this->createParameterReplacerInterfaceMock();
-
-        $pass->setPassContainer($passContainer);
 
         $container->expects($this->once())
             ->method('getParameterBag')
             ->with()
             ->will($this->returnValue($parameterBag));
 
-        $passContainer->expects($this->once())
+        $container->expects($this->once())
             ->method('get')
             ->with($this->identicalTo('pcdx_parameter_encryption.replacement.parameter_replacer'))
             ->will($this->returnValue($parameterReplacer));

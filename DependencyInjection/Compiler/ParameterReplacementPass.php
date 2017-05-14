@@ -11,7 +11,6 @@
 
 namespace Picodexter\ParameterEncryptionBundle\DependencyInjection\Compiler;
 
-use Picodexter\ParameterEncryptionBundle\DependencyInjection\ContainerBuilderFactory;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
@@ -23,35 +22,6 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 class ParameterReplacementPass implements CompilerPassInterface
 {
     /**
-     * @var ContainerBuilder
-     */
-    private $passContainer;
-
-    /**
-     * Constructor.
-     *
-     * @param ContainerBuilder $passContainer
-     */
-    public function __construct(ContainerBuilder $passContainer = null)
-    {
-        $this->setPassContainer($passContainer);
-    }
-
-    /**
-     * Setter: pass container.
-     *
-     * @param ContainerBuilder $passContainer
-     */
-    public function setPassContainer(ContainerBuilder $passContainer = null)
-    {
-        if ($passContainer) {
-            $this->passContainer = $passContainer;
-        } else {
-            $this->passContainer = ContainerBuilderFactory::createContainerBuilder();
-        }
-    }
-
-    /**
      * Process container.
      *
      * @param ContainerBuilder $container
@@ -60,7 +30,7 @@ class ParameterReplacementPass implements CompilerPassInterface
     {
         $parameterBag = $container->getParameterBag();
 
-        $parameterReplacer = $this->passContainer->get('pcdx_parameter_encryption.replacement.parameter_replacer');
+        $parameterReplacer = $container->get('pcdx_parameter_encryption.replacement.parameter_replacer');
 
         $parameterReplacer->processParameterBag($parameterBag);
     }

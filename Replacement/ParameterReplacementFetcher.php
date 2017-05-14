@@ -31,7 +31,7 @@ class ParameterReplacementFetcher implements ParameterReplacementFetcherInterfac
     }
 
     /**
-     * Setter: replacement sources.
+     * Setter: replacementSources.
      *
      * @param ReplacementSourceInterface[] $replacementSources
      */

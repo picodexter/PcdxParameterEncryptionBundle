@@ -101,7 +101,9 @@ class AlgorithmTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetIdExceptionInvalidId($id)
     {
-        $this->createAlgorithmWithId($id);
+        $algorithm = $this->createAlgorithmWithId('placeholder');
+
+        $algorithm->setId($id);
     }
 
     /**
@@ -112,7 +114,9 @@ class AlgorithmTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetIdSuccess($id, $expectedId)
     {
-        $algorithm = $this->createAlgorithmWithId($id);
+        $algorithm = $this->createAlgorithmWithId('placeholder');
+
+        $algorithm->setId($id);
 
         $this->assertSame($expectedId, $algorithm->getId());
     }

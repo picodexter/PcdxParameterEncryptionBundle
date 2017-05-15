@@ -121,7 +121,9 @@ class AlgorithmConfigurationTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetAlgorithmsExceptionDuplicateId(array $algorithms)
     {
-        new AlgorithmConfiguration($algorithms);
+        $algorithmConfig = new AlgorithmConfiguration([]);
+
+        $algorithmConfig->setAlgorithms($algorithms);
     }
 
     /**
@@ -132,7 +134,9 @@ class AlgorithmConfigurationTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetAlgorithmsSuccess(array $algorithms, $expectedCount)
     {
-        $algorithmConfig = new AlgorithmConfiguration($algorithms);
+        $algorithmConfig = new AlgorithmConfiguration([]);
+
+        $algorithmConfig->setAlgorithms($algorithms);
 
         $this->assertCount($expectedCount, $algorithmConfig->getAlgorithms());
     }

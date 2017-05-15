@@ -11,6 +11,7 @@
 
 namespace Picodexter\ParameterEncryptionBundle\DependencyInjection\Compiler;
 
+use Picodexter\ParameterEncryptionBundle\DependencyInjection\ServiceNames;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
@@ -30,7 +31,7 @@ class ParameterReplacementPass implements CompilerPassInterface
     {
         $parameterBag = $container->getParameterBag();
 
-        $parameterReplacer = $container->get('pcdx_parameter_encryption.replacement.parameter_replacer');
+        $parameterReplacer = $container->get(ServiceNames::PARAMETER_REPLACER);
 
         $parameterReplacer->processParameterBag($parameterBag);
     }

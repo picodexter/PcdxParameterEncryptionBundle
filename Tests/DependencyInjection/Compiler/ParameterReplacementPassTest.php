@@ -12,6 +12,7 @@
 namespace Picodexter\ParameterEncryptionBundle\Tests\DependencyInjection\Compiler;
 
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\Compiler\ParameterReplacementPass;
+use Picodexter\ParameterEncryptionBundle\DependencyInjection\ServiceNames;
 use Picodexter\ParameterEncryptionBundle\Replacement\ParameterReplacerInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBag;
@@ -34,7 +35,7 @@ class ParameterReplacementPassTest extends \PHPUnit_Framework_TestCase
 
         $container->expects($this->once())
             ->method('get')
-            ->with($this->identicalTo('pcdx_parameter_encryption.replacement.parameter_replacer'))
+            ->with($this->identicalTo(ServiceNames::PARAMETER_REPLACER))
             ->will($this->returnValue($parameterReplacer));
 
         $parameterReplacer->expects($this->once())

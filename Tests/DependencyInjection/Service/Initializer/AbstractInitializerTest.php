@@ -37,6 +37,48 @@ class AbstractInitializerTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @param array $bundleConfig
+     *
+     * @expectedException \Picodexter\ParameterEncryptionBundle\Exception\InvalidBundleConfigurationException
+     * @dataProvider provideInvalidBundleConfigData
+     */
+    public function testAssertValidBundleConfigurationExceptionInvalidConfig(array $bundleConfig)
+    {
+        $this->initializer->assertValidBundleConfiguration($bundleConfig);
+    }
+
+    /**
+     * Data provider.
+     */
+    public function provideInvalidBundleConfigData()
+    {
+        return [
+            'empty' => [
+                [],
+            ],
+            'no key "algorithms"' => [
+                [
+                    'foo' => 'bar',
+                ],
+            ],
+            'value "algorithms" is not an array' => [
+                [
+                    'algorithms' => 'a string',
+                ],
+            ],
+        ];
+    }
+
+    public function testAssertValidBundleConfigurationSuccess()
+    {
+        $this->initializer->assertValidBundleConfiguration([
+            'algorithms' => [],
+        ]);
+
+        $this->assertTrue(true);
+    }
+
+    /**
      * @param array $algorithmConfig
      *
      * @dataProvider provideInvalidAlgorithmConfigData

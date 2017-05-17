@@ -13,12 +13,26 @@ namespace Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\Initi
 
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\ServiceNames;
 use Picodexter\ParameterEncryptionBundle\Exception\InvalidAlgorithmConfigurationException;
+use Picodexter\ParameterEncryptionBundle\Exception\InvalidBundleConfigurationException;
 
 /**
  * AbstractInitializer.
  */
 abstract class AbstractInitializer implements AlgorithmInitializerInterface
 {
+    /**
+     * Assert that bundle configuration has a valid structure.
+     *
+     * @param array $bundleConfig
+     * @throws InvalidBundleConfigurationException
+     */
+    public function assertValidBundleConfiguration(array $bundleConfig)
+    {
+        if (!key_exists('algorithms', $bundleConfig) || !is_array($bundleConfig['algorithms'])) {
+            throw new InvalidBundleConfigurationException();
+        }
+    }
+
     /**
      * Get name of replacement pattern service for algorithm.
      *

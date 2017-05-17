@@ -39,7 +39,7 @@ class AbstractInitializerTest extends \PHPUnit_Framework_TestCase
     /**
      * @param array $algorithmConfig
      *
-     * @dataProvider provideInvalidConfigData
+     * @dataProvider provideInvalidAlgorithmConfigData
      * @expectedException \Picodexter\ParameterEncryptionBundle\Exception\InvalidAlgorithmConfigurationException
      */
     public function testGetReplacementPatternServiceNameForAlgorithmExceptionInvalidConfig(
@@ -51,7 +51,7 @@ class AbstractInitializerTest extends \PHPUnit_Framework_TestCase
     /**
      * Data provider.
      */
-    public function provideInvalidConfigData()
+    public function provideInvalidAlgorithmConfigData()
     {
         return [
             'empty' => [

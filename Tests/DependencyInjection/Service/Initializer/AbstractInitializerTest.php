@@ -16,6 +16,27 @@ use Picodexter\ParameterEncryptionBundle\DependencyInjection\ServiceNames;
 class AbstractInitializerTest extends \PHPUnit_Framework_TestCase
 {
     /**
+     * @var AbstractInitializerDummy
+     */
+    private $initializer;
+
+    /**
+     * PHPUnit: setUp.
+     */
+    public function setUp()
+    {
+        $this->initializer = new AbstractInitializerDummy();
+    }
+
+    /**
+     * PHPUnit: tearDown.
+     */
+    public function tearDown()
+    {
+        $this->initializer = null;
+    }
+
+    /**
      * @param array $algorithmConfig
      *
      * @dataProvider provideInvalidConfigData
@@ -24,9 +45,7 @@ class AbstractInitializerTest extends \PHPUnit_Framework_TestCase
     public function testGetReplacementPatternServiceNameForAlgorithmExceptionInvalidConfig(
         array $algorithmConfig
     ) {
-        $initializer = new AbstractInitializerDummy();
-
-        $initializer->getReplacementPatternServiceNameForAlgorithm($algorithmConfig);
+        $this->initializer->getReplacementPatternServiceNameForAlgorithm($algorithmConfig);
     }
 
     /**
@@ -53,9 +72,7 @@ class AbstractInitializerTest extends \PHPUnit_Framework_TestCase
 
     public function testGetReplacementPatternServiceNameForAlgorithmSuccessValidConfig()
     {
-        $initializer = new AbstractInitializerDummy();
-
-        $serviceName = $initializer->getReplacementPatternServiceNameForAlgorithm([
+        $serviceName = $this->initializer->getReplacementPatternServiceNameForAlgorithm([
             'id' => 'foo',
         ]);
 

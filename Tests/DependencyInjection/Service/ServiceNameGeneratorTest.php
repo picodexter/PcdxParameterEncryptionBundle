@@ -9,23 +9,24 @@
  * file that was distributed with this source code.
  */
 
-namespace Picodexter\ParameterEncryptionBundle\Tests\DependencyInjection\Service\Initializer;
+namespace Picodexter\ParameterEncryptionBundle\Tests\DependencyInjection\Service;
 
+use Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\ServiceNameGenerator;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\ServiceNames;
 
-class AbstractInitializerTest extends \PHPUnit_Framework_TestCase
+class ServiceNameGeneratorTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @var AbstractInitializerDummy
+     * @var ServiceNameGenerator
      */
-    private $initializer;
+    private $generator;
 
     /**
      * PHPUnit: setUp.
      */
     public function setUp()
     {
-        $this->initializer = new AbstractInitializerDummy();
+        $this->generator = new ServiceNameGenerator();
     }
 
     /**
@@ -33,7 +34,7 @@ class AbstractInitializerTest extends \PHPUnit_Framework_TestCase
      */
     public function tearDown()
     {
-        $this->initializer = null;
+        $this->generator = null;
     }
 
     /**
@@ -45,7 +46,7 @@ class AbstractInitializerTest extends \PHPUnit_Framework_TestCase
     public function testGetReplacementPatternServiceNameForAlgorithmExceptionInvalidConfig(
         array $algorithmConfig
     ) {
-        $this->initializer->getReplacementPatternServiceNameForAlgorithm($algorithmConfig);
+        $this->generator->getReplacementPatternServiceNameForAlgorithm($algorithmConfig);
     }
 
     /**
@@ -72,7 +73,7 @@ class AbstractInitializerTest extends \PHPUnit_Framework_TestCase
 
     public function testGetReplacementPatternServiceNameForAlgorithmSuccessValidConfig()
     {
-        $serviceName = $this->initializer->getReplacementPatternServiceNameForAlgorithm([
+        $serviceName = $this->generator->getReplacementPatternServiceNameForAlgorithm([
             'id' => 'foo',
         ]);
 

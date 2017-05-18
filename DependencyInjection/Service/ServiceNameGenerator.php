@@ -9,22 +9,18 @@
  * file that was distributed with this source code.
  */
 
-namespace Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\Initializer;
+namespace Picodexter\ParameterEncryptionBundle\DependencyInjection\Service;
 
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\ServiceNames;
 use Picodexter\ParameterEncryptionBundle\Exception\InvalidAlgorithmConfigurationException;
 
 /**
- * AbstractInitializer.
+ * ServiceNameGenerator.
  */
-abstract class AbstractInitializer implements AlgorithmInitializerInterface
+class ServiceNameGenerator implements ServiceNameGeneratorInterface
 {
     /**
-     * Get name of replacement pattern service for algorithm.
-     *
-     * @param array $algorithmConfig
-     * @return string
-     * @throws InvalidAlgorithmConfigurationException
+     * @inheritDoc
      */
     public function getReplacementPatternServiceNameForAlgorithm(array $algorithmConfig)
     {

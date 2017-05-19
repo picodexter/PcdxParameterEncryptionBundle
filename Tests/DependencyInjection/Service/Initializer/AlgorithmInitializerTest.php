@@ -19,14 +19,14 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 class AlgorithmInitializerTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @var AlgorithmInjectionHandlerInterface|\PHPUnit_Framework_MockObject_MockObject
-     */
-    private $injectionHandler;
-
-    /**
      * @var AlgorithmInitializer
      */
     private $initializer;
+
+    /**
+     * @var AlgorithmInjectionHandlerInterface|\PHPUnit_Framework_MockObject_MockObject
+     */
+    private $injectionHandler;
 
     /**
      * @var AlgorithmRegistrationHandlerInterface|\PHPUnit_Framework_MockObject_MockObject

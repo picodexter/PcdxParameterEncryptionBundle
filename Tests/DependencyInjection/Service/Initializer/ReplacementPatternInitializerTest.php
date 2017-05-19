@@ -19,14 +19,14 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 class ReplacementPatternInitializerTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @var ReplacementPatternInjectionHandlerInterface|\PHPUnit_Framework_MockObject_MockObject
-     */
-    private $injectionHandler;
-
-    /**
      * @var ReplacementPatternInitializer
      */
     private $initializer;
+
+    /**
+     * @var ReplacementPatternInjectionHandlerInterface|\PHPUnit_Framework_MockObject_MockObject
+     */
+    private $injectionHandler;
 
     /**
      * @var ReplacementPatternRegistrationHandlerInterface|\PHPUnit_Framework_MockObject_MockObject

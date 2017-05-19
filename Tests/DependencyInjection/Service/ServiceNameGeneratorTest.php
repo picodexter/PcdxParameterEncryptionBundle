@@ -71,13 +71,15 @@ class ServiceNameGeneratorTest extends \PHPUnit_Framework_TestCase
         ];
     }
 
-    public function testGetReplacementPatternServiceNameForAlgorithmSuccessValidConfig()
+    public function testGetReplacementPatternServiceNameForAlgorithmSuccess()
     {
+        $preparedAlgorithmId = 'foo';
+
         $serviceName = $this->generator->getReplacementPatternServiceNameForAlgorithm([
-            'id' => 'foo',
+            'id' => $preparedAlgorithmId,
         ]);
 
-        $this->assertSame(ServiceNames::REPLACEMENT_PATTERN_ALGORITHM_PREFIX . 'foo', $serviceName);
+        $this->assertSame(ServiceNames::REPLACEMENT_PATTERN_ALGORITHM_PREFIX . $preparedAlgorithmId, $serviceName);
     }
 
     /**

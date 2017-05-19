@@ -17,6 +17,9 @@ use Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\ServiceName
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\ServiceNames;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
+/**
+ * ReplacementPatternInjectionHandler.
+ */
 class ReplacementPatternInjectionHandler implements ReplacementPatternInjectionHandlerInterface
 {
     /**

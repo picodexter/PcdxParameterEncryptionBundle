@@ -22,11 +22,25 @@ use Symfony\Component\HttpKernel\DependencyInjection\ConfigurableExtension;
 class PcdxParameterEncryptionExtension extends ConfigurableExtension
 {
     /**
+     * Initialize service definitions.
+     *
+     * @param array            $mergedConfig
+     * @param ContainerBuilder $container
+     */
+    private function initializeServiceDefinitions(array $mergedConfig, ContainerBuilder $container)
+    {
+        $definitionManager = $container->get(ServiceNames::SERVICE_DEFINITION_INITIALIZATION_MANAGER);
+        $definitionManager->initializeServiceDefinitions($mergedConfig, $container);
+    }
+
+    /**
      * @inheritDoc
      */
     public function loadInternal(array $mergedConfig, ContainerBuilder $container)
     {
         $loader = new XmlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
         $loader->load('services.xml');
+
+        $this->initializeServiceDefinitions($mergedConfig, $container);
     }
 }

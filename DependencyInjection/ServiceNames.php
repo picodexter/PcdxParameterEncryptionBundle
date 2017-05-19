@@ -24,6 +24,7 @@ final class ServiceNames
     const REPLACEMENT_PATTERN_ALGORITHM_PREFIX = 'pcdx_parameter_encryption.replacement.pattern.algorithm.';
     const REPLACEMENT_PATTERN_REGISTRY = 'pcdx_parameter_encryption.replacement.pattern.registry';
     const REPLACEMENT_PATTERN_TYPE_REGISTRY = 'pcdx_parameter_encryption.replacement.pattern.type_registry';
+    const REPLACEMENT_SOURCE_DECRYPTER_ALGORITHM_PREFIX = 'pcdx_parameter_encryption.replacement.source.decrypter.';
 
     /**
      * Constructor.

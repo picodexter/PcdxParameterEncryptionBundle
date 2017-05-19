@@ -14,7 +14,7 @@ namespace Picodexter\ParameterEncryptionBundle\Replacement\Pattern\Registry;
 /**
  * ReplacementPatternTypeRegistry.
  */
-class ReplacementPatternTypeRegistry
+class ReplacementPatternTypeRegistry implements ReplacementPatternTypeRegistryInterface
 {
     /**
      * @var string[]
@@ -32,9 +32,7 @@ class ReplacementPatternTypeRegistry
     }
 
     /**
-     * Getter: patternTypes.
-     *
-     * @return string[]
+     * @inheritDoc
      */
     public function getPatternTypes()
     {
@@ -42,9 +40,7 @@ class ReplacementPatternTypeRegistry
     }
 
     /**
-     * Setter: patternTypes.
-     *
-     * @param string[] $patternTypes
+     * @inheritDoc
      */
     public function setPatternTypes(array $patternTypes)
     {
@@ -52,10 +48,7 @@ class ReplacementPatternTypeRegistry
     }
 
     /**
-     * Get pattern type by name.
-     *
-     * @param string $name
-     * @return string|null
+     * @inheritDoc
      */
     public function get($name)
     {
@@ -63,10 +56,7 @@ class ReplacementPatternTypeRegistry
     }
 
     /**
-     * Check if a pattern type with the name is registered.
-     *
-     * @param string $name
-     * @return bool
+     * @inheritDoc
      */
     public function has($name)
     {

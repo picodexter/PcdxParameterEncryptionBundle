@@ -20,13 +20,23 @@ use Picodexter\ParameterEncryptionBundle\Exception\InvalidAlgorithmConfiguration
 class ServiceNameGenerator implements ServiceNameGeneratorInterface
 {
     /**
-     * @inheritDoc
+     * Assert that algorithm configuration is valid.
+     *
+     * @param array $algorithmConfig
      */
-    public function getReplacementPatternServiceNameForAlgorithm(array $algorithmConfig)
+    private function assertValidAlgorithmConfig(array $algorithmConfig)
     {
         if (!key_exists('id', $algorithmConfig) || !is_string($algorithmConfig['id'])) {
             throw new InvalidAlgorithmConfigurationException();
         }
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getReplacementPatternServiceNameForAlgorithm(array $algorithmConfig)
+    {
+        $this->assertValidAlgorithmConfig($algorithmConfig);
 
         return ServiceNames::REPLACEMENT_PATTERN_ALGORITHM_PREFIX . $algorithmConfig['id'];
     }
@@ -36,9 +46,7 @@ class ServiceNameGenerator implements ServiceNameGeneratorInterface
      */
     public function getServiceNameForAlgorithm(array $algorithmConfig)
     {
-        if (!key_exists('id', $algorithmConfig) || !is_string($algorithmConfig['id'])) {
-            throw new InvalidAlgorithmConfigurationException();
-        }
+        $this->assertValidAlgorithmConfig($algorithmConfig);
 
         return ServiceNames::ALGORITHM_PREFIX . $algorithmConfig['id'];
     }

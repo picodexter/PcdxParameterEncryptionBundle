@@ -26,6 +26,8 @@ final class ServiceNames
     const REPLACEMENT_PATTERN_REGISTRY = 'pcdx_parameter_encryption.replacement.pattern.registry';
     const REPLACEMENT_PATTERN_TYPE_REGISTRY = 'pcdx_parameter_encryption.replacement.pattern.type_registry';
     const REPLACEMENT_SOURCE_DECRYPTER_ALGORITHM_PREFIX = 'pcdx_parameter_encryption.replacement.source.decrypter.';
+    const SERVICE_DEFINITION_INITIALIZATION_MANAGER
+        = 'pcdx_parameter_encryption.dependency_injection.service.definition_initialization_manager';
 
     /**
      * Constructor.

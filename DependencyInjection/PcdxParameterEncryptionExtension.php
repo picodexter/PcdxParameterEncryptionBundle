@@ -34,13 +34,22 @@ class PcdxParameterEncryptionExtension extends ConfigurableExtension
     }
 
     /**
+     * Load bundle service definitions.
+     *
+     * @param ContainerBuilder $container
+     */
+    private function loadBundleServiceDefinitions(ContainerBuilder $container)
+    {
+        $loader = new XmlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
+        $loader->load('services.xml');
+    }
+
+    /**
      * @inheritDoc
      */
     public function loadInternal(array $mergedConfig, ContainerBuilder $container)
     {
-        $loader = new XmlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
-        $loader->load('services.xml');
-
+        $this->loadBundleServiceDefinitions($container);
         $this->initializeServiceDefinitions($mergedConfig, $container);
     }
 }

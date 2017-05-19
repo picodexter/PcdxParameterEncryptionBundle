@@ -88,6 +88,32 @@ class ServiceNameGeneratorTest extends \PHPUnit_Framework_TestCase
      * @dataProvider provideInvalidAlgorithmConfigData
      * @expectedException \Picodexter\ParameterEncryptionBundle\Exception\InvalidAlgorithmConfigurationException
      */
+    public function testGetReplacementSourceDecrypterServiceNameForAlgorithmExceptionInvalidConfig(
+        array $algorithmConfig
+    ) {
+        $this->generator->getReplacementSourceDecrypterServiceNameForAlgorithm($algorithmConfig);
+    }
+
+    public function testGetReplacementSourceDecrypterServiceNameForAlgorithmSuccess()
+    {
+        $preparedAlgorithmId = 'foo';
+
+        $serviceName = $this->generator->getReplacementSourceDecrypterServiceNameForAlgorithm([
+            'id' => $preparedAlgorithmId,
+        ]);
+
+        $this->assertSame(
+            ServiceNames::REPLACEMENT_SOURCE_DECRYPTER_ALGORITHM_PREFIX . $preparedAlgorithmId,
+            $serviceName
+        );
+    }
+
+    /**
+     * @param array $algorithmConfig
+     *
+     * @dataProvider provideInvalidAlgorithmConfigData
+     * @expectedException \Picodexter\ParameterEncryptionBundle\Exception\InvalidAlgorithmConfigurationException
+     */
     public function testGetServiceNameForAlgorithmExceptionInvalidConfig(array $algorithmConfig)
     {
         $this->generator->getServiceNameForAlgorithm($algorithmConfig);

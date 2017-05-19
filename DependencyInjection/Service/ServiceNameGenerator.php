@@ -30,4 +30,16 @@ class ServiceNameGenerator implements ServiceNameGeneratorInterface
 
         return ServiceNames::REPLACEMENT_PATTERN_ALGORITHM_PREFIX . $algorithmConfig['id'];
     }
+
+    /**
+     * @inheritDoc
+     */
+    public function getServiceNameForAlgorithm(array $algorithmConfig)
+    {
+        if (!key_exists('id', $algorithmConfig) || !is_string($algorithmConfig['id'])) {
+            throw new InvalidAlgorithmConfigurationException();
+        }
+
+        return ServiceNames::ALGORITHM_PREFIX . $algorithmConfig['id'];
+    }
 }

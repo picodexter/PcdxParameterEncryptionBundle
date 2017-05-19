@@ -79,4 +79,26 @@ class ServiceNameGeneratorTest extends \PHPUnit_Framework_TestCase
 
         $this->assertSame(ServiceNames::REPLACEMENT_PATTERN_ALGORITHM_PREFIX . 'foo', $serviceName);
     }
+
+    /**
+     * @param array $algorithmConfig
+     *
+     * @dataProvider provideInvalidAlgorithmConfigData
+     * @expectedException \Picodexter\ParameterEncryptionBundle\Exception\InvalidAlgorithmConfigurationException
+     */
+    public function testGetServiceNameForAlgorithmExceptionInvalidConfig(array $algorithmConfig)
+    {
+        $this->generator->getServiceNameForAlgorithm($algorithmConfig);
+    }
+
+    public function testGetServiceNameForAlgorithmSuccess()
+    {
+        $preparedAlgorithmId = 'foo';
+
+        $serviceName = $this->generator->getServiceNameForAlgorithm([
+            'id' => $preparedAlgorithmId,
+        ]);
+
+        $this->assertSame(ServiceNames::ALGORITHM_PREFIX . $preparedAlgorithmId, $serviceName);
+    }
 }

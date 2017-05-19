@@ -26,4 +26,13 @@ interface ServiceNameGeneratorInterface
      * @throws InvalidAlgorithmConfigurationException
      */
     public function getReplacementPatternServiceNameForAlgorithm(array $algorithmConfig);
+
+    /**
+     * Get name of algorithm service for algorithm.
+     *
+     * @param array $algorithmConfig
+     * @return string
+     * @throws InvalidAlgorithmConfigurationException
+     */
+    public function getServiceNameForAlgorithm(array $algorithmConfig);
 }

@@ -113,7 +113,7 @@ class ReplacementPatternInjectionHandlerTest extends \PHPUnit_Framework_TestCase
         );
     }
 
-    public function testInjectReplacementPatternsIntoRegistrySuccessThreeDefinitions()
+    public function testInjectReplacementPatternsIntoRegistrySuccessThreeReferences()
     {
         $preparedAlgorithmIds = [
             'algo_01',

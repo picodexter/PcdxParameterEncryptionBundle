@@ -13,10 +13,7 @@ namespace Picodexter\ParameterEncryptionBundle\Replacement\Pattern\Registry;
 
 use Picodexter\ParameterEncryptionBundle\Replacement\Pattern\ReplacementPatternInterface;
 
-/**
- * ReplacementPatternRegistry.
- */
-class ReplacementPatternRegistry
+class ReplacementPatternRegistry implements ReplacementPatternRegistryInterface
 {
     /**
      * @var ReplacementPatternInterface[]
@@ -34,9 +31,7 @@ class ReplacementPatternRegistry
     }
 
     /**
-     * Getter: replacementPatterns.
-     *
-     * @return ReplacementPatternInterface[]
+     * @inheritDoc
      */
     public function getReplacementPatterns()
     {
@@ -44,9 +39,7 @@ class ReplacementPatternRegistry
     }
 
     /**
-     * Setter: replacementPatterns.
-     *
-     * @param ReplacementPatternInterface[] $replacementPatterns
+     * @inheritDoc
      */
     public function setReplacementPatterns(array $replacementPatterns)
     {
@@ -58,10 +51,7 @@ class ReplacementPatternRegistry
     }
 
     /**
-     * Get replacement pattern by algorithm ID.
-     *
-     * @param string $algorithmId
-     * @return string|null
+     * @inheritDoc
      */
     public function get($algorithmId)
     {
@@ -69,10 +59,7 @@ class ReplacementPatternRegistry
     }
 
     /**
-     * Check if a replacement pattern with the algorithm ID is registered.
-     *
-     * @param string $algorithmId
-     * @return bool
+     * @inheritDoc
      */
     public function has($algorithmId)
     {

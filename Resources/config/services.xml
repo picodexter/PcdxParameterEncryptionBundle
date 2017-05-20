@@ -11,6 +11,11 @@
             </argument>
         </service>
 
+        <service id="pcdx_parameter_encryption.console.dispatcher.algorithm_list" class="Picodexter\ParameterEncryptionBundle\Console\Dispatcher\AlgorithmListDispatcher">
+            <argument type="service" id="pcdx_parameter_encryption.console.processor.algorithm_list" />
+            <argument type="service" id="pcdx_parameter_encryption.console.helper.table_factory" />
+        </service>
+
         <service id="pcdx_parameter_encryption.console.helper.table_factory" class="Picodexter\ParameterEncryptionBundle\Console\Helper\TableFactory">
         </service>
 

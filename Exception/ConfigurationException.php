@@ -14,6 +14,6 @@ namespace Picodexter\ParameterEncryptionBundle\Exception;
 /**
  * ConfigurationException.
  */
-class ConfigurationException extends \InvalidArgumentException implements ExceptionInterface
+class ConfigurationException extends InvalidArgumentException implements ExceptionInterface
 {
 }

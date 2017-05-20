@@ -68,7 +68,7 @@ class AlgorithmInitializerTest extends \PHPUnit_Framework_TestCase
             );
 
         $this->injectionHandler->expects($this->once())
-            ->method('injectAlgorithmsIntoConfiguration')
+            ->method('injectAlgorithmConfigurationsIntoContainer')
             ->with(
                 $this->identicalTo($bundleConfig),
                 $this->identicalTo($container)

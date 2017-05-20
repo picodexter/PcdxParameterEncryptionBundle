@@ -11,7 +11,7 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Exception;
 
-use Picodexter\ParameterEncryptionBundle\Configuration\Algorithm;
+use Picodexter\ParameterEncryptionBundle\Configuration\AlgorithmConfiguration;
 use Throwable;
 
 /**
@@ -22,11 +22,11 @@ class DuplicateAlgorithmIdException extends ConfigurationException
     /**
      * Constructor.
      *
-     * @param Algorithm      $algorithm
-     * @param Throwable|null $previous
+     * @param AlgorithmConfiguration $algorithmConfig
+     * @param Throwable|null         $previous
      */
-    public function __construct(Algorithm $algorithm, Throwable $previous = null)
+    public function __construct(AlgorithmConfiguration $algorithmConfig, Throwable $previous = null)
     {
-        parent::__construct('Duplicate algorithm ID "' . $algorithm->getId() . '"', 0, $previous);
+        parent::__construct('Duplicate algorithm ID "' . $algorithmConfig->getId() . '"', 0, $previous);
     }
 }

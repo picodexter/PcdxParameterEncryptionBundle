@@ -54,14 +54,15 @@ class AlgorithmInjectionHandler implements AlgorithmInjectionHandlerInterface
     /**
      * @inheritDoc
      */
-    public function injectAlgorithmsIntoConfiguration(array $bundleConfig, ContainerBuilder $container)
+    public function injectAlgorithmConfigurationsIntoContainer(array $bundleConfig, ContainerBuilder $container)
     {
         $this->bundleConfigValidator->assertValidBundleConfiguration($bundleConfig);
 
         $references = [];
 
         foreach ($bundleConfig['algorithms'] as $algorithmConfig) {
-            $serviceName = $this->serviceNameGenerator->getServiceNameForAlgorithm($algorithmConfig);
+            $serviceName = $this->serviceNameGenerator
+                ->getAlgorithmConfigurationServiceNameForAlgorithm($algorithmConfig);
 
             $references[] = $this->referenceFactory->createReference($serviceName);
         }

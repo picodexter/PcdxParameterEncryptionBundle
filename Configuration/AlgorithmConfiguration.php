@@ -17,9 +17,9 @@ use Picodexter\ParameterEncryptionBundle\Exception\InvalidAlgorithmIdException;
 use Picodexter\ParameterEncryptionBundle\Replacement\Pattern\ReplacementPatternInterface;
 
 /**
- * Algorithm.
+ * AlgorithmConfiguration.
  */
-class Algorithm
+class AlgorithmConfiguration
 {
     /**
      * @var string

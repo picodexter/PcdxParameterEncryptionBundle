@@ -34,6 +34,16 @@ class ServiceNameGenerator implements ServiceNameGeneratorInterface
     /**
      * @inheritDoc
      */
+    public function getAlgorithmConfigurationServiceNameForAlgorithm(array $algorithmConfig)
+    {
+        $this->assertValidAlgorithmConfig($algorithmConfig);
+
+        return ServiceNames::ALGORITHM_CONFIGURATION_PREFIX . $algorithmConfig['id'];
+    }
+
+    /**
+     * @inheritDoc
+     */
     public function getReplacementPatternServiceNameForAlgorithm(array $algorithmConfig)
     {
         $this->assertValidAlgorithmConfig($algorithmConfig);
@@ -49,15 +59,5 @@ class ServiceNameGenerator implements ServiceNameGeneratorInterface
         $this->assertValidAlgorithmConfig($algorithmConfig);
 
         return ServiceNames::REPLACEMENT_SOURCE_DECRYPTER_ALGORITHM_PREFIX . $algorithmConfig['id'];
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function getServiceNameForAlgorithm(array $algorithmConfig)
-    {
-        $this->assertValidAlgorithmConfig($algorithmConfig);
-
-        return ServiceNames::ALGORITHM_PREFIX . $algorithmConfig['id'];
     }
 }

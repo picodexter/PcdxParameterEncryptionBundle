@@ -11,7 +11,7 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Tests\Configuration;
 
-use Picodexter\ParameterEncryptionBundle\Configuration\Algorithm;
+use Picodexter\ParameterEncryptionBundle\Configuration\AlgorithmConfiguration;
 use Picodexter\ParameterEncryptionBundle\Configuration\AlgorithmConfigurationContainer;
 use Picodexter\ParameterEncryptionBundle\Encryption\Decrypter\DecrypterInterface;
 use Picodexter\ParameterEncryptionBundle\Encryption\Encrypter\EncrypterInterface;
@@ -38,24 +38,24 @@ class AlgorithmConfigurationContainerTest extends \PHPUnit_Framework_TestCase
         return [
             '2 identical IDs - 2 items' => [
                 [
-                    $this->createAlgorithmWithId('some_id'),
-                    $this->createAlgorithmWithId('some_id'),
+                    $this->createAlgorithmConfigurationWithId('some_id'),
+                    $this->createAlgorithmConfigurationWithId('some_id'),
                 ],
             ],
             '3 identical IDs - 3 items' => [
                 [
-                    $this->createAlgorithmWithId('some_id'),
-                    $this->createAlgorithmWithId('some_id'),
-                    $this->createAlgorithmWithId('some_id'),
+                    $this->createAlgorithmConfigurationWithId('some_id'),
+                    $this->createAlgorithmConfigurationWithId('some_id'),
+                    $this->createAlgorithmConfigurationWithId('some_id'),
                 ],
             ],
             '2 identical IDs - 5 items' => [
                 [
-                    $this->createAlgorithmWithId('first_algorithm'),
-                    $this->createAlgorithmWithId('some_id'),
-                    $this->createAlgorithmWithId('another_algorithm'),
-                    $this->createAlgorithmWithId('some_id'),
-                    $this->createAlgorithmWithId('algorithm5'),
+                    $this->createAlgorithmConfigurationWithId('first_algorithm'),
+                    $this->createAlgorithmConfigurationWithId('some_id'),
+                    $this->createAlgorithmConfigurationWithId('another_algorithm'),
+                    $this->createAlgorithmConfigurationWithId('some_id'),
+                    $this->createAlgorithmConfigurationWithId('algorithm5'),
                 ],
             ],
         ];
@@ -71,7 +71,7 @@ class AlgorithmConfigurationContainerTest extends \PHPUnit_Framework_TestCase
     {
         $algorithmConfig = new AlgorithmConfigurationContainer($algorithms);
 
-        $this->assertCount($expectedCount, $algorithmConfig->getAlgorithms());
+        $this->assertCount($expectedCount, $algorithmConfig->getAlgorithmConfigurations());
     }
 
     /**
@@ -96,15 +96,15 @@ class AlgorithmConfigurationContainerTest extends \PHPUnit_Framework_TestCase
             ],
             '1 algorithm' => [
                 [
-                    $this->createAlgorithmWithId('foo'),
+                    $this->createAlgorithmConfigurationWithId('foo'),
                 ],
                 1,
             ],
             'mixed - 2 algorithms and random data' => [
                 [
                     1,
-                    $this->createAlgorithmWithId('foo'),
-                    $this->createAlgorithmWithId('bar'),
+                    $this->createAlgorithmConfigurationWithId('foo'),
+                    $this->createAlgorithmConfigurationWithId('bar'),
                     1.1,
                     'string',
                 ],
@@ -119,11 +119,11 @@ class AlgorithmConfigurationContainerTest extends \PHPUnit_Framework_TestCase
      * @dataProvider provideDuplicateIdData
      * @expectedException \Picodexter\ParameterEncryptionBundle\Exception\DuplicateAlgorithmIdException
      */
-    public function testSetAlgorithmsExceptionDuplicateId(array $algorithms)
+    public function testSetAlgorithmConfigurationsExceptionDuplicateId(array $algorithms)
     {
         $algorithmConfig = new AlgorithmConfigurationContainer([]);
 
-        $algorithmConfig->setAlgorithms($algorithms);
+        $algorithmConfig->setAlgorithmConfigurations($algorithms);
     }
 
     /**
@@ -132,22 +132,22 @@ class AlgorithmConfigurationContainerTest extends \PHPUnit_Framework_TestCase
      *
      * @dataProvider provideUniqueIdData
      */
-    public function testSetAlgorithmsSuccess(array $algorithms, $expectedCount)
+    public function testSetAlgorithmConfigurationsSuccess(array $algorithms, $expectedCount)
     {
         $algorithmConfig = new AlgorithmConfigurationContainer([]);
 
-        $algorithmConfig->setAlgorithms($algorithms);
+        $algorithmConfig->setAlgorithmConfigurations($algorithms);
 
-        $this->assertCount($expectedCount, $algorithmConfig->getAlgorithms());
+        $this->assertCount($expectedCount, $algorithmConfig->getAlgorithmConfigurations());
     }
 
     public function testGetSuccessFound()
     {
-        $targetAlgorithm = $this->createAlgorithmWithId('foo');
+        $targetAlgorithm = $this->createAlgorithmConfigurationWithId('foo');
 
         $algorithmConfig = new AlgorithmConfigurationContainer([
             $targetAlgorithm,
-            $this->createAlgorithmWithId('bar'),
+            $this->createAlgorithmConfigurationWithId('bar'),
         ]);
 
         $result = $algorithmConfig->get('foo');
@@ -158,7 +158,7 @@ class AlgorithmConfigurationContainerTest extends \PHPUnit_Framework_TestCase
     public function testGetSuccessNotFound()
     {
         $algorithmConfig = new AlgorithmConfigurationContainer([
-            $this->createAlgorithmWithId('foo'),
+            $this->createAlgorithmConfigurationWithId('foo'),
         ]);
 
         $result = $algorithmConfig->get('bar');
@@ -169,7 +169,7 @@ class AlgorithmConfigurationContainerTest extends \PHPUnit_Framework_TestCase
     public function testHasSuccessFound()
     {
         $algorithmConfig = new AlgorithmConfigurationContainer([
-            $this->createAlgorithmWithId('foobar'),
+            $this->createAlgorithmConfigurationWithId('foobar'),
         ]);
 
         $result = $algorithmConfig->has('foobar');
@@ -180,7 +180,7 @@ class AlgorithmConfigurationContainerTest extends \PHPUnit_Framework_TestCase
     public function testHasSuccessNotFound()
     {
         $algorithmConfig = new AlgorithmConfigurationContainer([
-            $this->createAlgorithmWithId('foobar'),
+            $this->createAlgorithmConfigurationWithId('foobar'),
         ]);
 
         $result = $algorithmConfig->has('no_find');
@@ -192,15 +192,15 @@ class AlgorithmConfigurationContainerTest extends \PHPUnit_Framework_TestCase
      * Create algorithm with ID.
      *
      * @param string $id
-     * @return Algorithm
+     * @return AlgorithmConfiguration
      */
-    private function createAlgorithmWithId($id)
+    private function createAlgorithmConfigurationWithId($id)
     {
         $decrypter = $this->createDecrypterInterfaceMock();
         $encrypter = $this->createEncrypterInterfaceMock();
         $replacementPattern = $this->createReplacementPatternInterfaceMock();
 
-        return new Algorithm($id, $decrypter, $encrypter, null, $replacementPattern);
+        return new AlgorithmConfiguration($id, $decrypter, $encrypter, null, $replacementPattern);
     }
 
     /**

@@ -11,7 +11,7 @@
 
 namespace Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\Initializer\Handler;
 
-use Picodexter\ParameterEncryptionBundle\Configuration\Algorithm;
+use Picodexter\ParameterEncryptionBundle\Configuration\AlgorithmConfiguration;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\ServiceNameGeneratorInterface;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\BundleConfigurationValidatorInterface;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\DefinitionFactoryInterface;
@@ -70,10 +70,11 @@ class AlgorithmRegistrationHandler implements AlgorithmRegistrationHandlerInterf
         $algorithmDefinitions = [];
 
         foreach ($bundleConfig['algorithms'] as $algorithmConfig) {
-            $serviceName = $this->serviceNameGenerator->getServiceNameForAlgorithm($algorithmConfig);
+            $serviceName = $this->serviceNameGenerator
+                ->getAlgorithmConfigurationServiceNameForAlgorithm($algorithmConfig);
 
             $algorithmDefinition = $this->definitionFactory->createDefinition(
-                Algorithm::class,
+                AlgorithmConfiguration::class,
                 [
                     $algorithmConfig['id'],
                     $this->referenceFactory->createReference($algorithmConfig['decryption']['service']),

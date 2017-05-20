@@ -50,6 +50,6 @@ class AlgorithmInitializer implements AlgorithmInitializerInterface
     public function initialize(array $bundleConfig, ContainerBuilder $container)
     {
         $this->registrationHandler->registerAlgorithms($bundleConfig, $container);
-        $this->injectionHandler->injectAlgorithmsIntoConfiguration($bundleConfig, $container);
+        $this->injectionHandler->injectAlgorithmConfigurationsIntoContainer($bundleConfig, $container);
     }
 }

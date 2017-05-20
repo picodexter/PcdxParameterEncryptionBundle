@@ -43,10 +43,9 @@ class ServiceNameGeneratorTest extends \PHPUnit_Framework_TestCase
      * @dataProvider provideInvalidAlgorithmConfigData
      * @expectedException \Picodexter\ParameterEncryptionBundle\Exception\InvalidAlgorithmConfigurationException
      */
-    public function testGetReplacementPatternServiceNameForAlgorithmExceptionInvalidConfig(
-        array $algorithmConfig
-    ) {
-        $this->generator->getReplacementPatternServiceNameForAlgorithm($algorithmConfig);
+    public function testGetAlgorithmConfigurationServiceNameForAlgorithmExceptionInvalidConfig(array $algorithmConfig)
+    {
+        $this->generator->getAlgorithmConfigurationServiceNameForAlgorithm($algorithmConfig);
     }
 
     /**
@@ -69,6 +68,29 @@ class ServiceNameGeneratorTest extends \PHPUnit_Framework_TestCase
                 ],
             ],
         ];
+    }
+
+    public function testGetAlgorithmConfigurationServiceNameForAlgorithmSuccess()
+    {
+        $preparedAlgorithmId = 'foo';
+
+        $serviceName = $this->generator->getAlgorithmConfigurationServiceNameForAlgorithm([
+            'id' => $preparedAlgorithmId,
+        ]);
+
+        $this->assertSame(ServiceNames::ALGORITHM_CONFIGURATION_PREFIX . $preparedAlgorithmId, $serviceName);
+    }
+
+    /**
+     * @param array $algorithmConfig
+     *
+     * @dataProvider provideInvalidAlgorithmConfigData
+     * @expectedException \Picodexter\ParameterEncryptionBundle\Exception\InvalidAlgorithmConfigurationException
+     */
+    public function testGetReplacementPatternServiceNameForAlgorithmExceptionInvalidConfig(
+        array $algorithmConfig
+    ) {
+        $this->generator->getReplacementPatternServiceNameForAlgorithm($algorithmConfig);
     }
 
     public function testGetReplacementPatternServiceNameForAlgorithmSuccess()
@@ -106,27 +128,5 @@ class ServiceNameGeneratorTest extends \PHPUnit_Framework_TestCase
             ServiceNames::REPLACEMENT_SOURCE_DECRYPTER_ALGORITHM_PREFIX . $preparedAlgorithmId,
             $serviceName
         );
-    }
-
-    /**
-     * @param array $algorithmConfig
-     *
-     * @dataProvider provideInvalidAlgorithmConfigData
-     * @expectedException \Picodexter\ParameterEncryptionBundle\Exception\InvalidAlgorithmConfigurationException
-     */
-    public function testGetServiceNameForAlgorithmExceptionInvalidConfig(array $algorithmConfig)
-    {
-        $this->generator->getServiceNameForAlgorithm($algorithmConfig);
-    }
-
-    public function testGetServiceNameForAlgorithmSuccess()
-    {
-        $preparedAlgorithmId = 'foo';
-
-        $serviceName = $this->generator->getServiceNameForAlgorithm([
-            'id' => $preparedAlgorithmId,
-        ]);
-
-        $this->assertSame(ServiceNames::ALGORITHM_PREFIX . $preparedAlgorithmId, $serviceName);
     }
 }

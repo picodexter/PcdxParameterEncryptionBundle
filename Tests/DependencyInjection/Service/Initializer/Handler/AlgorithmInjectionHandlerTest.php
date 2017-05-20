@@ -73,7 +73,7 @@ class AlgorithmInjectionHandlerTest extends \PHPUnit_Framework_TestCase
     /**
      * @expectedException \Picodexter\ParameterEncryptionBundle\Exception\InvalidBundleConfigurationException
      */
-    public function testInjectAlgorithmIntoConfigurationExceptionInvalidConfig()
+    public function testInjectAlgorithmConfigurationsIntoContainerExceptionInvalidConfig()
     {
         $bundleConfig = ['invalid_config'];
 
@@ -84,10 +84,10 @@ class AlgorithmInjectionHandlerTest extends \PHPUnit_Framework_TestCase
             ->with($this->identicalTo($bundleConfig))
             ->will($this->throwException(new InvalidBundleConfigurationException()));
 
-        $this->handler->injectAlgorithmsIntoConfiguration($bundleConfig, $container);
+        $this->handler->injectAlgorithmConfigurationsIntoContainer($bundleConfig, $container);
     }
 
-    public function testInjectAlgorithmsIntoConfigurationSuccessEmpty()
+    public function testInjectAlgorithmConfigurationsIntoContainerSuccessEmpty()
     {
         $container = $this->createContainerBuilderMock();
 
@@ -105,7 +105,7 @@ class AlgorithmInjectionHandlerTest extends \PHPUnit_Framework_TestCase
                 $this->identicalTo([])
             );
 
-        $this->handler->injectAlgorithmsIntoConfiguration(
+        $this->handler->injectAlgorithmConfigurationsIntoContainer(
             [
                 'algorithms' => [],
             ],
@@ -113,7 +113,7 @@ class AlgorithmInjectionHandlerTest extends \PHPUnit_Framework_TestCase
         );
     }
 
-    public function testInjectAlgorithmsIntoConfigurationSuccessThreeReferences()
+    public function testInjectAlgorithmConfigurationsIntoContainerSuccessThreeReferences()
     {
         $preparedReference1 = $this->createReferenceMock();
         $preparedReference2 = $this->createReferenceMock();
@@ -149,7 +149,7 @@ class AlgorithmInjectionHandlerTest extends \PHPUnit_Framework_TestCase
                 $this->identicalTo($preparedReferences)
             );
 
-        $this->handler->injectAlgorithmsIntoConfiguration(
+        $this->handler->injectAlgorithmConfigurationsIntoContainer(
             [
                 'algorithms' => [
                     [

@@ -20,7 +20,7 @@ final class ServiceNames
 {
     const ALGORITHM_CONFIGURATION_CONTAINER
         = 'pcdx_parameter_encryption.configuration.algorithm_configuration_container';
-    const ALGORITHM_PREFIX = 'pcdx_parameter_encryption.configuration.algorithm.';
+    const ALGORITHM_CONFIGURATION_PREFIX = 'pcdx_parameter_encryption.configuration.algorithm_configuration.';
     const PARAMETER_REPLACER = 'pcdx_parameter_encryption.replacement.parameter_replacer';
     const PARAMETER_REPLACEMENT_FETCHER = 'pcdx_parameter_encryption.replacement.parameter_replacement_fetcher';
     const REPLACEMENT_PATTERN_ALGORITHM_PREFIX = 'pcdx_parameter_encryption.replacement.pattern.algorithm.';

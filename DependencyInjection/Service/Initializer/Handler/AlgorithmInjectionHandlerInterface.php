@@ -20,11 +20,11 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 interface AlgorithmInjectionHandlerInterface
 {
     /**
-     * Inject algorithms into algorithm configuration.
+     * Inject algorithm configurations into algorithm configuration container.
      *
      * @param array            $bundleConfig
      * @param ContainerBuilder $container
      * @throws InvalidBundleConfigurationException
      */
-    public function injectAlgorithmsIntoConfiguration(array $bundleConfig, ContainerBuilder $container);
+    public function injectAlgorithmConfigurationsIntoContainer(array $bundleConfig, ContainerBuilder $container);
 }

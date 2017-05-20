@@ -19,6 +19,15 @@ use Picodexter\ParameterEncryptionBundle\Exception\InvalidAlgorithmConfiguration
 interface ServiceNameGeneratorInterface
 {
     /**
+     * Get name of algorithm configuration service for algorithm.
+     *
+     * @param array $algorithmConfig
+     * @return string
+     * @throws InvalidAlgorithmConfigurationException
+     */
+    public function getAlgorithmConfigurationServiceNameForAlgorithm(array $algorithmConfig);
+
+    /**
      * Get name of replacement pattern service for algorithm.
      *
      * @param array $algorithmConfig
@@ -35,13 +44,4 @@ interface ServiceNameGeneratorInterface
      * @throws InvalidAlgorithmConfigurationException
      */
     public function getReplacementSourceDecrypterServiceNameForAlgorithm(array $algorithmConfig);
-
-    /**
-     * Get name of algorithm service for algorithm.
-     *
-     * @param array $algorithmConfig
-     * @return string
-     * @throws InvalidAlgorithmConfigurationException
-     */
-    public function getServiceNameForAlgorithm(array $algorithmConfig);
 }

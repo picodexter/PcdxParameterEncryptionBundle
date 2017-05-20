@@ -11,12 +11,12 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Tests\Configuration;
 
-use Picodexter\ParameterEncryptionBundle\Configuration\Algorithm;
+use Picodexter\ParameterEncryptionBundle\Configuration\AlgorithmConfiguration;
 use Picodexter\ParameterEncryptionBundle\Encryption\Decrypter\DecrypterInterface;
 use Picodexter\ParameterEncryptionBundle\Encryption\Encrypter\EncrypterInterface;
 use Picodexter\ParameterEncryptionBundle\Replacement\Pattern\ReplacementPatternInterface;
 
-class AlgorithmTest extends \PHPUnit_Framework_TestCase
+class AlgorithmConfigurationTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @param string $id
@@ -26,7 +26,7 @@ class AlgorithmTest extends \PHPUnit_Framework_TestCase
      */
     public function testConstructorExceptionInvalidId($id)
     {
-        $this->createAlgorithmWithId($id);
+        $this->createAlgorithmConfigurationWithId($id);
     }
 
     /**
@@ -55,7 +55,7 @@ class AlgorithmTest extends \PHPUnit_Framework_TestCase
      */
     public function testConstructorSuccess($id, $expectedId)
     {
-        $algorithm = $this->createAlgorithmWithId($id);
+        $algorithm = $this->createAlgorithmConfigurationWithId($id);
 
         $this->assertSame($expectedId, $algorithm->getId());
     }
@@ -101,7 +101,7 @@ class AlgorithmTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetIdExceptionInvalidId($id)
     {
-        $algorithm = $this->createAlgorithmWithId('placeholder');
+        $algorithm = $this->createAlgorithmConfigurationWithId('placeholder');
 
         $algorithm->setId($id);
     }
@@ -114,7 +114,7 @@ class AlgorithmTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetIdSuccess($id, $expectedId)
     {
-        $algorithm = $this->createAlgorithmWithId('placeholder');
+        $algorithm = $this->createAlgorithmConfigurationWithId('placeholder');
 
         $algorithm->setId($id);
 
@@ -122,18 +122,18 @@ class AlgorithmTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Create Algorithm with ID.
+     * Create AlgorithmConfiguration with ID.
      *
      * @param string $id
-     * @return Algorithm
+     * @return AlgorithmConfiguration
      */
-    private function createAlgorithmWithId($id)
+    private function createAlgorithmConfigurationWithId($id)
     {
         $decrypter = $this->createDecrypterInterfaceMock();
         $encrypter = $this->createEncrypterInterfaceMock();
         $replacementPattern = $this->createReplacementPatternInterfaceMock();
 
-        return new Algorithm($id, $decrypter, $encrypter, '', $replacementPattern);
+        return new AlgorithmConfiguration($id, $decrypter, $encrypter, '', $replacementPattern);
     }
 
     /**

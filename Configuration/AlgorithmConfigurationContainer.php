@@ -19,41 +19,41 @@ use Picodexter\ParameterEncryptionBundle\Exception\DuplicateAlgorithmIdException
 class AlgorithmConfigurationContainer
 {
     /**
-     * @var Algorithm[]
+     * @var AlgorithmConfiguration[]
      */
-    private $algorithms;
+    private $algorithmConfigurations;
 
     /**
      * Constructor.
      *
-     * @param Algorithm[] $algorithms
+     * @param AlgorithmConfiguration[] $algorithms
      */
     public function __construct(array $algorithms)
     {
-        $this->setAlgorithms($algorithms);
+        $this->setAlgorithmConfigurations($algorithms);
     }
 
     /**
-     * Getter: algorithms.
+     * Getter: algorithmConfigurations.
      *
-     * @return Algorithm[]
+     * @return AlgorithmConfiguration[]
      */
-    public function getAlgorithms()
+    public function getAlgorithmConfigurations()
     {
-        return $this->algorithms;
+        return $this->algorithmConfigurations;
     }
 
     /**
-     * Setter: algorithms.
+     * Setter: algorithmConfigurations.
      *
-     * @param Algorithm[] $algorithms
+     * @param AlgorithmConfiguration[] $algorithmConfigurations
      * @throws DuplicateAlgorithmIdException
      */
-    public function setAlgorithms(array $algorithms)
+    public function setAlgorithmConfigurations(array $algorithmConfigurations)
     {
-        /** @var Algorithm[] $validAlgorithms */
-        $validAlgorithms = array_filter($algorithms, function ($algorithm) {
-            return ($algorithm instanceof Algorithm);
+        /** @var AlgorithmConfiguration[] $validAlgorithms */
+        $validAlgorithms = array_filter($algorithmConfigurations, function ($algorithm) {
+            return ($algorithm instanceof AlgorithmConfiguration);
         });
 
         $indexedAlgorithms = [];
@@ -66,18 +66,18 @@ class AlgorithmConfigurationContainer
             $indexedAlgorithms[$algorithm->getId()] = $algorithm;
         }
 
-        $this->algorithms = $indexedAlgorithms;
+        $this->algorithmConfigurations = $indexedAlgorithms;
     }
 
     /**
      * Get algorithm by ID.
      *
      * @param string $id
-     * @return Algorithm|null
+     * @return AlgorithmConfiguration|null
      */
     public function get($id)
     {
-        return ($this->has($id) ? $this->algorithms[$id] : null);
+        return ($this->has($id) ? $this->algorithmConfigurations[$id] : null);
     }
 
     /**
@@ -88,6 +88,6 @@ class AlgorithmConfigurationContainer
      */
     public function has($id)
     {
-        return key_exists($id, $this->algorithms);
+        return key_exists($id, $this->algorithmConfigurations);
     }
 }

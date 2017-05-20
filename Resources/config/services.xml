@@ -17,6 +17,12 @@
         <service id="pcdx_parameter_encryption.dependency_injection.service.definition_factory" class="Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\DefinitionFactory">
         </service>
 
+        <service id="pcdx_parameter_encryption.dependency_injection.service.definition_initialization_manager" class="Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\ServiceDefinitionInitializationManager">
+            <argument type="service" id="pcdx_parameter_encryption.dependency_injection.service.initializer.algorithm" />
+            <argument type="service" id="pcdx_parameter_encryption.dependency_injection.service.initializer.replacement_pattern" />
+            <argument type="service" id="pcdx_parameter_encryption.dependency_injection.service.initializer.replacement_source_decrypter" />
+        </service>
+
         <service id="pcdx_parameter_encryption.dependency_injection.service.initializer.algorithm" class="Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\Initializer\AlgorithmInitializer">
             <argument type="service" id="pcdx_parameter_encryption.dependency_injection.service.initializer.handler.algorithm_injection" />
             <argument type="service" id="pcdx_parameter_encryption.dependency_injection.service.initializer.handler.algorithm_registration" />

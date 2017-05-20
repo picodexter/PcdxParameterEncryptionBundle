@@ -20,7 +20,7 @@
 
         <service id="pcdx_parameter_encryption.replacement.parameter_replacement_fetcher" class="Picodexter\ParameterEncryptionBundle\Replacement\ParameterReplacementFetcher">
             <argument type="collection">
-                <argument type="service" id="pcdx_parameter_encryption.replacement.source.decrypter.caesar_rot13" />
+                <!-- automatically filled in at runtime -->
             </argument>
         </service>
 

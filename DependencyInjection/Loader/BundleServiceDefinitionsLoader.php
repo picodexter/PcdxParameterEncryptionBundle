@@ -51,7 +51,7 @@ class BundleServiceDefinitionsLoader implements BundleServiceDefinitionsLoaderIn
     {
         $loader = $this->xmlFileLoaderFactory->createXmlFileLoader(
             $container,
-            $this->fileLocatorFactory->createFileLocator(__DIR__ . '/../Resources/config')
+            $this->fileLocatorFactory->createFileLocator(__DIR__ . '/../../Resources/config')
         );
 
         $loader->load('services.xml');

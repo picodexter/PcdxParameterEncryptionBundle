@@ -5,6 +5,11 @@
         http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
+        <service id="pcdx_parameter_encryption.command.algorithm_list" class="Picodexter\ParameterEncryptionBundle\Command\AlgorithmListCommand">
+            <argument type="service" id="pcdx_parameter_encryption.console.dispatcher.algorithm_list" />
+            <tag name="console.command" />
+        </service>
+
         <service id="pcdx_parameter_encryption.configuration.algorithm_configuration_container" class="Picodexter\ParameterEncryptionBundle\Configuration\AlgorithmConfigurationContainer">
             <argument type="collection">
                 <!-- automatically filled in at runtime -->

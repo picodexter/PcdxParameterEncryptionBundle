@@ -14,6 +14,10 @@
         <service id="pcdx_parameter_encryption.console.helper.table_factory" class="Picodexter\ParameterEncryptionBundle\Console\Helper\TableFactory">
         </service>
 
+        <service id="pcdx_parameter_encryption.console.processor.algorithm_list" class="Picodexter\ParameterEncryptionBundle\Console\Processor\AlgorithmListProcessor">
+            <argument type="service" id="pcdx_parameter_encryption.configuration.algorithm_configuration_container" />
+        </service>
+
         <service id="pcdx_parameter_encryption.dependency_injection.service.bundle_configuration_validator" class="Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\BundleConfigurationValidator">
         </service>
 

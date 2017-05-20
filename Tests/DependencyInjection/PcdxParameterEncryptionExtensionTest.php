@@ -46,14 +46,14 @@ class PcdxParameterEncryptionExtensionTest extends \PHPUnit_Framework_TestCase
         ];
 
         $container = $this->createContainerBuilderMock();
-        $initializationManager = $this->createServiceDefinitionInitializationManagerInterfaceMock();
+        $initManager = $this->createServiceDefinitionInitializationManagerInterfaceMock();
 
         $container->expects($this->once())
             ->method('get')
             ->with($this->identicalTo(ServiceNames::SERVICE_DEFINITION_INITIALIZATION_MANAGER))
-            ->will($this->returnValue($initializationManager));
+            ->will($this->returnValue($initManager));
 
-        $initializationManager->expects($this->once())
+        $initManager->expects($this->once())
             ->method('initializeServiceDefinitions')
             ->with(
                 $this->identicalTo($mergedConfig),

@@ -29,8 +29,8 @@ class PcdxParameterEncryptionExtension extends ConfigurableExtension
      */
     private function initializeServiceDefinitions(array $mergedConfig, ContainerBuilder $container)
     {
-        $definitionManager = $container->get(ServiceNames::SERVICE_DEFINITION_INITIALIZATION_MANAGER);
-        $definitionManager->initializeServiceDefinitions($mergedConfig, $container);
+        $initManager = $container->get(ServiceNames::SERVICE_DEFINITION_INITIALIZATION_MANAGER);
+        $initManager->initializeServiceDefinitions($mergedConfig, $container);
     }
 
     /**

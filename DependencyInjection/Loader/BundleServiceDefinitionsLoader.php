@@ -18,6 +18,8 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
  */
 class BundleServiceDefinitionsLoader implements BundleServiceDefinitionsLoaderInterface
 {
+    const SERVICES_CONFIG_DIRECTORY_RELATIVE_PATH = __DIR__ . '/../../Resources/config';
+
     /**
      * @var FileLocatorFactoryInterface
      */
@@ -49,10 +51,9 @@ class BundleServiceDefinitionsLoader implements BundleServiceDefinitionsLoaderIn
      */
     public function loadBundleServiceDefinitions(ContainerBuilder $container)
     {
-        $loader = $this->xmlFileLoaderFactory->createXmlFileLoader(
-            $container,
-            $this->fileLocatorFactory->createFileLocator(__DIR__ . '/../../Resources/config')
-        );
+        $fileLocator = $this->fileLocatorFactory->createFileLocator(self::SERVICES_CONFIG_DIRECTORY_RELATIVE_PATH);
+
+        $loader = $this->xmlFileLoaderFactory->createXmlFileLoader($container, $fileLocator);
 
         $loader->load('services.xml');
     }

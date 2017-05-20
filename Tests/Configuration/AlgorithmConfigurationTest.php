@@ -121,6 +121,74 @@ class AlgorithmConfigurationTest extends \PHPUnit_Framework_TestCase
         $this->assertSame($expectedId, $algorithm->getId());
     }
 
+    public function testGetSetDecrypterSuccess()
+    {
+        $preparedDecrypter = $this->createDecrypterInterfaceMock();
+
+        $algorithm = $this->createAlgorithmConfigurationWithId('algo_01');
+
+        $decrypter = $algorithm->getDecrypter();
+
+        $this->assertNotSame($preparedDecrypter, $decrypter);
+
+        $algorithm->setDecrypter($preparedDecrypter);
+
+        $decrypter = $algorithm->getDecrypter();
+
+        $this->assertSame($preparedDecrypter, $decrypter);
+    }
+
+    public function testGetSetEncrypterSuccess()
+    {
+        $preparedEncrypter = $this->createEncrypterInterfaceMock();
+
+        $algorithm = $this->createAlgorithmConfigurationWithId('algo_01');
+
+        $encrypter = $algorithm->getEncrypter();
+
+        $this->assertNotSame($preparedEncrypter, $encrypter);
+
+        $algorithm->setEncrypter($preparedEncrypter);
+
+        $encrypter = $algorithm->getEncrypter();
+
+        $this->assertSame($preparedEncrypter, $encrypter);
+    }
+
+    public function testGetSetEncryptionKeySuccess()
+    {
+        $preparedKey = 'secret_foo123';
+
+        $algorithm = $this->createAlgorithmConfigurationWithId('algo_01');
+
+        $key = $algorithm->getEncryptionKey();
+
+        $this->assertNotSame($preparedKey, $key);
+
+        $algorithm->setEncryptionKey($preparedKey);
+
+        $key = $algorithm->getEncryptionKey();
+
+        $this->assertSame($preparedKey, $key);
+    }
+
+    public function testGetSetReplacementPatternSuccess()
+    {
+        $preparedPattern = $this->createReplacementPatternInterfaceMock();
+
+        $algorithm = $this->createAlgorithmConfigurationWithId('algo_01');
+
+        $pattern = $algorithm->getReplacementPattern();
+
+        $this->assertNotSame($preparedPattern, $pattern);
+
+        $algorithm->setReplacementPattern($preparedPattern);
+
+        $pattern = $algorithm->getReplacementPattern();
+
+        $this->assertSame($preparedPattern, $pattern);
+    }
+
     /**
      * Create AlgorithmConfiguration with ID.
      *

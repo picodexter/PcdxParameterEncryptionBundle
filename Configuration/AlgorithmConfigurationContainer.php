@@ -14,9 +14,9 @@ namespace Picodexter\ParameterEncryptionBundle\Configuration;
 use Picodexter\ParameterEncryptionBundle\Exception\DuplicateAlgorithmIdException;
 
 /**
- * AlgorithmConfiguration.
+ * AlgorithmConfigurationContainer.
  */
-class AlgorithmConfiguration
+class AlgorithmConfigurationContainer
 {
     /**
      * @var Algorithm[]

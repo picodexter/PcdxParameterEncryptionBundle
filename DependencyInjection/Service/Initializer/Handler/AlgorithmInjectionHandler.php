@@ -66,7 +66,7 @@ class AlgorithmInjectionHandler implements AlgorithmInjectionHandlerInterface
             $references[] = $this->referenceFactory->createReference($serviceName);
         }
 
-        $configurationService = $container->getDefinition(ServiceNames::ALGORITHM_CONFIGURATION);
+        $configurationService = $container->getDefinition(ServiceNames::ALGORITHM_CONFIGURATION_CONTAINER);
 
         $configurationService->replaceArgument(0, $references);
     }

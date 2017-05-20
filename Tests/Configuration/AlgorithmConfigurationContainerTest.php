@@ -12,12 +12,12 @@
 namespace Picodexter\ParameterEncryptionBundle\Tests\Configuration;
 
 use Picodexter\ParameterEncryptionBundle\Configuration\Algorithm;
-use Picodexter\ParameterEncryptionBundle\Configuration\AlgorithmConfiguration;
+use Picodexter\ParameterEncryptionBundle\Configuration\AlgorithmConfigurationContainer;
 use Picodexter\ParameterEncryptionBundle\Encryption\Decrypter\DecrypterInterface;
 use Picodexter\ParameterEncryptionBundle\Encryption\Encrypter\EncrypterInterface;
 use Picodexter\ParameterEncryptionBundle\Replacement\Pattern\ReplacementPatternInterface;
 
-class AlgorithmConfigurationTest extends \PHPUnit_Framework_TestCase
+class AlgorithmConfigurationContainerTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @param array $algorithms
@@ -27,7 +27,7 @@ class AlgorithmConfigurationTest extends \PHPUnit_Framework_TestCase
      */
     public function testConstructorExceptionDuplicateId(array $algorithms)
     {
-        new AlgorithmConfiguration($algorithms);
+        new AlgorithmConfigurationContainer($algorithms);
     }
 
     /**
@@ -69,7 +69,7 @@ class AlgorithmConfigurationTest extends \PHPUnit_Framework_TestCase
      */
     public function testConstructorSuccess(array $algorithms, $expectedCount)
     {
-        $algorithmConfig = new AlgorithmConfiguration($algorithms);
+        $algorithmConfig = new AlgorithmConfigurationContainer($algorithms);
 
         $this->assertCount($expectedCount, $algorithmConfig->getAlgorithms());
     }
@@ -121,7 +121,7 @@ class AlgorithmConfigurationTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetAlgorithmsExceptionDuplicateId(array $algorithms)
     {
-        $algorithmConfig = new AlgorithmConfiguration([]);
+        $algorithmConfig = new AlgorithmConfigurationContainer([]);
 
         $algorithmConfig->setAlgorithms($algorithms);
     }
@@ -134,7 +134,7 @@ class AlgorithmConfigurationTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetAlgorithmsSuccess(array $algorithms, $expectedCount)
     {
-        $algorithmConfig = new AlgorithmConfiguration([]);
+        $algorithmConfig = new AlgorithmConfigurationContainer([]);
 
         $algorithmConfig->setAlgorithms($algorithms);
 
@@ -145,7 +145,7 @@ class AlgorithmConfigurationTest extends \PHPUnit_Framework_TestCase
     {
         $targetAlgorithm = $this->createAlgorithmWithId('foo');
 
-        $algorithmConfig = new AlgorithmConfiguration([
+        $algorithmConfig = new AlgorithmConfigurationContainer([
             $targetAlgorithm,
             $this->createAlgorithmWithId('bar'),
         ]);
@@ -157,7 +157,7 @@ class AlgorithmConfigurationTest extends \PHPUnit_Framework_TestCase
 
     public function testGetSuccessNotFound()
     {
-        $algorithmConfig = new AlgorithmConfiguration([
+        $algorithmConfig = new AlgorithmConfigurationContainer([
             $this->createAlgorithmWithId('foo'),
         ]);
 
@@ -168,7 +168,7 @@ class AlgorithmConfigurationTest extends \PHPUnit_Framework_TestCase
 
     public function testHasSuccessFound()
     {
-        $algorithmConfig = new AlgorithmConfiguration([
+        $algorithmConfig = new AlgorithmConfigurationContainer([
             $this->createAlgorithmWithId('foobar'),
         ]);
 
@@ -179,7 +179,7 @@ class AlgorithmConfigurationTest extends \PHPUnit_Framework_TestCase
 
     public function testHasSuccessNotFound()
     {
-        $algorithmConfig = new AlgorithmConfiguration([
+        $algorithmConfig = new AlgorithmConfigurationContainer([
             $this->createAlgorithmWithId('foobar'),
         ]);
 

@@ -5,7 +5,7 @@
         http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
-        <service id="pcdx_parameter_encryption.configuration.algorithm_configuration" class="Picodexter\ParameterEncryptionBundle\Configuration\AlgorithmConfiguration">
+        <service id="pcdx_parameter_encryption.configuration.algorithm_configuration_container" class="Picodexter\ParameterEncryptionBundle\Configuration\AlgorithmConfigurationContainer">
             <argument type="collection">
                 <!-- automatically filled in at runtime -->
             </argument>

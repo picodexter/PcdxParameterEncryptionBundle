@@ -18,7 +18,8 @@ namespace Picodexter\ParameterEncryptionBundle\DependencyInjection;
  */
 final class ServiceNames
 {
-    const ALGORITHM_CONFIGURATION = 'pcdx_parameter_encryption.configuration.algorithm_configuration';
+    const ALGORITHM_CONFIGURATION_CONTAINER
+        = 'pcdx_parameter_encryption.configuration.algorithm_configuration_container';
     const ALGORITHM_PREFIX = 'pcdx_parameter_encryption.configuration.algorithm.';
     const PARAMETER_REPLACER = 'pcdx_parameter_encryption.replacement.parameter_replacer';
     const PARAMETER_REPLACEMENT_FETCHER = 'pcdx_parameter_encryption.replacement.parameter_replacement_fetcher';

@@ -95,7 +95,7 @@ class AlgorithmInjectionHandlerTest extends \PHPUnit_Framework_TestCase
 
         $container->expects($this->once())
             ->method('getDefinition')
-            ->with($this->identicalTo(ServiceNames::ALGORITHM_CONFIGURATION))
+            ->with($this->identicalTo(ServiceNames::ALGORITHM_CONFIGURATION_CONTAINER))
             ->will($this->returnValue($definition));
 
         $definition->expects($this->once())
@@ -139,7 +139,7 @@ class AlgorithmInjectionHandlerTest extends \PHPUnit_Framework_TestCase
 
         $container->expects($this->once())
             ->method('getDefinition')
-            ->with($this->identicalTo(ServiceNames::ALGORITHM_CONFIGURATION))
+            ->with($this->identicalTo(ServiceNames::ALGORITHM_CONFIGURATION_CONTAINER))
             ->will($this->returnValue($definition));
 
         $definition->expects($this->once())

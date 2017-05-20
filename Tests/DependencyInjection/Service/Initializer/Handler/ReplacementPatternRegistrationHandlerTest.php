@@ -17,7 +17,6 @@ use Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\Initializer
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\ServiceNameGeneratorInterface;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\ServiceNames;
 use Picodexter\ParameterEncryptionBundle\Exception\InvalidBundleConfigurationException;
-use Picodexter\ParameterEncryptionBundle\Exception\UnknownReplacementPatternTypeException;
 use Picodexter\ParameterEncryptionBundle\Replacement\Pattern\Registry\ReplacementPatternTypeRegistryInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
@@ -116,7 +115,7 @@ class ReplacementPatternRegistrationHandlerTest extends \PHPUnit_Framework_TestC
         $patternTypeRegistry->expects($this->once())
             ->method('has')
             ->with($this->identicalTo($unknownPatternType))
-            ->will($this->throwException(new UnknownReplacementPatternTypeException($unknownPatternType)));
+            ->will($this->returnValue(false));
 
         $this->handler->registerReplacementPatterns($bundleConfig, $container);
     }

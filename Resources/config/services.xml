@@ -28,6 +28,12 @@
             <argument type="service" id="pcdx_parameter_encryption.replacement.parameter_replacement_fetcher" />
         </service>
 
+        <service id="pcdx_parameter_encryption.replacement.pattern.registry" class="Picodexter\ParameterEncryptionBundle\Replacement\Pattern\Registry\ReplacementPatternRegistry">
+            <argument type="collection">
+                <!-- automatically filled in at runtime -->
+            </argument>
+        </service>
+
         <service id="pcdx_parameter_encryption.replacement.pattern.type_registry" class="Picodexter\ParameterEncryptionBundle\Replacement\Pattern\Registry\ReplacementPatternTypeRegistry">
             <argument type="collection">
                 <argument key="value_prefix">Picodexter\ParameterEncryptionBundle\Replacement\Pattern\ValuePrefixReplacementPattern</argument>

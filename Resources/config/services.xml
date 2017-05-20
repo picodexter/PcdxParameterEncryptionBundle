@@ -27,11 +27,5 @@
         <service id="pcdx_parameter_encryption.replacement.parameter_replacer" class="Picodexter\ParameterEncryptionBundle\Replacement\ParameterReplacer">
             <argument type="service" id="pcdx_parameter_encryption.replacement.parameter_replacement_fetcher" />
         </service>
-
-        <service id="pcdx_parameter_encryption.replacement.source.decrypter.caesar_rot13" class="Picodexter\ParameterEncryptionBundle\Replacement\Source\DecrypterReplacementSource">
-            <argument type="service" id="pcdx_parameter_encryption.encryption.decrypter.caesar.rot13" />
-            <argument type="service" id="pcdx_parameter_encryption.replacement.pattern.value_prefix_replacement" />
-            <argument /><!-- automatically filled in at runtime -->
-        </service>
     </services>
 </container>

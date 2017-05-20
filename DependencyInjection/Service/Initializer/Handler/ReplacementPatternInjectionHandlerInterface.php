@@ -11,7 +11,7 @@
 
 namespace Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\Initializer\Handler;
 
-use Picodexter\ParameterEncryptionBundle\Exception\InvalidBundleConfigurationException;
+use Picodexter\ParameterEncryptionBundle\Exception\Configuration\InvalidBundleConfigurationException;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 /**

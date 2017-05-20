@@ -41,7 +41,7 @@ class ServiceNameGeneratorTest extends \PHPUnit_Framework_TestCase
      * @param array $algorithmConfig
      *
      * @dataProvider provideInvalidAlgorithmConfigData
-     * @expectedException \Picodexter\ParameterEncryptionBundle\Exception\InvalidAlgorithmConfigurationException
+     * @expectedException \Picodexter\ParameterEncryptionBundle\Exception\Configuration\InvalidAlgorithmConfigurationException
      */
     public function testGetAlgorithmConfigurationServiceNameForAlgorithmExceptionInvalidConfig(array $algorithmConfig)
     {
@@ -85,7 +85,7 @@ class ServiceNameGeneratorTest extends \PHPUnit_Framework_TestCase
      * @param array $algorithmConfig
      *
      * @dataProvider provideInvalidAlgorithmConfigData
-     * @expectedException \Picodexter\ParameterEncryptionBundle\Exception\InvalidAlgorithmConfigurationException
+     * @expectedException \Picodexter\ParameterEncryptionBundle\Exception\Configuration\InvalidAlgorithmConfigurationException
      */
     public function testGetReplacementPatternServiceNameForAlgorithmExceptionInvalidConfig(
         array $algorithmConfig
@@ -108,7 +108,7 @@ class ServiceNameGeneratorTest extends \PHPUnit_Framework_TestCase
      * @param array $algorithmConfig
      *
      * @dataProvider provideInvalidAlgorithmConfigData
-     * @expectedException \Picodexter\ParameterEncryptionBundle\Exception\InvalidAlgorithmConfigurationException
+     * @expectedException \Picodexter\ParameterEncryptionBundle\Exception\Configuration\InvalidAlgorithmConfigurationException
      */
     public function testGetReplacementSourceDecrypterServiceNameForAlgorithmExceptionInvalidConfig(
         array $algorithmConfig

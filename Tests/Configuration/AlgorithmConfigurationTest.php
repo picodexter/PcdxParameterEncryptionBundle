@@ -22,7 +22,7 @@ class AlgorithmConfigurationTest extends \PHPUnit_Framework_TestCase
      * @param string $id
      *
      * @dataProvider provideInvalidIdData
-     * @expectedException \Picodexter\ParameterEncryptionBundle\Exception\InvalidAlgorithmIdException
+     * @expectedException \Picodexter\ParameterEncryptionBundle\Exception\Configuration\InvalidAlgorithmIdException
      */
     public function testConstructorExceptionInvalidId($id)
     {
@@ -97,7 +97,7 @@ class AlgorithmConfigurationTest extends \PHPUnit_Framework_TestCase
      * @param string $id
      *
      * @dataProvider provideInvalidIdData
-     * @expectedException \Picodexter\ParameterEncryptionBundle\Exception\InvalidAlgorithmIdException
+     * @expectedException \Picodexter\ParameterEncryptionBundle\Exception\Configuration\InvalidAlgorithmIdException
      */
     public function testSetIdExceptionInvalidId($id)
     {

@@ -11,7 +11,7 @@
 
 namespace Picodexter\ParameterEncryptionBundle\DependencyInjection\Service;
 
-use Picodexter\ParameterEncryptionBundle\Exception\InvalidBundleConfigurationException;
+use Picodexter\ParameterEncryptionBundle\Exception\Configuration\InvalidBundleConfigurationException;
 
 /**
  * BundleConfigurationValidatorInterface.

@@ -23,7 +23,7 @@ class AlgorithmConfigurationContainerTest extends \PHPUnit_Framework_TestCase
      * @param array $algorithms
      *
      * @dataProvider provideDuplicateIdData
-     * @expectedException \Picodexter\ParameterEncryptionBundle\Exception\DuplicateAlgorithmIdException
+     * @expectedException \Picodexter\ParameterEncryptionBundle\Exception\Configuration\DuplicateAlgorithmIdException
      */
     public function testConstructorExceptionDuplicateId(array $algorithms)
     {
@@ -117,7 +117,7 @@ class AlgorithmConfigurationContainerTest extends \PHPUnit_Framework_TestCase
      * @param array $algorithms
      *
      * @dataProvider provideDuplicateIdData
-     * @expectedException \Picodexter\ParameterEncryptionBundle\Exception\DuplicateAlgorithmIdException
+     * @expectedException \Picodexter\ParameterEncryptionBundle\Exception\Configuration\DuplicateAlgorithmIdException
      */
     public function testSetAlgorithmConfigurationsExceptionDuplicateId(array $algorithms)
     {

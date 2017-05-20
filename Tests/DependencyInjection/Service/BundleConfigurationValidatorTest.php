@@ -39,7 +39,7 @@ class BundleConfigurationValidatorTest extends \PHPUnit_Framework_TestCase
     /**
      * @param array $bundleConfig
      *
-     * @expectedException \Picodexter\ParameterEncryptionBundle\Exception\InvalidBundleConfigurationException
+     * @expectedException \Picodexter\ParameterEncryptionBundle\Exception\Configuration\InvalidBundleConfigurationException
      * @dataProvider provideInvalidBundleConfigData
      */
     public function testAssertValidBundleConfigurationExceptionInvalidConfig(array $bundleConfig)

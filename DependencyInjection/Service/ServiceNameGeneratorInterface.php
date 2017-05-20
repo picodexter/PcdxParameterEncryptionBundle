@@ -11,7 +11,7 @@
 
 namespace Picodexter\ParameterEncryptionBundle\DependencyInjection\Service;
 
-use Picodexter\ParameterEncryptionBundle\Exception\InvalidAlgorithmConfigurationException;
+use Picodexter\ParameterEncryptionBundle\Exception\Configuration\InvalidAlgorithmConfigurationException;
 
 /**
  * ServiceNameGeneratorInterface.

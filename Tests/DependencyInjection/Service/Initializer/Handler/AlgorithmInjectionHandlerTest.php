@@ -16,7 +16,7 @@ use Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\Initializer
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\ReferenceFactoryInterface;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\ServiceNameGeneratorInterface;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\ServiceNames;
-use Picodexter\ParameterEncryptionBundle\Exception\InvalidBundleConfigurationException;
+use Picodexter\ParameterEncryptionBundle\Exception\Configuration\InvalidBundleConfigurationException;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\DependencyInjection\Reference;
@@ -71,7 +71,7 @@ class AlgorithmInjectionHandlerTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException \Picodexter\ParameterEncryptionBundle\Exception\InvalidBundleConfigurationException
+     * @expectedException \Picodexter\ParameterEncryptionBundle\Exception\Configuration\InvalidBundleConfigurationException
      */
     public function testInjectAlgorithmConfigurationsIntoContainerExceptionInvalidConfig()
     {

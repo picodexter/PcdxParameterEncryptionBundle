@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Picodexter\ParameterEncryptionBundle\Exception;
+namespace Picodexter\ParameterEncryptionBundle\Exception\Configuration;
 
 use Throwable;
 

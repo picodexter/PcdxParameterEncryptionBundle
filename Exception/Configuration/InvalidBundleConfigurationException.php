@@ -9,20 +9,20 @@
  * file that was distributed with this source code.
  */
 
-namespace Picodexter\ParameterEncryptionBundle\Exception;
+namespace Picodexter\ParameterEncryptionBundle\Exception\Configuration;
 
 use Throwable;
 
 /**
- * InvalidAlgorithmConfigurationException.
+ * InvalidBundleConfigurationException.
  */
-class InvalidAlgorithmConfigurationException extends ConfigurationException
+class InvalidBundleConfigurationException extends ConfigurationException
 {
     /**
      * @inheritDoc
      */
     public function __construct(Throwable $previous = null)
     {
-        parent::__construct('Invalid algorithm configuration', 0, $previous);
+        parent::__construct('Invalid bundle configuration', 0, $previous);
     }
 }

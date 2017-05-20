@@ -15,7 +15,7 @@ use Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\BundleConfi
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\DefinitionFactoryInterface;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\ServiceNameGeneratorInterface;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\ServiceNames;
-use Picodexter\ParameterEncryptionBundle\Exception\UnknownReplacementPatternTypeException;
+use Picodexter\ParameterEncryptionBundle\Exception\Configuration\UnknownReplacementPatternTypeException;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 /**

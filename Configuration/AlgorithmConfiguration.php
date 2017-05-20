@@ -13,7 +13,7 @@ namespace Picodexter\ParameterEncryptionBundle\Configuration;
 
 use Picodexter\ParameterEncryptionBundle\Encryption\Decrypter\DecrypterInterface;
 use Picodexter\ParameterEncryptionBundle\Encryption\Encrypter\EncrypterInterface;
-use Picodexter\ParameterEncryptionBundle\Exception\InvalidAlgorithmIdException;
+use Picodexter\ParameterEncryptionBundle\Exception\Configuration\InvalidAlgorithmIdException;
 use Picodexter\ParameterEncryptionBundle\Replacement\Pattern\ReplacementPatternInterface;
 
 /**

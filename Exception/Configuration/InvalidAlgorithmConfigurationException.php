@@ -19,7 +19,9 @@ use Throwable;
 class InvalidAlgorithmConfigurationException extends ConfigurationException
 {
     /**
-     * @inheritDoc
+     * Constructor.
+     *
+     * @param Throwable|null $previous
      */
     public function __construct(Throwable $previous = null)
     {

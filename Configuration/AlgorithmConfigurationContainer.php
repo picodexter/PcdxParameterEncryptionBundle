@@ -16,7 +16,7 @@ use Picodexter\ParameterEncryptionBundle\Exception\DuplicateAlgorithmIdException
 /**
  * AlgorithmConfigurationContainer.
  */
-class AlgorithmConfigurationContainer
+class AlgorithmConfigurationContainer implements AlgorithmConfigurationContainerInterface
 {
     /**
      * @var AlgorithmConfiguration[]
@@ -34,9 +34,7 @@ class AlgorithmConfigurationContainer
     }
 
     /**
-     * Getter: algorithmConfigurations.
-     *
-     * @return AlgorithmConfiguration[]
+     * @inheritDoc
      */
     public function getAlgorithmConfigurations()
     {
@@ -44,10 +42,7 @@ class AlgorithmConfigurationContainer
     }
 
     /**
-     * Setter: algorithmConfigurations.
-     *
-     * @param AlgorithmConfiguration[] $algorithmConfigurations
-     * @throws DuplicateAlgorithmIdException
+     * @inheritDoc
      */
     public function setAlgorithmConfigurations(array $algorithmConfigurations)
     {
@@ -70,10 +65,7 @@ class AlgorithmConfigurationContainer
     }
 
     /**
-     * Get algorithm by ID.
-     *
-     * @param string $id
-     * @return AlgorithmConfiguration|null
+     * @inheritDoc
      */
     public function get($id)
     {
@@ -81,10 +73,7 @@ class AlgorithmConfigurationContainer
     }
 
     /**
-     * Check if an algorithm with the ID is registered.
-     *
-     * @param string $id
-     * @return bool
+     * @inheritDoc
      */
     public function has($id)
     {

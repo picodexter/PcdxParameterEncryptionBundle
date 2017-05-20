@@ -14,6 +14,9 @@
         <service id="pcdx_parameter_encryption.dependency_injection.service.bundle_configuration_validator" class="Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\BundleConfigurationValidator">
         </service>
 
+        <service id="pcdx_parameter_encryption.dependency_injection.service.definition_factory" class="Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\DefinitionFactory">
+        </service>
+
         <service id="pcdx_parameter_encryption.encryption.caesar_cipher" class="Picodexter\ParameterEncryptionBundle\Encryption\CaesarCipher">
         </service>
 

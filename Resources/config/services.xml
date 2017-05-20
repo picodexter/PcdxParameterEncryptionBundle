@@ -20,6 +20,9 @@
         <service id="pcdx_parameter_encryption.dependency_injection.service.name_generator" class="Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\ServiceNameGenerator">
         </service>
 
+        <service id="pcdx_parameter_encryption.dependency_injection.service.reference_factory" class="Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\ReferenceFactory">
+        </service>
+
         <service id="pcdx_parameter_encryption.encryption.caesar_cipher" class="Picodexter\ParameterEncryptionBundle\Encryption\CaesarCipher">
         </service>
 

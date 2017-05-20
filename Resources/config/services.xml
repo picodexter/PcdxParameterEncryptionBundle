@@ -5,6 +5,12 @@
         http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
+        <service id="pcdx_parameter_encryption.configuration.algorithm_configuration" class="Picodexter\ParameterEncryptionBundle\Configuration\AlgorithmConfiguration">
+            <argument type="collection">
+                <!-- automatically filled in at runtime -->
+            </argument>
+        </service>
+
         <service id="pcdx_parameter_encryption.encryption.caesar_cipher" class="Picodexter\ParameterEncryptionBundle\Encryption\CaesarCipher">
         </service>
 

@@ -44,10 +44,10 @@ class AlgorithmConfigurationContainer implements AlgorithmConfigurationContainer
     /**
      * @inheritDoc
      */
-    public function setAlgorithmConfigurations(array $algorithmConfigurations)
+    public function setAlgorithmConfigurations(array $algorithmConfigs)
     {
         /** @var AlgorithmConfiguration[] $validAlgorithms */
-        $validAlgorithms = array_filter($algorithmConfigurations, function ($algorithm) {
+        $validAlgorithms = array_filter($algorithmConfigs, function ($algorithm) {
             return ($algorithm instanceof AlgorithmConfiguration);
         });
 

@@ -28,10 +28,10 @@ interface AlgorithmConfigurationContainerInterface
     /**
      * Setter: algorithmConfigurations.
      *
-     * @param AlgorithmConfiguration[] $algorithmConfigurations
+     * @param AlgorithmConfiguration[] $algorithmConfigs
      * @throws DuplicateAlgorithmIdException
      */
-    public function setAlgorithmConfigurations(array $algorithmConfigurations);
+    public function setAlgorithmConfigurations(array $algorithmConfigs);
 
     /**
      * Get algorithm by ID.

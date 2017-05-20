@@ -15,6 +15,26 @@ use Picodexter\ParameterEncryptionBundle\Replacement\Pattern\Registry\Replacemen
 
 class ReplacementPatternTypeRegistryTest extends \PHPUnit_Framework_TestCase
 {
+    public function testGetSetPatternTypesSuccess()
+    {
+        $preparedPatternTypes = [
+            'foo' => 'Example\\Class',
+            'bar' => 'Example\\SecondClass',
+        ];
+
+        $patternTypeRegistry = new ReplacementPatternTypeRegistry([]);
+
+        $patternTypes = $patternTypeRegistry->getPatternTypes();
+
+        $this->assertSame([], $patternTypes);
+
+        $patternTypeRegistry->setPatternTypes($preparedPatternTypes);
+
+        $patternTypes = $patternTypeRegistry->getPatternTypes();
+
+        $this->assertSame($preparedPatternTypes, $patternTypes);
+    }
+
     public function testGetSuccessFound()
     {
         $findKey = 'foo';

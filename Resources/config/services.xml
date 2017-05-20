@@ -48,6 +48,13 @@
             <argument type="service" id="pcdx_parameter_encryption.dependency_injection.service.name_generator" />
         </service>
 
+        <service id="pcdx_parameter_encryption.dependency_injection.service.initializer.handler.replacement_source_decrypter_registration" class="Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\Initializer\Handler\ReplacementSourceDecrypterRegistrationHandler">
+            <argument type="service" id="pcdx_parameter_encryption.dependency_injection.service.bundle_configuration_validator" />
+            <argument type="service" id="pcdx_parameter_encryption.dependency_injection.service.definition_factory" />
+            <argument type="service" id="pcdx_parameter_encryption.dependency_injection.service.reference_factory" />
+            <argument type="service" id="pcdx_parameter_encryption.dependency_injection.service.name_generator" />
+        </service>
+
         <service id="pcdx_parameter_encryption.dependency_injection.service.name_generator" class="Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\ServiceNameGenerator">
         </service>
 

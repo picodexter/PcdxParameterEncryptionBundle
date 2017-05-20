@@ -60,6 +60,11 @@
             <argument type="service" id="pcdx_parameter_encryption.dependency_injection.service.initializer.handler.replacement_pattern_registration" />
         </service>
 
+        <service id="pcdx_parameter_encryption.dependency_injection.service.initializer.replacement_source_decrypter" class="Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\Initializer\ReplacementSourceDecrypterInitializer">
+            <argument type="service" id="pcdx_parameter_encryption.dependency_injection.service.initializer.handler.replacement_source_decrypter_injection" />
+            <argument type="service" id="pcdx_parameter_encryption.dependency_injection.service.initializer.handler.replacement_source_decrypter_registration" />
+        </service>
+
         <service id="pcdx_parameter_encryption.dependency_injection.service.name_generator" class="Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\ServiceNameGenerator">
         </service>
 

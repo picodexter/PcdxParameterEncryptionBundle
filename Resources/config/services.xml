@@ -24,6 +24,11 @@
         <service id="pcdx_parameter_encryption.console.helper.question_asker_factory" class="Picodexter\ParameterEncryptionBundle\Console\Helper\QuestionAskerFactory">
         </service>
 
+        <service id="pcdx_parameter_encryption.console.helper.question_asker_generator" class="Picodexter\ParameterEncryptionBundle\Console\Helper\QuestionAskerGenerator">
+            <argument type="service" id="pcdx_parameter_encryption.console.helper.question_asker_factory" />
+            <argument type="service" id="pcdx_parameter_encryption.console.helper.question_helper_factory" />
+        </service>
+
         <service id="pcdx_parameter_encryption.console.helper.question_helper_factory" class="Picodexter\ParameterEncryptionBundle\Console\Helper\QuestionHelperFactory">
         </service>
 

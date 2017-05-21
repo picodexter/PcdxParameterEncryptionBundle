@@ -24,6 +24,9 @@
         <service id="pcdx_parameter_encryption.console.helper.question_asker_factory" class="Picodexter\ParameterEncryptionBundle\Console\Helper\QuestionAskerFactory">
         </service>
 
+        <service id="pcdx_parameter_encryption.console.helper.question_helper_factory" class="Picodexter\ParameterEncryptionBundle\Console\Helper\QuestionHelperFactory">
+        </service>
+
         <service id="pcdx_parameter_encryption.console.helper.table_factory" class="Picodexter\ParameterEncryptionBundle\Console\Helper\TableFactory">
         </service>
 

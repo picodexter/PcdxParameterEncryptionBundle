@@ -28,6 +28,9 @@
             <argument type="service" id="pcdx_parameter_encryption.configuration.algorithm_configuration_container" />
         </service>
 
+        <service id="pcdx_parameter_encryption.console.request.encrypt_request_factory" class="Picodexter\ParameterEncryptionBundle\Console\Request\EncryptRequestFactory">
+        </service>
+
         <service id="pcdx_parameter_encryption.dependency_injection.service.bundle_configuration_validator" class="Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\BundleConfigurationValidator">
         </service>
 

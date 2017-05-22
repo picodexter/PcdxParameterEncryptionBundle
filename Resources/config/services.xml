@@ -33,6 +33,11 @@
             <argument type="service" id="pcdx_parameter_encryption.console.question.factory" />
         </service>
 
+        <service id="pcdx_parameter_encryption.console.helper.hidden_input_question_asker_generator" class="Picodexter\ParameterEncryptionBundle\Console\Helper\HiddenInputQuestionAskerGenerator">
+            <argument type="service" id="pcdx_parameter_encryption.console.helper.question_asker_generator" />
+            <argument type="service" id="pcdx_parameter_encryption.console.question.factory" />
+        </service>
+
         <service id="pcdx_parameter_encryption.console.helper.question_asker_factory" class="Picodexter\ParameterEncryptionBundle\Console\Helper\QuestionAskerFactory">
         </service>
 

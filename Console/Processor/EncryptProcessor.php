@@ -12,8 +12,8 @@
 namespace Picodexter\ParameterEncryptionBundle\Console\Processor;
 
 use Picodexter\ParameterEncryptionBundle\Configuration\AlgorithmConfigurationContainerInterface;
+use Picodexter\ParameterEncryptionBundle\Console\Helper\AlgorithmIdValidatorInterface;
 use Picodexter\ParameterEncryptionBundle\Console\Request\EncryptRequest;
-use Picodexter\ParameterEncryptionBundle\Exception\Console\UnknownAlgorithmIdException;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
@@ -27,26 +27,22 @@ class EncryptProcessor implements EncryptProcessorInterface
     private $algorithmConfigContainer;
 
     /**
+     * @var AlgorithmIdValidatorInterface
+     */
+    private $algorihmIdValidator;
+
+    /**
      * Constructor.
      *
      * @param AlgorithmConfigurationContainerInterface $algorithmContainer
+     * @param AlgorithmIdValidatorInterface            $algorihmIdValidator
      */
-    public function __construct(AlgorithmConfigurationContainerInterface $algorithmContainer)
-    {
+    public function __construct(
+        AlgorithmConfigurationContainerInterface $algorithmContainer,
+        AlgorithmIdValidatorInterface $algorihmIdValidator
+    ) {
         $this->algorithmConfigContainer = $algorithmContainer;
-    }
-
-    /**
-     * Assert that algorithm ID exists.
-     *
-     * @param string $algorithmId
-     * @throws UnknownAlgorithmIdException
-     */
-    private function assertKnownAlgorithmId($algorithmId)
-    {
-        if (!$this->algorithmConfigContainer->has($algorithmId)) {
-            throw new UnknownAlgorithmIdException($algorithmId);
-        }
+        $this->algorihmIdValidator = $algorihmIdValidator;
     }
 
     /**
@@ -89,7 +85,7 @@ class EncryptProcessor implements EncryptProcessorInterface
      */
     public function renderEncryptOutput(EncryptRequest $request, OutputInterface $output)
     {
-        $this->assertKnownAlgorithmId($request->getAlgorithmId());
+        $this->algorihmIdValidator->assertKnownAlgorithmId($request->getAlgorithmId());
 
         $algorithmConfig = $this->algorithmConfigContainer->get($request->getAlgorithmId());
 

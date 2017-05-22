@@ -13,10 +13,12 @@ namespace Picodexter\ParameterEncryptionBundle\Tests\Console\Processor;
 
 use Picodexter\ParameterEncryptionBundle\Configuration\AlgorithmConfiguration;
 use Picodexter\ParameterEncryptionBundle\Configuration\AlgorithmConfigurationContainerInterface;
+use Picodexter\ParameterEncryptionBundle\Console\Helper\AlgorithmIdValidatorInterface;
 use Picodexter\ParameterEncryptionBundle\Console\Helper\QuestionAskerInterface;
 use Picodexter\ParameterEncryptionBundle\Console\Processor\EncryptProcessor;
 use Picodexter\ParameterEncryptionBundle\Console\Request\EncryptRequest;
 use Picodexter\ParameterEncryptionBundle\Encryption\Encrypter\EncrypterInterface;
+use Picodexter\ParameterEncryptionBundle\Exception\Console\UnknownAlgorithmIdException;
 use Symfony\Component\Console\Output\OutputInterface;
 
 class EncryptProcessorTest extends \PHPUnit_Framework_TestCase
@@ -25,6 +27,11 @@ class EncryptProcessorTest extends \PHPUnit_Framework_TestCase
      * @var AlgorithmConfigurationContainerInterface|\PHPUnit_Framework_MockObject_MockObject
      */
     private $algorithmConfigContainer;
+
+    /**
+     * @var AlgorithmIdValidatorInterface|\PHPUnit_Framework_MockObject_MockObject
+     */
+    private $algorithmIdValidator;
 
     /**
      * @var EncryptProcessor
@@ -37,8 +44,9 @@ class EncryptProcessorTest extends \PHPUnit_Framework_TestCase
     public function setUp()
     {
         $this->algorithmConfigContainer = $this->createAlgorithmConfigurationContainerInterfaceMock();
+        $this->algorithmIdValidator = $this->createAlgorithmIdValidatorInterfaceMock();
 
-        $this->processor = new EncryptProcessor($this->algorithmConfigContainer);
+        $this->processor = new EncryptProcessor($this->algorithmConfigContainer, $this->algorithmIdValidator);
     }
 
     /**
@@ -66,7 +74,10 @@ class EncryptProcessorTest extends \PHPUnit_Framework_TestCase
         );
         $output = $this->createOutputInterfaceMock();
 
-        $this->setUpAlgorithmConfigurationContainerHasAlgorithmId($algorithmId, false);
+        $this->algorithmIdValidator->expects($this->once())
+            ->method('assertKnownAlgorithmId')
+            ->with($this->identicalTo($algorithmId))
+            ->will($this->throwException(new UnknownAlgorithmIdException($algorithmId)));
 
         $this->processor->renderEncryptOutput($request, $output);
     }
@@ -88,8 +99,6 @@ class EncryptProcessorTest extends \PHPUnit_Framework_TestCase
         $output = $this->createOutputInterfaceMock();
         $algorithmConfig = $this->createAlgorithmConfigurationMock();
         $encrypter = $this->createEncrypterInterfaceMock();
-
-        $this->setUpAlgorithmConfigurationContainerHasAlgorithmId($algorithmId, true);
 
         $this->setUpAlgorithmConfigurationContainerGetAlgorithmConfiguration($algorithmId, $algorithmConfig);
 
@@ -120,8 +129,6 @@ class EncryptProcessorTest extends \PHPUnit_Framework_TestCase
         $output = $this->createOutputInterfaceMock();
         $algorithmConfig = $this->createAlgorithmConfigurationMock();
         $encrypter = $this->createEncrypterInterfaceMock();
-
-        $this->setUpAlgorithmConfigurationContainerHasAlgorithmId($algorithmId, true);
 
         $this->setUpAlgorithmConfigurationContainerGetAlgorithmConfiguration($algorithmId, $algorithmConfig);
 
@@ -157,8 +164,6 @@ class EncryptProcessorTest extends \PHPUnit_Framework_TestCase
         $algorithmConfig = $this->createAlgorithmConfigurationMock();
         $encrypter = $this->createEncrypterInterfaceMock();
 
-        $this->setUpAlgorithmConfigurationContainerHasAlgorithmId($algorithmId, true);
-
         $this->setUpAlgorithmConfigurationContainerGetAlgorithmConfiguration($algorithmId, $algorithmConfig);
 
         $algorithmConfig->expects($this->once())
@@ -192,8 +197,6 @@ class EncryptProcessorTest extends \PHPUnit_Framework_TestCase
         $output = $this->createOutputInterfaceMock();
         $algorithmConfig = $this->createAlgorithmConfigurationMock();
         $encrypter = $this->createEncrypterInterfaceMock();
-
-        $this->setUpAlgorithmConfigurationContainerHasAlgorithmId($algorithmId, true);
 
         $this->setUpAlgorithmConfigurationContainerGetAlgorithmConfiguration($algorithmId, $algorithmConfig);
 
@@ -229,6 +232,16 @@ class EncryptProcessorTest extends \PHPUnit_Framework_TestCase
     private function createAlgorithmConfigurationMock()
     {
         return $this->getMockBuilder(AlgorithmConfiguration::class)->disableOriginalConstructor()->getMock();
+    }
+
+    /**
+     * Create mock for AlgorithmIdValidatorInterface.
+     *
+     * @return AlgorithmIdValidatorInterface|\PHPUnit_Framework_MockObject_MockObject
+     */
+    private function createAlgorithmIdValidatorInterfaceMock()
+    {
+        return $this->getMockBuilder(AlgorithmIdValidatorInterface::class)->getMock();
     }
 
     /**
@@ -277,19 +290,6 @@ class EncryptProcessorTest extends \PHPUnit_Framework_TestCase
             ->will($this->returnValue($algorithmConfig));
     }
 
-    /**
-     * Set up algorithm configuration container: has algorithm ID.
-     *
-     * @param string $algorithmId
-     * @param bool   $result
-     */
-    private function setUpAlgorithmConfigurationContainerHasAlgorithmId($algorithmId, $result)
-    {
-        $this->algorithmConfigContainer->expects($this->once())
-            ->method('has')
-            ->with($this->identicalTo($algorithmId))
-            ->will($this->returnValue($result));
-    }
 
     /**
      * Set up algorithm configuration: get encrypter.

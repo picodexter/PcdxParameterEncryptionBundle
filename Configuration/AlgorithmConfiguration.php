@@ -32,9 +32,24 @@ class AlgorithmConfiguration
     private $decrypter;
 
     /**
+     * @var string
+     */
+    private $decrypterServiceName;
+
+    /**
+     * @var string|null
+     */
+    private $decryptionKey;
+
+    /**
      * @var EncrypterInterface
      */
     private $encrypter;
+
+    /**
+     * @var string
+     */
+    private $encrypterServiceName;
 
     /**
      * @var string|null
@@ -51,7 +66,10 @@ class AlgorithmConfiguration
      *
      * @param string                      $id
      * @param DecrypterInterface          $decrypter
+     * @param string                      $decrypterServiceName
+     * @param string|null                 $decryptionKey
      * @param EncrypterInterface          $encrypter
+     * @param string                      $encrypterServiceName
      * @param string|null                 $encryptionKey
      * @param ReplacementPatternInterface $replacementPattern
      * @throws InvalidAlgorithmIdException
@@ -59,13 +77,19 @@ class AlgorithmConfiguration
     public function __construct(
         $id,
         DecrypterInterface $decrypter,
+        $decrypterServiceName,
+        $decryptionKey,
         EncrypterInterface $encrypter,
+        $encrypterServiceName,
         $encryptionKey,
         ReplacementPatternInterface $replacementPattern
     ) {
         $this->setId($id);
         $this->decrypter = $decrypter;
+        $this->decrypterServiceName = $decrypterServiceName;
+        $this->decryptionKey = $decryptionKey;
         $this->encrypter = $encrypter;
+        $this->encrypterServiceName = $encrypterServiceName;
         $this->encryptionKey = $encryptionKey;
         $this->replacementPattern = $replacementPattern;
     }
@@ -118,6 +142,46 @@ class AlgorithmConfiguration
     }
 
     /**
+     * Getter: decrypterServiceName.
+     *
+     * @return string
+     */
+    public function getDecrypterServiceName()
+    {
+        return $this->decrypterServiceName;
+    }
+
+    /**
+     * Setter: decrypterServiceName.
+     *
+     * @param string $decrypterServiceName
+     */
+    public function setDecrypterServiceName($decrypterServiceName)
+    {
+        $this->decrypterServiceName = $decrypterServiceName;
+    }
+
+    /**
+     * Getter: decryptionKey.
+     *
+     * @return string|null
+     */
+    public function getDecryptionKey()
+    {
+        return $this->decryptionKey;
+    }
+
+    /**
+     * Setter: decryptionKey.
+     *
+     * @param string|null $decryptionKey
+     */
+    public function setDecryptionKey($decryptionKey)
+    {
+        $this->decryptionKey = $decryptionKey;
+    }
+
+    /**
      * Getter: encrypter.
      *
      * @return EncrypterInterface
@@ -135,6 +199,26 @@ class AlgorithmConfiguration
     public function setEncrypter(EncrypterInterface $encrypter)
     {
         $this->encrypter = $encrypter;
+    }
+
+    /**
+     * Getter: encrypterServiceName.
+     *
+     * @return string
+     */
+    public function getEncrypterServiceName()
+    {
+        return $this->encrypterServiceName;
+    }
+
+    /**
+     * Setter: encrypterServiceName.
+     *
+     * @param string $encrypterServiceName
+     */
+    public function setEncrypterServiceName($encrypterServiceName)
+    {
+        $this->encrypterServiceName = $encrypterServiceName;
     }
 
     /**

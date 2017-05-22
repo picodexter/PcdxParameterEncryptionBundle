@@ -138,6 +138,40 @@ class AlgorithmConfigurationTest extends \PHPUnit_Framework_TestCase
         $this->assertSame($preparedDecrypter, $decrypter);
     }
 
+    public function testGetSetDecrypterServiceNameSuccess()
+    {
+        $preparedServiceName = 'service_name';
+
+        $algorithm = $this->createAlgorithmConfigurationWithId('algo_01');
+
+        $serviceName = $algorithm->getDecrypterServiceName();
+
+        $this->assertNotSame($preparedServiceName, $serviceName);
+
+        $algorithm->setDecrypterServiceName($preparedServiceName);
+
+        $serviceName = $algorithm->getDecrypterServiceName();
+
+        $this->assertSame($preparedServiceName, $serviceName);
+    }
+
+    public function testGetSetDecryptionKeySuccess()
+    {
+        $preparedKey = 'secret_foo123';
+
+        $algorithm = $this->createAlgorithmConfigurationWithId('algo_01');
+
+        $key = $algorithm->getDecryptionKey();
+
+        $this->assertNotSame($preparedKey, $key);
+
+        $algorithm->setDecryptionKey($preparedKey);
+
+        $key = $algorithm->getDecryptionKey();
+
+        $this->assertSame($preparedKey, $key);
+    }
+
     public function testGetSetEncrypterSuccess()
     {
         $preparedEncrypter = $this->createEncrypterInterfaceMock();
@@ -153,6 +187,23 @@ class AlgorithmConfigurationTest extends \PHPUnit_Framework_TestCase
         $encrypter = $algorithm->getEncrypter();
 
         $this->assertSame($preparedEncrypter, $encrypter);
+    }
+
+    public function testGetSetEncrypterServiceNameSuccess()
+    {
+        $preparedServiceName = 'service_name';
+
+        $algorithm = $this->createAlgorithmConfigurationWithId('algo_01');
+
+        $serviceName = $algorithm->getEncrypterServiceName();
+
+        $this->assertNotSame($preparedServiceName, $serviceName);
+
+        $algorithm->setEncrypterServiceName($preparedServiceName);
+
+        $serviceName = $algorithm->getEncrypterServiceName();
+
+        $this->assertSame($preparedServiceName, $serviceName);
     }
 
     public function testGetSetEncryptionKeySuccess()
@@ -201,7 +252,16 @@ class AlgorithmConfigurationTest extends \PHPUnit_Framework_TestCase
         $encrypter = $this->createEncrypterInterfaceMock();
         $replacementPattern = $this->createReplacementPatternInterfaceMock();
 
-        return new AlgorithmConfiguration($id, $decrypter, $encrypter, '', $replacementPattern);
+        return new AlgorithmConfiguration(
+            $id,
+            $decrypter,
+            'decrypter_service',
+            'key_decryption',
+            $encrypter,
+            'encrypter_service',
+            'key_encryption',
+            $replacementPattern
+        );
     }
 
     /**

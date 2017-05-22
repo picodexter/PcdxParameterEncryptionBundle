@@ -152,6 +152,7 @@ class AlgorithmRegistrationHandlerTest extends \PHPUnit_Framework_TestCase
                     [
                         'id' => 'algo_01',
                         'decryption' => [
+                            'key' => null,
                             'service' => 'decryption_service_id_algo_01',
                         ],
                         'encryption' => [
@@ -162,6 +163,7 @@ class AlgorithmRegistrationHandlerTest extends \PHPUnit_Framework_TestCase
                     [
                         'id' => 'algo_02',
                         'decryption' => [
+                            'key' => null,
                             'service' => 'decryption_service_id_algo_02',
                         ],
                         'encryption' => [
@@ -172,6 +174,7 @@ class AlgorithmRegistrationHandlerTest extends \PHPUnit_Framework_TestCase
                     [
                         'id' => 'algo_03',
                         'decryption' => [
+                            'key' => null,
                             'service' => 'decryption_service_id_algo_03',
                         ],
                         'encryption' => [

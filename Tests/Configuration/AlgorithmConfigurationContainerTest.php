@@ -200,7 +200,16 @@ class AlgorithmConfigurationContainerTest extends \PHPUnit_Framework_TestCase
         $encrypter = $this->createEncrypterInterfaceMock();
         $replacementPattern = $this->createReplacementPatternInterfaceMock();
 
-        return new AlgorithmConfiguration($id, $decrypter, $encrypter, null, $replacementPattern);
+        return new AlgorithmConfiguration(
+            $id,
+            $decrypter,
+            'decrypter_service',
+            null,
+            $encrypter,
+            'encrypter_service',
+            null,
+            $replacementPattern
+        );
     }
 
     /**

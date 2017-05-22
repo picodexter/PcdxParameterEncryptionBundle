@@ -21,6 +21,13 @@
             <argument type="service" id="pcdx_parameter_encryption.console.helper.table_factory" />
         </service>
 
+        <service id="pcdx_parameter_encryption.console.dispatcher.encrypt" class="Picodexter\ParameterEncryptionBundle\Console\Dispatcher\EncryptDispatcher">
+            <argument type="service" id="pcdx_parameter_encryption.console.request.encrypt_request_factory" />
+            <argument type="service" id="pcdx_parameter_encryption.console.processor.encrypt" />
+            <argument type="service" id="pcdx_parameter_encryption.console.helper.question_asker_generator" />
+            <argument type="service" id="pcdx_parameter_encryption.console.question.factory" />
+        </service>
+
         <service id="pcdx_parameter_encryption.console.helper.question_asker_factory" class="Picodexter\ParameterEncryptionBundle\Console\Helper\QuestionAskerFactory">
         </service>
 

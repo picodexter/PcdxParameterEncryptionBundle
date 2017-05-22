@@ -51,11 +51,6 @@ class QuestionAskerGenerator implements QuestionAskerGeneratorInterface
     {
         $questionHelper = $this->questionHelperFactory->createQuestionHelper();
 
-        return $this->questionAskerFactory->createQuestionAsker(
-            $input,
-            $output,
-            $question,
-            $questionHelper
-        );
+        return $this->questionAskerFactory->createQuestionAsker($input, $output, $question, $questionHelper);
     }
 }

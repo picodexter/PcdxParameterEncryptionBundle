@@ -79,11 +79,9 @@ class DecryptDispatcher implements DecryptDispatcherInterface
         $key = $input->getOption('key');
         $keyProvided = $input->hasParameterOption(['--key', '-k']);
 
-        $encryptedAsker = $this->questionAskerGenerator->generateHiddenInputQuestionAsker(
-            'Encrypted value to be decrypted (hidden input): ',
-            $input,
-            $output
-        );
+        $questionText = 'Encrypted value to be decrypted (hidden input): ';
+        $encryptedAsker = $this->questionAskerGenerator
+            ->generateHiddenInputQuestionAsker($questionText, $input, $output);
 
         return $this->decryptRequestFactory
             ->createDecryptRequest($algorithmId, $encryptedAsker, $encryptedValue, $key, $keyProvided);

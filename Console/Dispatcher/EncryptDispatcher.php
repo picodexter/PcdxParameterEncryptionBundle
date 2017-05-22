@@ -79,11 +79,9 @@ class EncryptDispatcher implements EncryptDispatcherInterface
         $key = $input->getOption('key');
         $keyProvided = $input->hasParameterOption(['--key', '-k']);
 
-        $plaintextAsker = $this->questionAskerGenerator->generateHiddenInputQuestionAsker(
-            'Plaintext value to be encrypted (hidden input): ',
-            $input,
-            $output
-        );
+        $questionText = 'Plaintext value to be encrypted (hidden input): ';
+        $plaintextAsker = $this->questionAskerGenerator
+            ->generateHiddenInputQuestionAsker($questionText, $input, $output);
 
         return $this->encryptRequestFactory
             ->createEncryptRequest($algorithmId, $key, $keyProvided, $plaintextAsker, $plaintextValue);

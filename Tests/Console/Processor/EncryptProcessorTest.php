@@ -290,7 +290,6 @@ class EncryptProcessorTest extends \PHPUnit_Framework_TestCase
             ->will($this->returnValue($algorithmConfig));
     }
 
-
     /**
      * Set up algorithm configuration: get encrypter.
      *

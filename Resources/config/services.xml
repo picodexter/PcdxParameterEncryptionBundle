@@ -10,6 +10,11 @@
             <tag name="console.command" />
         </service>
 
+        <service id="pcdx_parameter_encryption.command.decrypt" class="Picodexter\ParameterEncryptionBundle\Command\DecryptCommand">
+            <argument type="service" id="pcdx_parameter_encryption.console.dispatcher.decrypt" />
+            <tag name="console.command" />
+        </service>
+
         <service id="pcdx_parameter_encryption.command.encrypt" class="Picodexter\ParameterEncryptionBundle\Command\EncryptCommand">
             <argument type="service" id="pcdx_parameter_encryption.console.dispatcher.encrypt" />
             <tag name="console.command" />

@@ -67,6 +67,9 @@
         <service id="pcdx_parameter_encryption.console.question.factory" class="Picodexter\ParameterEncryptionBundle\Console\Question\QuestionFactory">
         </service>
 
+        <service id="pcdx_parameter_encryption.console.request.decrypt_request_factory" class="Picodexter\ParameterEncryptionBundle\Console\Request\DecryptRequestFactory">
+        </service>
+
         <service id="pcdx_parameter_encryption.console.request.encrypt_request_factory" class="Picodexter\ParameterEncryptionBundle\Console\Request\EncryptRequestFactory">
         </service>
 

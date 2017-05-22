@@ -26,7 +26,7 @@ class EncryptRequestFactoryTest extends \PHPUnit_Framework_TestCase
             'secret key',
             true,
             $this->createQuestionAskerInterfaceMock(),
-            'encrypted text'
+            'plaintext'
         );
 
         $this->assertInstanceOf(EncryptRequest::class, $request);

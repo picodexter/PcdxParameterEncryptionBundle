@@ -105,13 +105,13 @@ class EncryptRequestTest extends \PHPUnit_Framework_TestCase
     {
         $requestData = $this->getDummyEncryptRequestData();
 
-        $requestData['plaintextValue'] = 'encrypted 1';
+        $requestData['plaintextValue'] = 'plain 1';
 
         $request = $this->createEncryptRequestWithData($requestData);
 
         $this->assertSame($requestData['plaintextValue'], $request->getPlaintextValue());
 
-        $requestData['plaintextValue'] = 'encrypted 2';
+        $requestData['plaintextValue'] = 'plain 2';
 
         $request = $this->createEncryptRequestWithData($requestData);
 
@@ -157,7 +157,7 @@ class EncryptRequestTest extends \PHPUnit_Framework_TestCase
             'key'            => 'secret key',
             'keyProvided'    => true,
             'plaintextAsker' => $this->createQuestionAskerInterfaceMock(),
-            'plaintextValue' => 'encrypted text',
+            'plaintextValue' => 'plaintext',
         ];
     }
 }

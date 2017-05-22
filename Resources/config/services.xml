@@ -39,6 +39,10 @@
             <argument type="service" id="pcdx_parameter_encryption.configuration.algorithm_configuration_container" />
         </service>
 
+        <service id="pcdx_parameter_encryption.console.processor.encrypt" class="Picodexter\ParameterEncryptionBundle\Console\Processor\EncryptProcessor">
+            <argument type="service" id="pcdx_parameter_encryption.configuration.algorithm_configuration_container" />
+        </service>
+
         <service id="pcdx_parameter_encryption.console.question.factory" class="Picodexter\ParameterEncryptionBundle\Console\Question\QuestionFactory">
         </service>
 

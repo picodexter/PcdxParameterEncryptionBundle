@@ -32,6 +32,10 @@
             <argument type="service" id="pcdx_parameter_encryption.console.helper.hidden_input_question_asker_generator" />
         </service>
 
+        <service id="pcdx_parameter_encryption.console.helper.algorithm_id_validator" class="Picodexter\ParameterEncryptionBundle\Console\Helper\AlgorithmIdValidator">
+            <argument type="service" id="pcdx_parameter_encryption.configuration.algorithm_configuration_container" />
+        </service>
+
         <service id="pcdx_parameter_encryption.console.helper.hidden_input_question_asker_generator" class="Picodexter\ParameterEncryptionBundle\Console\Helper\HiddenInputQuestionAskerGenerator">
             <argument type="service" id="pcdx_parameter_encryption.console.helper.question_asker_generator" />
             <argument type="service" id="pcdx_parameter_encryption.console.question.factory" />

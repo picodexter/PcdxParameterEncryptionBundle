@@ -73,6 +73,8 @@ class QuestionAskerTest extends \PHPUnit_Framework_TestCase
 
     public function testAskSuccess()
     {
+        $preparedAnswer = 'some answer';
+
         $input = $this->createInputInterfaceMock();
         $output =  $this->createOutputInterfaceMock();
         $question = $this->createQuestionMock();
@@ -86,9 +88,12 @@ class QuestionAskerTest extends \PHPUnit_Framework_TestCase
                 $this->identicalTo($input),
                 $this->identicalTo($output),
                 $this->identicalTo($question)
-            );
+            )
+            ->will($this->returnValue($preparedAnswer));
 
-        $asker->askQuestion();
+        $answer = $asker->askQuestion();
+
+        $this->assertSame($preparedAnswer, $answer);
     }
 
     /**

@@ -12,23 +12,16 @@
 namespace Picodexter\ParameterEncryptionBundle\Tests\Console\Dispatcher;
 
 use Picodexter\ParameterEncryptionBundle\Console\Dispatcher\EncryptDispatcher;
-use Picodexter\ParameterEncryptionBundle\Console\Helper\QuestionAskerGeneratorInterface;
+use Picodexter\ParameterEncryptionBundle\Console\Helper\HiddenInputQuestionAskerGeneratorInterface;
 use Picodexter\ParameterEncryptionBundle\Console\Helper\QuestionAskerInterface;
 use Picodexter\ParameterEncryptionBundle\Console\Processor\EncryptProcessorInterface;
-use Picodexter\ParameterEncryptionBundle\Console\Question\QuestionFactoryInterface;
 use Picodexter\ParameterEncryptionBundle\Console\Request\EncryptRequest;
 use Picodexter\ParameterEncryptionBundle\Console\Request\EncryptRequestFactoryInterface;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Console\Question\Question;
 
 class EncryptDispatcherTest extends \PHPUnit_Framework_TestCase
 {
-    /**
-     * @var QuestionAskerGeneratorInterface|\PHPUnit_Framework_MockObject_MockObject
-     */
-    private $askerGenerator;
-
     /**
      * @var EncryptDispatcher
      */
@@ -40,9 +33,9 @@ class EncryptDispatcherTest extends \PHPUnit_Framework_TestCase
     private $processor;
 
     /**
-     * @var QuestionFactoryInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @var HiddenInputQuestionAskerGeneratorInterface|\PHPUnit_Framework_MockObject_MockObject
      */
-    private $questionFactory;
+    private $questionAskerGenerator;
 
     /**
      * @var EncryptRequestFactoryInterface|\PHPUnit_Framework_MockObject_MockObject
@@ -54,16 +47,14 @@ class EncryptDispatcherTest extends \PHPUnit_Framework_TestCase
      */
     public function setUp()
     {
-        $this->askerGenerator = $this->createQuestionAskerGeneratorInterfaceMock();
         $this->processor = $this->createEncryptProcessorInterfaceMock();
-        $this->questionFactory = $this->createQuestionFactoryInterfaceMock();
+        $this->questionAskerGenerator = $this->createHiddenInputQuestionAskerGeneratorInterfaceMock();
         $this->requestFactory = $this->createEncryptRequestFactoryInterfaceMock();
 
         $this->dispatcher = new EncryptDispatcher(
             $this->requestFactory,
             $this->processor,
-            $this->askerGenerator,
-            $this->questionFactory
+            $this->questionAskerGenerator
         );
     }
 
@@ -74,9 +65,8 @@ class EncryptDispatcherTest extends \PHPUnit_Framework_TestCase
     {
         $this->dispatcher = null;
         $this->requestFactory = null;
-        $this->questionFactory = null;
+        $this->questionAskerGenerator = null;
         $this->processor = null;
-        $this->askerGenerator = null;
     }
 
     public function testDispatchToProcessorSuccess()
@@ -84,24 +74,14 @@ class EncryptDispatcherTest extends \PHPUnit_Framework_TestCase
         $input = $this->createInputInterfaceMock();
         $output = $this->createOutputInterfaceMock();
         $request = $this->createEncryptRequestMock();
-        $question = $this->createQuestionMock();
         $questionAsker = $this->createQuestionAskerInterfaceMock();
 
         $this->requestFactory->expects($this->once())
             ->method('createEncryptRequest')
             ->will($this->returnValue($request));
 
-        $this->questionFactory->expects($this->once())
-            ->method('createQuestion')
-            ->will($this->returnValue($question));
-
-        $this->askerGenerator->expects($this->once())
-            ->method('createQuestionAskerForQuestion')
-            ->with(
-                $this->identicalTo($question),
-                $this->identicalTo($input),
-                $this->identicalTo($output)
-            )
+        $this->questionAskerGenerator->expects($this->once())
+            ->method('generateHiddenInputQuestionAsker')
             ->will($this->returnValue($questionAsker));
 
         $this->processor->expects($this->once())
@@ -145,6 +125,16 @@ class EncryptDispatcherTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Create mock for HiddenInputQuestionAskerGeneratorInterface.
+     *
+     * @return HiddenInputQuestionAskerGeneratorInterface|\PHPUnit_Framework_MockObject_MockObject
+     */
+    private function createHiddenInputQuestionAskerGeneratorInterfaceMock()
+    {
+        return $this->getMockBuilder(HiddenInputQuestionAskerGeneratorInterface::class)->getMock();
+    }
+
+    /**
      * Create mock for InputInterface.
      *
      * @return InputInterface|\PHPUnit_Framework_MockObject_MockObject
@@ -165,16 +155,6 @@ class EncryptDispatcherTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Create mock for QuestionAskerGeneratorInterface.
-     *
-     * @return QuestionAskerGeneratorInterface|\PHPUnit_Framework_MockObject_MockObject
-     */
-    private function createQuestionAskerGeneratorInterfaceMock()
-    {
-        return $this->getMockBuilder(QuestionAskerGeneratorInterface::class)->getMock();
-    }
-
-    /**
      * Create mock for QuestionAskerInterface.
      *
      * @return QuestionAskerInterface|\PHPUnit_Framework_MockObject_MockObject
@@ -183,25 +163,4 @@ class EncryptDispatcherTest extends \PHPUnit_Framework_TestCase
     {
         return $this->getMockBuilder(QuestionAskerInterface::class)->getMock();
     }
-
-    /**
-     * Create mock for QuestionFactoryInterface.
-     *
-     * @return QuestionFactoryInterface|\PHPUnit_Framework_MockObject_MockObject
-     */
-    private function createQuestionFactoryInterfaceMock()
-    {
-        return $this->getMockBuilder(QuestionFactoryInterface::class)->getMock();
-    }
-
-    /**
-     * Create mock for Question.
-     *
-     * @return Question|\PHPUnit_Framework_MockObject_MockObject
-     */
-    private function createQuestionMock()
-    {
-        return $this->getMockBuilder(Question::class)->disableOriginalConstructor()->getMock();
-    }
-
 }

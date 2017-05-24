@@ -12,11 +12,11 @@
 namespace Picodexter\ParameterEncryptionBundle\Exception\Configuration;
 
 use Picodexter\ParameterEncryptionBundle\Exception\ExceptionInterface;
-use Picodexter\ParameterEncryptionBundle\Exception\InvalidArgumentException;
+use Picodexter\ParameterEncryptionBundle\Exception\RuntimeException;
 
 /**
  * ConfigurationException.
  */
-class ConfigurationException extends InvalidArgumentException implements ExceptionInterface
+class ConfigurationException extends RuntimeException implements ExceptionInterface
 {
 }

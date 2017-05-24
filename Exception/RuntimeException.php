@@ -12,8 +12,8 @@
 namespace Picodexter\ParameterEncryptionBundle\Exception;
 
 /**
- * InvalidArgumentException.
+ * RuntimeException.
  */
-class InvalidArgumentException extends \InvalidArgumentException implements ExceptionInterface
+class RuntimeException extends \RuntimeException implements ExceptionInterface
 {
 }

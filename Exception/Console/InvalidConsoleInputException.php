@@ -11,11 +11,11 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Exception\Console;
 
-use Picodexter\ParameterEncryptionBundle\Exception\InvalidArgumentException;
+use Picodexter\ParameterEncryptionBundle\Exception\RuntimeException;
 
 /**
  * InvalidConsoleInputException.
  */
-class InvalidConsoleInputException extends InvalidArgumentException
+class InvalidConsoleInputException extends RuntimeException
 {
 }

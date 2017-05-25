@@ -11,6 +11,8 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Encryption\Encrypter;
 
+use Picodexter\ParameterEncryptionBundle\Exception\Encryption\EncrypterException;
+
 /**
  * EncrypterInterface.
  */
@@ -22,6 +24,7 @@ interface EncrypterInterface
      * @param string      $plainValue
      * @param string|null $encryptionKey
      * @return string
+     * @throws EncrypterException
      */
     public function encryptValue($plainValue, $encryptionKey = null);
 }

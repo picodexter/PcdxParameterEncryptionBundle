@@ -11,7 +11,7 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Encryption\Decrypter;
 
-use Picodexter\ParameterEncryptionBundle\Encryption\CaesarCipherInterface;
+use Picodexter\ParameterEncryptionBundle\Encryption\Algorithm\CaesarCipher\CaesarCipherInterface;
 
 /**
  * CaesarDecrypter.

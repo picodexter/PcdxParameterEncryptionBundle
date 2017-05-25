@@ -11,7 +11,7 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Tests\Encryption\Encrypter;
 
-use Picodexter\ParameterEncryptionBundle\Encryption\CaesarCipherInterface;
+use Picodexter\ParameterEncryptionBundle\Encryption\Algorithm\CaesarCipher\CaesarCipherInterface;
 use Picodexter\ParameterEncryptionBundle\Encryption\Encrypter\CaesarEncrypter;
 
 class CaesarEncrypterTest extends \PHPUnit_Framework_TestCase

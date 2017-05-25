@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace Picodexter\ParameterEncryptionBundle\Tests\Encryption;
+namespace Picodexter\ParameterEncryptionBundle\Tests\Encryption\Algorithm\CaesarCipher;
 
-use Picodexter\ParameterEncryptionBundle\Encryption\CaesarCipher;
+use Picodexter\ParameterEncryptionBundle\Encryption\Algorithm\CaesarCipher\CaesarCipher;
 
 class CaesarCipherTest extends \PHPUnit_Framework_TestCase
 {

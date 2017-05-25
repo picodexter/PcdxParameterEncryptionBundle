@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Picodexter\ParameterEncryptionBundle\Encryption;
+namespace Picodexter\ParameterEncryptionBundle\Encryption\Algorithm\CaesarCipher;
 
 /**
  * CaesarCipher.

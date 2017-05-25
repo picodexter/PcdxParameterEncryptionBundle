@@ -11,6 +11,8 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Encryption\Decrypter;
 
+use Picodexter\ParameterEncryptionBundle\Exception\Encryption\DecrypterException;
+
 /**
  * DecrypterInterface.
  */
@@ -22,6 +24,7 @@ interface DecrypterInterface
      * @param string      $encryptedValue
      * @param string|null $decryptionKey
      * @return string
+     * @throws DecrypterException
      */
     public function decryptValue($encryptedValue, $decryptionKey = null);
 }

@@ -89,7 +89,9 @@ class ReplacementSourceDecrypterInitializerTest extends \PHPUnit_Framework_TestC
      */
     private function createContainerBuilderMock()
     {
-        return $this->getMockBuilder(ContainerBuilder::class)->getMock();
+        return $this->getMockBuilder(ContainerBuilder::class)
+            ->setMethods(['get'])
+            ->getMock();
     }
 
     /**

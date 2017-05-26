@@ -71,7 +71,7 @@ class ServiceDefinitionInitializationManagerTest extends \PHPUnit_Framework_Test
     {
         $bundleConfig = [];
 
-        $container = $this->getContainerBuilderMock();
+        $container = $this->createContainerBuilderMock();
 
         $this->replacementPatternInitializer->expects($this->once())
             ->method('initialize')
@@ -112,9 +112,11 @@ class ServiceDefinitionInitializationManagerTest extends \PHPUnit_Framework_Test
      *
      * @return ContainerBuilder|\PHPUnit_Framework_MockObject_MockObject
      */
-    private function getContainerBuilderMock()
+    private function createContainerBuilderMock()
     {
-        return $this->getMockBuilder(ContainerBuilder::class)->getMock();
+        return $this->getMockBuilder(ContainerBuilder::class)
+            ->setMethods(['get'])
+            ->getMock();
     }
 
     /**

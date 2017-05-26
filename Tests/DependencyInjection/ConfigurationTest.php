@@ -67,6 +67,9 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
                         'algorithms' => [
                             [
                                 'id' => 'algo_01',
+                                'pattern' => [
+                                    'type' => 'value_prefix',
+                                ],
                                 'encryption' => [
                                     'service' => 'algo_01_encrypter',
                                 ],
@@ -214,6 +217,47 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
                         'algorithms' => [
                             [
                                 'id' => null,
+                                'pattern' => [
+                                    'type' => 'value_prefix',
+                                ],
+                                'encryption' => [
+                                    'service' => 'algo_01_encrypter',
+                                ],
+                                'decryption' => [
+                                    'service' => 'algo_01_decrypter',
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+            'algorithm.pattern is empty' => [
+                [
+                    'pcdx_parameter_encryption' => [
+                        'algorithms' => [
+                            [
+                                'id' => null,
+                                'pattern' => [],
+                                'encryption' => [
+                                    'service' => 'algo_01_encrypter',
+                                ],
+                                'decryption' => [
+                                    'service' => 'algo_01_decrypter',
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+            'algorithm.pattern.type is empty' => [
+                [
+                    'pcdx_parameter_encryption' => [
+                        'algorithms' => [
+                            [
+                                'id' => null,
+                                'pattern' => [
+                                    'type' => null,
+                                ],
                                 'encryption' => [
                                     'service' => 'algo_01_encrypter',
                                 ],
@@ -231,6 +275,9 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
                         'algorithms' => [
                             [
                                 'id' => 'algo_01',
+                                'pattern' => [
+                                    'type' => 'value_prefix',
+                                ],
                                 'encryption' => [],
                                 'decryption' => [
                                     'service' => 'algo_01_decrypter',
@@ -246,6 +293,9 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
                         'algorithms' => [
                             [
                                 'id' => 'algo_01',
+                                'pattern' => [
+                                    'type' => 'value_prefix',
+                                ],
                                 'encryption' => [
                                     'service' => null,
                                 ],
@@ -263,6 +313,9 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
                         'algorithms' => [
                             [
                                 'id' => 'algo_01',
+                                'pattern' => [
+                                    'type' => 'value_prefix',
+                                ],
                                 'encryption' => [
                                     'service' => 'algo_01_encrypter',
                                 ],
@@ -278,6 +331,9 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
                         'algorithms' => [
                             [
                                 'id' => 'algo_01',
+                                'pattern' => [
+                                    'type' => 'value_prefix',
+                                ],
                                 'encryption' => [
                                     'service' => 'algo_01_encrypter',
                                 ],

@@ -42,13 +42,15 @@ class Configuration implements ConfigurationInterface
                                 ->cannotBeEmpty()
                             ->end()
                             ->arrayNode('pattern')
+                                ->isRequired()
                                 ->children()
                                     ->scalarNode('type')
                                         ->info(
                                             'Pattern type to recognize a value to replace with this algorithm.'
                                             . ' (Default = value_prefix)'
                                         )
-                                        ->defaultValue('value_prefix')
+                                        ->isRequired()
+                                        ->cannotBeEmpty()
                                     ->end()
                                     ->arrayNode('arguments')
                                         ->info('Additional arguments to pass to the pattern type.')

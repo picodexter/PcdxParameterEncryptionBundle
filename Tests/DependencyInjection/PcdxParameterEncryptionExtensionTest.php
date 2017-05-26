@@ -39,6 +39,20 @@ class PcdxParameterEncryptionExtensionTest extends \PHPUnit_Framework_TestCase
         $this->extension = null;
     }
 
+    public function testGetNamespaceSuccess()
+    {
+        $namespace = $this->extension->getNamespace();
+
+        $this->assertSame(PcdxParameterEncryptionExtension::XML_NAMESPACE, $namespace);
+    }
+
+    public function testGetXsdValidationBasePathSuccess()
+    {
+        $basePath = $this->extension->getXsdValidationBasePath();
+
+        $this->assertSame(PcdxParameterEncryptionExtension::XSD_VALIDATION_BASE_PATH, $basePath);
+    }
+
     public function testLoadInternalSuccess()
     {
         $mergedConfig = [

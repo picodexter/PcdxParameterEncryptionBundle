@@ -20,6 +20,25 @@ use Symfony\Component\HttpKernel\DependencyInjection\ConfigurableExtension;
  */
 class PcdxParameterEncryptionExtension extends ConfigurableExtension
 {
+    const XML_NAMESPACE = 'https://picodexter.io/schema/dic/pcdx_parameter_encryption';
+    const XSD_VALIDATION_BASE_PATH = __DIR__ . '/../Resources/config/schema';
+
+    /**
+     * @inheritDoc
+     */
+    public function getNamespace()
+    {
+        return self::XML_NAMESPACE;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getXsdValidationBasePath()
+    {
+        return self::XSD_VALIDATION_BASE_PATH;
+    }
+
     /**
      * Initialize service definitions.
      *

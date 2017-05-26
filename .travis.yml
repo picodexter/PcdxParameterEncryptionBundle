@@ -6,6 +6,10 @@ php:
   - 7.1
   - hhvm
 
+env:
+  global:
+    - COVERALLS_EXECUTION_PHP_VERSION="7.1"
+
 matrix:
   fast_finish: true
   include:
@@ -28,9 +32,15 @@ cache:
 
 before_install:
   - composer self-update
+  - if [[ $(phpenv version-name) == "$COVERALLS_EXECUTION_PHP_VERSION" ]]; then composer require "satooshi/php-coveralls:^1.0" -n; fi
   - if [ "$SYMFONY_VERSION" != "" ]; then composer require "symfony/symfony:${SYMFONY_VERSION}" --no-update; fi;
 
 install: composer update --prefer-dist --no-interaction $COMPOSER_FLAGS
 
 script:
-  - ./vendor/bin/phpunit -v --coverage-text
+  - if [[ $(phpenv version-name) == "$COVERALLS_EXECUTION_PHP_VERSION" ]]; then mkdir -p build/logs/; fi
+  - if [[ $(phpenv version-name) == "$COVERALLS_EXECUTION_PHP_VERSION" ]]; then ./vendor/bin/phpunit -v --coverage-text --coverage-clover build/logs/clover.xml; fi
+  - if [[ $(phpenv version-name) != "$COVERALLS_EXECUTION_PHP_VERSION" ]]; then ./vendor/bin/phpunit -v --coverage-text; fi
+
+after_script:
+  - if [[ $(phpenv version-name) == "$COVERALLS_EXECUTION_PHP_VERSION" ]]; then ./vendor/bin/coveralls -v; fi

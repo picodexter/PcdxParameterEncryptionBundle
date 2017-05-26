@@ -11,8 +11,9 @@
 
 namespace Picodexter\ParameterEncryptionBundle\DependencyInjection;
 
-use Picodexter\ParameterEncryptionBundle\DependencyInjection\Loader\BundleServiceDefinitionsLoaderFactory;
+use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
 use Symfony\Component\HttpKernel\DependencyInjection\ConfigurableExtension;
 
 /**
@@ -20,6 +21,7 @@ use Symfony\Component\HttpKernel\DependencyInjection\ConfigurableExtension;
  */
 class PcdxParameterEncryptionExtension extends ConfigurableExtension
 {
+    const SERVICES_CONFIG_DIRECTORY_RELATIVE_PATH = __DIR__ . '/../Resources/config';
     const XML_NAMESPACE = 'https://picodexter.io/schema/dic/pcdx_parameter_encryption';
     const XSD_VALIDATION_BASE_PATH = __DIR__ . '/../Resources/config/schema';
 
@@ -58,8 +60,11 @@ class PcdxParameterEncryptionExtension extends ConfigurableExtension
      */
     private function loadBundleServiceDefinitions(ContainerBuilder $container)
     {
-        $definitionsLoader = BundleServiceDefinitionsLoaderFactory::createBundleServiceDefinitionsLoader();
-        $definitionsLoader->loadBundleServiceDefinitions($container);
+        $fileLocator = new FileLocator(self::SERVICES_CONFIG_DIRECTORY_RELATIVE_PATH);
+
+        $loader = new XmlFileLoader($container, $fileLocator);
+
+        $loader->load('services.xml');
     }
 
     /**

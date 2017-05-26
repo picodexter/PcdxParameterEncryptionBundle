@@ -205,9 +205,9 @@ class EncryptProcessorTest extends \PHPUnit_Framework_TestCase
         $this->setUpEncrypterEncryptValue($encrypter, $plaintextValue, $key, $encryptedValue);
 
         $output->expects($this->once())
-            ->method('isQuiet')
+            ->method('getVerbosity')
             ->with()
-            ->will($this->returnValue(true));
+            ->will($this->returnValue(OutputInterface::VERBOSITY_QUIET));
 
         $this->setUpOutputForQuietResult($output, $encryptedValue);
 

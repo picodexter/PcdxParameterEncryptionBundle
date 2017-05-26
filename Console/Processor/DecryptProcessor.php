@@ -107,7 +107,7 @@ class DecryptProcessor implements DecryptProcessorInterface
      */
     private function renderOutput($decryptedValue, $key, OutputInterface $output)
     {
-        if ($output->isQuiet()) {
+        if ($output->getVerbosity() === OutputInterface::VERBOSITY_QUIET) {
             $output->writeln($decryptedValue, OutputInterface::VERBOSITY_QUIET);
         } else {
             $output->writeln('Decryption key:  "' . $key . '"');

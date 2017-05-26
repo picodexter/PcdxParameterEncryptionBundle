@@ -107,7 +107,7 @@ class EncryptProcessor implements EncryptProcessorInterface
      */
     private function renderOutput($encryptedValue, $key, OutputInterface $output)
     {
-        if ($output->isQuiet()) {
+        if ($output->getVerbosity() === OutputInterface::VERBOSITY_QUIET) {
             $output->writeln($encryptedValue, OutputInterface::VERBOSITY_QUIET);
         } else {
             $output->writeln('Encryption key:  "' . $key . '"');

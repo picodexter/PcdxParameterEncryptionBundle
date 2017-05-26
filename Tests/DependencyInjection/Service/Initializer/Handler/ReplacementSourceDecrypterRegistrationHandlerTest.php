@@ -198,7 +198,9 @@ class ReplacementSourceDecrypterRegistrationHandlerTest extends \PHPUnit_Framewo
      */
     private function createContainerBuilderMock()
     {
-        return $this->getMockBuilder(ContainerBuilder::class)->getMock();
+        return $this->getMockBuilder(ContainerBuilder::class)
+            ->setMethods(['addDefinitions'])
+            ->getMock();
     }
 
     /**

@@ -179,7 +179,9 @@ class ReplacementSourceDecrypterInjectionHandlerTest extends \PHPUnit_Framework_
      */
     private function createContainerBuilderMock()
     {
-        return $this->getMockBuilder(ContainerBuilder::class)->getMock();
+        return $this->getMockBuilder(ContainerBuilder::class)
+            ->setMethods(['getDefinition'])
+            ->getMock();
     }
 
     /**

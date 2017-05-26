@@ -42,6 +42,7 @@ class Configuration implements ConfigurationInterface
                                 ->cannotBeEmpty()
                             ->end()
                             ->arrayNode('pattern')
+                                ->info('Configure pattern.')
                                 ->isRequired()
                                 ->children()
                                     ->scalarNode('type')

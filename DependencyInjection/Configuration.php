@@ -29,6 +29,7 @@ class Configuration implements ConfigurationInterface
         $rootNode = $treeBuilder->root('pcdx_parameter_encryption');
 
         $rootNode
+            ->fixXmlConfig('algorithm')
             ->children()
                 ->arrayNode('algorithms')
                     ->info('Configure algorithms.')
@@ -44,6 +45,7 @@ class Configuration implements ConfigurationInterface
                             ->arrayNode('pattern')
                                 ->info('Configure pattern.')
                                 ->isRequired()
+                                ->fixXmlConfig('argument')
                                 ->children()
                                     ->scalarNode('type')
                                         ->info(
@@ -62,6 +64,7 @@ class Configuration implements ConfigurationInterface
                             ->arrayNode('encryption')
                                 ->info('Configure encrypter.')
                                 ->isRequired()
+                                ->fixXmlConfig('argument')
                                 ->children()
                                     ->scalarNode('service')
                                         ->info('Symfony service name of encrypter.')
@@ -81,6 +84,7 @@ class Configuration implements ConfigurationInterface
                             ->arrayNode('decryption')
                                 ->info('Configure decrypter.')
                                 ->isRequired()
+                                ->fixXmlConfig('argument')
                                 ->children()
                                     ->scalarNode('service')
                                         ->info('Symfony service name of decrypter.')

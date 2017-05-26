@@ -16,6 +16,14 @@ use Picodexter\ParameterEncryptionBundle\Replacement\Pattern\ValuePrefixReplacem
 class ValuePrefixReplacementPatternTest extends \PHPUnit_Framework_TestCase
 {
     /**
+     * @expectedException \Picodexter\ParameterEncryptionBundle\Exception\Configuration\EmptyPrefixException
+     */
+    public function testConstructorExceptionMissingPrefix()
+    {
+        new ValuePrefixReplacementPattern('');
+    }
+
+    /**
      * @param string      $prefix
      * @param string      $parameterKey
      * @param string      $parameterValue
@@ -52,12 +60,6 @@ class ValuePrefixReplacementPatternTest extends \PHPUnit_Framework_TestCase
                 'PREFIX1',
                 'some_key',
                 'partial parameter value',
-                null,
-            ],
-            'empty prefix' => [
-                '',
-                'some_key',
-                'sample value',
                 null,
             ],
         ];
@@ -102,12 +104,6 @@ class ValuePrefixReplacementPatternTest extends \PHPUnit_Framework_TestCase
                 'PREFIX',
                 'some_key',
                 'unprefixed value',
-                false,
-            ],
-            'false - empty prefix' => [
-                '',
-                'some_key',
-                'some value',
                 false,
             ],
         ];

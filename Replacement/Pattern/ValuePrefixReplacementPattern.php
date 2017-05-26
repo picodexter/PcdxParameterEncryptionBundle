@@ -11,6 +11,8 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Replacement\Pattern;
 
+use Picodexter\ParameterEncryptionBundle\Exception\Configuration\EmptyPrefixException;
+
 /**
  * ValuePrefixReplacementPattern.
  */
@@ -25,10 +27,17 @@ class ValuePrefixReplacementPattern implements ReplacementPatternInterface
      * Constructor.
      *
      * @param string $prefix
+     * @throws EmptyPrefixException
      */
     public function __construct($prefix)
     {
-        $this->prefix = (string) $prefix;
+        $prefix = (string) $prefix;
+
+        if (mb_strlen($prefix) < 1) {
+            throw new EmptyPrefixException('Prefix cannot be empty');
+        }
+
+        $this->prefix = $prefix;
     }
 
     /**
@@ -48,10 +57,6 @@ class ValuePrefixReplacementPattern implements ReplacementPatternInterface
      */
     public function isApplicableForParameter($key, $value)
     {
-        if ($this->prefix) {
-            return (mb_strpos($value, $this->prefix) === 0);
-        } else {
-            return false;
-        }
+        return (mb_strpos($value, $this->prefix) === 0);
     }
 }

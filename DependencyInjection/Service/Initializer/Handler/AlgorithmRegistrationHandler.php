@@ -89,6 +89,8 @@ class AlgorithmRegistrationHandler implements AlgorithmRegistrationHandlerInterf
                 ]
             );
 
+            $algorithmDefinition->setPublic(false);
+
             $algorithmDefinitions[$serviceName] = $algorithmDefinition;
         }
 

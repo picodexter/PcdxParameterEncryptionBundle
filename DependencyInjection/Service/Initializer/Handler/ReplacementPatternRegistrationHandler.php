@@ -86,6 +86,8 @@ class ReplacementPatternRegistrationHandler implements ReplacementPatternRegistr
                 $algorithmConfig['pattern']['arguments']
             );
 
+            $serviceDefinition->setPublic(false);
+
             $serviceDefinitions[$serviceName] = $serviceDefinition;
         }
 

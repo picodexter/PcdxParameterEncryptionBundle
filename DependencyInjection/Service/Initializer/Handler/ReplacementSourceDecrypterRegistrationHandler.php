@@ -84,6 +84,8 @@ class ReplacementSourceDecrypterRegistrationHandler implements ReplacementSource
                 ]
             );
 
+            $definition->setPublic(false);
+
             $serviceName = $this->serviceNameGenerator
                 ->getReplacementSourceDecrypterServiceNameForAlgorithm($algorithmConfig);
 

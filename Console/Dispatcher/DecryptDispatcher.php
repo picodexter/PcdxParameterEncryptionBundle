@@ -70,6 +70,7 @@ class DecryptDispatcher implements DecryptDispatcherInterface
      *
      * @param InputInterface  $input
      * @param OutputInterface $output
+     *
      * @return DecryptRequest
      */
     private function generateDecryptRequest(InputInterface $input, OutputInterface $output)

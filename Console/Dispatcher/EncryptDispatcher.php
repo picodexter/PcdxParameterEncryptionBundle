@@ -70,6 +70,7 @@ class EncryptDispatcher implements EncryptDispatcherInterface
      *
      * @param InputInterface  $input
      * @param OutputInterface $output
+     *
      * @return EncryptRequest
      */
     private function generateEncryptRequest(InputInterface $input, OutputInterface $output)

@@ -21,6 +21,7 @@ interface CaesarCipherInterface
      *
      * @param string $inputText
      * @param int    $rotationAmount
+     *
      * @return string
      */
     public function apply($inputText, $rotationAmount);

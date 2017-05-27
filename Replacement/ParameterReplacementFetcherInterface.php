@@ -21,6 +21,7 @@ interface ParameterReplacementFetcherInterface
      *
      * @param string       $parameterKey
      * @param string|array $parameterValue
+     *
      * @return string|null
      */
     public function getReplacedValueForParameter($parameterKey, $parameterValue);

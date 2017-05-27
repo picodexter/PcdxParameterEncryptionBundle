@@ -27,6 +27,7 @@ class ValuePrefixReplacementPattern implements ReplacementPatternInterface
      * Constructor.
      *
      * @param string $prefix
+     *
      * @throws EmptyPrefixException
      */
     public function __construct($prefix)

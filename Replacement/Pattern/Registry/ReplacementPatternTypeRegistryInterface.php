@@ -34,6 +34,7 @@ interface ReplacementPatternTypeRegistryInterface
      * Get pattern type by name.
      *
      * @param string $name
+     *
      * @return string|null
      */
     public function get($name);
@@ -42,6 +43,7 @@ interface ReplacementPatternTypeRegistryInterface
      * Check if a pattern type with the name is registered.
      *
      * @param string $name
+     *
      * @return bool
      */
     public function has($name);

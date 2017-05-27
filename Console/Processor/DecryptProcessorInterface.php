@@ -25,6 +25,7 @@ interface DecryptProcessorInterface
      *
      * @param DecryptRequest  $request
      * @param OutputInterface $output
+     *
      * @throws UnknownAlgorithmIdException
      */
     public function renderDecryptOutput(DecryptRequest $request, OutputInterface $output);

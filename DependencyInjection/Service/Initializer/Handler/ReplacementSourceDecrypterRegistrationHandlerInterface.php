@@ -24,6 +24,7 @@ interface ReplacementSourceDecrypterRegistrationHandlerInterface
      *
      * @param array            $bundleConfig
      * @param ContainerBuilder $container
+     *
      * @throws InvalidBundleConfigurationException
      */
     public function registerReplacementSourceDecrypters(array $bundleConfig, ContainerBuilder $container);

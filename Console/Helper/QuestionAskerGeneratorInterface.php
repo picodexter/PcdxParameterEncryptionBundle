@@ -26,6 +26,7 @@ interface QuestionAskerGeneratorInterface
      * @param Question        $question
      * @param InputInterface  $input
      * @param OutputInterface $output
+     *
      * @return QuestionAskerInterface
      */
     public function createQuestionAskerForQuestion(Question $question, InputInterface $input, OutputInterface $output);

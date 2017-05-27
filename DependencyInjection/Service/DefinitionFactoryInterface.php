@@ -23,6 +23,7 @@ interface DefinitionFactoryInterface
      *
      * @param string|null $class     The service class
      * @param array       $arguments An array of arguments to pass to the service constructor
+     *
      * @return Definition
      */
     public function createDefinition($class = null, array $arguments = []);

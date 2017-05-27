@@ -26,6 +26,7 @@ interface HiddenInputQuestionAskerGeneratorInterface
      * @param InputInterface  $input
      * @param OutputInterface $output
      * @param bool            $hiddenFallback
+     *
      * @return QuestionAskerInterface
      */
     public function generateHiddenInputQuestionAsker(

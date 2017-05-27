@@ -25,6 +25,7 @@ interface EncryptProcessorInterface
      *
      * @param EncryptRequest  $request
      * @param OutputInterface $output
+     *
      * @throws UnknownAlgorithmIdException
      */
     public function renderEncryptOutput(EncryptRequest $request, OutputInterface $output);

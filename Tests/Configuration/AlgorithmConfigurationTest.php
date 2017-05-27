@@ -244,6 +244,7 @@ class AlgorithmConfigurationTest extends \PHPUnit_Framework_TestCase
      * Create AlgorithmConfiguration with ID.
      *
      * @param string $id
+     *
      * @return AlgorithmConfiguration
      */
     private function createAlgorithmConfigurationWithId($id)

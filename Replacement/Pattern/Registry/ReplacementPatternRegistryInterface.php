@@ -36,6 +36,7 @@ interface ReplacementPatternRegistryInterface
      * Get replacement pattern by algorithm ID.
      *
      * @param string $algorithmId
+     *
      * @return string|null
      */
     public function get($algorithmId);
@@ -44,6 +45,7 @@ interface ReplacementPatternRegistryInterface
      * Check if a replacement pattern with the algorithm ID is registered.
      *
      * @param string $algorithmId
+     *
      * @return bool
      */
     public function has($algorithmId);

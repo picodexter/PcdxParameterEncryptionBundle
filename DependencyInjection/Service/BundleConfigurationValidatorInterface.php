@@ -22,6 +22,7 @@ interface BundleConfigurationValidatorInterface
      * Assert that bundle configuration has a valid structure.
      *
      * @param array $bundleConfig
+     *
      * @throws InvalidBundleConfigurationException
      */
     public function assertValidBundleConfiguration(array $bundleConfig);

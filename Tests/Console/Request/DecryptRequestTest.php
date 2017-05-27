@@ -122,6 +122,7 @@ class DecryptRequestTest extends \PHPUnit_Framework_TestCase
      * Create decrypt request with data.
      *
      * @param array $requestData
+     *
      * @return DecryptRequest
      */
     private function createDecryptRequestWithData(array $requestData)

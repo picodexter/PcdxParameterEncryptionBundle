@@ -50,6 +50,7 @@ class DecryptProcessor implements DecryptProcessorInterface
      *
      * @param DecryptRequest $request
      * @param string         $configKey
+     *
      * @return string|null
      */
     private function getKey(DecryptRequest $request, $configKey)
@@ -67,6 +68,7 @@ class DecryptProcessor implements DecryptProcessorInterface
      * Get encrypted value.
      *
      * @param DecryptRequest $request
+     *
      * @return string
      */
     private function getEncryptedValue(DecryptRequest $request)

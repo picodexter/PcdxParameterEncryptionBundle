@@ -24,6 +24,7 @@ interface ParameterReplacerInterface
      * Applies changes to the original object.
      *
      * @param ParameterBagInterface $parameterBag
+     *
      * @return ParameterBagInterface
      */
     public function processParameterBag(ParameterBagInterface $parameterBag);

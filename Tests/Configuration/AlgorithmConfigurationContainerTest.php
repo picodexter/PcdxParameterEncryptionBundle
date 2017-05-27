@@ -192,6 +192,7 @@ class AlgorithmConfigurationContainerTest extends \PHPUnit_Framework_TestCase
      * Create algorithm with ID.
      *
      * @param string $id
+     *
      * @return AlgorithmConfiguration
      */
     private function createAlgorithmConfigurationWithId($id)

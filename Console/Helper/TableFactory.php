@@ -23,6 +23,7 @@ class TableFactory implements TableFactoryInterface
      * Create table.
      *
      * @param OutputInterface $output
+     *
      * @return Table
      */
     public function createTable(OutputInterface $output)

@@ -50,6 +50,7 @@ class EncryptProcessor implements EncryptProcessorInterface
      *
      * @param EncryptRequest $request
      * @param string         $configKey
+     *
      * @return string|null
      */
     private function getKey(EncryptRequest $request, $configKey)
@@ -67,6 +68,7 @@ class EncryptProcessor implements EncryptProcessorInterface
      * Get plaintext value.
      *
      * @param EncryptRequest $request
+     *
      * @return string
      */
     private function getPlaintextValue(EncryptRequest $request)

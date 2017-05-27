@@ -24,6 +24,7 @@ interface AlgorithmInjectionHandlerInterface
      *
      * @param array            $bundleConfig
      * @param ContainerBuilder $container
+     *
      * @throws InvalidBundleConfigurationException
      */
     public function injectAlgorithmConfigurationsIntoContainer(array $bundleConfig, ContainerBuilder $container);

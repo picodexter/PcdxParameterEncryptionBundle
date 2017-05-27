@@ -22,6 +22,7 @@ interface AlgorithmIdValidatorInterface
      * Assert that algorithm ID exists.
      *
      * @param string $algorithmId
+     *
      * @throws UnknownAlgorithmIdException
      */
     public function assertKnownAlgorithmId($algorithmId);

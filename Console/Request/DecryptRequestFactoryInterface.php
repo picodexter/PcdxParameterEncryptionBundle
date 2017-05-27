@@ -26,6 +26,7 @@ interface DecryptRequestFactoryInterface
      * @param string                 $encryptedValue
      * @param string|null            $key
      * @param bool                   $keyProvided
+     *
      * @return DecryptRequest
      */
     public function createDecryptRequest(

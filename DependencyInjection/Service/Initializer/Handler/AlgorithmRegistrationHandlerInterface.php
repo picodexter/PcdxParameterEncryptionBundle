@@ -24,6 +24,7 @@ interface AlgorithmRegistrationHandlerInterface
      *
      * @param array            $bundleConfig
      * @param ContainerBuilder $container
+     *
      * @throws InvalidBundleConfigurationException
      */
     public function registerAlgorithms(array $bundleConfig, ContainerBuilder $container);

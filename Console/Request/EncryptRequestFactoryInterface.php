@@ -26,6 +26,7 @@ interface EncryptRequestFactoryInterface
      * @param bool                   $keyProvided
      * @param QuestionAskerInterface $plaintextAsker
      * @param string                 $plaintextValue
+     *
      * @return EncryptRequest
      */
     public function createEncryptRequest(

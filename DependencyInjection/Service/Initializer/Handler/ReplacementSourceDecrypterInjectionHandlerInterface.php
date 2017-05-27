@@ -24,6 +24,7 @@ interface ReplacementSourceDecrypterInjectionHandlerInterface
      *
      * @param array            $bundleConfig
      * @param ContainerBuilder $container
+     *
      * @throws InvalidBundleConfigurationException
      */
     public function injectReplacementSourceDecryptersIntoFetcher(array $bundleConfig, ContainerBuilder $container);

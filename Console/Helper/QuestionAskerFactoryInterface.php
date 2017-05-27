@@ -28,6 +28,7 @@ interface QuestionAskerFactoryInterface
      * @param OutputInterface $output
      * @param Question        $question
      * @param QuestionHelper  $questionHelper
+     *
      * @return QuestionAskerInterface
      */
     public function createQuestionAsker(

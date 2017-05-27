@@ -25,6 +25,7 @@ interface ReplacementPatternRegistrationHandlerInterface
      *
      * @param array            $bundleConfig
      * @param ContainerBuilder $container
+     *
      * @throws InvalidBundleConfigurationException
      * @throws UnknownReplacementPatternTypeException
      */

@@ -23,6 +23,7 @@ interface QuestionFactoryInterface
      *
      * @param string $question The question to ask to the user
      * @param mixed  $default  The default answer to return if the user enters nothing
+     *
      * @return Question
      */
     public function createQuestion($question, $default = null);

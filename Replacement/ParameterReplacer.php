@@ -52,6 +52,7 @@ class ParameterReplacer implements ParameterReplacerInterface
      * Process parameter array.
      *
      * @param array $parameters
+     *
      * @return array
      */
     public function processParameters(array $parameters)

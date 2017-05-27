@@ -122,6 +122,7 @@ class EncryptRequestTest extends \PHPUnit_Framework_TestCase
      * Create encrypt request with data.
      *
      * @param array $requestData
+     *
      * @return EncryptRequest
      */
     private function createEncryptRequestWithData(array $requestData)

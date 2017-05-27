@@ -24,6 +24,7 @@ interface ReferenceFactoryInterface
      *
      * @param string $id              The service identifier
      * @param int    $invalidBehavior The behavior when the service does not exist
+     *
      * @return Reference
      */
     public function createReference($id, $invalidBehavior = ContainerInterface::EXCEPTION_ON_INVALID_REFERENCE);

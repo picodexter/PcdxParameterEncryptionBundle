@@ -21,6 +21,7 @@ interface ReplacementSourceInterface
      *
      * @param string $key
      * @param string $value
+     *
      * @return string|null
      */
     public function getReplacedValueForParameter($key, $value);
@@ -30,6 +31,7 @@ interface ReplacementSourceInterface
      *
      * @param string $key
      * @param string $value
+     *
      * @return bool
      */
     public function isApplicableForParameter($key, $value);

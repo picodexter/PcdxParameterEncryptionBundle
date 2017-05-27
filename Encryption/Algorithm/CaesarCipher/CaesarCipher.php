@@ -52,6 +52,7 @@ class CaesarCipher implements CaesarCipherInterface
      *
      * @param string $character
      * @param int    $rotationAmount
+     *
      * @return string
      */
     private function getRotatedCharacter($character, $rotationAmount)
@@ -76,6 +77,7 @@ class CaesarCipher implements CaesarCipherInterface
      * Get valid rotation amount.
      *
      * @param int $rotationAmount
+     *
      * @return int
      */
     private function getValidRotationAmount($rotationAmount)

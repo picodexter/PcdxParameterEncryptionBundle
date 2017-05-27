@@ -72,6 +72,7 @@ class AlgorithmConfiguration
      * @param string                      $encrypterServiceName
      * @param string|null                 $encryptionKey
      * @param ReplacementPatternInterface $replacementPattern
+     *
      * @throws InvalidAlgorithmIdException
      */
     public function __construct(
@@ -108,6 +109,7 @@ class AlgorithmConfiguration
      * Setter: id.
      *
      * @param string $id
+     *
      * @throws InvalidAlgorithmIdException
      */
     public function setId($id)

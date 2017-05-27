@@ -29,6 +29,7 @@ interface AlgorithmConfigurationContainerInterface
      * Setter: algorithmConfigurations.
      *
      * @param AlgorithmConfiguration[] $algorithmConfigs
+     *
      * @throws DuplicateAlgorithmIdException
      */
     public function setAlgorithmConfigurations(array $algorithmConfigs);
@@ -37,6 +38,7 @@ interface AlgorithmConfigurationContainerInterface
      * Get algorithm by ID.
      *
      * @param string $id
+     *
      * @return AlgorithmConfiguration|null
      */
     public function get($id);
@@ -45,6 +47,7 @@ interface AlgorithmConfigurationContainerInterface
      * Check if an algorithm with the ID is registered.
      *
      * @param string $id
+     *
      * @return bool
      */
     public function has($id);

@@ -218,6 +218,7 @@ class ParameterReplacementFetcherTest extends \PHPUnit_Framework_TestCase
      * Get ReplacementSources from ParameterReplacementFetcher.
      *
      * @param ParameterReplacementFetcher $fetchStrategy
+     *
      * @return array
      */
     private function getReplacementSourcesFromParameterReplacer(ParameterReplacementFetcher $fetchStrategy)

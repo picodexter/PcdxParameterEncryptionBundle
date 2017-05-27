@@ -22,7 +22,9 @@ interface ServiceNameGeneratorInterface
      * Get name of algorithm configuration service for algorithm.
      *
      * @param array $algorithmConfig
+     *
      * @return string
+     *
      * @throws InvalidAlgorithmConfigurationException
      */
     public function getAlgorithmConfigurationServiceNameForAlgorithm(array $algorithmConfig);
@@ -31,7 +33,9 @@ interface ServiceNameGeneratorInterface
      * Get name of replacement pattern service for algorithm.
      *
      * @param array $algorithmConfig
+     *
      * @return string
+     *
      * @throws InvalidAlgorithmConfigurationException
      */
     public function getReplacementPatternServiceNameForAlgorithm(array $algorithmConfig);
@@ -40,7 +44,9 @@ interface ServiceNameGeneratorInterface
      * Get name of replacement source decrypter service for algorithm.
      *
      * @param array $algorithmConfig
+     *
      * @return string
+     *
      * @throws InvalidAlgorithmConfigurationException
      */
     public function getReplacementSourceDecrypterServiceNameForAlgorithm(array $algorithmConfig);

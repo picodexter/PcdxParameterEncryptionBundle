@@ -24,6 +24,7 @@ interface ReplacementPatternInjectionHandlerInterface
      *
      * @param array            $bundleConfig
      * @param ContainerBuilder $container
+     *
      * @throws InvalidBundleConfigurationException
      */
     public function injectReplacementPatternsIntoRegistry(array $bundleConfig, ContainerBuilder $container);

@@ -6,114 +6,135 @@
 
     <services>
         <service id="pcdx_parameter_encryption.command.algorithm_list"
-            class="Picodexter\ParameterEncryptionBundle\Command\AlgorithmListCommand">
+            class="Picodexter\ParameterEncryptionBundle\Command\AlgorithmListCommand"
+            public="false">
             <argument type="service" id="pcdx_parameter_encryption.console.dispatcher.algorithm_list" />
             <tag name="console.command" />
         </service>
 
         <service id="pcdx_parameter_encryption.command.decrypt"
-            class="Picodexter\ParameterEncryptionBundle\Command\DecryptCommand">
+            class="Picodexter\ParameterEncryptionBundle\Command\DecryptCommand"
+            public="false">
             <argument type="service" id="pcdx_parameter_encryption.console.dispatcher.decrypt" />
             <tag name="console.command" />
         </service>
 
         <service id="pcdx_parameter_encryption.command.encrypt"
-            class="Picodexter\ParameterEncryptionBundle\Command\EncryptCommand">
+            class="Picodexter\ParameterEncryptionBundle\Command\EncryptCommand"
+            public="false">
             <argument type="service" id="pcdx_parameter_encryption.console.dispatcher.encrypt" />
             <tag name="console.command" />
         </service>
 
         <service id="pcdx_parameter_encryption.configuration.algorithm_configuration_container"
-            class="Picodexter\ParameterEncryptionBundle\Configuration\AlgorithmConfigurationContainer">
+            class="Picodexter\ParameterEncryptionBundle\Configuration\AlgorithmConfigurationContainer"
+            public="false">
             <argument type="collection">
                 <!-- automatically filled in at runtime -->
             </argument>
         </service>
 
         <service id="pcdx_parameter_encryption.console.dispatcher.algorithm_list"
-            class="Picodexter\ParameterEncryptionBundle\Console\Dispatcher\AlgorithmListDispatcher">
+            class="Picodexter\ParameterEncryptionBundle\Console\Dispatcher\AlgorithmListDispatcher"
+            public="false">
             <argument type="service" id="pcdx_parameter_encryption.console.processor.algorithm_list" />
             <argument type="service" id="pcdx_parameter_encryption.console.helper.table_factory" />
         </service>
 
         <service id="pcdx_parameter_encryption.console.dispatcher.decrypt"
-            class="Picodexter\ParameterEncryptionBundle\Console\Dispatcher\DecryptDispatcher">
+            class="Picodexter\ParameterEncryptionBundle\Console\Dispatcher\DecryptDispatcher"
+            public="false">
             <argument type="service" id="pcdx_parameter_encryption.console.request.decrypt_request_factory" />
             <argument type="service" id="pcdx_parameter_encryption.console.processor.decrypt" />
             <argument type="service" id="pcdx_parameter_encryption.console.helper.hidden_input_question_asker_generator" />
         </service>
 
         <service id="pcdx_parameter_encryption.console.dispatcher.encrypt"
-            class="Picodexter\ParameterEncryptionBundle\Console\Dispatcher\EncryptDispatcher">
+            class="Picodexter\ParameterEncryptionBundle\Console\Dispatcher\EncryptDispatcher"
+            public="false">
             <argument type="service" id="pcdx_parameter_encryption.console.request.encrypt_request_factory" />
             <argument type="service" id="pcdx_parameter_encryption.console.processor.encrypt" />
             <argument type="service" id="pcdx_parameter_encryption.console.helper.hidden_input_question_asker_generator" />
         </service>
 
         <service id="pcdx_parameter_encryption.console.helper.algorithm_id_validator"
-            class="Picodexter\ParameterEncryptionBundle\Console\Helper\AlgorithmIdValidator">
+            class="Picodexter\ParameterEncryptionBundle\Console\Helper\AlgorithmIdValidator"
+            public="false">
             <argument type="service" id="pcdx_parameter_encryption.configuration.algorithm_configuration_container" />
         </service>
 
         <service id="pcdx_parameter_encryption.console.helper.hidden_input_question_asker_generator"
-            class="Picodexter\ParameterEncryptionBundle\Console\Helper\HiddenInputQuestionAskerGenerator">
+            class="Picodexter\ParameterEncryptionBundle\Console\Helper\HiddenInputQuestionAskerGenerator"
+            public="false">
             <argument type="service" id="pcdx_parameter_encryption.console.helper.question_asker_generator" />
             <argument type="service" id="pcdx_parameter_encryption.console.question.factory" />
         </service>
 
         <service id="pcdx_parameter_encryption.console.helper.question_asker_factory"
-            class="Picodexter\ParameterEncryptionBundle\Console\Helper\QuestionAskerFactory">
+            class="Picodexter\ParameterEncryptionBundle\Console\Helper\QuestionAskerFactory"
+            public="false">
         </service>
 
         <service id="pcdx_parameter_encryption.console.helper.question_asker_generator"
-            class="Picodexter\ParameterEncryptionBundle\Console\Helper\QuestionAskerGenerator">
+            class="Picodexter\ParameterEncryptionBundle\Console\Helper\QuestionAskerGenerator"
+            public="false">
             <argument type="service" id="pcdx_parameter_encryption.console.helper.question_asker_factory" />
             <argument type="service" id="pcdx_parameter_encryption.console.helper.question_helper_factory" />
         </service>
 
         <service id="pcdx_parameter_encryption.console.helper.question_helper_factory"
-            class="Picodexter\ParameterEncryptionBundle\Console\Helper\QuestionHelperFactory">
+            class="Picodexter\ParameterEncryptionBundle\Console\Helper\QuestionHelperFactory"
+            public="false">
         </service>
 
         <service id="pcdx_parameter_encryption.console.helper.table_factory"
-            class="Picodexter\ParameterEncryptionBundle\Console\Helper\TableFactory">
+            class="Picodexter\ParameterEncryptionBundle\Console\Helper\TableFactory"
+            public="false">
         </service>
 
         <service id="pcdx_parameter_encryption.console.processor.algorithm_list"
-            class="Picodexter\ParameterEncryptionBundle\Console\Processor\AlgorithmListProcessor">
+            class="Picodexter\ParameterEncryptionBundle\Console\Processor\AlgorithmListProcessor"
+            public="false">
             <argument type="service" id="pcdx_parameter_encryption.configuration.algorithm_configuration_container" />
         </service>
 
         <service id="pcdx_parameter_encryption.console.processor.decrypt"
-            class="Picodexter\ParameterEncryptionBundle\Console\Processor\DecryptProcessor">
+            class="Picodexter\ParameterEncryptionBundle\Console\Processor\DecryptProcessor"
+            public="false">
             <argument type="service" id="pcdx_parameter_encryption.configuration.algorithm_configuration_container" />
             <argument type="service" id="pcdx_parameter_encryption.console.helper.algorithm_id_validator" />
         </service>
 
         <service id="pcdx_parameter_encryption.console.processor.encrypt"
-            class="Picodexter\ParameterEncryptionBundle\Console\Processor\EncryptProcessor">
+            class="Picodexter\ParameterEncryptionBundle\Console\Processor\EncryptProcessor"
+            public="false">
             <argument type="service" id="pcdx_parameter_encryption.configuration.algorithm_configuration_container" />
             <argument type="service" id="pcdx_parameter_encryption.console.helper.algorithm_id_validator" />
         </service>
 
         <service id="pcdx_parameter_encryption.console.question.factory"
-            class="Picodexter\ParameterEncryptionBundle\Console\Question\QuestionFactory">
+            class="Picodexter\ParameterEncryptionBundle\Console\Question\QuestionFactory"
+            public="false">
         </service>
 
         <service id="pcdx_parameter_encryption.console.request.decrypt_request_factory"
-            class="Picodexter\ParameterEncryptionBundle\Console\Request\DecryptRequestFactory">
+            class="Picodexter\ParameterEncryptionBundle\Console\Request\DecryptRequestFactory"
+            public="false">
         </service>
 
         <service id="pcdx_parameter_encryption.console.request.encrypt_request_factory"
-            class="Picodexter\ParameterEncryptionBundle\Console\Request\EncryptRequestFactory">
+            class="Picodexter\ParameterEncryptionBundle\Console\Request\EncryptRequestFactory"
+            public="false">
         </service>
 
         <service id="pcdx_parameter_encryption.dependency_injection.service.bundle_configuration_validator"
-            class="Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\BundleConfigurationValidator">
+            class="Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\BundleConfigurationValidator"
+            public="false">
         </service>
 
         <service id="pcdx_parameter_encryption.dependency_injection.service.definition_factory"
-            class="Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\DefinitionFactory">
+            class="Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\DefinitionFactory"
+            public="false">
         </service>
 
         <service id="pcdx_parameter_encryption.dependency_injection.service.definition_initialization_manager"
@@ -124,20 +145,23 @@
         </service>
 
         <service id="pcdx_parameter_encryption.dependency_injection.service.initializer.algorithm"
-            class="Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\Initializer\AlgorithmInitializer">
+            class="Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\Initializer\AlgorithmInitializer"
+            public="false">
             <argument type="service" id="pcdx_parameter_encryption.dependency_injection.service.initializer.handler.algorithm_injection" />
             <argument type="service" id="pcdx_parameter_encryption.dependency_injection.service.initializer.handler.algorithm_registration" />
         </service>
 
         <service id="pcdx_parameter_encryption.dependency_injection.service.initializer.handler.algorithm_injection"
-            class="Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\Initializer\Handler\AlgorithmInjectionHandler">
+            class="Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\Initializer\Handler\AlgorithmInjectionHandler"
+            public="false">
             <argument type="service" id="pcdx_parameter_encryption.dependency_injection.service.bundle_configuration_validator" />
             <argument type="service" id="pcdx_parameter_encryption.dependency_injection.service.reference_factory" />
             <argument type="service" id="pcdx_parameter_encryption.dependency_injection.service.name_generator" />
         </service>
 
         <service id="pcdx_parameter_encryption.dependency_injection.service.initializer.handler.algorithm_registration"
-            class="Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\Initializer\Handler\AlgorithmRegistrationHandler">
+            class="Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\Initializer\Handler\AlgorithmRegistrationHandler"
+            public="false">
             <argument type="service" id="pcdx_parameter_encryption.dependency_injection.service.bundle_configuration_validator" />
             <argument type="service" id="pcdx_parameter_encryption.dependency_injection.service.definition_factory" />
             <argument type="service" id="pcdx_parameter_encryption.dependency_injection.service.reference_factory" />
@@ -145,28 +169,32 @@
         </service>
 
         <service id="pcdx_parameter_encryption.dependency_injection.service.initializer.handler.replacement_pattern_injection"
-            class="Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\Initializer\Handler\ReplacementPatternInjectionHandler">
+            class="Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\Initializer\Handler\ReplacementPatternInjectionHandler"
+            public="false">
             <argument type="service" id="pcdx_parameter_encryption.dependency_injection.service.bundle_configuration_validator" />
             <argument type="service" id="pcdx_parameter_encryption.dependency_injection.service.reference_factory" />
             <argument type="service" id="pcdx_parameter_encryption.dependency_injection.service.name_generator" />
         </service>
 
         <service id="pcdx_parameter_encryption.dependency_injection.service.initializer.handler.replacement_pattern_registration"
-            class="Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\Initializer\Handler\ReplacementPatternRegistrationHandler">
+            class="Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\Initializer\Handler\ReplacementPatternRegistrationHandler"
+            public="false">
             <argument type="service" id="pcdx_parameter_encryption.dependency_injection.service.bundle_configuration_validator" />
             <argument type="service" id="pcdx_parameter_encryption.dependency_injection.service.definition_factory" />
             <argument type="service" id="pcdx_parameter_encryption.dependency_injection.service.name_generator" />
         </service>
 
         <service id="pcdx_parameter_encryption.dependency_injection.service.initializer.handler.replacement_source_decrypter_injection"
-            class="Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\Initializer\Handler\ReplacementSourceDecrypterInjectionHandler">
+            class="Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\Initializer\Handler\ReplacementSourceDecrypterInjectionHandler"
+            public="false">
             <argument type="service" id="pcdx_parameter_encryption.dependency_injection.service.bundle_configuration_validator" />
             <argument type="service" id="pcdx_parameter_encryption.dependency_injection.service.reference_factory" />
             <argument type="service" id="pcdx_parameter_encryption.dependency_injection.service.name_generator" />
         </service>
 
         <service id="pcdx_parameter_encryption.dependency_injection.service.initializer.handler.replacement_source_decrypter_registration"
-            class="Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\Initializer\Handler\ReplacementSourceDecrypterRegistrationHandler">
+            class="Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\Initializer\Handler\ReplacementSourceDecrypterRegistrationHandler"
+            public="false">
             <argument type="service" id="pcdx_parameter_encryption.dependency_injection.service.bundle_configuration_validator" />
             <argument type="service" id="pcdx_parameter_encryption.dependency_injection.service.definition_factory" />
             <argument type="service" id="pcdx_parameter_encryption.dependency_injection.service.reference_factory" />
@@ -174,43 +202,51 @@
         </service>
 
         <service id="pcdx_parameter_encryption.dependency_injection.service.initializer.replacement_pattern"
-            class="Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\Initializer\ReplacementPatternInitializer">
+            class="Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\Initializer\ReplacementPatternInitializer"
+            public="false">
             <argument type="service" id="pcdx_parameter_encryption.dependency_injection.service.initializer.handler.replacement_pattern_injection" />
             <argument type="service" id="pcdx_parameter_encryption.dependency_injection.service.initializer.handler.replacement_pattern_registration" />
         </service>
 
         <service id="pcdx_parameter_encryption.dependency_injection.service.initializer.replacement_source_decrypter"
-            class="Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\Initializer\ReplacementSourceDecrypterInitializer">
+            class="Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\Initializer\ReplacementSourceDecrypterInitializer"
+            public="false">
             <argument type="service" id="pcdx_parameter_encryption.dependency_injection.service.initializer.handler.replacement_source_decrypter_injection" />
             <argument type="service" id="pcdx_parameter_encryption.dependency_injection.service.initializer.handler.replacement_source_decrypter_registration" />
         </service>
 
         <service id="pcdx_parameter_encryption.dependency_injection.service.name_generator"
-            class="Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\ServiceNameGenerator">
+            class="Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\ServiceNameGenerator"
+            public="false">
         </service>
 
         <service id="pcdx_parameter_encryption.dependency_injection.service.reference_factory"
-            class="Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\ReferenceFactory">
+            class="Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\ReferenceFactory"
+            public="false">
         </service>
 
         <service id="pcdx_parameter_encryption.encryption.caesar_cipher"
-            class="Picodexter\ParameterEncryptionBundle\Encryption\Algorithm\CaesarCipher\CaesarCipher">
+            class="Picodexter\ParameterEncryptionBundle\Encryption\Algorithm\CaesarCipher\CaesarCipher"
+            public="false">
         </service>
 
         <service id="pcdx_parameter_encryption.encryption.decrypter.caesar.rot13"
-            class="Picodexter\ParameterEncryptionBundle\Encryption\Decrypter\CaesarDecrypter">
+            class="Picodexter\ParameterEncryptionBundle\Encryption\Decrypter\CaesarDecrypter"
+            public="false">
             <argument type="service" id="pcdx_parameter_encryption.encryption.caesar_cipher" />
             <argument>13</argument>
         </service>
 
         <service id="pcdx_parameter_encryption.encryption.encrypter.caesar.rot13"
-            class="Picodexter\ParameterEncryptionBundle\Encryption\Encrypter\CaesarEncrypter">
+            class="Picodexter\ParameterEncryptionBundle\Encryption\Encrypter\CaesarEncrypter"
+            public="false">
             <argument type="service" id="pcdx_parameter_encryption.encryption.caesar_cipher" />
             <argument>13</argument>
         </service>
 
         <service id="pcdx_parameter_encryption.replacement.parameter_replacement_fetcher"
-            class="Picodexter\ParameterEncryptionBundle\Replacement\ParameterReplacementFetcher">
+            class="Picodexter\ParameterEncryptionBundle\Replacement\ParameterReplacementFetcher"
+            public="false">
             <argument type="collection">
                 <!-- automatically filled in at runtime -->
             </argument>
@@ -222,14 +258,16 @@
         </service>
 
         <service id="pcdx_parameter_encryption.replacement.pattern.registry"
-            class="Picodexter\ParameterEncryptionBundle\Replacement\Pattern\Registry\ReplacementPatternRegistry">
+            class="Picodexter\ParameterEncryptionBundle\Replacement\Pattern\Registry\ReplacementPatternRegistry"
+            public="false">
             <argument type="collection">
                 <!-- automatically filled in at runtime -->
             </argument>
         </service>
 
         <service id="pcdx_parameter_encryption.replacement.pattern.type_registry"
-            class="Picodexter\ParameterEncryptionBundle\Replacement\Pattern\Registry\ReplacementPatternTypeRegistry">
+            class="Picodexter\ParameterEncryptionBundle\Replacement\Pattern\Registry\ReplacementPatternTypeRegistry"
+            public="false">
             <argument type="collection">
                 <argument key="value_prefix">Picodexter\ParameterEncryptionBundle\Replacement\Pattern\ValuePrefixReplacementPattern</argument>
             </argument>

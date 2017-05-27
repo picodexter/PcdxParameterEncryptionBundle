@@ -26,6 +26,6 @@ class UnknownReplacementPatternTypeException extends ConfigurationException
      */
     public function __construct($patternType, Throwable $previous = null)
     {
-        parent::__construct('Unknown replacement pattern type "' . $patternType . '"', 0, $previous);
+        parent::__construct(sprintf('Unknown replacement pattern type "%s"', $patternType), 0, $previous);
     }
 }

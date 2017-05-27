@@ -26,6 +26,6 @@ class UnknownAlgorithmIdException extends InvalidConsoleInputException
      */
     public function __construct($algorithmId, Throwable $previous = null)
     {
-        parent::__construct('Unknown algorithm ID "' . $algorithmId . '"', 0, $previous);
+        parent::__construct(sprintf('Unknown algorithm ID "%s"', $algorithmId), 0, $previous);
     }
 }

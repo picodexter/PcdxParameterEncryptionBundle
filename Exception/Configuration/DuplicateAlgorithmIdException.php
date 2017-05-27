@@ -27,6 +27,6 @@ class DuplicateAlgorithmIdException extends ConfigurationException
      */
     public function __construct(AlgorithmConfiguration $algorithmConfig, Throwable $previous = null)
     {
-        parent::__construct('Duplicate algorithm ID "' . $algorithmConfig->getId() . '"', 0, $previous);
+        parent::__construct(sprintf('Duplicate algorithm ID "%s"', $algorithmConfig->getId()), 0, $previous);
     }
 }

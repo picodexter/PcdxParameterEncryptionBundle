@@ -27,7 +27,7 @@ class InvalidAlgorithmIdException extends ConfigurationException
     public function __construct($algorithmId, Throwable $previous = null)
     {
         parent::__construct(
-            'Invalid algorithm ID "' . $algorithmId . '". Must only contain characters: [a-zA-Z0-9_.]',
+            sprintf('Invalid algorithm ID "%s". Must only contain characters: [a-zA-Z0-9_.]', $algorithmId),
             0,
             $previous
         );

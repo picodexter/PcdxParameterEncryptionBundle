@@ -170,7 +170,7 @@ class ParameterReplacerTest extends \PHPUnit_Framework_TestCase
             ->will(
                 $this->returnCallback(
                     function ($parameterKey) {
-                        return ($parameterKey === 'replace_me' ? 'replaced value' : null);
+                        return ('replace_me' === $parameterKey ? 'replaced value' : null);
                     }
                 )
             );

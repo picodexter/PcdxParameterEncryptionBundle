@@ -65,7 +65,7 @@ class ParameterReplacer implements ParameterReplacerInterface
 
             $replacementValue = $this->replacementFetcher->getReplacedValueForParameter($parameterKey, $parameterValue);
 
-            if ($replacementValue !== null) {
+            if (null !== $replacementValue) {
                 $parameterValue = $replacementValue;
             }
         }

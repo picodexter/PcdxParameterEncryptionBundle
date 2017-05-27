@@ -58,6 +58,6 @@ class ValuePrefixReplacementPattern implements ReplacementPatternInterface
      */
     public function isApplicableForParameter($key, $value)
     {
-        return (mb_strpos($value, $this->prefix) === 0);
+        return (0 === mb_strpos($value, $this->prefix));
     }
 }

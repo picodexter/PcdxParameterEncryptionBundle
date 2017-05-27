@@ -61,7 +61,7 @@ class CaesarCipher implements CaesarCipherInterface
 
         $positionInAlphabet = mb_stripos(self::ALPHABET, $character);
 
-        if ($positionInAlphabet === false) {
+        if (false === $positionInAlphabet) {
             $rotatedCharacter = $character;
         } else {
             $newCharacterOffset = (($positionInAlphabet + $rotationAmount + $alphabetSize) % $alphabetSize)

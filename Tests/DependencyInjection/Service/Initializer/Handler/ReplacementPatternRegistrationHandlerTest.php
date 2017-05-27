@@ -15,7 +15,6 @@ use Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\BundleConfi
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\DefinitionFactoryInterface;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\Initializer\Handler\ReplacementPatternRegistrationHandler;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\ServiceNameGeneratorInterface;
-use Picodexter\ParameterEncryptionBundle\DependencyInjection\ServiceNames;
 use Picodexter\ParameterEncryptionBundle\Exception\Configuration\InvalidBundleConfigurationException;
 use Picodexter\ParameterEncryptionBundle\Replacement\Pattern\Registry\ReplacementPatternTypeRegistryInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -39,6 +38,11 @@ class ReplacementPatternRegistrationHandlerTest extends \PHPUnit_Framework_TestC
     private $handler;
 
     /**
+     * @var ReplacementPatternTypeRegistryInterface|\PHPUnit_Framework_MockObject_MockObject
+     */
+    private $patternTypeRegistry;
+
+    /**
      * @var ServiceNameGeneratorInterface|\PHPUnit_Framework_MockObject_MockObject
      */
     private $serviceNameGenerator;
@@ -50,11 +54,13 @@ class ReplacementPatternRegistrationHandlerTest extends \PHPUnit_Framework_TestC
     {
         $this->bundleConfigValidator = $this->createBundleConfigurationValidatorInterfaceMock();
         $this->definitionFactory = $this->createDefinitionFactoryInterfaceMock();
+        $this->patternTypeRegistry = $this->createReplacementPatternTypeRegistryInterfaceMock();
         $this->serviceNameGenerator = $this->createServiceGeneratorInterfaceMock();
 
         $this->handler = new ReplacementPatternRegistrationHandler(
             $this->bundleConfigValidator,
             $this->definitionFactory,
+            $this->patternTypeRegistry,
             $this->serviceNameGenerator
         );
     }
@@ -66,6 +72,7 @@ class ReplacementPatternRegistrationHandlerTest extends \PHPUnit_Framework_TestC
     {
         $this->handler = null;
         $this->serviceNameGenerator = null;
+        $this->patternTypeRegistry = null;
         $this->definitionFactory = null;
         $this->bundleConfigValidator = null;
     }
@@ -105,14 +112,8 @@ class ReplacementPatternRegistrationHandlerTest extends \PHPUnit_Framework_TestC
         ];
 
         $container = $this->createContainerBuilderMock();
-        $patternTypeRegistry = $this->createPatternTypeRegistryInterfaceMock();
 
-        $container->expects($this->once())
-            ->method('get')
-            ->with(ServiceNames::REPLACEMENT_PATTERN_TYPE_REGISTRY)
-            ->will($this->returnValue($patternTypeRegistry));
-
-        $patternTypeRegistry->expects($this->once())
+        $this->patternTypeRegistry->expects($this->once())
             ->method('has')
             ->with($this->identicalTo($unknownPatternType))
             ->will($this->returnValue(false));
@@ -151,14 +152,7 @@ class ReplacementPatternRegistrationHandlerTest extends \PHPUnit_Framework_TestC
 
         $container = $this->createContainerBuilderMock();
 
-        $patternTypeRegistry = $this->createPatternTypeRegistryInterfaceMock();
-
-        $container->expects($this->once())
-            ->method('get')
-            ->with(ServiceNames::REPLACEMENT_PATTERN_TYPE_REGISTRY)
-            ->will($this->returnValue($patternTypeRegistry));
-
-        $patternTypeRegistry->expects($this->exactly(3))
+        $this->patternTypeRegistry->expects($this->exactly(3))
             ->method('has')
             ->will($this->returnValue(true));
 
@@ -259,7 +253,7 @@ class ReplacementPatternRegistrationHandlerTest extends \PHPUnit_Framework_TestC
      *
      * @return ReplacementPatternTypeRegistryInterface|\PHPUnit_Framework_MockObject_MockObject
      */
-    private function createPatternTypeRegistryInterfaceMock()
+    private function createReplacementPatternTypeRegistryInterfaceMock()
     {
         return $this->getMockBuilder(ReplacementPatternTypeRegistryInterface::class)->getMock();
     }

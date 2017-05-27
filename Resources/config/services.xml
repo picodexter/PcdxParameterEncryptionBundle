@@ -181,6 +181,7 @@
             public="false">
             <argument type="service" id="pcdx_parameter_encryption.dependency_injection.service.bundle_configuration_validator" />
             <argument type="service" id="pcdx_parameter_encryption.dependency_injection.service.definition_factory" />
+            <argument type="service" id="pcdx_parameter_encryption.replacement.pattern.type_registry" />
             <argument type="service" id="pcdx_parameter_encryption.dependency_injection.service.name_generator" />
         </service>
 

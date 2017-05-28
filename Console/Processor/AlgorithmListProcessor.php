@@ -39,13 +39,13 @@ class AlgorithmListProcessor implements AlgorithmListProcessorInterface
      */
     public function renderAlgorithmListTable(Table $table)
     {
-        $table->setHeaders(['Algorithm ID', 'Encryption class', 'Decryption class']);
+        $table->setHeaders(['Algorithm ID', 'Encryption service name', 'Decryption service name']);
 
         foreach ($this->algorithmConfigContainer->getAlgorithmConfigurations() as $algorithm) {
             $table->addRow([
                 $algorithm->getId(),
-                get_class($algorithm->getEncrypter()),
-                get_class($algorithm->getDecrypter())
+                $algorithm->getEncrypterServiceName(),
+                $algorithm->getDecrypterServiceName()
             ]);
         }
 

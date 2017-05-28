@@ -98,20 +98,10 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
                                 'encryption' => [
                                     'service' => 'algo_01_encrypter',
                                     'key' => 'algo_01_encryption_key',
-                                    'arguments' => [
-                                        'argument1',
-                                        'argument2',
-                                        'argument3',
-                                    ],
                                 ],
                                 'decryption' => [
                                     'service' => 'algo_01_decrypter',
                                     'key' => 'algo_01_decryption_key',
-                                    'arguments' => [
-                                        'argument1',
-                                        'argument2',
-                                        'argument3',
-                                    ],
                                 ],
                             ],
                             [
@@ -127,20 +117,10 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
                                 'encryption' => [
                                     'service' => 'algo_02_encrypter',
                                     'key' => 'algo_02_encryption_key',
-                                    'arguments' => [
-                                        'argument1',
-                                        'argument2',
-                                        'argument3',
-                                    ],
                                 ],
                                 'decryption' => [
                                     'service' => 'algo_02_decrypter',
                                     'key' => 'algo_02_decryption_key',
-                                    'arguments' => [
-                                        'argument1',
-                                        'argument2',
-                                        'argument3',
-                                    ],
                                 ],
                             ],
                             [
@@ -156,20 +136,10 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
                                 'encryption' => [
                                     'service' => 'algo_03_encrypter',
                                     'key' => 'algo_03_encryption_key',
-                                    'arguments' => [
-                                        'argument1',
-                                        'argument2',
-                                        'argument3',
-                                    ],
                                 ],
                                 'decryption' => [
                                     'service' => 'algo_03_decrypter',
                                     'key' => 'algo_03_decryption_key',
-                                    'arguments' => [
-                                        'argument1',
-                                        'argument2',
-                                        'argument3',
-                                    ],
                                 ],
                             ],
                         ],

@@ -161,7 +161,22 @@ however it is still shown in order to convey the main concept.
             // app/config/parameters.php
             $container->setParameter('parameter_encryption.caesar.rot13.key', 'not necessary for the Caesar cipher');
 
-Step 4: Use Other Encryption Algorithms
+Step 4: Test
+~~~~~~~~~~~~
+
+1. Generate an encrypted value via :doc:`/cli`
+
+2. Save the value as a parameter with the configured prefix.
+
+   Example (based on example configuration shown above):
+
+   * Plaintext value: ``This is a test``
+   * Encrypted value: ``Guvf vf n grfg``
+   * Save as a parameter with the value: ``=#!PPE!c:r13!#=Guvf vf n grfg``
+
+3. Read the parameter via code.
+
+Step 5: Use Other Encryption Algorithms
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 There are currently two ways to get other encryption algorithms (apart from the

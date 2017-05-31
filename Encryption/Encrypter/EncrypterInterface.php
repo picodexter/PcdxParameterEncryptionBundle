@@ -24,9 +24,9 @@ interface EncrypterInterface
      * @param string      $plainValue
      * @param string|null $encryptionKey
      *
-     * @return string
-     *
      * @throws EncrypterException
+     *
+     * @return string
      */
     public function encryptValue($plainValue, $encryptionKey = null);
 }

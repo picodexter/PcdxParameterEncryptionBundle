@@ -37,29 +37,11 @@ class Base64DecoderTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @param mixed $encodedValue
-     *
-     * @dataProvider provideInvalidEncodedData
      * @expectedException \Picodexter\ParameterEncryptionBundle\Exception\Encryption\InvalidBase64ValueException
      */
-    public function testDecodeExceptionInvalidBase64Data($encodedValue)
+    public function testDecodeExceptionInvalidBase64Value()
     {
-        $this->decoder->decode($encodedValue);
-    }
-
-    /**
-     * Data provider.
-     */
-    public function provideInvalidEncodedData()
-    {
-        return [
-            'true' => [
-                true,
-            ],
-            'random string' => [
-                '11111',
-            ],
-        ];
+        $this->decoder->decode('!');
     }
 
     /**

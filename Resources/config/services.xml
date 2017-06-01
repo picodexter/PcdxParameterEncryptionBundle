@@ -272,6 +272,13 @@
             public="false">
         </service>
 
+        <service id="pcdx_parameter_encryption.encryption.value.merge.initialization_vector.value_splitter.base64"
+            class="Picodexter\ParameterEncryptionBundle\Encryption\Value\Merge\InitializationVector\ValueSplitterDecoderDecorator"
+            public="false">
+            <argument type="service" id="pcdx_parameter_encryption.encryption.value.encoding.decoder.base64" />
+            <argument type="service" id="pcdx_parameter_encryption.encryption.value.merge.initialization_vector.value_splitter"/>
+        </service>
+
         <service id="pcdx_parameter_encryption.replacement.parameter_replacement_fetcher"
             class="Picodexter\ParameterEncryptionBundle\Replacement\ParameterReplacementFetcher"
             public="false">

@@ -49,7 +49,7 @@ class AlgorithmIdValidatorTest extends \PHPUnit_Framework_TestCase
     /**
      * @expectedException \Picodexter\ParameterEncryptionBundle\Exception\Console\UnknownAlgorithmIdException
      */
-    public function testAssertKnownAlgorihmIdExceptionUnknown()
+    public function testAssertKnownAlgorithmIdExceptionUnknown()
     {
         $algorithmId = 'cannot_find_me';
 

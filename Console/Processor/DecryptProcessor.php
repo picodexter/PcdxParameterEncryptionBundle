@@ -29,20 +29,20 @@ class DecryptProcessor implements DecryptProcessorInterface
     /**
      * @var AlgorithmIdValidatorInterface
      */
-    private $algorihmIdValidator;
+    private $algorithmIdValidator;
 
     /**
      * Constructor.
      *
      * @param AlgorithmConfigurationContainerInterface $algorithmContainer
-     * @param AlgorithmIdValidatorInterface            $algorihmIdValidator
+     * @param AlgorithmIdValidatorInterface            $algorithmIdValidator
      */
     public function __construct(
         AlgorithmConfigurationContainerInterface $algorithmContainer,
-        AlgorithmIdValidatorInterface $algorihmIdValidator
+        AlgorithmIdValidatorInterface $algorithmIdValidator
     ) {
         $this->algorithmConfigContainer = $algorithmContainer;
-        $this->algorihmIdValidator = $algorihmIdValidator;
+        $this->algorithmIdValidator = $algorithmIdValidator;
     }
 
     /**
@@ -87,7 +87,7 @@ class DecryptProcessor implements DecryptProcessorInterface
      */
     public function renderDecryptOutput(DecryptRequest $request, OutputInterface $output)
     {
-        $this->algorihmIdValidator->assertKnownAlgorithmId($request->getAlgorithmId());
+        $this->algorithmIdValidator->assertKnownAlgorithmId($request->getAlgorithmId());
 
         $algorithmConfig = $this->algorithmConfigContainer->get($request->getAlgorithmId());
 

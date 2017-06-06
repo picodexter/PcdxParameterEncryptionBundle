@@ -119,9 +119,9 @@ class ReplacementSourceDecrypterRegistrationHandlerTest extends \PHPUnit_Framewo
             'algo_03',
         ];
         $preparedServiceNames = [
-            ServiceNames::REPLACEMENT_SOURCE_DECRYPTER_ALGORITHM_PREFIX . $preparedAlgorithmIds[0],
-            ServiceNames::REPLACEMENT_SOURCE_DECRYPTER_ALGORITHM_PREFIX . $preparedAlgorithmIds[1],
-            ServiceNames::REPLACEMENT_SOURCE_DECRYPTER_ALGORITHM_PREFIX . $preparedAlgorithmIds[2],
+            ServiceNames::REPLACEMENT_SOURCE_DECRYPTER_ALGORITHM_PREFIX.$preparedAlgorithmIds[0],
+            ServiceNames::REPLACEMENT_SOURCE_DECRYPTER_ALGORITHM_PREFIX.$preparedAlgorithmIds[1],
+            ServiceNames::REPLACEMENT_SOURCE_DECRYPTER_ALGORITHM_PREFIX.$preparedAlgorithmIds[2],
         ];
         $preparedDefinitions = [
             $preparedServiceNames[0] => $this->createDefinitionMock(),

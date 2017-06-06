@@ -21,6 +21,6 @@ class ValueMerger implements ValueMergerInterface
      */
     public function merge($encryptedValue, $initializationVector)
     {
-        return $initializationVector . $encryptedValue;
+        return $initializationVector.$encryptedValue;
     }
 }

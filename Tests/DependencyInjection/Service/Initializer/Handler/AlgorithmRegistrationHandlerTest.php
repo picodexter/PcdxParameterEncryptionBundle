@@ -114,9 +114,9 @@ class AlgorithmRegistrationHandlerTest extends \PHPUnit_Framework_TestCase
     public function testRegisterAlgorithmsSuccessThreeDefinitions()
     {
         $preparedServiceNames = [
-            ServiceNames::ALGORITHM_CONFIGURATION_PREFIX . 'algo_01',
-            ServiceNames::ALGORITHM_CONFIGURATION_PREFIX . 'algo_02',
-            ServiceNames::ALGORITHM_CONFIGURATION_PREFIX . 'algo_03',
+            ServiceNames::ALGORITHM_CONFIGURATION_PREFIX.'algo_01',
+            ServiceNames::ALGORITHM_CONFIGURATION_PREFIX.'algo_02',
+            ServiceNames::ALGORITHM_CONFIGURATION_PREFIX.'algo_03',
         ];
         $preparedDefinitions = [
             $preparedServiceNames[0] => $this->createDefinitionMock(),

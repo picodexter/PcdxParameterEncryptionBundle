@@ -78,7 +78,7 @@ class ServiceNameGeneratorTest extends \PHPUnit_Framework_TestCase
             'id' => $preparedAlgorithmId,
         ]);
 
-        $this->assertSame(ServiceNames::ALGORITHM_CONFIGURATION_PREFIX . $preparedAlgorithmId, $serviceName);
+        $this->assertSame(ServiceNames::ALGORITHM_CONFIGURATION_PREFIX.$preparedAlgorithmId, $serviceName);
     }
 
     /**
@@ -101,7 +101,7 @@ class ServiceNameGeneratorTest extends \PHPUnit_Framework_TestCase
             'id' => $preparedAlgorithmId,
         ]);
 
-        $this->assertSame(ServiceNames::REPLACEMENT_PATTERN_ALGORITHM_PREFIX . $preparedAlgorithmId, $serviceName);
+        $this->assertSame(ServiceNames::REPLACEMENT_PATTERN_ALGORITHM_PREFIX.$preparedAlgorithmId, $serviceName);
     }
 
     /**
@@ -125,7 +125,7 @@ class ServiceNameGeneratorTest extends \PHPUnit_Framework_TestCase
         ]);
 
         $this->assertSame(
-            ServiceNames::REPLACEMENT_SOURCE_DECRYPTER_ALGORITHM_PREFIX . $preparedAlgorithmId,
+            ServiceNames::REPLACEMENT_SOURCE_DECRYPTER_ALGORITHM_PREFIX.$preparedAlgorithmId,
             $serviceName
         );
     }

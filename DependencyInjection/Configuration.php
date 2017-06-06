@@ -50,7 +50,7 @@ class Configuration implements ConfigurationInterface
                                     ->scalarNode('type')
                                         ->info(
                                             'Pattern type to recognize a value to replace with this algorithm.'
-                                            . ' (Default = value_prefix)'
+                                            .' (Default = value_prefix)'
                                         )
                                         ->isRequired()
                                         ->cannotBeEmpty()

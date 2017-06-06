@@ -337,8 +337,8 @@ class DecryptProcessorTest extends \PHPUnit_Framework_TestCase
         $output->expects($this->exactly(2))
             ->method('writeln')
             ->withConsecutive(
-                [$this->identicalTo('Decryption key:  "' . $key . '"')],
-                [$this->identicalTo('Decrypted value: "' . $decryptedValue . '"')]
+                [$this->identicalTo('Decryption key:  "'.$key.'"')],
+                [$this->identicalTo('Decrypted value: "'.$decryptedValue.'"')]
             );
     }
 

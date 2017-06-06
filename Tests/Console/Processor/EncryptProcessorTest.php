@@ -337,8 +337,8 @@ class EncryptProcessorTest extends \PHPUnit_Framework_TestCase
         $output->expects($this->exactly(2))
             ->method('writeln')
             ->withConsecutive(
-                [$this->identicalTo('Encryption key:  "' . $key . '"')],
-                [$this->identicalTo('Encrypted value: "' . $encryptedValue . '"')]
+                [$this->identicalTo('Encryption key:  "'.$key.'"')],
+                [$this->identicalTo('Encrypted value: "'.$encryptedValue.'"')]
             );
     }
 

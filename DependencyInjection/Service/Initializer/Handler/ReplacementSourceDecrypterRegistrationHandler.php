@@ -80,7 +80,7 @@ class ReplacementSourceDecrypterRegistrationHandler implements ReplacementSource
                     $this->referenceFactory->createReference(
                         $this->serviceNameGenerator->getReplacementPatternServiceNameForAlgorithm($algorithmConfig)
                     ),
-                    $algorithmConfig['decryption']['key'],
+                    $algorithmConfig['decryption']['key']['value'],
                 ]
             );
 

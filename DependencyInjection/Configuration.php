@@ -11,6 +11,7 @@
 
 namespace Picodexter\ParameterEncryptionBundle\DependencyInjection;
 
+use Symfony\Component\Config\Definition\Builder\NodeDefinition;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
@@ -61,38 +62,8 @@ class Configuration implements ConfigurationInterface
                                     ->end()
                                 ->end()
                             ->end()
-                            ->arrayNode('encryption')
-                                ->info('Configure encrypter.')
-                                ->isRequired()
-                                ->fixXmlConfig('argument')
-                                ->children()
-                                    ->scalarNode('service')
-                                        ->info('Symfony service name of encrypter.')
-                                        ->isRequired()
-                                        ->cannotBeEmpty()
-                                    ->end()
-                                    ->scalarNode('key')
-                                        ->info('Encryption key.')
-                                        ->defaultNull()
-                                    ->end()
-                                ->end()
-                            ->end()
-                            ->arrayNode('decryption')
-                                ->info('Configure decrypter.')
-                                ->isRequired()
-                                ->fixXmlConfig('argument')
-                                ->children()
-                                    ->scalarNode('service')
-                                        ->info('Symfony service name of decrypter.')
-                                        ->isRequired()
-                                        ->cannotBeEmpty()
-                                    ->end()
-                                    ->scalarNode('key')
-                                        ->info('Decryption key.')
-                                        ->defaultNull()
-                                    ->end()
-                                ->end()
-                            ->end()
+                            ->append($this->addCryptoNode('encrypt'))
+                            ->append($this->addCryptoNode('decrypt'))
                         ->end()
                     ->end()
                 ->end()
@@ -100,5 +71,72 @@ class Configuration implements ConfigurationInterface
         ;
 
         return $treeBuilder;
+    }
+
+    /**
+     * Add crypto node.
+     *
+     * @param string $type 'encrypt' or 'decrypt'
+     *
+     * @return NodeDefinition
+     */
+    public function addCryptoNode($type)
+    {
+        $builder = new TreeBuilder();
+        $node = $builder->root($type.'ion');
+
+        $node
+            ->info('Configure '.$type.'er.')
+            ->isRequired()
+            ->fixXmlConfig('argument')
+            ->children()
+                ->scalarNode('service')
+                    ->info('Symfony service name of '.$type.'er.')
+                    ->isRequired()
+                    ->cannotBeEmpty()
+                ->end()
+                ->arrayNode('key')
+                    ->info(ucfirst($type).'ion key settings.')
+                    ->beforeNormalization()
+                        ->ifTrue(function ($v) {
+                            return is_string($v);
+                        })
+                        ->then(function ($v) {
+                            return ['value' => $v];
+                        })
+                    ->end()
+                    ->addDefaultsIfNotSet()
+                    ->children()
+                        ->scalarNode('value')
+                            ->info('Either the key or a password to use for key generation.')
+                            ->defaultNull()
+                        ->end()
+                        ->scalarNode('type')
+                            ->info('Key type.')
+                            ->cannotBeEmpty()
+                            ->defaultValue('static')
+                        ->end()
+                        ->scalarNode('method')
+                            ->info('Generated key: generation method.')
+                            ->cannotBeEmpty()
+                            ->defaultValue('pbkdf2')
+                        ->end()
+                        ->scalarNode('hash_algorithm')
+                            ->info('Generated key: hash algorithm.')
+                            ->cannotBeEmpty()
+                        ->end()
+                        ->scalarNode('salt')
+                            ->info('Generated key: salt.')
+                            ->cannotBeEmpty()
+                        ->end()
+                        ->integerNode('cost')
+                            ->info('Generated key: cost.')
+                            ->min(1)
+                        ->end()
+                    ->end()
+                ->end()
+            ->end();
+
+        return $node;
     }
 }

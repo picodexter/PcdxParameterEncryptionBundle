@@ -158,21 +158,27 @@ class ReplacementSourceDecrypterRegistrationHandlerTest extends \PHPUnit_Framewo
                         'id' => $preparedAlgorithmIds[0],
                         'decryption' => [
                             'service' => 'algo_01_decrypter_service',
-                            'key' => 'secret123',
+                            'key' => [
+                                'value' => 'secret123',
+                            ],
                         ],
                     ],
                     [
                         'id' => $preparedServiceNames[1],
                         'decryption' => [
                             'service' => 'algo_02_decrypter_service',
-                            'key' => 'secret234',
+                            'key' => [
+                                'value' => 'secret234',
+                            ],
                         ],
                     ],
                     [
                         'id' => $preparedAlgorithmIds[2],
                         'decryption' => [
                             'service' => 'algo_03_decrypter_service',
-                            'key' => 'secret345',
+                            'key' => [
+                                'value' => 'secret345',
+                            ],
                         ],
                     ],
                 ],

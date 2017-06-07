@@ -79,10 +79,10 @@ class AlgorithmRegistrationHandler implements AlgorithmRegistrationHandlerInterf
                     $algorithmConfig['id'],
                     $this->referenceFactory->createReference($algorithmConfig['decryption']['service']),
                     $algorithmConfig['decryption']['service'],
-                    $algorithmConfig['decryption']['key'],
+                    $algorithmConfig['decryption']['key']['value'],
                     $this->referenceFactory->createReference($algorithmConfig['encryption']['service']),
                     $algorithmConfig['encryption']['service'],
-                    $algorithmConfig['encryption']['key'],
+                    $algorithmConfig['encryption']['key']['value'],
                     $this->referenceFactory->createReference(
                         $this->serviceNameGenerator->getReplacementPatternServiceNameForAlgorithm($algorithmConfig)
                     ),

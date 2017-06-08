@@ -48,10 +48,22 @@ Example Configuration
                             -   '...'
                     encryption:
                         service: 'some_encrypter_service'
-                        key: 'encryption_key'
+                        key:
+                            value: 'encryption_password'
+                            type: 'generated'
+                            method: 'pbkdf2'
+                            hash_algorithm: 'sha512'
+                            salt: 'encryption_password_salt'
+                            cost: 1000
                     decryption:
                         service: 'some_decrypter_service'
-                        key: 'decryption_key'
+                        key:
+                            value: 'decryption_password'
+                            type: 'generated'
+                            method: 'pbkdf2'
+                            hash_algorithm: 'sha512'
+                            salt: 'decryption_password_salt'
+                            cost: 1000
                 # additional algorithms ...
 
     .. code-block:: xml
@@ -85,10 +97,20 @@ Example Configuration
                         <ppe:argument>pattern_type_argument_2</ppe:argument>
                         <ppe:argument>...</ppe:argument>
                     </ppe:pattern>
-                    <ppe:encryption service="some_encrypter_service"
-                        key="encryption_key" />
-                    <ppe:decryption service="some_decrypter_service"
-                        key="decryption_key" />
+                    <ppe:encryption service="some_encrypter_service">
+                        <ppe:key type="generated"
+                            method="pbkdf2"
+                            hash-algorithm="sha512"
+                            salt="encryption_password_salt"
+                            cost="1000">encryption_password</ppe:key>
+                    </ppe:encryption>
+                    <ppe:decryption service="some_decrypter_service">
+                        <ppe:key type="generated"
+                            method="pbkdf2"
+                            hash-algorithm="sha512"
+                            salt="decryption_password_salt"
+                            cost="1000">decryption_password</ppe:key>
+                    </ppe:decryption>
                 </ppe:algorithm>
                 <!-- additional algorithms ... -->
             </ppe:config>
@@ -140,11 +162,25 @@ Example Configuration
                         ],
                         'encryption' => [
                             'service' => 'some_encrypter_service',
-                            'key' => 'encryption_key',
+                            'key' => [
+                                'value'          => 'encryption_password',
+                                'type'           => 'generated',
+                                'method'         => 'pbkdf2',
+                                'hash_algorithm' => 'sha512',
+                                'salt'           => 'encryption_password_salt',
+                                'cost'           => 1000,
+                            ],
                         ],
                         'decryption' => [
                             'service' => 'some_decrypter_service',
-                            'key' => 'decryption_key',
+                            'key' => [
+                                'value'          => 'decryption_password',
+                                'type'           => 'generated',
+                                'method'         => 'pbkdf2',
+                                'hash_algorithm' => 'sha512',
+                                'salt'           => 'decryption_password_salt',
+                                'cost'           => 1000,
+                            ],
                         ],
                     ],
                     // additional algorithms ...
@@ -155,48 +191,128 @@ Example Configuration
 Directive Overview
 ------------------
 
-+---------------------------------+------------------------------------------------------------------------------------+
-| Directive Name                  | Description                                                                        |
-+=================================+====================================================================================+
-| algorithms                      | Contains configuration about the enabled algorithms that can be used by this       |
-|                                 | bundle.                                                                            |
-+---------------------------------+------------------------------------------------------------------------------------+
-| algorithms.#.id                 | Algorithm ID. Used as the primary identifier for algorithms, e.g. for the encrypt  |
-|                                 | and decrypt console commands.                                                      |
-|                                 |                                                                                    |
-|                                 | Unique.                                                                            |
-+---------------------------------+------------------------------------------------------------------------------------+
-| algorithms.#.pattern            | Contains configuration about the replacement pattern that is used to detect if a   |
-|                                 | parameter is encrypted and which part of the parameter belongs to the encrypted    |
-|                                 | value.                                                                             |
-+---------------------------------+------------------------------------------------------------------------------------+
-| algorithms.#.pattern.type       | The replacement pattern type to use. Registered via the service                    |
-|                                 | ``pcdx_parameter_encryption.replacement.pattern.type_registry``.                   |
-+---------------------------------+------------------------------------------------------------------------------------+
-| algorithms.#.pattern.arguments  | Constructor arguments for the replacement pattern type.                            |
-|                                 |                                                                                    |
-|                                 | Optional depending on the replacement pattern type.                                |
-+---------------------------------+------------------------------------------------------------------------------------+
-| algorithms.#.encryption         | Contains configuration about the encrypter.                                        |
-+---------------------------------+------------------------------------------------------------------------------------+
-| algorithms.#.encryption.service | Encrypter service name.                                                            |
-+---------------------------------+------------------------------------------------------------------------------------+
-| algorithms.#.encryption.key     | Encryption key.                                                                    |
-|                                 |                                                                                    |
-|                                 | **Recommendation:** Do not hard-code this value and use a parameter instead. This  |
-|                                 | parameter could be defined in the unversioned ``parameters.yml`` file or via       |
-|                                 | environment variable.                                                              |
-+---------------------------------+------------------------------------------------------------------------------------+
-| algorithms.#.decryption         | Contains configuration about the decrypter.                                        |
-+---------------------------------+------------------------------------------------------------------------------------+
-| algorithms.#.decryption.service | Decrypter service name.                                                            |
-+---------------------------------+------------------------------------------------------------------------------------+
-| algorithms.#.decryption.key     | Decryption key.                                                                    |
-|                                 |                                                                                    |
-|                                 | **Recommendation:** Do not hard-code this value and use a parameter instead. This  |
-|                                 | parameter could be defined in the unversioned ``parameters.yml`` file or via       |
-|                                 | environment variable.                                                              |
-+---------------------------------+------------------------------------------------------------------------------------+
++--------------------------------------------+-------------------------------------------------------------------------+
+| Directive Name                             | Description                                                             |
++============================================+=========================================================================+
+| algorithms                                 | Contains configuration about the enabled algorithms that can be used by |
+|                                            | this bundle.                                                            |
++--------------------------------------------+-------------------------------------------------------------------------+
+| algorithms.#.id                            | Algorithm ID. Used as the primary identifier for algorithms, e.g. for   |
+|                                            | the encrypt and decrypt console commands.                               |
+|                                            |                                                                         |
+|                                            | Unique.                                                                 |
++--------------------------------------------+-------------------------------------------------------------------------+
+| algorithms.#.pattern                       | Contains configuration about the replacement pattern that is used to    |
+|                                            | detect if a parameter is encrypted and which part of the parameter      |
+|                                            | belongs to the encrypted value.                                         |
++--------------------------------------------+-------------------------------------------------------------------------+
+| algorithms.#.pattern.type                  | The replacement pattern type to use. Registered via the service         |
+|                                            | ``pcdx_parameter_encryption.replacement.pattern.type_registry``.        |
++--------------------------------------------+-------------------------------------------------------------------------+
+| algorithms.#.pattern.arguments             | Constructor arguments for the replacement pattern type.                 |
+|                                            |                                                                         |
+|                                            | Optional depending on the replacement pattern type.                     |
++--------------------------------------------+-------------------------------------------------------------------------+
+| algorithms.#.encryption                    | Contains configuration about the encrypter.                             |
++--------------------------------------------+-------------------------------------------------------------------------+
+| algorithms.#.encryption.service            | Encrypter service name.                                                 |
++--------------------------------------------+-------------------------------------------------------------------------+
+| algorithms.#.encryption.key                | Encryption key.                                                         |
+|                                            |                                                                         |
+|                                            | This can be a string value which gets interpreted as the sub-directive  |
+|                                            | "value", which works nicely if you just want to specify a static key    |
+|                                            | and don't need any other of the key configuration directives.           |
+|                                            |                                                                         |
+|                                            | **Recommendation:** Do not hard-code this value and use a parameter     |
+|                                            | instead. This parameter could be defined in the unversioned             |
+|                                            | ``parameters.yml`` file or via environment variable.                    |
++--------------------------------------------+-------------------------------------------------------------------------+
+| algorithms.#.encryption.key.value          | Key or a password to use in order to generate the key.                  |
++--------------------------------------------+-------------------------------------------------------------------------+
+| algorithms.#.encryption.key.type           | Key type.                                                               |
+|                                            |                                                                         |
+|                                            | Supported values:                                                       |
+|                                            |                                                                         |
+|                                            | * ``static`` *(default)*                                                |
+|                                            | * ``generated``                                                         |
++--------------------------------------------+-------------------------------------------------------------------------+
+| algorithms.#.encryption.key.method         | Generated key: method.                                                  |
+|                                            |                                                                         |
+|                                            | The method to use in order to generate the key.                         |
+|                                            |                                                                         |
+|                                            | Supported values:                                                       |
+|                                            |                                                                         |
+|                                            | * ``pbkdf2`` *(default)*                                                |
++--------------------------------------------+-------------------------------------------------------------------------+
+| algorithms.#.encryption.key.hash_algorithm | Generated key: hash algorithm.                                          |
+|                                            |                                                                         |
+|                                            | The hash algorithm to use in order to generate the key.                 |
+|                                            |                                                                         |
+|                                            | Only used with method "pbkdf2".                                         |
+|                                            |                                                                         |
+|                                            | Supported values: any of the supported algorithms listed in PHP's       |
+|                                            | function ``hash_algos()``.                                              |
++--------------------------------------------+-------------------------------------------------------------------------+
+| algorithms.#.encryption.key.salt           | Generated key: salt.                                                    |
+|                                            |                                                                         |
+|                                            | Salt to use in order to generate the key.                               |
++--------------------------------------------+-------------------------------------------------------------------------+
+| algorithms.#.encryption.key.cost           | Generated key: cost.                                                    |
+|                                            |                                                                         |
+|                                            | Cost to use in order to generate the key.                               |
+|                                            |                                                                         |
+|                                            | Equates to iteration count for method "pbkdf2".                         |
++--------------------------------------------+-------------------------------------------------------------------------+
+| algorithms.#.decryption                    | Contains configuration about the decrypter.                             |
++--------------------------------------------+-------------------------------------------------------------------------+
+| algorithms.#.decryption.service            | Decrypter service name.                                                 |
++--------------------------------------------+-------------------------------------------------------------------------+
+| algorithms.#.decryption.key                | Decryption key configuration.                                           |
+|                                            |                                                                         |
+|                                            | This can be a string value which gets interpreted as the sub-directive  |
+|                                            | "value", which works nicely if you just want to specify a static key    |
+|                                            | and don't need any other of the key configuration directives.           |
+|                                            |                                                                         |
+|                                            | **Recommendation:** Do not hard-code this value and use a parameter     |
+|                                            | instead. This parameter could be defined in the unversioned             |
+|                                            | ``parameters.yml`` file or via environment variable.                    |
++--------------------------------------------+-------------------------------------------------------------------------+
+| algorithms.#.decryption.key.value          | Key or a password to use in order to generate the key.                  |
++--------------------------------------------+-------------------------------------------------------------------------+
+| algorithms.#.decryption.key.type           | Key type.                                                               |
+|                                            |                                                                         |
+|                                            | Supported values:                                                       |
+|                                            |                                                                         |
+|                                            | * ``static`` *(default)*                                                |
+|                                            | * ``generated``                                                         |
++--------------------------------------------+-------------------------------------------------------------------------+
+| algorithms.#.decryption.key.method         | Generated key: method.                                                  |
+|                                            |                                                                         |
+|                                            | The method to use in order to generate the key.                         |
+|                                            |                                                                         |
+|                                            | Supported values:                                                       |
+|                                            |                                                                         |
+|                                            | * ``pbkdf2`` *(default)*                                                |
++--------------------------------------------+-------------------------------------------------------------------------+
+| algorithms.#.decryption.key.hash_algorithm | Generated key: hash algorithm.                                          |
+|                                            |                                                                         |
+|                                            | The hash algorithm to use in order to generate the key.                 |
+|                                            |                                                                         |
+|                                            | Only used with method "pbkdf2".                                         |
+|                                            |                                                                         |
+|                                            | Supported values: any of the supported algorithms listed in PHP's       |
+|                                            | function ``hash_algos()``.                                              |
++--------------------------------------------+-------------------------------------------------------------------------+
+| algorithms.#.decryption.key.salt           | Generated key: salt.                                                    |
+|                                            |                                                                         |
+|                                            | Salt to use in order to generate the key.                               |
++--------------------------------------------+-------------------------------------------------------------------------+
+| algorithms.#.decryption.key.cost           | Generated key: cost.                                                    |
+|                                            |                                                                         |
+|                                            | Cost to use in order to generate the key.                               |
+|                                            |                                                                         |
+|                                            | Equates to iteration count for method "pbkdf2".                         |
++--------------------------------------------+-------------------------------------------------------------------------+
 
 Replacement Pattern Types
 -------------------------

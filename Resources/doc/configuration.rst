@@ -5,11 +5,11 @@ This bundle uses semantic configuration that can be used with either YAML, XML
 or PHP.
 
 Every single directive has a description which can be shown by using the
-``config:dump`` command:
+``config:dump-reference`` command:
 
 .. code-block:: terminal
 
-    $ php bin/console config:dump pcdx_parameter_encryption
+    $ php bin/console config:dump-reference pcdx_parameter_encryption
 
 Example Configuration
 ---------------------

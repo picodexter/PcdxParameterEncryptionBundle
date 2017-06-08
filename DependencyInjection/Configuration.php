@@ -11,6 +11,7 @@
 
 namespace Picodexter\ParameterEncryptionBundle\DependencyInjection;
 
+use Picodexter\ParameterEncryptionBundle\Configuration\Key\Type\StaticKeyType;
 use Symfony\Component\Config\Definition\Builder\NodeDefinition;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
@@ -114,7 +115,7 @@ class Configuration implements ConfigurationInterface
                         ->scalarNode('type')
                             ->info('Key type.')
                             ->cannotBeEmpty()
-                            ->defaultValue('static')
+                            ->defaultValue(StaticKeyType::TYPE_NAME)
                         ->end()
                         ->scalarNode('method')
                             ->info('Generated key: generation method.')

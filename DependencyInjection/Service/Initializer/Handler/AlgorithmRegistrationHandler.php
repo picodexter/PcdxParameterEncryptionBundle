@@ -12,10 +12,10 @@
 namespace Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\Initializer\Handler;
 
 use Picodexter\ParameterEncryptionBundle\Configuration\AlgorithmConfiguration;
-use Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\ServiceNameGeneratorInterface;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\BundleConfigurationValidatorInterface;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\DefinitionFactoryInterface;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\ReferenceFactoryInterface;
+use Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\ServiceNameGeneratorInterface;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\ServiceNames;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 

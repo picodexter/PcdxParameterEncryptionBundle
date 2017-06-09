@@ -16,6 +16,7 @@ use Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\ServiceName
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\BundleConfigurationValidatorInterface;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\DefinitionFactoryInterface;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\ReferenceFactoryInterface;
+use Picodexter\ParameterEncryptionBundle\DependencyInjection\ServiceNames;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 class AlgorithmRegistrationHandler implements AlgorithmRegistrationHandlerInterface
@@ -76,18 +77,19 @@ class AlgorithmRegistrationHandler implements AlgorithmRegistrationHandlerInterf
             $algorithmDefinition = $this->definitionFactory->createDefinition(
                 AlgorithmConfiguration::class,
                 [
-                    $algorithmConfig['id'],
+                    $algorithmConfig,
                     $this->referenceFactory->createReference($algorithmConfig['decryption']['service']),
-                    $algorithmConfig['decryption']['service'],
-                    $algorithmConfig['decryption']['key']['value'],
                     $this->referenceFactory->createReference($algorithmConfig['encryption']['service']),
-                    $algorithmConfig['encryption']['service'],
-                    $algorithmConfig['encryption']['key']['value'],
                     $this->referenceFactory->createReference(
                         $this->serviceNameGenerator->getReplacementPatternServiceNameForAlgorithm($algorithmConfig)
                     ),
                 ]
             );
+
+            $algorithmDefinition->setFactory([
+                $this->referenceFactory->createReference(ServiceNames::ALGORITHM_CONFIGURATION_FACTORY),
+                'createAlgorithmConfiguration',
+            ]);
 
             $algorithmDefinition->setPublic(false);
 

@@ -181,6 +181,22 @@ class KeyTypeRegistryTest extends \PHPUnit_Framework_TestCase
         $this->assertCount($expectedCount, $this->registry->getKeyTypes());
     }
 
+    public function testSetKeyTypesSuccessReplaceCompletely()
+    {
+        $keyType1 = new StaticKeyType();
+        $keyType2 = new GeneratedKeyType();
+
+        $this->assertCount(0, $this->registry->getKeyTypes());
+
+        $this->registry->setKeyTypes([$keyType1]);
+
+        $this->assertCount(1, $this->registry->getKeyTypes());
+
+        $this->registry->setKeyTypes([$keyType2]);
+
+        $this->assertCount(1, $this->registry->getKeyTypes());
+    }
+
     /**
      * Create mock for KeyTypeInterface.
      *

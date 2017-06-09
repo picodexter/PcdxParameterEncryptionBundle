@@ -44,6 +44,8 @@ class KeyTypeRegistry implements KeyTypeRegistryInterface
      */
     public function setKeyTypes($keyTypes)
     {
+        $this->keyTypes = [];
+
         foreach ($keyTypes as $keyType) {
             if ($keyType instanceof KeyTypeInterface) {
                 $this->add($keyType);

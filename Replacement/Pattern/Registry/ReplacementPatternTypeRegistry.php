@@ -60,6 +60,6 @@ class ReplacementPatternTypeRegistry implements ReplacementPatternTypeRegistryIn
      */
     public function has($name)
     {
-        return key_exists($name, $this->patternTypes);
+        return array_key_exists($name, $this->patternTypes);
     }
 }

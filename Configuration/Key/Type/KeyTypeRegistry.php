@@ -78,6 +78,6 @@ class KeyTypeRegistry implements KeyTypeRegistryInterface
      */
     public function has($name)
     {
-        return key_exists($name, $this->keyTypes);
+        return array_key_exists($name, $this->keyTypes);
     }
 }

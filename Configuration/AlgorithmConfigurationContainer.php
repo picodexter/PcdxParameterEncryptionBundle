@@ -54,7 +54,7 @@ class AlgorithmConfigurationContainer implements AlgorithmConfigurationContainer
         $indexedAlgorithms = [];
 
         foreach ($validAlgorithms as $algorithm) {
-            if (key_exists($algorithm->getId(), $indexedAlgorithms)) {
+            if (array_key_exists($algorithm->getId(), $indexedAlgorithms)) {
                 throw new DuplicateAlgorithmIdException($algorithm);
             }
 
@@ -77,6 +77,6 @@ class AlgorithmConfigurationContainer implements AlgorithmConfigurationContainer
      */
     public function has($id)
     {
-        return key_exists($id, $this->algorithmConfigurations);
+        return array_key_exists($id, $this->algorithmConfigurations);
     }
 }

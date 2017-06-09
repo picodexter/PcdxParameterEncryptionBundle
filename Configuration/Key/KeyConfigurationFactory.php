@@ -41,29 +41,29 @@ class KeyConfigurationFactory implements KeyConfigurationFactoryInterface
     {
         $keyConfiguration = new KeyConfiguration();
 
-        if (key_exists('cost', $keyConfig)) {
+        if (array_key_exists('cost', $keyConfig)) {
             $keyConfiguration->setCost($keyConfig['cost']);
         }
 
-        if (key_exists('hash_algorithm', $keyConfig)) {
+        if (array_key_exists('hash_algorithm', $keyConfig)) {
             $keyConfiguration->setHashAlgorithm($keyConfig['hash_algorithm']);
         }
 
-        if (key_exists('method', $keyConfig)) {
+        if (array_key_exists('method', $keyConfig)) {
             $keyConfiguration->setMethod($keyConfig['method']);
         }
 
-        if (key_exists('salt', $keyConfig)) {
+        if (array_key_exists('salt', $keyConfig)) {
             $keyConfiguration->setSalt($keyConfig['salt']);
         }
 
-        if (key_exists('type', $keyConfig)) {
+        if (array_key_exists('type', $keyConfig)) {
             $this->assertValidKeyType($keyConfig['type']);
 
             $keyConfiguration->setType($keyConfig['type']);
         }
 
-        if (key_exists('value', $keyConfig)) {
+        if (array_key_exists('value', $keyConfig)) {
             $keyConfiguration->setValue($keyConfig['value']);
         }
 

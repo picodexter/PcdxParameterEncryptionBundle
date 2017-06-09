@@ -63,6 +63,6 @@ class ReplacementPatternRegistry implements ReplacementPatternRegistryInterface
      */
     public function has($algorithmId)
     {
-        return key_exists($algorithmId, $this->replacementPatterns);
+        return array_key_exists($algorithmId, $this->replacementPatterns);
     }
 }

@@ -23,7 +23,7 @@ class BundleConfigurationValidator implements BundleConfigurationValidatorInterf
      */
     public function assertValidBundleConfiguration(array $bundleConfig)
     {
-        if (!key_exists('algorithms', $bundleConfig) || !is_array($bundleConfig['algorithms'])) {
+        if (!array_key_exists('algorithms', $bundleConfig) || !is_array($bundleConfig['algorithms'])) {
             throw new InvalidBundleConfigurationException();
         }
     }

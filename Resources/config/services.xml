@@ -39,6 +39,15 @@
             public="false">
         </service>
 
+        <service id="pcdx_parameter_encryption.configuration.key.type.registry"
+            class="Picodexter\ParameterEncryptionBundle\Configuration\Key\Type\KeyTypeRegistry"
+            public="false">
+            <argument type="collection">
+                <argument type="service" id="pcdx_parameter_encryption.configuration.key.type.generated" />
+                <argument type="service" id="pcdx_parameter_encryption.configuration.key.type.static" />
+            </argument>
+        </service>
+
         <service id="pcdx_parameter_encryption.configuration.key.type.static"
             class="Picodexter\ParameterEncryptionBundle\Configuration\Key\Type\StaticKeyType"
             public="false">

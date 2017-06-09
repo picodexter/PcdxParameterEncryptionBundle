@@ -34,6 +34,11 @@
             </argument>
         </service>
 
+        <service id="pcdx_parameter_encryption.configuration.key.type.static"
+            class="Picodexter\ParameterEncryptionBundle\Configuration\Key\Type\StaticKeyType"
+            public="false">
+        </service>
+
         <service id="pcdx_parameter_encryption.console.dispatcher.algorithm_list"
             class="Picodexter\ParameterEncryptionBundle\Console\Dispatcher\AlgorithmListDispatcher"
             public="false">

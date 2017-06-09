@@ -13,6 +13,7 @@ namespace Picodexter\ParameterEncryptionBundle\Tests\Configuration\Key;
 
 use Picodexter\ParameterEncryptionBundle\Configuration\Key\KeyConfiguration;
 use Picodexter\ParameterEncryptionBundle\Configuration\Key\KeyConfigurationFactory;
+use Picodexter\ParameterEncryptionBundle\Configuration\Key\Type\KeyTypeInterface;
 use Picodexter\ParameterEncryptionBundle\Configuration\Key\Type\KeyTypeRegistryInterface;
 
 class KeyConfigurationFactoryTest extends \PHPUnit_Framework_TestCase
@@ -111,16 +112,22 @@ class KeyConfigurationFactoryTest extends \PHPUnit_Framework_TestCase
     public function testCreateKeyConfigurationSuccessType()
     {
         $keyTypeName = 'valid_key_type';
+        $keyType = $this->createKeyTypeInterfaceMock();
 
         $this->keyTypeRegistry->expects($this->once())
             ->method('has')
             ->with($this->identicalTo($keyTypeName))
             ->will($this->returnValue(true));
 
+        $this->keyTypeRegistry->expects($this->once())
+            ->method('get')
+            ->with($this->identicalTo($keyTypeName))
+            ->will($this->returnValue($keyType));
+
         $keyConfig = $this->factory->createKeyConfiguration(['type' => $keyTypeName]);
 
         $this->assertInstanceOf(KeyConfiguration::class, $keyConfig);
-        $this->assertSame($keyTypeName, $keyConfig->getType());
+        $this->assertSame($keyType, $keyConfig->getType());
     }
 
     public function testCreateKeyConfigurationSuccessValue()
@@ -131,6 +138,16 @@ class KeyConfigurationFactoryTest extends \PHPUnit_Framework_TestCase
 
         $this->assertInstanceOf(KeyConfiguration::class, $keyConfig);
         $this->assertSame($value, $keyConfig->getValue());
+    }
+
+    /**
+     * Create mock for KeyTypeInterface.
+     *
+     * @return KeyTypeInterface|\PHPUnit_Framework_MockObject_MockObject
+     */
+    private function createKeyTypeInterfaceMock()
+    {
+        return $this->getMockBuilder(KeyTypeInterface::class)->getMock();
     }
 
     /**

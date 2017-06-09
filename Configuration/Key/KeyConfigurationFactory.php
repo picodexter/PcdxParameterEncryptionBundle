@@ -60,7 +60,7 @@ class KeyConfigurationFactory implements KeyConfigurationFactoryInterface
         if (array_key_exists('type', $keyConfig)) {
             $this->assertValidKeyType($keyConfig['type']);
 
-            $keyConfiguration->setType($keyConfig['type']);
+            $keyConfiguration->setType($this->keyTypeRegistry->get($keyConfig['type']));
         }
 
         if (array_key_exists('value', $keyConfig)) {

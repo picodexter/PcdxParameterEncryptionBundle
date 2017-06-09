@@ -11,6 +11,7 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Configuration\Key;
 
+use Picodexter\ParameterEncryptionBundle\Configuration\Key\Type\KeyTypeInterface;
 use Picodexter\ParameterEncryptionBundle\Configuration\Key\Type\StaticKeyType;
 
 /**
@@ -39,14 +40,22 @@ class KeyConfiguration
     private $salt = null;
 
     /**
-     * @var string
+     * @var KeyTypeInterface
      */
-    private $type = StaticKeyType::TYPE_NAME;
+    private $type = null;
 
     /**
      * @var string|null
      */
     private $value = null;
+
+    /**
+     * Constructor.
+     */
+    public function __construct()
+    {
+        $this->type = new StaticKeyType();
+    }
 
     /**
      * Getter: cost.
@@ -131,7 +140,7 @@ class KeyConfiguration
     /**
      * Getter: type.
      *
-     * @return string
+     * @return KeyTypeInterface
      */
     public function getType()
     {
@@ -141,9 +150,9 @@ class KeyConfiguration
     /**
      * Setter: type.
      *
-     * @param string $type
+     * @param KeyTypeInterface $type
      */
-    public function setType($type)
+    public function setType(KeyTypeInterface $type)
     {
         $this->type = $type;
     }

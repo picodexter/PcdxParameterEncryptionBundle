@@ -12,6 +12,7 @@
 namespace Picodexter\ParameterEncryptionBundle\Tests\Configuration\Key;
 
 use Picodexter\ParameterEncryptionBundle\Configuration\Key\KeyConfiguration;
+use Picodexter\ParameterEncryptionBundle\Configuration\Key\Type\GeneratedKeyType;
 use Picodexter\ParameterEncryptionBundle\Configuration\Key\Type\StaticKeyType;
 
 class KeyConfigurationTest extends \PHPUnit_Framework_TestCase
@@ -120,9 +121,9 @@ class KeyConfigurationTest extends \PHPUnit_Framework_TestCase
 
     public function testGetSetTypeSuccess()
     {
-        $preparedType = 'some_type';
+        $preparedType = new GeneratedKeyType();
 
-        $this->assertSame(StaticKeyType::TYPE_NAME, $this->keyConfig->getType());
+        $this->assertInstanceOf(StaticKeyType::class, $this->keyConfig->getType());
 
         $this->keyConfig->setType($preparedType);
 

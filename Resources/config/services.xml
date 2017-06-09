@@ -34,6 +34,12 @@
             </argument>
         </service>
 
+        <service id="pcdx_parameter_encryption.configuration.algorithm_configuration_factory"
+            class="Picodexter\ParameterEncryptionBundle\Configuration\AlgorithmConfigurationFactory"
+            public="false">
+            <argument type="service" id="pcdx_parameter_encryption.configuration.key.configuration_factory" />
+        </service>
+
         <service id="pcdx_parameter_encryption.configuration.key.configuration_factory"
             class="Picodexter\ParameterEncryptionBundle\Configuration\Key\KeyConfigurationFactory"
             public="false">

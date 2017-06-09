@@ -167,7 +167,7 @@ class DecryptProcessorTest extends \PHPUnit_Framework_TestCase
         $this->setUpAlgorithmConfigurationContainerGetAlgorithmConfiguration($algorithmId, $algorithmConfig);
 
         $algorithmConfig->expects($this->once())
-            ->method('getDecryptionKey')
+            ->method('getDecryptionKeyConfig')
             ->with()
             ->will($this->returnValue($key));
 

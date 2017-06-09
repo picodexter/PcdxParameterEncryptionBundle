@@ -93,7 +93,7 @@ class EncryptProcessor implements EncryptProcessorInterface
 
         $plaintextValue = $this->getPlaintextValue($request);
 
-        $key = $this->getKey($request, $algorithmConfig->getEncryptionKey());
+        $key = $this->getKey($request, $algorithmConfig->getEncryptionKeyConfig());
 
         $encryptedValue = $algorithmConfig->getEncrypter()->encryptValue($plaintextValue, $key);
 

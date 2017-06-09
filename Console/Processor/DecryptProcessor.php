@@ -93,7 +93,7 @@ class DecryptProcessor implements DecryptProcessorInterface
 
         $plaintextValue = $this->getEncryptedValue($request);
 
-        $key = $this->getKey($request, $algorithmConfig->getDecryptionKey());
+        $key = $this->getKey($request, $algorithmConfig->getDecryptionKeyConfig());
 
         $decryptedValue = $algorithmConfig->getDecrypter()->decryptValue($plaintextValue, $key);
 

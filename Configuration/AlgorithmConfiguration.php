@@ -11,6 +11,7 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Configuration;
 
+use Picodexter\ParameterEncryptionBundle\Configuration\Key\KeyConfiguration;
 use Picodexter\ParameterEncryptionBundle\Encryption\Decrypter\DecrypterInterface;
 use Picodexter\ParameterEncryptionBundle\Encryption\Encrypter\EncrypterInterface;
 use Picodexter\ParameterEncryptionBundle\Exception\Configuration\InvalidAlgorithmIdException;
@@ -37,9 +38,9 @@ class AlgorithmConfiguration
     private $decrypterServiceName;
 
     /**
-     * @var string|null
+     * @var KeyConfiguration
      */
-    private $decryptionKey;
+    private $decryptionKeyConfig;
 
     /**
      * @var EncrypterInterface
@@ -52,9 +53,9 @@ class AlgorithmConfiguration
     private $encrypterServiceName;
 
     /**
-     * @var string|null
+     * @var KeyConfiguration
      */
-    private $encryptionKey;
+    private $encryptionKeyConfig;
 
     /**
      * @var ReplacementPatternInterface
@@ -64,13 +65,13 @@ class AlgorithmConfiguration
     /**
      * Constructor.
      *
-     * @param string                      $id
-     * @param DecrypterInterface          $decrypter
-     * @param string                      $decrypterServiceName
-     * @param string|null                 $decryptionKey
-     * @param EncrypterInterface          $encrypter
-     * @param string                      $encrypterServiceName
-     * @param string|null                 $encryptionKey
+     * @param string             $id
+     * @param DecrypterInterface $decrypter
+     * @param string             $decrypterServiceName
+     * @param KeyConfiguration   $decryptionKeyConfig
+     * @param EncrypterInterface $encrypter
+     * @param string             $encrypterServiceName
+     * @param KeyConfiguration   $encryptionKeyConfig
      * @param ReplacementPatternInterface $replacementPattern
      *
      * @throws InvalidAlgorithmIdException
@@ -79,19 +80,19 @@ class AlgorithmConfiguration
         $id,
         DecrypterInterface $decrypter,
         $decrypterServiceName,
-        $decryptionKey,
+        KeyConfiguration $decryptionKeyConfig,
         EncrypterInterface $encrypter,
         $encrypterServiceName,
-        $encryptionKey,
+        KeyConfiguration $encryptionKeyConfig,
         ReplacementPatternInterface $replacementPattern
     ) {
         $this->setId($id);
         $this->decrypter = $decrypter;
         $this->decrypterServiceName = $decrypterServiceName;
-        $this->decryptionKey = $decryptionKey;
+        $this->decryptionKeyConfig = $decryptionKeyConfig;
         $this->encrypter = $encrypter;
         $this->encrypterServiceName = $encrypterServiceName;
-        $this->encryptionKey = $encryptionKey;
+        $this->encryptionKeyConfig = $encryptionKeyConfig;
         $this->replacementPattern = $replacementPattern;
     }
 
@@ -164,23 +165,23 @@ class AlgorithmConfiguration
     }
 
     /**
-     * Getter: decryptionKey.
+     * Getter: decryptionKeyConfig.
      *
-     * @return string|null
+     * @return KeyConfiguration
      */
-    public function getDecryptionKey()
+    public function getDecryptionKeyConfig()
     {
-        return $this->decryptionKey;
+        return $this->decryptionKeyConfig;
     }
 
     /**
-     * Setter: decryptionKey.
+     * Setter: decryptionKeyConfig.
      *
-     * @param string|null $decryptionKey
+     * @param KeyConfiguration $decryptionKeyConfig
      */
-    public function setDecryptionKey($decryptionKey)
+    public function setDecryptionKeyConfig(KeyConfiguration $decryptionKeyConfig)
     {
-        $this->decryptionKey = $decryptionKey;
+        $this->decryptionKeyConfig = $decryptionKeyConfig;
     }
 
     /**
@@ -224,23 +225,23 @@ class AlgorithmConfiguration
     }
 
     /**
-     * Getter: encryptionKey.
+     * Getter: encryptionKeyConfig.
      *
-     * @return string|null
+     * @return KeyConfiguration
      */
-    public function getEncryptionKey()
+    public function getEncryptionKeyConfig()
     {
-        return $this->encryptionKey;
+        return $this->encryptionKeyConfig;
     }
 
     /**
-     * Setter: encryptionKey.
+     * Setter: encryptionKeyConfig.
      *
-     * @param string|null $encryptionKey
+     * @param KeyConfiguration $encryptionKeyConfig
      */
-    public function setEncryptionKey($encryptionKey)
+    public function setEncryptionKeyConfig(KeyConfiguration $encryptionKeyConfig)
     {
-        $this->encryptionKey = $encryptionKey;
+        $this->encryptionKeyConfig = $encryptionKeyConfig;
     }
 
     /**

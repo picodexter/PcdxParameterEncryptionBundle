@@ -13,6 +13,7 @@ namespace Picodexter\ParameterEncryptionBundle\Tests\Configuration;
 
 use Picodexter\ParameterEncryptionBundle\Configuration\AlgorithmConfiguration;
 use Picodexter\ParameterEncryptionBundle\Configuration\AlgorithmConfigurationContainer;
+use Picodexter\ParameterEncryptionBundle\Configuration\Key\KeyConfiguration;
 use Picodexter\ParameterEncryptionBundle\Encryption\Decrypter\DecrypterInterface;
 use Picodexter\ParameterEncryptionBundle\Encryption\Encrypter\EncrypterInterface;
 use Picodexter\ParameterEncryptionBundle\Replacement\Pattern\ReplacementPatternInterface;
@@ -198,17 +199,19 @@ class AlgorithmConfigurationContainerTest extends \PHPUnit_Framework_TestCase
     private function createAlgorithmConfigurationWithId($id)
     {
         $decrypter = $this->createDecrypterInterfaceMock();
+        $decryptionKeyConfig = $this->createKeyConfigurationMock();
         $encrypter = $this->createEncrypterInterfaceMock();
+        $encryptionKeyConfig = $this->createKeyConfigurationMock();
         $replacementPattern = $this->createReplacementPatternInterfaceMock();
 
         return new AlgorithmConfiguration(
             $id,
             $decrypter,
             'decrypter_service',
-            null,
+            $decryptionKeyConfig,
             $encrypter,
             'encrypter_service',
-            null,
+            $encryptionKeyConfig,
             $replacementPattern
         );
     }
@@ -231,6 +234,16 @@ class AlgorithmConfigurationContainerTest extends \PHPUnit_Framework_TestCase
     private function createEncrypterInterfaceMock()
     {
         return $this->getMockBuilder(EncrypterInterface::class)->getMock();
+    }
+
+    /**
+     * Create mock for KeyConfiguration.
+     *
+     * @return KeyConfiguration|\PHPUnit_Framework_MockObject_MockObject
+     */
+    private function createKeyConfigurationMock()
+    {
+        return $this->getMockBuilder(KeyConfiguration::class)->getMock();
     }
 
     /**

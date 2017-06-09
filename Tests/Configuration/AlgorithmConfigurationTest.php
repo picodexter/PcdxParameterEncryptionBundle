@@ -12,6 +12,7 @@
 namespace Picodexter\ParameterEncryptionBundle\Tests\Configuration;
 
 use Picodexter\ParameterEncryptionBundle\Configuration\AlgorithmConfiguration;
+use Picodexter\ParameterEncryptionBundle\Configuration\Key\KeyConfiguration;
 use Picodexter\ParameterEncryptionBundle\Encryption\Decrypter\DecrypterInterface;
 use Picodexter\ParameterEncryptionBundle\Encryption\Encrypter\EncrypterInterface;
 use Picodexter\ParameterEncryptionBundle\Replacement\Pattern\ReplacementPatternInterface;
@@ -157,19 +158,19 @@ class AlgorithmConfigurationTest extends \PHPUnit_Framework_TestCase
 
     public function testGetSetDecryptionKeySuccess()
     {
-        $preparedKey = 'secret_foo123';
+        $preparedKeyConfig = $this->createKeyConfigurationMock();
 
         $algorithm = $this->createAlgorithmConfigurationWithId('algo_01');
 
-        $key = $algorithm->getDecryptionKey();
+        $key = $algorithm->getDecryptionKeyConfig();
 
-        $this->assertNotSame($preparedKey, $key);
+        $this->assertNotSame($preparedKeyConfig, $key);
 
-        $algorithm->setDecryptionKey($preparedKey);
+        $algorithm->setDecryptionKeyConfig($preparedKeyConfig);
 
-        $key = $algorithm->getDecryptionKey();
+        $key = $algorithm->getDecryptionKeyConfig();
 
-        $this->assertSame($preparedKey, $key);
+        $this->assertSame($preparedKeyConfig, $key);
     }
 
     public function testGetSetEncrypterSuccess()
@@ -208,19 +209,19 @@ class AlgorithmConfigurationTest extends \PHPUnit_Framework_TestCase
 
     public function testGetSetEncryptionKeySuccess()
     {
-        $preparedKey = 'secret_foo123';
+        $preparedKeyConfig = $this->createKeyConfigurationMock();
 
         $algorithm = $this->createAlgorithmConfigurationWithId('algo_01');
 
-        $key = $algorithm->getEncryptionKey();
+        $key = $algorithm->getEncryptionKeyConfig();
 
-        $this->assertNotSame($preparedKey, $key);
+        $this->assertNotSame($preparedKeyConfig, $key);
 
-        $algorithm->setEncryptionKey($preparedKey);
+        $algorithm->setEncryptionKeyConfig($preparedKeyConfig);
 
-        $key = $algorithm->getEncryptionKey();
+        $key = $algorithm->getEncryptionKeyConfig();
 
-        $this->assertSame($preparedKey, $key);
+        $this->assertSame($preparedKeyConfig, $key);
     }
 
     public function testGetSetReplacementPatternSuccess()
@@ -250,17 +251,19 @@ class AlgorithmConfigurationTest extends \PHPUnit_Framework_TestCase
     private function createAlgorithmConfigurationWithId($id)
     {
         $decrypter = $this->createDecrypterInterfaceMock();
+        $decryptionKeyConfig = $this->createKeyConfigurationMock();
         $encrypter = $this->createEncrypterInterfaceMock();
+        $encryptionKeyConfig = $this->createKeyConfigurationMock();
         $replacementPattern = $this->createReplacementPatternInterfaceMock();
 
         return new AlgorithmConfiguration(
             $id,
             $decrypter,
             'decrypter_service',
-            'key_decryption',
+            $decryptionKeyConfig,
             $encrypter,
             'encrypter_service',
-            'key_encryption',
+            $encryptionKeyConfig,
             $replacementPattern
         );
     }
@@ -283,6 +286,16 @@ class AlgorithmConfigurationTest extends \PHPUnit_Framework_TestCase
     private function createEncrypterInterfaceMock()
     {
         return $this->getMockBuilder(EncrypterInterface::class)->getMock();
+    }
+
+    /**
+     * Create mock for KeyConfiguration.
+     *
+     * @return \Picodexter\ParameterEncryptionBundle\Configuration\Key\KeyConfiguration|\PHPUnit_Framework_MockObject_MockObject
+     */
+    private function createKeyConfigurationMock()
+    {
+        return $this->getMockBuilder(\Picodexter\ParameterEncryptionBundle\Configuration\Key\KeyConfiguration::class)->getMock();
     }
 
     /**

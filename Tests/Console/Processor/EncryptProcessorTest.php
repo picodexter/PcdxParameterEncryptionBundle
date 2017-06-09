@@ -167,7 +167,7 @@ class EncryptProcessorTest extends \PHPUnit_Framework_TestCase
         $this->setUpAlgorithmConfigurationContainerGetAlgorithmConfiguration($algorithmId, $algorithmConfig);
 
         $algorithmConfig->expects($this->once())
-            ->method('getEncryptionKey')
+            ->method('getEncryptionKeyConfig')
             ->with()
             ->will($this->returnValue($key));
 

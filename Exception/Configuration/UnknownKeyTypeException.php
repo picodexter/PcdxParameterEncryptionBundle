@@ -28,6 +28,6 @@ class UnknownKeyTypeException extends InvalidKeyConfigurationException
     {
         parent::__construct($previous);
 
-        $this->message = sprintf('Unknown key type: %s', $keyTypeName);
+        $this->message = sprintf('Unknown key type "%s"', $keyTypeName);
     }
 }

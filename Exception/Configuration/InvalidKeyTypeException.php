@@ -16,7 +16,7 @@ use Throwable;
 /**
  * InvalidKeyTypeException.
  */
-class InvalidKeyTypeException extends InvalidAlgorithmConfigurationException
+class InvalidKeyTypeException extends InvalidKeyConfigurationException
 {
     /**
      * Constructor.

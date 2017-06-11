@@ -12,7 +12,7 @@
 namespace Picodexter\ParameterEncryptionBundle\Configuration\Key;
 
 use Picodexter\ParameterEncryptionBundle\Configuration\Key\Type\KeyTypeRegistryInterface;
-use Picodexter\ParameterEncryptionBundle\Exception\Configuration\InvalidKeyTypeException;
+use Picodexter\ParameterEncryptionBundle\Exception\Configuration\UnknownKeyTypeException;
 
 /**
  * KeyConfigurationFactory.
@@ -75,12 +75,12 @@ class KeyConfigurationFactory implements KeyConfigurationFactoryInterface
      *
      * @param string $keyTypeName
      *
-     * @throws InvalidKeyTypeException
+     * @throws UnknownKeyTypeException
      */
     private function assertValidKeyType($keyTypeName)
     {
         if (!$this->keyTypeRegistry->has($keyTypeName)) {
-            throw new InvalidKeyTypeException($keyTypeName);
+            throw new UnknownKeyTypeException($keyTypeName);
         }
     }
 }

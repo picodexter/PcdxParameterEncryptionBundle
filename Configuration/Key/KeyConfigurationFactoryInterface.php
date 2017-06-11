@@ -11,7 +11,7 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Configuration\Key;
 
-use Picodexter\ParameterEncryptionBundle\Exception\Configuration\InvalidKeyTypeException;
+use Picodexter\ParameterEncryptionBundle\Exception\Configuration\UnknownKeyTypeException;
 
 /**
  * KeyConfigurationFactoryInterface.
@@ -23,7 +23,7 @@ interface KeyConfigurationFactoryInterface
      *
      * @param array $keyConfig
      *
-     * @throws InvalidKeyTypeException
+     * @throws UnknownKeyTypeException
      */
     public function createKeyConfiguration(array $keyConfig);
 }

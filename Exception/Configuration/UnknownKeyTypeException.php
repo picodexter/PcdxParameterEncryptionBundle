@@ -14,9 +14,9 @@ namespace Picodexter\ParameterEncryptionBundle\Exception\Configuration;
 use Throwable;
 
 /**
- * InvalidKeyTypeException.
+ * UnknownKeyTypeException.
  */
-class InvalidKeyTypeException extends InvalidKeyConfigurationException
+class UnknownKeyTypeException extends InvalidKeyConfigurationException
 {
     /**
      * Constructor.
@@ -28,6 +28,6 @@ class InvalidKeyTypeException extends InvalidKeyConfigurationException
     {
         parent::__construct($previous);
 
-        $this->message = sprintf('Invalid key type: %s', $keyTypeName);
+        $this->message = sprintf('Unknown key type: %s', $keyTypeName);
     }
 }

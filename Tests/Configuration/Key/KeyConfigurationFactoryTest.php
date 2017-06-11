@@ -48,7 +48,7 @@ class KeyConfigurationFactoryTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException \Picodexter\ParameterEncryptionBundle\Exception\Configuration\InvalidKeyTypeException
+     * @expectedException \Picodexter\ParameterEncryptionBundle\Exception\Configuration\UnknownKeyTypeException
      */
     public function testCreateKeyConfigurationExceptionInvalidType()
     {

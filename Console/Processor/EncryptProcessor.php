@@ -13,6 +13,7 @@ namespace Picodexter\ParameterEncryptionBundle\Console\Processor;
 
 use Picodexter\ParameterEncryptionBundle\Configuration\AlgorithmConfigurationContainerInterface;
 use Picodexter\ParameterEncryptionBundle\Console\Helper\AlgorithmIdValidatorInterface;
+use Picodexter\ParameterEncryptionBundle\Console\Renderer\CryptRendererInterface;
 use Picodexter\ParameterEncryptionBundle\Console\Request\EncryptRequest;
 use Symfony\Component\Console\Output\OutputInterface;
 
@@ -21,6 +22,11 @@ use Symfony\Component\Console\Output\OutputInterface;
  */
 class EncryptProcessor implements EncryptProcessorInterface
 {
+    /**
+     * @var ActiveKeyConfigurationProviderInterface
+     */
+    private $activeKeyConfigProvider;
+
     /**
      * @var AlgorithmConfigurationContainerInterface
      */
@@ -32,36 +38,36 @@ class EncryptProcessor implements EncryptProcessorInterface
     private $algorithmIdValidator;
 
     /**
-     * Constructor.
-     *
-     * @param AlgorithmConfigurationContainerInterface $algorithmContainer
-     * @param AlgorithmIdValidatorInterface            $algorithmIdValidator
+     * @var CryptRendererInterface
      */
-    public function __construct(
-        AlgorithmConfigurationContainerInterface $algorithmContainer,
-        AlgorithmIdValidatorInterface $algorithmIdValidator
-    ) {
-        $this->algorithmConfigContainer = $algorithmContainer;
-        $this->algorithmIdValidator = $algorithmIdValidator;
-    }
+    private $renderer;
 
     /**
-     * Get key.
-     *
-     * @param EncryptRequest $request
-     * @param string         $configKey
-     *
-     * @return string|null
+     * @var TransformedKeyProviderInterface
      */
-    private function getKey(EncryptRequest $request, $configKey)
-    {
-        if (!$request->isKeyProvided()) {
-            $key = $configKey;
-        } else {
-            $key = $request->getKey();
-        }
+    private $transformedKeyProvider;
 
-        return $key;
+    /**
+     * Constructor.
+     *
+     * @param ActiveKeyConfigurationProviderInterface  $activeKeyCnfProvider
+     * @param AlgorithmConfigurationContainerInterface $algorithmContainer
+     * @param AlgorithmIdValidatorInterface            $algorithmIdValidator
+     * @param CryptRendererInterface                   $renderer
+     * @param TransformedKeyProviderInterface          $transfKeyProvider
+     */
+    public function __construct(
+        ActiveKeyConfigurationProviderInterface $activeKeyCnfProvider,
+        AlgorithmConfigurationContainerInterface $algorithmContainer,
+        AlgorithmIdValidatorInterface $algorithmIdValidator,
+        CryptRendererInterface $renderer,
+        TransformedKeyProviderInterface $transfKeyProvider
+    ) {
+        $this->activeKeyConfigProvider = $activeKeyCnfProvider;
+        $this->algorithmConfigContainer = $algorithmContainer;
+        $this->algorithmIdValidator = $algorithmIdValidator;
+        $this->renderer = $renderer;
+        $this->transformedKeyProvider = $transfKeyProvider;
     }
 
     /**
@@ -93,27 +99,17 @@ class EncryptProcessor implements EncryptProcessorInterface
 
         $plaintextValue = $this->getPlaintextValue($request);
 
-        $key = $this->getKey($request, $algorithmConfig->getEncryptionKeyConfig());
+        $activeKeyConfig = $this->activeKeyConfigProvider->getActiveKeyConfiguration(
+            $request->isKeyProvided(),
+            $request->getKey(),
+            $algorithmConfig->getEncryptionKeyConfig()
+        );
 
-        $encryptedValue = $algorithmConfig->getEncrypter()->encryptValue($plaintextValue, $key);
+        $transformedKey = $this->transformedKeyProvider->getTransformedKey($activeKeyConfig);
 
-        $this->renderOutput($encryptedValue, $key, $output);
-    }
+        $encryptedValue = $algorithmConfig->getEncrypter()
+            ->encryptValue($plaintextValue, $transformedKey->getFinalKey());
 
-    /**
-     * Render output.
-     *
-     * @param string          $encryptedValue
-     * @param string          $key
-     * @param OutputInterface $output
-     */
-    private function renderOutput($encryptedValue, $key, OutputInterface $output)
-    {
-        if (OutputInterface::VERBOSITY_QUIET === $output->getVerbosity()) {
-            $output->writeln($encryptedValue, OutputInterface::VERBOSITY_QUIET);
-        } else {
-            $output->writeln('Encryption key:  "'.$key.'"');
-            $output->writeln('Encrypted value: "'.$encryptedValue.'"');
-        }
+        $this->renderer->renderOutput($encryptedValue, $transformedKey, $output);
     }
 }

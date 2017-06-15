@@ -16,7 +16,7 @@ use Picodexter\ParameterEncryptionBundle\Exception\Encryption\InvalidBase64Value
 /**
  * Base64Decoder.
  */
-class Base64Decoder implements DecoderInterface
+class Base64Decoder implements Base64DecoderInterface
 {
     /**
      * @inheritDoc

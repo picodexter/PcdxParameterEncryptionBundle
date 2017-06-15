@@ -12,15 +12,8 @@
 namespace Picodexter\ParameterEncryptionBundle\Encryption\Value\Encoding;
 
 /**
- * Base64Encoder.
+ * Base64DecoderInterface.
  */
-class Base64Encoder implements Base64EncoderInterface
+interface Base64DecoderInterface extends DecoderInterface
 {
-    /**
-     * @inheritDoc
-     */
-    public function encode($plainValue)
-    {
-        return base64_encode((string) $plainValue);
-    }
 }

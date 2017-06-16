@@ -34,6 +34,26 @@ relevant read access to both pieces of information as well.
 Additionally, anyone who can read the Symfony application cache would be able
 to extract the dumped container including all decrypted parameters anyway.
 
+## Features
+
+*   Provides encryption for Symfony parameters
+*   Does not impact overall application performance when container is cached
+*   Allows defining keys in base64 encoded format to support binary values
+*   Allows generating keys with PBKDF2
+*   Allows specifying multiple algorithm configurations to enable usage of
+    different methods of encryption in the same application
+*   Modular approach to harness encryption ciphers from reputable third-party
+    Composer packages
+*   Highly configurable
+*   Highly extensible (custom encrypters, decrypters, key transformers, ...)
+*   100% code coverage
+
+Furthermore, this bundle comes with the following ciphers out-of-the-box:
+
+### Symmetric Ciphers
+
+*   Caesar
+
 ## Documentation
 
 The documentation source files are located in the `Resources/doc/` directory of

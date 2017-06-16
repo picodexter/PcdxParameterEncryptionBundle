@@ -51,16 +51,16 @@ class AlgorithmConfigurationFactory implements AlgorithmConfigurationFactoryInte
         $decryptionKeyConfig = $this->keyConfigFactory->createKeyConfiguration($algorithmConfig['decryption']['key']);
         $encryptionKeyConfig = $this->keyConfigFactory->createKeyConfiguration($algorithmConfig['encryption']['key']);
 
-        return new AlgorithmConfiguration(
-            $algorithmConfig['id'],
-            $decrypter,
-            $algorithmConfig['decryption']['service'],
-            $decryptionKeyConfig,
-            $encrypter,
-            $algorithmConfig['encryption']['service'],
-            $encryptionKeyConfig,
-            $replacementPattern
-        );
+        $algoId = $algorithmConfig['id'];
+        $dcrptr = $decrypter;
+        $dKeyCnf = $decryptionKeyConfig;
+        $dSvcName = $algorithmConfig['decryption']['service'];
+        $ecrptr = $encrypter;
+        $eKeyCnf = $encryptionKeyConfig;
+        $eSvcName = $algorithmConfig['encryption']['service'];
+        $pttrn = $replacementPattern;
+
+        return new AlgorithmConfiguration($algoId, $dcrptr, $dSvcName, $dKeyCnf, $ecrptr, $eSvcName, $eKeyCnf, $pttrn);
     }
 
     /**

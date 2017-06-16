@@ -113,49 +113,57 @@ class ReplacementSourceDecrypterRegistrationHandlerTest extends \PHPUnit_Framewo
 
     public function testRegisterReplacementSourceDecryptersSuccessThreeDefinitions()
     {
-        $preparedAlgorithmIds = [
+        $prepAlgorithmIds = [
             'algo_01',
             'algo_02',
             'algo_03',
         ];
-        $preparedServiceNames = [
-            ServiceNames::REPLACEMENT_SOURCE_DECRYPTER_ALGORITHM_PREFIX.$preparedAlgorithmIds[0],
-            ServiceNames::REPLACEMENT_SOURCE_DECRYPTER_ALGORITHM_PREFIX.$preparedAlgorithmIds[1],
-            ServiceNames::REPLACEMENT_SOURCE_DECRYPTER_ALGORITHM_PREFIX.$preparedAlgorithmIds[2],
+        $prepServiceNames = [
+            ServiceNames::REPLACEMENT_SOURCE_DECRYPTER_ALGORITHM_PREFIX.$prepAlgorithmIds[0],
+            ServiceNames::REPLACEMENT_SOURCE_DECRYPTER_ALGORITHM_PREFIX.$prepAlgorithmIds[1],
+            ServiceNames::REPLACEMENT_SOURCE_DECRYPTER_ALGORITHM_PREFIX.$prepAlgorithmIds[2],
         ];
-        $preparedDefinitions = [
-            $preparedServiceNames[0] => $this->createDefinitionMock(),
-            $preparedServiceNames[1] => $this->createDefinitionMock(),
-            $preparedServiceNames[2] => $this->createDefinitionMock(),
+        $prepKeyConfDefs = [
+            $this->createDefinitionMock(),
+            $this->createDefinitionMock(),
+            $this->createDefinitionMock(),
+        ];
+        $prepSourceDefs = [
+            $prepServiceNames[0] => $this->createDefinitionMock(),
+            $prepServiceNames[1] => $this->createDefinitionMock(),
+            $prepServiceNames[2] => $this->createDefinitionMock(),
         ];
 
         $container = $this->createContainerBuilderMock();
 
-        $this->definitionFactory->expects($this->exactly(3))
+        $this->definitionFactory->expects($this->exactly(6))
             ->method('createDefinition')
             ->will($this->onConsecutiveCalls(
-                $preparedDefinitions[$preparedServiceNames[0]],
-                $preparedDefinitions[$preparedServiceNames[1]],
-                $preparedDefinitions[$preparedServiceNames[2]]
+                $prepKeyConfDefs[0],
+                $prepSourceDefs[$prepServiceNames[0]],
+                $prepKeyConfDefs[1],
+                $prepSourceDefs[$prepServiceNames[1]],
+                $prepKeyConfDefs[2],
+                $prepSourceDefs[$prepServiceNames[2]]
             ));
 
         $this->serviceNameGenerator->expects($this->exactly(3))
             ->method('getReplacementsourceDecrypterServiceNameForAlgorithm')
             ->will($this->onConsecutiveCalls(
-                $preparedServiceNames[0],
-                $preparedServiceNames[1],
-                $preparedServiceNames[2]
+                $prepServiceNames[0],
+                $prepServiceNames[1],
+                $prepServiceNames[2]
             ));
 
         $container->expects($this->once())
             ->method('addDefinitions')
-            ->with($this->identicalTo($preparedDefinitions));
+            ->with($this->identicalTo($prepSourceDefs));
 
         $this->handler->registerReplacementSourceDecrypters(
             [
                 'algorithms' => [
                     [
-                        'id' => $preparedAlgorithmIds[0],
+                        'id' => $prepAlgorithmIds[0],
                         'decryption' => [
                             'service' => 'algo_01_decrypter_service',
                             'key' => [
@@ -164,7 +172,7 @@ class ReplacementSourceDecrypterRegistrationHandlerTest extends \PHPUnit_Framewo
                         ],
                     ],
                     [
-                        'id' => $preparedServiceNames[1],
+                        'id' => $prepServiceNames[1],
                         'decryption' => [
                             'service' => 'algo_02_decrypter_service',
                             'key' => [
@@ -173,7 +181,7 @@ class ReplacementSourceDecrypterRegistrationHandlerTest extends \PHPUnit_Framewo
                         ],
                     ],
                     [
-                        'id' => $preparedAlgorithmIds[2],
+                        'id' => $prepAlgorithmIds[2],
                         'decryption' => [
                             'service' => 'algo_03_decrypter_service',
                             'key' => [

@@ -11,10 +11,12 @@
 
 namespace Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\Initializer\Handler;
 
+use Picodexter\ParameterEncryptionBundle\Configuration\Key\KeyConfiguration;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\BundleConfigurationValidatorInterface;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\DefinitionFactoryInterface;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\ReferenceFactoryInterface;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\ServiceNameGeneratorInterface;
+use Picodexter\ParameterEncryptionBundle\DependencyInjection\ServiceNames;
 use Picodexter\ParameterEncryptionBundle\Replacement\Source\DecrypterReplacementSource;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
@@ -73,14 +75,24 @@ class ReplacementSourceDecrypterRegistrationHandler implements ReplacementSource
         $definitions = [];
 
         foreach ($bundleConfig['algorithms'] as $algorithmConfig) {
+            $decryptionKeyConfDef = $this->definitionFactory->createDefinition(
+                KeyConfiguration::class,
+                [$algorithmConfig['decryption']['key']]
+            );
+            $decryptionKeyConfDef->setFactory([
+                $this->referenceFactory->createReference(ServiceNames::KEY_CONFIGURATION_FACTORY),
+                'createKeyConfiguration',
+            ]);
+
             $definition = $this->definitionFactory->createDefinition(
                 DecrypterReplacementSource::class,
                 [
                     $this->referenceFactory->createReference($algorithmConfig['decryption']['service']),
+                    $decryptionKeyConfDef,
+                    $this->referenceFactory->createReference(ServiceNames::KEY_FETCHER),
                     $this->referenceFactory->createReference(
                         $this->serviceNameGenerator->getReplacementPatternServiceNameForAlgorithm($algorithmConfig)
                     ),
-                    $algorithmConfig['decryption']['key']['value'],
                 ]
             );
 

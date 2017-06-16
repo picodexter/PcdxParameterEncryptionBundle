@@ -337,6 +337,11 @@
             <argument type="service" id="pcdx_parameter_encryption.encryption.value.encoding.decoder.base64" />
         </service>
 
+        <service id="pcdx_parameter_encryption.encryption.key.transformer.generator.password_based.bcrypt"
+            class="Picodexter\ParameterEncryptionBundle\Encryption\Key\Transformer\BcryptPasswordBasedGeneratorKeyTransformer"
+            public="false">
+        </service>
+
         <service id="pcdx_parameter_encryption.encryption.key.transformer.generator.password_based.pbkdf2"
             class="Picodexter\ParameterEncryptionBundle\Encryption\Key\Transformer\Pbkdf2PasswordBasedGeneratorKeyTransformer"
             public="false">

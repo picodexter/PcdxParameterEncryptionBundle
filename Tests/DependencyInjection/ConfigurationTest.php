@@ -121,6 +121,7 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
                                     'service' => 'algo_01_encrypter',
                                     'key' => [
                                         'value'          => 'algo_01_encryption_password',
+                                        'base64_encoded' => true,
                                         'type'           => 'generated',
                                         'method'         => 'pbkdf2',
                                         'hash_algorithm' => 'sha512',
@@ -132,6 +133,7 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
                                     'service' => 'algo_01_decrypter',
                                     'key' => [
                                         'value'          => 'algo_01_decryption_password',
+                                        'base64_encoded' => true,
                                         'type'           => 'generated',
                                         'method'         => 'pbkdf2',
                                         'hash_algorithm' => 'sha512',
@@ -154,6 +156,7 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
                                     'service' => 'algo_02_encrypter',
                                     'key' => [
                                         'value'          => 'algo_02_encryption_password',
+                                        'base64_encoded' => true,
                                         'type'           => 'generated',
                                         'method'         => 'pbkdf2',
                                         'hash_algorithm' => 'sha512',
@@ -165,6 +168,7 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
                                     'service' => 'algo_02_decrypter',
                                     'key' => [
                                         'value'          => 'algo_02_decryption_password',
+                                        'base64_encoded' => true,
                                         'type'           => 'generated',
                                         'method'         => 'pbkdf2',
                                         'hash_algorithm' => 'sha512',
@@ -187,6 +191,7 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
                                     'service' => 'algo_03_encrypter',
                                     'key' => [
                                         'value'          => 'algo_03_encryption_password',
+                                        'base64_encoded' => true,
                                         'type'           => 'generated',
                                         'method'         => 'pbkdf2',
                                         'hash_algorithm' => 'sha512',
@@ -198,6 +203,7 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
                                     'service' => 'algo_03_decrypter',
                                     'key' => [
                                         'value'          => 'algo_03_decryption_password',
+                                        'base64_encoded' => true,
                                         'type'           => 'generated',
                                         'method'         => 'pbkdf2',
                                         'hash_algorithm' => 'sha512',
@@ -332,6 +338,29 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
                                 ],
                                 'encryption' => [
                                     'service' => null,
+                                ],
+                                'decryption' => [
+                                    'service' => 'algo_01_decrypter',
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+            'algorithms.#.encryption.key.base64_encoded is set and not boolean' => [
+                [
+                    'pcdx_parameter_encryption' => [
+                        'algorithms' => [
+                            [
+                                'id' => 'algo_01',
+                                'pattern' => [
+                                    'type' => 'value_prefix',
+                                ],
+                                'encryption' => [
+                                    'service' => 'algo_01_encrypter',
+                                    'key' => [
+                                        'base64_encoded' => '1',
+                                    ],
                                 ],
                                 'decryption' => [
                                     'service' => 'algo_01_decrypter',
@@ -511,6 +540,29 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
                                 ],
                                 'decryption' => [
                                     'service' => null,
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+            'algorithms.#.decryption.key.base64_encoded is set and not boolean' => [
+                [
+                    'pcdx_parameter_encryption' => [
+                        'algorithms' => [
+                            [
+                                'id' => 'algo_01',
+                                'pattern' => [
+                                    'type' => 'value_prefix',
+                                ],
+                                'encryption' => [
+                                    'service' => 'algo_01_encrypter',
+                                ],
+                                'decryption' => [
+                                    'service' => 'algo_01_decrypter',
+                                    'key' => [
+                                        'base64_encoded' => '1',
+                                    ],
                                 ],
                             ],
                         ],

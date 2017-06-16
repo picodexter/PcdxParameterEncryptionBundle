@@ -50,6 +50,7 @@ Example Configuration
                         service: 'some_encrypter_service'
                         key:
                             value: 'encryption_password'
+                            base64_encoded: false
                             type: 'generated'
                             method: 'pbkdf2'
                             hash_algorithm: 'sha512'
@@ -59,6 +60,7 @@ Example Configuration
                         service: 'some_decrypter_service'
                         key:
                             value: 'decryption_password'
+                            base64_encoded: false
                             type: 'generated'
                             method: 'pbkdf2'
                             hash_algorithm: 'sha512'
@@ -98,14 +100,16 @@ Example Configuration
                         <ppe:argument>...</ppe:argument>
                     </ppe:pattern>
                     <ppe:encryption service="some_encrypter_service">
-                        <ppe:key type="generated"
+                        <ppe:key base64-encoded="false"
+                            type="generated"
                             method="pbkdf2"
                             hash-algorithm="sha512"
                             salt="encryption_password_salt"
                             cost="1000">encryption_password</ppe:key>
                     </ppe:encryption>
                     <ppe:decryption service="some_decrypter_service">
-                        <ppe:key type="generated"
+                        <ppe:key base64-encoded="false"
+                            type="generated"
                             method="pbkdf2"
                             hash-algorithm="sha512"
                             salt="decryption_password_salt"
@@ -164,6 +168,7 @@ Example Configuration
                             'service' => 'some_encrypter_service',
                             'key' => [
                                 'value'          => 'encryption_password',
+                                'base64_encoded' => false,
                                 'type'           => 'generated',
                                 'method'         => 'pbkdf2',
                                 'hash_algorithm' => 'sha512',
@@ -175,6 +180,7 @@ Example Configuration
                             'service' => 'some_decrypter_service',
                             'key' => [
                                 'value'          => 'decryption_password',
+                                'base64_encoded' => false,
                                 'type'           => 'generated',
                                 'method'         => 'pbkdf2',
                                 'hash_algorithm' => 'sha512',
@@ -229,6 +235,8 @@ Directive Overview
 +--------------------------------------------+-------------------------------------------------------------------------+
 | algorithms.#.encryption.key.value          | Key or a password to use in order to generate the key.                  |
 +--------------------------------------------+-------------------------------------------------------------------------+
+| algorithms.#.encryption.key.base64_encoded | Key / password (value) is base64 encoded.                               |
++--------------------------------------------+-------------------------------------------------------------------------+
 | algorithms.#.encryption.key.type           | Key type.                                                               |
 |                                            |                                                                         |
 |                                            | Supported values:                                                       |
@@ -278,6 +286,8 @@ Directive Overview
 |                                            | ``parameters.yml`` file or via environment variable.                    |
 +--------------------------------------------+-------------------------------------------------------------------------+
 | algorithms.#.decryption.key.value          | Key or a password to use in order to generate the key.                  |
++--------------------------------------------+-------------------------------------------------------------------------+
+| algorithms.#.decryption.key.base64_encoded | Key / password (value) is base64 encoded.                               |
 +--------------------------------------------+-------------------------------------------------------------------------+
 | algorithms.#.decryption.key.type           | Key type.                                                               |
 |                                            |                                                                         |

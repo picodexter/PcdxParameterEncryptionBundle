@@ -39,6 +39,7 @@
     <xsd:complexType name="key">
         <xsd:simpleContent>
             <xsd:extension base="xsd:string">
+                <xsd:attribute name="base64-encoded" type="xsd:boolean" />
                 <xsd:attribute name="type" type="xsd:string" />
                 <xsd:attribute name="method" type="xsd:string" />
                 <xsd:attribute name="hash-algorithm" type="xsd:string" />

@@ -281,6 +281,13 @@
             public="false">
         </service>
 
+        <service id="pcdx_parameter_encryption.encryption.key.fetcher"
+            class="Picodexter\ParameterEncryptionBundle\Encryption\Key\KeyFetcher"
+            public="false">
+            <argument type="service" id="pcdx_parameter_encryption.encryption.key.cache" />
+            <argument type="service" id="pcdx_parameter_encryption.encryption.key.resolver" />
+        </service>
+
         <service id="pcdx_parameter_encryption.encryption.key.resolver"
             class="Picodexter\ParameterEncryptionBundle\Encryption\Key\KeyResolver"
             public="false">

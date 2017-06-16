@@ -35,14 +35,10 @@ class BcryptPasswordBasedGeneratorKeyTransformer implements KeyTransformerInterf
     {
         $this->assertValidKeyConfiguration($keyConfig);
 
-        $generatedKey = password_hash(
-            $key,
-            PASSWORD_BCRYPT,
-            [
-                'salt' => $keyConfig->getSalt(),
-                'cost' => $keyConfig->getCost(),
-            ]
-        );
+        $generatedKey = password_hash($key, PASSWORD_BCRYPT, [
+            'salt' => $keyConfig->getSalt(),
+            'cost' => $keyConfig->getCost(),
+        ]);
 
         return $generatedKey;
     }

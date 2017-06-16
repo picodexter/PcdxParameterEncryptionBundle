@@ -41,6 +41,10 @@ class KeyConfigurationFactory implements KeyConfigurationFactoryInterface
     {
         $keyConfiguration = new KeyConfiguration();
 
+        if (array_key_exists('base64_encoded', $keyConfig)) {
+            $keyConfiguration->setBase64Encoded($keyConfig['base64_encoded']);
+        }
+
         if (array_key_exists('cost', $keyConfig)) {
             $keyConfiguration->setCost($keyConfig['cost']);
         }

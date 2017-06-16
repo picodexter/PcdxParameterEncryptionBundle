@@ -62,6 +62,16 @@ class KeyConfigurationFactoryTest extends \PHPUnit_Framework_TestCase
         $this->factory->createKeyConfiguration(['type' => $keyTypeName]);
     }
 
+    public function testCreateKeyConfigurationSuccessBase64Encoded()
+    {
+        $base64Encoded = true;
+
+        $keyConfig = $this->factory->createKeyConfiguration(['base64_encoded' => true]);
+
+        $this->assertInstanceOf(KeyConfiguration::class, $keyConfig);
+        $this->assertSame($base64Encoded, $keyConfig->isBase64Encoded());
+    }
+
     public function testCreateKeyConfigurationSuccessCost()
     {
         $cost = 1000;

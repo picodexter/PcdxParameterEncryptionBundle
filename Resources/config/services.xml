@@ -327,6 +327,7 @@
             class="Picodexter\ParameterEncryptionBundle\Encryption\Key\KeyResolver"
             public="false">
             <argument type="collection">
+                <argument type="service" id="pcdx_parameter_encryption.encryption.key.transformer.base64_decoder" />
                 <argument type="service" id="pcdx_parameter_encryption.encryption.key.transformer.generator.password_based.pbkdf2" />
             </argument>
         </service>

@@ -123,6 +123,12 @@
             public="false">
         </service>
 
+        <service id="pcdx_parameter_encryption.console.processor.active_key_configuration_provider"
+            class="Picodexter\ParameterEncryptionBundle\Console\Processor\ActiveKeyConfigurationProvider"
+            public="false">
+            <argument type="service" id="pcdx_parameter_encryption.configuration.key.configuration_factory" />
+        </service>
+
         <service id="pcdx_parameter_encryption.console.processor.algorithm_list"
             class="Picodexter\ParameterEncryptionBundle\Console\Processor\AlgorithmListProcessor"
             public="false">

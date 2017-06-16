@@ -281,6 +281,11 @@
             public="false">
         </service>
 
+        <service id="pcdx_parameter_encryption.encryption.key.transformer.generator.password_based.pbkdf2"
+            class="Picodexter\ParameterEncryptionBundle\Encryption\Key\Transformer\Pbkdf2PasswordBasedGeneratorKeyTransformer"
+            public="false">
+        </service>
+
         <service id="pcdx_parameter_encryption.encryption.value.encoding.decoder.base64"
             class="Picodexter\ParameterEncryptionBundle\Encryption\Value\Encoding\Base64Decoder"
             public="false">

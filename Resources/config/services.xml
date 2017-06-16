@@ -281,6 +281,14 @@
             public="false">
         </service>
 
+        <service id="pcdx_parameter_encryption.encryption.key.resolver"
+            class="Picodexter\ParameterEncryptionBundle\Encryption\Key\KeyResolver"
+            public="false">
+            <argument type="collection">
+                <argument type="service" id="pcdx_parameter_encryption.encryption.key.transformer.generator.password_based.pbkdf2" />
+            </argument>
+        </service>
+
         <service id="pcdx_parameter_encryption.encryption.key.transformer.generator.password_based.pbkdf2"
             class="Picodexter\ParameterEncryptionBundle\Encryption\Key\Transformer\Pbkdf2PasswordBasedGeneratorKeyTransformer"
             public="false">

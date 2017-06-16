@@ -13,9 +13,14 @@ namespace Picodexter\ParameterEncryptionBundle\Tests\Console\Processor;
 
 use Picodexter\ParameterEncryptionBundle\Configuration\AlgorithmConfiguration;
 use Picodexter\ParameterEncryptionBundle\Configuration\AlgorithmConfigurationContainerInterface;
+use Picodexter\ParameterEncryptionBundle\Configuration\Key\KeyConfiguration;
 use Picodexter\ParameterEncryptionBundle\Console\Helper\AlgorithmIdValidatorInterface;
 use Picodexter\ParameterEncryptionBundle\Console\Helper\QuestionAskerInterface;
+use Picodexter\ParameterEncryptionBundle\Console\Processor\ActiveKeyConfigurationProviderInterface;
 use Picodexter\ParameterEncryptionBundle\Console\Processor\DecryptProcessor;
+use Picodexter\ParameterEncryptionBundle\Console\Processor\TransformedKey;
+use Picodexter\ParameterEncryptionBundle\Console\Processor\TransformedKeyProviderInterface;
+use Picodexter\ParameterEncryptionBundle\Console\Renderer\CryptRendererInterface;
 use Picodexter\ParameterEncryptionBundle\Console\Request\DecryptRequest;
 use Picodexter\ParameterEncryptionBundle\Encryption\Decrypter\DecrypterInterface;
 use Picodexter\ParameterEncryptionBundle\Exception\Console\UnknownAlgorithmIdException;
@@ -23,6 +28,11 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class DecryptProcessorTest extends \PHPUnit_Framework_TestCase
 {
+    /**
+     * @var ActiveKeyConfigurationProviderInterface|\PHPUnit_Framework_MockObject_MockObject
+     */
+    private $activeKeyConfigProvider;
+
     /**
      * @var AlgorithmConfigurationContainerInterface|\PHPUnit_Framework_MockObject_MockObject
      */
@@ -39,14 +49,33 @@ class DecryptProcessorTest extends \PHPUnit_Framework_TestCase
     private $processor;
 
     /**
+     * @var CryptRendererInterface|\PHPUnit_Framework_MockObject_MockObject
+     */
+    private $renderer;
+
+    /**
+     * @var TransformedKeyProviderInterface|\PHPUnit_Framework_MockObject_MockObject
+     */
+    private $transformedKeyProvider;
+
+    /**
      * PHPUnit: setUp.
      */
     public function setUp()
     {
+        $this->activeKeyConfigProvider = $this->createActiveKeyConfigurationProviderInterfaceMock();
         $this->algorithmConfigContainer = $this->createAlgorithmConfigurationContainerInterfaceMock();
         $this->algorithmIdValidator = $this->createAlgorithmIdValidatorInterfaceMock();
+        $this->renderer = $this->createCryptRendererInterfaceMock();
+        $this->transformedKeyProvider = $this->createTransformedKeyProviderInterfaceMock();
 
-        $this->processor = new DecryptProcessor($this->algorithmConfigContainer, $this->algorithmIdValidator);
+        $this->processor = new DecryptProcessor(
+            $this->activeKeyConfigProvider,
+            $this->algorithmConfigContainer,
+            $this->algorithmIdValidator,
+            $this->renderer,
+            $this->transformedKeyProvider
+        );
     }
 
     /**
@@ -55,7 +84,11 @@ class DecryptProcessorTest extends \PHPUnit_Framework_TestCase
     public function tearDown()
     {
         $this->processor = null;
+        $this->transformedKeyProvider = null;
+        $this->renderer = null;
+        $this->algorithmIdValidator = null;
         $this->algorithmConfigContainer = null;
+        $this->activeKeyConfigProvider = null;
     }
 
     /**
@@ -86,6 +119,7 @@ class DecryptProcessorTest extends \PHPUnit_Framework_TestCase
     {
         $algorithmId = 'algo_01';
         $key = 'secret key';
+        $keyProvided = true;
         $encryptedValue = 'this is encrypted';
         $decryptedValue = 'decrypted value';
 
@@ -94,19 +128,35 @@ class DecryptProcessorTest extends \PHPUnit_Framework_TestCase
             $this->createQuestionAskerInterfaceMock(),
             $encryptedValue,
             $key,
-            true
+            $keyProvided
         );
         $output = $this->createOutputInterfaceMock();
         $algorithmConfig = $this->createAlgorithmConfigurationMock();
+        $keyConfig = $this->createKeyConfigurationMock();
+        $activeKeyConfig = $this->createKeyConfigurationMock();
         $decrypter = $this->createDecrypterInterfaceMock();
+        $transformedKey = $this->createTransformedKeyMock();
 
         $this->setUpAlgorithmConfigurationContainerGetAlgorithmConfiguration($algorithmId, $algorithmConfig);
 
+        $this->setUpAlgorithmConfigurationGetDecryptionKeyConfig($algorithmConfig, $keyConfig);
+
+        $this->setUpActiveKeyConfigurationProviderGetActiveKeyConfiguration(
+            $keyProvided,
+            $key,
+            $keyConfig,
+            $activeKeyConfig
+        );
+
+        $this->setUpTransformedKeyProviderGetTransformedKey($activeKeyConfig, $transformedKey);
+
         $this->setUpAlgorithmConfigurationGetDecrypter($algorithmConfig, $decrypter);
+
+        $this->setUpTransformedKeyGetFinalKey($transformedKey, $key);
 
         $this->setUpDecrypterDecryptValue($decrypter, $encryptedValue, $key, $decryptedValue);
 
-        $this->setUpOutputForDefaultResult($output, $key, $decryptedValue);
+        $this->setUpCryptoRendererRenderOutput($decryptedValue, $transformedKey, $output);
 
         $this->processor->renderDecryptOutput($request, $output);
     }
@@ -115,6 +165,7 @@ class DecryptProcessorTest extends \PHPUnit_Framework_TestCase
     {
         $algorithmId = 'algo_01';
         $key = 'secret key';
+        $keyProvided = true;
         $encryptedValue = 'decrypt me';
         $decryptedValue = 'decrypted value';
 
@@ -124,11 +175,14 @@ class DecryptProcessorTest extends \PHPUnit_Framework_TestCase
             $encryptedAsker,
             null,
             $key,
-            true
+            $keyProvided
         );
         $output = $this->createOutputInterfaceMock();
         $algorithmConfig = $this->createAlgorithmConfigurationMock();
+        $keyConfig = $this->createKeyConfigurationMock();
+        $activeKeyConfig = $this->createKeyConfigurationMock();
         $decrypter = $this->createDecrypterInterfaceMock();
+        $transformedKey = $this->createTransformedKeyMock();
 
         $this->setUpAlgorithmConfigurationContainerGetAlgorithmConfiguration($algorithmId, $algorithmConfig);
 
@@ -137,81 +191,36 @@ class DecryptProcessorTest extends \PHPUnit_Framework_TestCase
             ->with()
             ->will($this->returnValue($encryptedValue));
 
-        $this->setUpAlgorithmConfigurationGetDecrypter($algorithmConfig, $decrypter);
+        $this->setUpAlgorithmConfigurationGetDecryptionKeyConfig($algorithmConfig, $keyConfig);
 
-        $this->setUpDecrypterDecryptValue($decrypter, $encryptedValue, $key, $decryptedValue);
-
-        $this->setUpOutputForDefaultResult($output, $key, $decryptedValue);
-
-        $this->processor->renderDecryptOutput($request, $output);
-    }
-
-    public function testRenderDecryptOutputSuccessKeyFromAlgorithmConfiguration()
-    {
-        $algorithmId = 'algo_01';
-        $key = 'some key';
-        $encryptedValue = 'decrypt me';
-        $decryptedValue = 'decrypted value';
-
-        $request = new DecryptRequest(
-            $algorithmId,
-            $this->createQuestionAskerInterfaceMock(),
-            $encryptedValue,
-            '',
-            false
-        );
-        $output = $this->createOutputInterfaceMock();
-        $algorithmConfig = $this->createAlgorithmConfigurationMock();
-        $decrypter = $this->createDecrypterInterfaceMock();
-
-        $this->setUpAlgorithmConfigurationContainerGetAlgorithmConfiguration($algorithmId, $algorithmConfig);
-
-        $algorithmConfig->expects($this->once())
-            ->method('getDecryptionKeyConfig')
-            ->with()
-            ->will($this->returnValue($key));
-
-        $this->setUpAlgorithmConfigurationGetDecrypter($algorithmConfig, $decrypter);
-
-        $this->setUpDecrypterDecryptValue($decrypter, $encryptedValue, $key, $decryptedValue);
-
-        $this->setUpOutputForDefaultResult($output, $key, $decryptedValue);
-
-        $this->processor->renderDecryptOutput($request, $output);
-    }
-
-    public function testRenderDecryptOutputSuccessQuietOutput()
-    {
-        $algorithmId = 'algo_01';
-        $key = 'some key';
-        $encryptedValue = 'decrypt me';
-        $decryptedValue = 'decrypted me';
-
-        $request = new DecryptRequest(
-            $algorithmId,
-            $this->createQuestionAskerInterfaceMock(),
-            $encryptedValue,
+        $this->setUpActiveKeyConfigurationProviderGetActiveKeyConfiguration(
+            $keyProvided,
             $key,
-            true
+            $keyConfig,
+            $activeKeyConfig
         );
-        $output = $this->createOutputInterfaceMock();
-        $algorithmConfig = $this->createAlgorithmConfigurationMock();
-        $decrypter = $this->createDecrypterInterfaceMock();
 
-        $this->setUpAlgorithmConfigurationContainerGetAlgorithmConfiguration($algorithmId, $algorithmConfig);
+        $this->setUpTransformedKeyProviderGetTransformedKey($activeKeyConfig, $transformedKey);
 
         $this->setUpAlgorithmConfigurationGetDecrypter($algorithmConfig, $decrypter);
 
+        $this->setUpTransformedKeyGetFinalKey($transformedKey, $key);
+
         $this->setUpDecrypterDecryptValue($decrypter, $encryptedValue, $key, $decryptedValue);
 
-        $output->expects($this->once())
-            ->method('getVerbosity')
-            ->with()
-            ->will($this->returnValue(OutputInterface::VERBOSITY_QUIET));
-
-        $this->setUpOutputForQuietResult($output, $decryptedValue);
+        $this->setUpCryptoRendererRenderOutput($decryptedValue, $transformedKey, $output);
 
         $this->processor->renderDecryptOutput($request, $output);
+    }
+
+    /**
+     * Create mock for ActiveKeyConfigurationProviderInterface.
+     *
+     * @return ActiveKeyConfigurationProviderInterface|\PHPUnit_Framework_MockObject_MockObject
+     */
+    private function createActiveKeyConfigurationProviderInterfaceMock()
+    {
+        return $this->getMockBuilder(ActiveKeyConfigurationProviderInterface::class)->getMock();
     }
 
     /**
@@ -245,6 +254,16 @@ class DecryptProcessorTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Create mock for CryptRendererInterface.
+     *
+     * @return CryptRendererInterface|\PHPUnit_Framework_MockObject_MockObject
+     */
+    private function createCryptRendererInterfaceMock()
+    {
+        return $this->getMockBuilder(CryptRendererInterface::class)->getMock();
+    }
+
+    /**
      * Create mock for DecrypterInterface.
      *
      * @return DecrypterInterface|\PHPUnit_Framework_MockObject_MockObject
@@ -252,6 +271,16 @@ class DecryptProcessorTest extends \PHPUnit_Framework_TestCase
     private function createDecrypterInterfaceMock()
     {
         return $this->getMockBuilder(DecrypterInterface::class)->getMock();
+    }
+
+    /**
+     * Create mock for KeyConfiguration.
+     *
+     * @return KeyConfiguration|\PHPUnit_Framework_MockObject_MockObject
+     */
+    private function createKeyConfigurationMock()
+    {
+        return $this->getMockBuilder(KeyConfiguration::class)->getMock();
     }
 
     /**
@@ -272,6 +301,50 @@ class DecryptProcessorTest extends \PHPUnit_Framework_TestCase
     private function createQuestionAskerInterfaceMock()
     {
         return $this->getMockBuilder(QuestionAskerInterface::class)->getMock();
+    }
+
+    /**
+     * Create mock for TransformedKey.
+     *
+     * @return TransformedKey|\PHPUnit_Framework_MockObject_MockObject
+     */
+    private function createTransformedKeyMock()
+    {
+        return $this->getMockBuilder(TransformedKey::class)->getMock();
+    }
+
+    /**
+     * Create mock for TransformedKeyProviderInterface.
+     *
+     * @return TransformedKeyProviderInterface|\PHPUnit_Framework_MockObject_MockObject
+     */
+    private function createTransformedKeyProviderInterfaceMock()
+    {
+        return $this->getMockBuilder(TransformedKeyProviderInterface::class)->getMock();
+    }
+
+    /**
+     * Set up ActiveKeyConfigurationProvider: getActiveKeyConfiguration.
+     *
+     * @param bool             $keyProvided
+     * @param string|null      $key
+     * @param KeyConfiguration $keyConfig
+     * @param KeyConfiguration $activeKeyConfig
+     */
+    private function setUpActiveKeyConfigurationProviderGetActiveKeyConfiguration(
+        $keyProvided,
+        $key,
+        KeyConfiguration $keyConfig,
+        KeyConfiguration $activeKeyConfig
+    ) {
+        $this->activeKeyConfigProvider->expects($this->once())
+            ->method('getActiveKeyConfiguration')
+            ->with(
+                $this->identicalTo($keyProvided),
+                $this->identicalTo($key),
+                $this->identicalTo($keyConfig)
+            )
+            ->will($this->returnValue($activeKeyConfig));
     }
 
     /**
@@ -307,6 +380,43 @@ class DecryptProcessorTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Set up AlgorithmConfiguration: getDecryptionKeyConfig.
+     *
+     * @param AlgorithmConfiguration|\PHPUnit_Framework_MockObject_MockObject $algorithmConfig
+     * @param KeyConfiguration                                                $keyConfig
+     */
+    private function setUpAlgorithmConfigurationGetDecryptionKeyConfig(
+        AlgorithmConfiguration $algorithmConfig,
+        KeyConfiguration $keyConfig
+    ) {
+        $algorithmConfig->expects($this->once())
+            ->method('getDecryptionKeyConfig')
+            ->with()
+            ->will($this->returnValue($keyConfig));
+    }
+
+    /**
+     * Set up CryptoRenderer: renderOutput.
+     *
+     * @param string          $encryptedValue
+     * @param TransformedKey  $transformedKey
+     * @param OutputInterface $output
+     */
+    private function setUpCryptoRendererRenderOutput(
+        $encryptedValue,
+        TransformedKey $transformedKey,
+        OutputInterface $output
+    ) {
+        $this->renderer->expects($this->once())
+            ->method('renderOutput')
+            ->with(
+                $this->identicalTo($encryptedValue),
+                $this->identicalTo($transformedKey),
+                $this->identicalTo($output)
+            );
+    }
+
+    /**
      * Set up decrypter: decrypt value.
      *
      * @param DecrypterInterface|\PHPUnit_Framework_MockObject_MockObject $decrypter
@@ -326,35 +436,32 @@ class DecryptProcessorTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Set up output: for default result.
+     * Set up TransformedKey: getFinalKey.
      *
-     * @param OutputInterface|\PHPUnit_Framework_MockObject_MockObject $output
-     * @param string|null                                              $key
-     * @param string                                                   $decryptedValue
+     * @param TransformedKey|\PHPUnit_Framework_MockObject_MockObject $transformedKey
+     * @param string|null                                             $key
      */
-    private function setUpOutputForDefaultResult(OutputInterface $output, $key, $decryptedValue)
+    private function setUpTransformedKeyGetFinalKey(TransformedKey $transformedKey, $key)
     {
-        $output->expects($this->exactly(2))
-            ->method('writeln')
-            ->withConsecutive(
-                [$this->identicalTo('Decryption key:  "'.$key.'"')],
-                [$this->identicalTo('Decrypted value: "'.$decryptedValue.'"')]
-            );
+        $transformedKey->expects($this->once())
+            ->method('getFinalKey')
+            ->with()
+            ->will($this->returnValue($key));
     }
 
     /**
-     * Set up output: for quiet result.
+     * Set up TransformedKeyProvider: getTransformedKey.
      *
-     * @param OutputInterface|\PHPUnit_Framework_MockObject_MockObject $output
-     * @param string                                                   $decryptedValue
+     * @param KeyConfiguration $activeKeyConfig
+     * @param TransformedKey   $transformedKey
      */
-    private function setUpOutputForQuietResult(OutputInterface $output, $decryptedValue)
-    {
-        $output->expects($this->once())
-            ->method('writeln')
-            ->with(
-                $this->identicalTo($decryptedValue),
-                $this->identicalTo(OutputInterface::VERBOSITY_QUIET)
-            );
+    private function setUpTransformedKeyProviderGetTransformedKey(
+        KeyConfiguration $activeKeyConfig,
+        TransformedKey $transformedKey
+    ) {
+        $this->transformedKeyProvider->expects($this->once())
+            ->method('getTransformedKey')
+            ->with($this->identicalTo($activeKeyConfig))
+            ->will($this->returnValue($transformedKey));
     }
 }

@@ -148,6 +148,11 @@
             public="false">
         </service>
 
+        <service id="pcdx_parameter_encryption.console.renderer.decrypt"
+            class="Picodexter\ParameterEncryptionBundle\Console\Renderer\DecryptRenderer"
+            public="false">
+        </service>
+
         <service id="pcdx_parameter_encryption.console.request.decrypt_request_factory"
             class="Picodexter\ParameterEncryptionBundle\Console\Request\DecryptRequestFactory"
             public="false">

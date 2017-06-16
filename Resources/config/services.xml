@@ -148,8 +148,11 @@
         <service id="pcdx_parameter_encryption.console.processor.encrypt"
             class="Picodexter\ParameterEncryptionBundle\Console\Processor\EncryptProcessor"
             public="false">
+            <argument type="service" id="pcdx_parameter_encryption.console.processor.active_key_configuration_provider" />
             <argument type="service" id="pcdx_parameter_encryption.configuration.algorithm_configuration_container" />
             <argument type="service" id="pcdx_parameter_encryption.console.helper.algorithm_id_validator" />
+            <argument type="service" id="pcdx_parameter_encryption.console.renderer.encrypt" />
+            <argument type="service" id="pcdx_parameter_encryption.console.processor.transformed_key.provider" />
         </service>
 
         <service id="pcdx_parameter_encryption.console.processor.transformed_key.factory"

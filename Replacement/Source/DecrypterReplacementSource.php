@@ -11,7 +11,9 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Replacement\Source;
 
+use Picodexter\ParameterEncryptionBundle\Configuration\Key\KeyConfiguration;
 use Picodexter\ParameterEncryptionBundle\Encryption\Decrypter\DecrypterInterface;
+use Picodexter\ParameterEncryptionBundle\Encryption\Key\KeyFetcherInterface;
 use Picodexter\ParameterEncryptionBundle\Replacement\Pattern\ReplacementPatternInterface;
 
 /**
@@ -25,9 +27,14 @@ class DecrypterReplacementSource implements ReplacementSourceInterface
     private $decrypter;
 
     /**
-     * @var string|null
+     * @var KeyConfiguration
      */
-    private $decryptionKey;
+    private $decryptionKeyConfig;
+
+    /**
+     * @var KeyFetcherInterface
+     */
+    private $keyFetcher;
 
     /**
      * @var ReplacementPatternInterface
@@ -38,17 +45,20 @@ class DecrypterReplacementSource implements ReplacementSourceInterface
      * Constructor.
      *
      * @param DecrypterInterface          $decrypter
+     * @param KeyConfiguration            $decryptionKeyConfig
+     * @param KeyFetcherInterface         $keyFetcher
      * @param ReplacementPatternInterface $replacementPattern
-     * @param string|null                 $decryptionKey
      */
     public function __construct(
         DecrypterInterface $decrypter,
-        ReplacementPatternInterface $replacementPattern,
-        $decryptionKey = null
+        KeyConfiguration $decryptionKeyConfig,
+        KeyFetcherInterface $keyFetcher,
+        ReplacementPatternInterface $replacementPattern
     ) {
         $this->decrypter = $decrypter;
+        $this->decryptionKeyConfig = $decryptionKeyConfig;
+        $this->keyFetcher = $keyFetcher;
         $this->replacementPattern = $replacementPattern;
-        $this->decryptionKey = $decryptionKey;
     }
 
     /**
@@ -56,9 +66,11 @@ class DecrypterReplacementSource implements ReplacementSourceInterface
      */
     public function getReplacedValueForParameter($key, $value)
     {
+        $decryptionKey = $this->keyFetcher->getKeyForConfig($this->decryptionKeyConfig);
+
         return $this->decrypter->decryptValue(
             $this->replacementPattern->getValueWithoutPatternForParameter($key, $value),
-            $this->decryptionKey
+            $decryptionKey
         );
     }
 

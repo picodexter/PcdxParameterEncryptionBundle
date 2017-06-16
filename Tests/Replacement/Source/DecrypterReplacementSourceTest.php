@@ -11,7 +11,9 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Tests\Replacement\Source;
 
+use Picodexter\ParameterEncryptionBundle\Configuration\Key\KeyConfiguration;
 use Picodexter\ParameterEncryptionBundle\Encryption\Decrypter\DecrypterInterface;
+use Picodexter\ParameterEncryptionBundle\Encryption\Key\KeyFetcherInterface;
 use Picodexter\ParameterEncryptionBundle\Replacement\Pattern\ReplacementPatternInterface;
 use Picodexter\ParameterEncryptionBundle\Replacement\Source\DecrypterReplacementSource;
 
@@ -21,6 +23,16 @@ class DecrypterReplacementSourceTest extends \PHPUnit_Framework_TestCase
      * @var DecrypterInterface|\PHPUnit_Framework_MockObject_MockObject
      */
     private $decrypter;
+
+    /**
+     * @var KeyConfiguration|\PHPUnit_Framework_MockObject_MockObject
+     */
+    private $keyConfig;
+
+    /**
+     * @var KeyFetcherInterface|\PHPUnit_Framework_MockObject_MockObject
+     */
+    private $keyFetcher;
 
     /**
      * @var ReplacementPatternInterface|\PHPUnit_Framework_MockObject_MockObject
@@ -38,8 +50,16 @@ class DecrypterReplacementSourceTest extends \PHPUnit_Framework_TestCase
     public function setUp()
     {
         $this->decrypter = $this->createDecrypterInterfaceMock();
+        $this->keyConfig = $this->createKeyConfigurationMock();
+        $this->keyFetcher = $this->createKeyFetcherInterfaceMock();
         $this->replacementPattern = $this->createReplacementPatternInterfaceMock();
-        $this->source = new DecrypterReplacementSource($this->decrypter, $this->replacementPattern);
+
+        $this->source = new DecrypterReplacementSource(
+            $this->decrypter,
+            $this->keyConfig,
+            $this->keyFetcher,
+            $this->replacementPattern
+        );
     }
 
     /**
@@ -49,19 +69,27 @@ class DecrypterReplacementSourceTest extends \PHPUnit_Framework_TestCase
     {
         $this->source = null;
         $this->replacementPattern = null;
+        $this->keyFetcher = null;
+        $this->keyConfig = null;
         $this->decrypter = null;
     }
 
     /**
-     * @param string|null $preparedDecryptedValue
+     * @param string|null $prepDecryptedValue
      *
      * @dataProvider provideGetReplacedValueForParameterSuccessData
      */
-    public function testGetReplacedValueForParameterSuccess($preparedDecryptedValue)
+    public function testGetReplacedValueForParameterSuccess($prepDecryptedValue)
     {
         $parameterKey = 'some_key';
         $parameterValue = 'some value';
+        $decryptionKey = 'decryption key';
         $replaceableValue = 'encrypted text';
+
+        $this->keyFetcher->expects($this->once())
+            ->method('getKeyForConfig')
+            ->with($this->keyConfig)
+            ->will($this->returnValue($decryptionKey));
 
         $this->replacementPattern->expects($this->once())
             ->method('getValueWithoutPatternForParameter')
@@ -73,12 +101,15 @@ class DecrypterReplacementSourceTest extends \PHPUnit_Framework_TestCase
 
         $this->decrypter->expects($this->once())
             ->method('decryptValue')
-            ->with($this->identicalTo($replaceableValue))
-            ->will($this->returnValue($preparedDecryptedValue));
+            ->with(
+                $this->identicalTo($replaceableValue),
+                $this->identicalTo($decryptionKey)
+            )
+            ->will($this->returnValue($prepDecryptedValue));
 
         $decryptedValue = $this->source->getReplacedValueForParameter($parameterKey, $parameterValue);
 
-        $this->assertSame($preparedDecryptedValue, $decryptedValue);
+        $this->assertSame($prepDecryptedValue, $decryptedValue);
     }
 
     /**
@@ -123,6 +154,26 @@ class DecrypterReplacementSourceTest extends \PHPUnit_Framework_TestCase
     private function createDecrypterInterfaceMock()
     {
         return $this->getMockBuilder(DecrypterInterface::class)->getMock();
+    }
+
+    /**
+     * Create mock for KeyConfiguration.
+     *
+     * @return KeyConfiguration|\PHPUnit_Framework_MockObject_MockObject
+     */
+    private function createKeyConfigurationMock()
+    {
+        return $this->getMockBuilder(KeyConfiguration::class)->getMock();
+    }
+
+    /**
+     * Create mock for KeyFetcherInterface.
+     *
+     * @return KeyFetcherInterface|\PHPUnit_Framework_MockObject_MockObject
+     */
+    private function createKeyFetcherInterfaceMock()
+    {
+        return $this->getMockBuilder(KeyFetcherInterface::class)->getMock();
     }
 
     /**

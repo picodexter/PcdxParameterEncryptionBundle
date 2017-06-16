@@ -39,6 +39,55 @@ class KeyConfigurationTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @param mixed $base64Encoded
+     * @param bool  $expectedResult
+     *
+     * @dataProvider provideBase64EncodedData
+     */
+    public function testIsSetBase64EncodedSuccess($base64Encoded, $expectedResult)
+    {
+        $this->assertFalse($this->keyConfig->isBase64Encoded());
+
+        $this->keyConfig->setBase64Encoded($base64Encoded);
+
+        $this->assertSame($expectedResult, $this->keyConfig->isBase64Encoded());
+    }
+
+    /**
+     * Data provider.
+     */
+    public function provideBase64EncodedData()
+    {
+        return [
+            'null' => [
+                null,
+                false,
+            ],
+            'false' => [
+                false,
+                false,
+            ],
+            'true' => [
+                true,
+                true,
+            ],
+            'string' => [
+                '123abc',
+                true,
+            ],
+            'int' => [
+                1234,
+                true,
+            ],
+            'float' => [
+                12.34,
+                true,
+            ],
+        ];
+    }
+
+
+    /**
      * @param mixed    $preparedCost
      * @param int|null $expectedCost
      *

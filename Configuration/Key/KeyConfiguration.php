@@ -20,6 +20,11 @@ use Picodexter\ParameterEncryptionBundle\Configuration\Key\Type\StaticKeyType;
 class KeyConfiguration
 {
     /**
+     * @var bool
+     */
+    private $base64Encoded = false;
+
+    /**
      * @var int|null
      */
     private $cost = null;
@@ -55,6 +60,26 @@ class KeyConfiguration
     public function __construct()
     {
         $this->type = new StaticKeyType();
+    }
+
+    /**
+     * Getter: base64Encoded.
+     *
+     * @return bool
+     */
+    public function isBase64Encoded()
+    {
+        return $this->base64Encoded;
+    }
+
+    /**
+     * Setter: base64Encoded.
+     *
+     * @param bool $base64Encoded
+     */
+    public function setBase64Encoded($base64Encoded)
+    {
+        $this->base64Encoded = (bool) $base64Encoded;
     }
 
     /**

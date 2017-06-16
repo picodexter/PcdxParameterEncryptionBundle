@@ -13,7 +13,6 @@ namespace Picodexter\ParameterEncryptionBundle\Tests\Console\Renderer;
 
 use Picodexter\ParameterEncryptionBundle\Console\Processor\TransformedKey;
 use Picodexter\ParameterEncryptionBundle\Console\Renderer\AbstractCryptRenderer;
-use Symfony\Component\Console\Output\Output;
 use Symfony\Component\Console\Output\OutputInterface;
 
 class AbstractCryptRendererTest extends \PHPUnit_Framework_TestCase
@@ -46,7 +45,7 @@ class AbstractCryptRendererTest extends \PHPUnit_Framework_TestCase
         $transformedKey = $this->createTransformedKeyMock();
         $output = $this->createOutputInterfaceMock();
 
-        $this->setUpOutputGetVerbosity($output, Output::OUTPUT_NORMAL);
+        $this->setUpOutputGetVerbosity($output, OutputInterface::VERBOSITY_NORMAL);
 
         $this->setUpTransformedKeyHasChanged($transformedKey, true);
 
@@ -86,7 +85,7 @@ class AbstractCryptRendererTest extends \PHPUnit_Framework_TestCase
         $transformedKey = $this->createTransformedKeyMock();
         $output = $this->createOutputInterfaceMock();
 
-        $this->setUpOutputGetVerbosity($output, Output::OUTPUT_NORMAL);
+        $this->setUpOutputGetVerbosity($output, OutputInterface::VERBOSITY_NORMAL);
 
         $this->setUpTransformedKeyHasChanged($transformedKey, false);
 

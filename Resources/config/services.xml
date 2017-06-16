@@ -155,6 +155,13 @@
             <argument type="service" id="pcdx_parameter_encryption.encryption.value.encoding.encoder.base64" />
         </service>
 
+        <service id="pcdx_parameter_encryption.console.processor.transformed_key.provider"
+            class="Picodexter\ParameterEncryptionBundle\Console\Processor\TransformedKeyProvider"
+            public="false">
+            <argument type="service" id="pcdx_parameter_encryption.encryption.key.fetcher" />
+            <argument type="service" id="pcdx_parameter_encryption.console.processor.transformed_key.factory" />
+        </service>
+
         <service id="pcdx_parameter_encryption.console.question.factory"
             class="Picodexter\ParameterEncryptionBundle\Console\Question\QuestionFactory"
             public="false">

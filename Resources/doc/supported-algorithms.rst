@@ -5,9 +5,11 @@ Supported Algorithms
 | Composer Package Name       | Algorithms                | URL to Supported Implementation           |
 +=============================+===========================+===========================================+
 | `defuse/php-encryption`_    | * Symmetric               | `PcdxParameterEncryptionDefuseBundle`_    |
+|                             |                           |                                           |
 |                             |   * Defuse PHP encryption |                                           |
 +-----------------------------+---------------------------+-------------------------------------------+
 | `phpseclib/phpseclib`_      | * Symmetric               | `PcdxParameterEncryptionPhpseclibBundle`_ |
+|                             |                           |                                           |
 |                             |   * AES                   |                                           |
 |                             |   * Blowfish              |                                           |
 |                             |   * DES                   |                                           |
@@ -18,9 +20,11 @@ Supported Algorithms
 |                             |   * Twofish               |                                           |
 |                             |                           |                                           |
 |                             | * Asymmetric              |                                           |
+|                             |                           |                                           |
 |                             |   * RSA                   |                                           |
 +-----------------------------+---------------------------+-------------------------------------------+
 | `zendframework/zend-crypt`_ | * Symmetric               | `PcdxParameterEncryptionZendCryptBundle`_ |
+|                             |                           |                                           |
 |                             |   * AES / Rijndael-128    |                                           |
 |                             |   * AES-256               |                                           |
 |                             |   * Blowfish              |                                           |
@@ -37,6 +41,7 @@ Supported Algorithms
 |                             |   * Twofish               |                                           |
 |                             |                           |                                           |
 |                             | * Asymmetric              |                                           |
+|                             |                           |                                           |
 |                             |   * RSA                   |                                           |
 +-----------------------------+---------------------------+-------------------------------------------+
 

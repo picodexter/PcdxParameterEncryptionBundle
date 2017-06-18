@@ -342,6 +342,11 @@
             public="false">
         </service>
 
+        <service id="pcdx_parameter_encryption.encryption.key.validator.not_empty"
+            class="Picodexter\ParameterEncryptionBundle\Encryption\Key\KeyNotEmptyValidator"
+            public="false">
+        </service>
+
         <service id="pcdx_parameter_encryption.encryption.value.encoding.decoder.base64"
             class="Picodexter\ParameterEncryptionBundle\Encryption\Value\Encoding\Base64Decoder"
             public="false">

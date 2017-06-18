@@ -11,6 +11,7 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Encryption\Encrypter;
 
+use Picodexter\ParameterEncryptionBundle\Exception\Encryption\EmptyKeyException;
 use Picodexter\ParameterEncryptionBundle\Exception\Encryption\EncrypterException;
 
 /**
@@ -24,6 +25,7 @@ interface EncrypterInterface
      * @param string $plainValue
      * @param string $encryptionKey
      *
+     * @throws EmptyKeyException
      * @throws EncrypterException
      *
      * @return string

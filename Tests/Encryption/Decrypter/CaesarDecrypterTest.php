@@ -61,15 +61,15 @@ class CaesarDecrypterTest extends \PHPUnit_Framework_TestCase
     {
         $encryptedValue = 'foo';
         $preparedValue = 'decrypted foo';
-        $encrypterRotationAmount = 7;
+        $encrRotationAmount = 7;
 
-        $decrypter = new CaesarDecrypter($this->cipher, $encrypterRotationAmount);
+        $decrypter = new CaesarDecrypter($this->cipher, $encrRotationAmount);
 
         $this->cipher->expects($this->once())
             ->method('apply')
             ->with(
                 $this->identicalTo($encryptedValue),
-                $this->identicalTo(-1 * $encrypterRotationAmount)
+                $this->identicalTo(-1 * $encrRotationAmount)
             )
             ->will($this->returnValue($preparedValue));
 

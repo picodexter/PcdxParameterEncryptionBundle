@@ -17,24 +17,24 @@ namespace Picodexter\ParameterEncryptionBundle\Console\Processor;
 class TransformedKey
 {
     /**
-     * @var string|null
+     * @var string
      */
-    private $finalKey;
+    private $finalKey = '';
 
     /**
-     * @var string|null
+     * @var string
      */
-    private $finalKeyEncoded;
+    private $finalKeyEncoded = '';
 
     /**
-     * @var string|null
+     * @var string
      */
-    private $originalKey;
+    private $originalKey = '';
 
     /**
      * Getter: finalKey.
      *
-     * @return string|null
+     * @return string
      */
     public function getFinalKey()
     {
@@ -44,17 +44,17 @@ class TransformedKey
     /**
      * Setter: finalKey.
      *
-     * @param string|null $finalKey
+     * @param string $finalKey
      */
     public function setFinalKey($finalKey)
     {
-        $this->finalKey = (null === $finalKey ? null : (string) $finalKey);
+        $this->finalKey = (string) $finalKey;
     }
 
     /**
      * Getter: finalKeyEncoded.
      *
-     * @return string|null
+     * @return string
      */
     public function getFinalKeyEncoded()
     {
@@ -64,17 +64,17 @@ class TransformedKey
     /**
      * Setter: finalKeyEncoded.
      *
-     * @param string|null $finalKeyEncoded
+     * @param string $finalKeyEncoded
      */
     public function setFinalKeyEncoded($finalKeyEncoded)
     {
-        $this->finalKeyEncoded = (null === $finalKeyEncoded ? null : (string) $finalKeyEncoded);
+        $this->finalKeyEncoded = (string) $finalKeyEncoded;
     }
 
     /**
      * Getter: originalKey.
      *
-     * @return string|null
+     * @return string
      */
     public function getOriginalKey()
     {
@@ -84,11 +84,11 @@ class TransformedKey
     /**
      * Setter: originalKey.
      *
-     * @param string|null $originalKey
+     * @param string $originalKey
      */
     public function setOriginalKey($originalKey)
     {
-        $this->originalKey = (null === $originalKey ? null : (string) $originalKey);
+        $this->originalKey = (string) $originalKey;
     }
 
     /**

@@ -21,12 +21,12 @@ interface DecrypterInterface
     /**
      * Decrypt value.
      *
-     * @param string      $encryptedValue
-     * @param string|null $decryptionKey
+     * @param string $encryptedValue
+     * @param string $decryptionKey
      *
      * @throws DecrypterException
      *
      * @return string
      */
-    public function decryptValue($encryptedValue, $decryptionKey = null);
+    public function decryptValue($encryptedValue, $decryptionKey);
 }

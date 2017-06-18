@@ -31,7 +31,7 @@ interface KeyResolverInterface
      *
      * @param KeyConfiguration $keyConfig
      *
-     * @return string|null
+     * @return string
      */
     public function resolveKey(KeyConfiguration $keyConfig);
 }

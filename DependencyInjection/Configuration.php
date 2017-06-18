@@ -110,7 +110,7 @@ class Configuration implements ConfigurationInterface
                     ->children()
                         ->scalarNode('value')
                             ->info('Either the key or a password to use for key generation.')
-                            ->defaultNull()
+                            ->defaultValue('')
                         ->end()
                         ->booleanNode('base64_encoded')
                             ->info('Key / password (value) is base64 encoded.')

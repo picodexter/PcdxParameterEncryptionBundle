@@ -22,7 +22,7 @@ interface EncryptRequestFactoryInterface
      * Create encrypt request.
      *
      * @param string                 $algorithmId
-     * @param string|null            $key
+     * @param string                 $key
      * @param bool                   $keyProvided
      * @param QuestionAskerInterface $plaintextAsker
      * @param string                 $plaintextValue

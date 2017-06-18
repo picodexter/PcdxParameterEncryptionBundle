@@ -183,7 +183,7 @@ class KeyConfigurationTest extends \PHPUnit_Framework_TestCase
     {
         $preparedValue = 'some key';
 
-        $this->assertNull($this->keyConfig->getValue());
+        $this->assertSame('', $this->keyConfig->getValue());
 
         $this->keyConfig->setValue($preparedValue);
 

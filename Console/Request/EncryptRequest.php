@@ -24,7 +24,7 @@ class EncryptRequest
     private $algorithmId;
 
     /**
-     * @var string|null
+     * @var string
      */
     private $key;
 
@@ -47,7 +47,7 @@ class EncryptRequest
      * Constructor.
      *
      * @param string                 $algorithmId
-     * @param string|null            $key
+     * @param string                 $key
      * @param bool                   $keyProvided
      * @param QuestionAskerInterface $plaintextAsker
      * @param string                 $plaintextValue
@@ -79,7 +79,7 @@ class EncryptRequest
     /**
      * Getter: key.
      *
-     * @return string|null
+     * @return string
      */
     public function getKey()
     {

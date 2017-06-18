@@ -34,7 +34,7 @@ class DecryptRequest
     private $encryptedValue;
 
     /**
-     * @var string|null
+     * @var string
      */
     private $key;
 
@@ -49,7 +49,7 @@ class DecryptRequest
      * @param string                 $algorithmId
      * @param QuestionAskerInterface $encryptedAsker
      * @param string                 $encryptedValue
-     * @param string|null            $key
+     * @param string                 $key
      * @param bool                   $keyProvided
      */
     public function __construct(
@@ -99,7 +99,7 @@ class DecryptRequest
     /**
      * Getter: key.
      *
-     * @return string|null
+     * @return string
      */
     public function getKey()
     {

@@ -57,7 +57,8 @@ class EncryptCommand extends Command
                 'key',
                 'k',
                 InputOption::VALUE_OPTIONAL,
-                'Encryption key (optional, will be taken from algorithm configuration if not supplied)'
+                'Encryption key (optional, will be taken from algorithm configuration if not supplied)',
+                ''
             );
     }
 

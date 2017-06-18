@@ -22,7 +22,7 @@ interface ActiveKeyConfigurationProviderInterface
      * Get active key configuration.
      *
      * @param bool             $isKeyProvided
-     * @param string|null      $requestKey
+     * @param string           $requestKey
      * @param KeyConfiguration $algorithmKeyConfig
      *
      * @return KeyConfiguration

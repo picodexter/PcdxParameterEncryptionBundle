@@ -21,12 +21,12 @@ interface EncrypterInterface
     /**
      * Encrypt value.
      *
-     * @param string      $plainValue
-     * @param string|null $encryptionKey
+     * @param string $plainValue
+     * @param string $encryptionKey
      *
      * @throws EncrypterException
      *
      * @return string
      */
-    public function encryptValue($plainValue, $encryptionKey = null);
+    public function encryptValue($plainValue, $encryptionKey);
 }

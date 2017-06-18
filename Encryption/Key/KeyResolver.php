@@ -51,11 +51,7 @@ class KeyResolver implements KeyResolverInterface
     }
 
     /**
-     * Resolve key configuration to key.
-     *
-     * @param KeyConfiguration $keyConfig
-     *
-     * @return string|null
+     * @inheritDoc
      */
     public function resolveKey(KeyConfiguration $keyConfig)
     {

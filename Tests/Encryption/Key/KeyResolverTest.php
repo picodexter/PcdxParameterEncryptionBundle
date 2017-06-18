@@ -253,7 +253,7 @@ class KeyResolverTest extends \PHPUnit_Framework_TestCase
      * Set up KeyConfiguration: getValue.
      *
      * @param KeyConfiguration|\PHPUnit_Framework_MockObject_MockObject $keyConfig
-     * @param string|null                                               $keyOrPassword
+     * @param string                                                    $keyOrPassword
      */
     private function setUpKeyConfigGetValue($keyConfig, $keyOrPassword)
     {

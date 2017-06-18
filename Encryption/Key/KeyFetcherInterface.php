@@ -23,7 +23,7 @@ interface KeyFetcherInterface
      *
      * @param KeyConfiguration $keyConfig
      *
-     * @return string|null
+     * @return string
      */
     public function getKeyForConfig(KeyConfiguration $keyConfig);
 }

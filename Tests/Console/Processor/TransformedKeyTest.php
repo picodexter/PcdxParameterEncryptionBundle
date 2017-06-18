@@ -37,14 +37,14 @@ class TransformedKeyTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @param mixed       $finalKey
-     * @param string|null $expectedFinalKey
+     * @param mixed  $finalKey
+     * @param string $expectedFinalKey
      *
      * @dataProvider provideStringCastOrNullData
      */
     public function testGetSetFinalKeySuccess($finalKey, $expectedFinalKey)
     {
-        $this->assertNull($this->transformedKey->getFinalKey());
+        $this->assertSame('', $this->transformedKey->getFinalKey());
 
         $this->transformedKey->setFinalKey($finalKey);
 
@@ -75,20 +75,20 @@ class TransformedKeyTest extends \PHPUnit_Framework_TestCase
             ],
             'null' => [
                 null,
-                null,
+                '',
             ],
         ];
     }
 
     /**
-     * @param mixed       $finalKeyEncoded
-     * @param string|null $expectedFinalKey
+     * @param mixed  $finalKeyEncoded
+     * @param string $expectedFinalKey
      *
      * @dataProvider provideStringCastOrNullData
      */
     public function testGetSetFinalKeyEncodedSuccess($finalKeyEncoded, $expectedFinalKey)
     {
-        $this->assertNull($this->transformedKey->getFinalKeyEncoded());
+        $this->assertSame('', $this->transformedKey->getFinalKeyEncoded());
 
         $this->transformedKey->setFinalKeyEncoded($finalKeyEncoded);
 
@@ -96,14 +96,14 @@ class TransformedKeyTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @param mixed       $originalKey
-     * @param string|null $expectedKey
+     * @param mixed  $originalKey
+     * @param string $expectedKey
      *
      * @dataProvider provideStringCastOrNullData
      */
     public function testGetSetOriginalKeySuccess($originalKey, $expectedKey)
     {
-        $this->assertNull($this->transformedKey->getOriginalKey());
+        $this->assertSame('', $this->transformedKey->getOriginalKey());
 
         $this->transformedKey->setOriginalKey($originalKey);
 

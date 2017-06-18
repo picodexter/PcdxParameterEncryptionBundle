@@ -19,8 +19,8 @@ interface TransformedKeyFactoryInterface
     /**
      * Create key container.
      *
-     * @param string|null $originalKey
-     * @param string|null $finalKey
+     * @param string $originalKey
+     * @param string $finalKey
      *
      * @return TransformedKey
      */

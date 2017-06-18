@@ -50,9 +50,9 @@ class KeyConfiguration
     private $type = null;
 
     /**
-     * @var string|null
+     * @var string
      */
-    private $value = null;
+    private $value = '';
 
     /**
      * Constructor.
@@ -185,7 +185,7 @@ class KeyConfiguration
     /**
      * Getter: value.
      *
-     * @return string|null
+     * @return string
      */
     public function getValue()
     {
@@ -195,7 +195,7 @@ class KeyConfiguration
     /**
      * Setter: value.
      *
-     * @param string|null $value
+     * @param string $value
      */
     public function setValue($value)
     {

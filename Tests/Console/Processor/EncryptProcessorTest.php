@@ -327,7 +327,7 @@ class EncryptProcessorTest extends \PHPUnit_Framework_TestCase
      * Set up ActiveKeyConfigurationProvider: getActiveKeyConfiguration.
      *
      * @param bool             $keyProvided
-     * @param string|null      $key
+     * @param string           $key
      * @param KeyConfiguration $keyConfig
      * @param KeyConfiguration $activeKeyConfig
      */
@@ -421,7 +421,7 @@ class EncryptProcessorTest extends \PHPUnit_Framework_TestCase
      *
      * @param EncrypterInterface|\PHPUnit_Framework_MockObject_MockObject $encrypter
      * @param string                                                      $plaintextValue
-     * @param string|null                                                 $key
+     * @param string                                                      $key
      * @param string                                                      $encryptedValue
      */
     private function setUpEncrypterEncryptValue(EncrypterInterface $encrypter, $plaintextValue, $key, $encryptedValue)
@@ -439,7 +439,7 @@ class EncryptProcessorTest extends \PHPUnit_Framework_TestCase
      * Set up TransformedKey: getFinalKey.
      *
      * @param TransformedKey|\PHPUnit_Framework_MockObject_MockObject $transformedKey
-     * @param string|null                                             $key
+     * @param string                                                  $key
      */
     private function setUpTransformedKeyGetFinalKey(TransformedKey $transformedKey, $key)
     {

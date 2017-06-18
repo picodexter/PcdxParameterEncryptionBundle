@@ -25,7 +25,7 @@ class AbstractKeyTransformerDummy implements KeyTransformerInterface
     public $resultAppliesFor;
 
     /**
-     * @var string|null
+     * @var string
      */
     public $resultTransform;
 

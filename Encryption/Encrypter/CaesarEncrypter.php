@@ -43,7 +43,7 @@ class CaesarEncrypter implements EncrypterInterface
     /**
      * @inheritDoc
      */
-    public function encryptValue($plainValue, $encryptionKey = null)
+    public function encryptValue($plainValue, $encryptionKey)
     {
         return $this->cipher->apply($plainValue, $this->rotationAmount);
     }

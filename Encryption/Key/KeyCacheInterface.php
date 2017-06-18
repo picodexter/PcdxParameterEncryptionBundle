@@ -40,7 +40,7 @@ interface KeyCacheInterface
      * Set key for configuration.
      *
      * @param KeyConfiguration $keyConfig
-     * @param string|null      $key
+     * @param string           $key
      */
     public function set(KeyConfiguration $keyConfig, $key);
 }

@@ -24,7 +24,7 @@ interface DecryptRequestFactoryInterface
      * @param string                 $algorithmId
      * @param QuestionAskerInterface $encryptedAsker
      * @param string                 $encryptedValue
-     * @param string|null            $key
+     * @param string                 $key
      * @param bool                   $keyProvided
      *
      * @return DecryptRequest

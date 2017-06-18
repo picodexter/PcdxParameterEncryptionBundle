@@ -22,7 +22,7 @@ interface KeyTransformerInterface
     /**
      * Check if this transformer applies to the given key and key configuration.
      *
-     * @param string|null      $key
+     * @param string           $key
      * @param KeyConfiguration $keyConfig
      *
      * @return bool
@@ -32,12 +32,12 @@ interface KeyTransformerInterface
     /**
      * Transform key.
      *
-     * @param string|null      $key
+     * @param string           $key
      * @param KeyConfiguration $keyConfig
      *
      * @throws InvalidKeyConfigurationException
      *
-     * @return string|null
+     * @return string
      */
     public function transform($key, KeyConfiguration $keyConfig);
 }

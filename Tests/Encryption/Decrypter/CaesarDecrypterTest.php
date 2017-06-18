@@ -52,7 +52,7 @@ class CaesarDecrypterTest extends \PHPUnit_Framework_TestCase
             )
             ->will($this->returnValue($preparedValue));
 
-        $decryptedValue = $decrypter->decryptValue($encryptedValue);
+        $decryptedValue = $decrypter->decryptValue($encryptedValue, '');
 
         $this->assertSame($preparedValue, $decryptedValue);
     }
@@ -73,7 +73,7 @@ class CaesarDecrypterTest extends \PHPUnit_Framework_TestCase
             )
             ->will($this->returnValue($preparedValue));
 
-        $decryptedValue = $decrypter->decryptValue($encryptedValue);
+        $decryptedValue = $decrypter->decryptValue($encryptedValue, '');
 
         $this->assertSame($preparedValue, $decryptedValue);
     }

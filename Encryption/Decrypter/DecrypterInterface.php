@@ -26,7 +26,7 @@ interface DecrypterInterface
      *
      * @throws DecrypterException
      *
-     * @return string
+     * @return string|null
      */
     public function decryptValue($encryptedValue, $decryptionKey);
 }

@@ -30,7 +30,7 @@ class CaesarCipher implements CaesarCipherInterface
 
         $outputText = '';
 
-        for ($i = 0; $i < mb_strlen($inputText); $i++) {
+        for ($i = 0; $i < mb_strlen($inputText); ++$i) {
             $outputText .= $this->getRotatedCharacter(mb_substr($inputText, $i, 1), $rotationAmount);
         }
 

@@ -166,7 +166,7 @@ however it is still shown in order to convey the main concept.
 Step 4: Test
 ~~~~~~~~~~~~
 
-1.  Generate an encrypted value via :doc:`/cli`
+1.  Generate an encrypted value via the encrypt CLI command (see :doc:`/cli`).
 
 2.  Save the value as a parameter with the configured prefix.
 
@@ -176,7 +176,7 @@ Step 4: Test
     *   Encrypted value: ``Guvf vf n grfg``
     *   Save as a parameter with the value: ``=#!PPE!c:r13!#=Guvf vf n grfg``
 
-3.  Read the parameter via code.
+3.  Read or use the parameter as you would normally.
 
 Step 5: Use Other Encryption Algorithms
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

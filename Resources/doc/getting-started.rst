@@ -55,7 +55,7 @@ Step 3: Configuration
 
 Example:
 
-In this example we will be looking using the Caesar cipher as the encryption
+In this example we will be looking at using the Caesar cipher as the encryption
 algorithm (which comes by default with this bundle), specifically with a
 rotation of 13 (ROT13).
 

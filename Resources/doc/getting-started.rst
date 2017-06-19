@@ -98,10 +98,12 @@ however it is still shown in order to convey the main concept.
                         <ppe:pattern type="value_prefix">
                             <ppe:argument>=#!PPE!c:r13!#=</ppe:argument>
                         </ppe:pattern>
-                        <ppe:encryption service="pcdx_parameter_encryption.encryption.encrypter.caesar.rot13"
-                            key="%parameter_encryption.caesar.rot13.key%" />
-                        <ppe:decryption service="pcdx_parameter_encryption.encryption.decrypter.caesar.rot13"
-                            key="%parameter_encryption.caesar.rot13.key%" />
+                        <ppe:encryption service="pcdx_parameter_encryption.encryption.encrypter.caesar.rot13">
+                            <ppe:key>%parameter_encryption.caesar.rot13.key%</ppe:key>
+                        </ppe:encryption>
+                        <ppe:decryption service="pcdx_parameter_encryption.encryption.decrypter.caesar.rot13">
+                            <ppe:key>%parameter_encryption.caesar.rot13.key%</ppe:key>
+                        </ppe:decryption>
                     </ppe:algorithm>
                 </ppe:config>
             </container>

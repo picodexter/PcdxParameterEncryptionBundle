@@ -54,7 +54,7 @@ class Pbkdf2PasswordBasedGeneratorKeyTransformer implements KeyTransformerInterf
      */
     private function assertValidHashAlgorithm(KeyConfiguration $keyConfig)
     {
-        if (!in_array($keyConfig->getHashAlgorithm(), hash_algos())) {
+        if (!in_array($keyConfig->getHashAlgorithm(), hash_algos(), true)) {
             throw new UnknownHashAlgorithmException($keyConfig->getHashAlgorithm());
         }
     }

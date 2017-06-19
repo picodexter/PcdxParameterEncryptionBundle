@@ -11,6 +11,7 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Tests;
 
+use Picodexter\ParameterEncryptionBundle\DependencyInjection\Compiler\KeyNotEmptyServiceTagPass;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\Compiler\ParameterReplacementPass;
 use Picodexter\ParameterEncryptionBundle\PcdxParameterEncryptionBundle;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -23,9 +24,12 @@ class PcdxParameterEncryptionBundleTest extends \PHPUnit_Framework_TestCase
 
         $container = $this->createContainerBuilderMock();
 
-        $container->expects($this->once())
+        $container->expects($this->exactly(2))
             ->method('addCompilerPass')
-            ->with($this->isInstanceOf(ParameterReplacementPass::class));
+            ->withConsecutive(
+                $this->isInstanceOf(KeyNotEmptyServiceTagPass::class),
+                $this->isInstanceOf(ParameterReplacementPass::class)
+            );
 
         $bundle->build($container);
     }

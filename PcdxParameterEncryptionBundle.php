@@ -11,6 +11,7 @@
 
 namespace Picodexter\ParameterEncryptionBundle;
 
+use Picodexter\ParameterEncryptionBundle\DependencyInjection\Compiler\KeyNotEmptyServiceTagPass;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\Compiler\ParameterReplacementPass;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
@@ -24,6 +25,7 @@ class PcdxParameterEncryptionBundle extends Bundle
     {
         parent::build($container);
 
+        $container->addCompilerPass(new KeyNotEmptyServiceTagPass());
         $container->addCompilerPass(new ParameterReplacementPass());
     }
 }

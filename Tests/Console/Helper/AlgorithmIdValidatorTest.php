@@ -11,7 +11,6 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Tests\Console\Helper;
 
-use const false;
 use Picodexter\ParameterEncryptionBundle\Configuration\AlgorithmConfigurationContainerInterface;
 use Picodexter\ParameterEncryptionBundle\Console\Helper\AlgorithmIdValidator;
 

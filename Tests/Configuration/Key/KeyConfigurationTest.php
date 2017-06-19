@@ -86,7 +86,6 @@ class KeyConfigurationTest extends \PHPUnit_Framework_TestCase
         ];
     }
 
-
     /**
      * @param mixed    $preparedCost
      * @param int|null $expectedCost
@@ -126,7 +125,7 @@ class KeyConfigurationTest extends \PHPUnit_Framework_TestCase
             ],
             'false' => [
                 false,
-                0
+                0,
             ],
             'string' => [
                 '123abc',

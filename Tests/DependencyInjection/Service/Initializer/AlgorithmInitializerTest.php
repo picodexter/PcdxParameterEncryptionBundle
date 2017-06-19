@@ -56,7 +56,7 @@ class AlgorithmInitializerTest extends \PHPUnit_Framework_TestCase
     public function testInitializeSuccess()
     {
         $bundleConfig = [
-            'algorithms' => []
+            'algorithms' => [],
         ];
         $container = $this->createContainerBuilderMock();
 

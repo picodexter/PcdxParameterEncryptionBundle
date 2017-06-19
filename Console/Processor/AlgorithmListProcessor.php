@@ -45,7 +45,7 @@ class AlgorithmListProcessor implements AlgorithmListProcessorInterface
             $table->addRow([
                 $algorithm->getId(),
                 $algorithm->getEncrypterServiceName(),
-                $algorithm->getDecrypterServiceName()
+                $algorithm->getDecrypterServiceName(),
             ]);
         }
 

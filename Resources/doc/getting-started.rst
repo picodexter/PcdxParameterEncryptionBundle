@@ -194,6 +194,7 @@ one contained in this bundle) to work:
 
     2.  Add Symfony services for the newly implemented classes.
 
-    3.  Add an algorithm entry in the bundle configuration. See :doc:`/configuration`.
+    3.  Add an algorithm entry in the bundle configuration.
+        See :doc:`/configuration`.
 
 .. _installation chapter: https://getcomposer.org/doc/00-intro.md

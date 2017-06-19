@@ -12,8 +12,8 @@
 namespace Picodexter\ParameterEncryptionBundle\Tests\Encryption\Value\Merge\InitializationVector;
 
 use Picodexter\ParameterEncryptionBundle\Encryption\Value\Encoding\DecoderInterface;
-use Picodexter\ParameterEncryptionBundle\Encryption\Value\Merge\InitializationVector\ValueSplitterDecoderDecorator;
 use Picodexter\ParameterEncryptionBundle\Encryption\Value\Merge\InitializationVector\SplitValueBag;
+use Picodexter\ParameterEncryptionBundle\Encryption\Value\Merge\InitializationVector\ValueSplitterDecoderDecorator;
 use Picodexter\ParameterEncryptionBundle\Encryption\Value\Merge\InitializationVector\ValueSplitterInterface;
 
 class ValueSplitterDecoderDecoratorTest extends \PHPUnit_Framework_TestCase

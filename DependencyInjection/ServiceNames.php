@@ -24,6 +24,7 @@ final class ServiceNames
     const ALGORITHM_CONFIGURATION_PREFIX = 'pcdx_parameter_encryption.configuration.algorithm_configuration.';
     const KEY_CONFIGURATION_FACTORY = 'pcdx_parameter_encryption.configuration.key.configuration_factory';
     const KEY_FETCHER = 'pcdx_parameter_encryption.encryption.key.fetcher';
+    const KEY_VALIDATOR_NOT_EMPTY = 'pcdx_parameter_encryption.encryption.key.validator.not_empty';
     const PARAMETER_REPLACER = 'pcdx_parameter_encryption.replacement.parameter_replacer';
     const PARAMETER_REPLACEMENT_FETCHER = 'pcdx_parameter_encryption.replacement.parameter_replacement_fetcher';
     const REPLACEMENT_PATTERN_ALGORITHM_PREFIX = 'pcdx_parameter_encryption.replacement.pattern.algorithm.';

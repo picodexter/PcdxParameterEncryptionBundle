@@ -55,13 +55,11 @@ class KeyNotEmptyDecoratorDefinitionGenerator implements KeyNotEmptyDecoratorDef
     ) {
         $decorationPriority = (int) $decorationPriority;
 
-        $decoratorDefinition = $this->definitionFactory->createDefinition(
-            $decoratorClass,
-            [
-                $this->referenceFactory->createReference($decoratorServiceId.'.inner'),
-                $this->referenceFactory->createReference(ServiceNames::KEY_VALIDATOR_NOT_EMPTY),
-            ]
-        );
+        $decoratedServiceRef = $this->referenceFactory->createReference($decoratorServiceId.'.inner');
+        $validatorReference = $this->referenceFactory->createReference(ServiceNames::KEY_VALIDATOR_NOT_EMPTY);
+
+        $decoratorDefinition = $this->definitionFactory
+            ->createDefinition($decoratorClass, [$decoratedServiceRef, $validatorReference]);
 
         $decoratorDefinition->setDecoratedService($decoratedServiceId, null, $decorationPriority);
         $decoratorDefinition->setPublic(false);

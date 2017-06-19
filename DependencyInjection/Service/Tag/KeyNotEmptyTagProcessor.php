@@ -78,12 +78,8 @@ class KeyNotEmptyTagProcessor implements KeyNotEmptyTagProcessorInterface
             : self::DEFAULT_DECORATION_PRIORITY
         );
 
-        $decoratorDefinition = $this->decoratorDefinitionGenerator->createDecoratorDefinition(
-            $decoratorClass,
-            $decoratorServiceId,
-            $taggedServiceId,
-            $decorationPriority
-        );
+        $decoratorDefinition = $this->decoratorDefinitionGenerator
+            ->createDecoratorDefinition($decoratorClass, $decoratorServiceId, $taggedServiceId, $decorationPriority);
 
         $container->setDefinition($decoratorServiceId, $decoratorDefinition);
     }

@@ -198,6 +198,11 @@
             public="false">
         </service>
 
+        <service id="pcdx_parameter_encryption.dependency_injection.service.crypto_class_detector"
+            class="Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\CryptoClassDetector"
+            public="false">
+        </service>
+
         <service id="pcdx_parameter_encryption.dependency_injection.service.definition_factory"
             class="Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\DefinitionFactory"
             public="false">

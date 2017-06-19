@@ -30,11 +30,7 @@ class KeyCache implements KeyCacheInterface
     {
         $hash = $this->generateHashForKeyConfig($keyConfig);
 
-        if ($this->has($keyConfig)) {
-            return $this->keys[$hash];
-        } else {
-            return null;
-        }
+        return (!$this->has($keyConfig) ? null : $this->keys[$hash]);
     }
 
     /**

@@ -41,10 +41,10 @@ class ActiveKeyConfigurationProvider implements ActiveKeyConfigurationProviderIn
     {
         if (!$isKeyProvided) {
             return $algorithmKeyConfig;
-        } else {
-            return $this->keyConfigFactory->createKeyConfiguration([
-                'value' => $requestKey,
-            ]);
         }
+
+        return $this->keyConfigFactory->createKeyConfiguration([
+            'value' => $requestKey,
+        ]);
     }
 }

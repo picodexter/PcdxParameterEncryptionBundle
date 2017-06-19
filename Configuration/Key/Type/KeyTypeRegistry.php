@@ -68,11 +68,7 @@ class KeyTypeRegistry implements KeyTypeRegistryInterface
      */
     public function get($name)
     {
-        if ($this->has($name)) {
-            return $this->keyTypes[$name];
-        } else {
-            return null;
-        }
+        return (!$this->has($name) ? null : $this->keyTypes[$name]);
     }
 
     /**

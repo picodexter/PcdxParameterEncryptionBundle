@@ -46,11 +46,7 @@ class ValuePrefixReplacementPattern implements ReplacementPatternInterface
      */
     public function getValueWithoutPatternForParameter($key, $value)
     {
-        if ($this->isApplicableForParameter($key, $value)) {
-            return mb_substr($value, mb_strlen($this->prefix));
-        } else {
-            return null;
-        }
+        return (!$this->isApplicableForParameter($key, $value) ? null : mb_substr($value, mb_strlen($this->prefix)));
     }
 
     /**

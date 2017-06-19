@@ -310,6 +310,12 @@
             <argument type="service" id="pcdx_parameter_encryption.dependency_injection.service.reference_factory" />
         </service>
 
+        <service id="pcdx_parameter_encryption.dependency_injection.service.tag.processor.key_not_empty"
+            class="Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\Tag\KeyNotEmptyTagProcessor">
+            <argument type="service" id="pcdx_parameter_encryption.dependency_injection.service.tag.decorator.class_resolver.key_not_empty" />
+            <argument type="service" id="pcdx_parameter_encryption.dependency_injection.service.tag.decorator.definition_generator.key_not_empty" />
+        </service>
+
         <service id="pcdx_parameter_encryption.encryption.caesar_cipher"
             class="Picodexter\ParameterEncryptionBundle\Encryption\Algorithm\CaesarCipher\CaesarCipher"
             public="false">

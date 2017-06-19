@@ -62,7 +62,7 @@ rotation of 13 (ROT13).
 As this type of encryption does not use any key, supplying one is pointless,
 however it is still shown in order to convey the main concept.
 
-1. Application configuration:
+1.  Application configuration:
 
     .. configuration-block::
 
@@ -132,7 +132,7 @@ however it is still shown in order to convey the main concept.
                 ]
             );
 
-2. Parameters:
+2.  Parameters:
 
     .. configuration-block::
 
@@ -164,17 +164,17 @@ however it is still shown in order to convey the main concept.
 Step 4: Test
 ~~~~~~~~~~~~
 
-1. Generate an encrypted value via :doc:`/cli`
+1.  Generate an encrypted value via :doc:`/cli`
 
-2. Save the value as a parameter with the configured prefix.
+2.  Save the value as a parameter with the configured prefix.
 
-   Example (based on example configuration shown above):
+    Example (based on example configuration shown above):
 
-   * Plaintext value: ``This is a test``
-   * Encrypted value: ``Guvf vf n grfg``
-   * Save as a parameter with the value: ``=#!PPE!c:r13!#=Guvf vf n grfg``
+    *   Plaintext value: ``This is a test``
+    *   Encrypted value: ``Guvf vf n grfg``
+    *   Save as a parameter with the value: ``=#!PPE!c:r13!#=Guvf vf n grfg``
 
-3. Read the parameter via code.
+3.  Read the parameter via code.
 
 Step 5: Use Other Encryption Algorithms
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -182,18 +182,18 @@ Step 5: Use Other Encryption Algorithms
 There are currently two ways to get other encryption algorithms (apart from the
 one contained in this bundle) to work:
 
-1. Get and install an add-on bundle.
+1.  Get and install an add-on bundle.
 
-   See :doc:`/supported-algorithms`.
+    See :doc:`/supported-algorithms`.
 
-2. Code your own.
+2.  Code your own.
 
-   1. Implement the :class:`Picodexter\ParameterEncryptionBundle\Encryption\Decrypter\DecrypterInterface`
-      and the :class:`Picodexter\ParameterEncryptionBundle\Encryption\Encrypter\EncrypterInterface`
-      respectively.
+    1.  Implement the :class:`Picodexter\ParameterEncryptionBundle\Encryption\Decrypter\DecrypterInterface`
+        and the :class:`Picodexter\ParameterEncryptionBundle\Encryption\Encrypter\EncrypterInterface`
+        respectively.
 
-   2. Add Symfony services for the newly implemented classes.
+    2.  Add Symfony services for the newly implemented classes.
 
-   3. Add an algorithm entry in the bundle configuration. See :doc:`/configuration`.
+    3.  Add an algorithm entry in the bundle configuration. See :doc:`/configuration`.
 
 .. _installation chapter: https://getcomposer.org/doc/00-intro.md

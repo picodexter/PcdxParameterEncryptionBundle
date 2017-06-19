@@ -297,6 +297,12 @@
             public="false">
         </service>
 
+        <service id="pcdx_parameter_encryption.dependency_injection.service.tag.decorator.class_resolver.key_not_empty"
+            class="Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\Tag\KeyNotEmptyDecoratorClassResolver"
+            public="false">
+            <argument type="service" id="pcdx_parameter_encryption.dependency_injection.service.crypto_class_detector" />
+        </service>
+
         <service id="pcdx_parameter_encryption.encryption.caesar_cipher"
             class="Picodexter\ParameterEncryptionBundle\Encryption\Algorithm\CaesarCipher\CaesarCipher"
             public="false">

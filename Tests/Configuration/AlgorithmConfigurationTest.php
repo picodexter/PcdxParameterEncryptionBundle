@@ -12,7 +12,6 @@
 namespace Picodexter\ParameterEncryptionBundle\Tests\Configuration;
 
 use Picodexter\ParameterEncryptionBundle\Configuration\AlgorithmConfiguration;
-use Picodexter\ParameterEncryptionBundle\Configuration\Key\KeyConfiguration;
 use Picodexter\ParameterEncryptionBundle\Encryption\Decrypter\DecrypterInterface;
 use Picodexter\ParameterEncryptionBundle\Encryption\Encrypter\EncrypterInterface;
 use Picodexter\ParameterEncryptionBundle\Replacement\Pattern\ReplacementPatternInterface;

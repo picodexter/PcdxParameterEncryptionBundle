@@ -42,6 +42,15 @@ class PcdxParameterEncryptionExtension extends ConfigurableExtension
     }
 
     /**
+     * @inheritDoc
+     */
+    public function loadInternal(array $mergedConfig, ContainerBuilder $container)
+    {
+        $this->loadBundleServiceDefinitions($container);
+        $this->initializeServiceDefinitions($mergedConfig, $container);
+    }
+
+    /**
      * Initialize service definitions.
      *
      * @param array            $mergedConfig
@@ -65,14 +74,5 @@ class PcdxParameterEncryptionExtension extends ConfigurableExtension
         $loader = new XmlFileLoader($container, $fileLocator);
 
         $loader->load('services.xml');
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function loadInternal(array $mergedConfig, ContainerBuilder $container)
-    {
-        $this->loadBundleServiceDefinitions($container);
-        $this->initializeServiceDefinitions($mergedConfig, $container);
     }
 }

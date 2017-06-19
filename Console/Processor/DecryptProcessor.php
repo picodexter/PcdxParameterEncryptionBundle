@@ -71,24 +71,6 @@ class DecryptProcessor implements DecryptProcessorInterface
     }
 
     /**
-     * Get encrypted value.
-     *
-     * @param DecryptRequest $request
-     *
-     * @return string
-     */
-    private function getEncryptedValue(DecryptRequest $request)
-    {
-        if (!$request->getEncryptedValue()) {
-            $plaintextValue = $request->getEncryptedQuestionAsker()->askQuestion();
-        } else {
-            $plaintextValue = $request->getEncryptedValue();
-        }
-
-        return $plaintextValue;
-    }
-
-    /**
      * @inheritDoc
      */
     public function renderDecryptOutput(DecryptRequest $request, OutputInterface $output)
@@ -111,5 +93,23 @@ class DecryptProcessor implements DecryptProcessorInterface
             ->decryptValue($plaintextValue, $transformedKey->getFinalKey());
 
         $this->renderer->renderOutput($decryptedValue, $transformedKey, $output);
+    }
+
+    /**
+     * Get encrypted value.
+     *
+     * @param DecryptRequest $request
+     *
+     * @return string
+     */
+    private function getEncryptedValue(DecryptRequest $request)
+    {
+        if (!$request->getEncryptedValue()) {
+            $plaintextValue = $request->getEncryptedQuestionAsker()->askQuestion();
+        } else {
+            $plaintextValue = $request->getEncryptedValue();
+        }
+
+        return $plaintextValue;
     }
 }

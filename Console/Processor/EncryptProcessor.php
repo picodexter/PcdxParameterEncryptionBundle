@@ -71,24 +71,6 @@ class EncryptProcessor implements EncryptProcessorInterface
     }
 
     /**
-     * Get plaintext value.
-     *
-     * @param EncryptRequest $request
-     *
-     * @return string
-     */
-    private function getPlaintextValue(EncryptRequest $request)
-    {
-        if (!$request->getPlaintextValue()) {
-            $plaintextValue = $request->getPlaintextQuestionAsker()->askQuestion();
-        } else {
-            $plaintextValue = $request->getPlaintextValue();
-        }
-
-        return $plaintextValue;
-    }
-
-    /**
      * @inheritDoc
      */
     public function renderEncryptOutput(EncryptRequest $request, OutputInterface $output)
@@ -111,5 +93,23 @@ class EncryptProcessor implements EncryptProcessorInterface
             ->encryptValue($plaintextValue, $transformedKey->getFinalKey());
 
         $this->renderer->renderOutput($encryptedValue, $transformedKey, $output);
+    }
+
+    /**
+     * Get plaintext value.
+     *
+     * @param EncryptRequest $request
+     *
+     * @return string
+     */
+    private function getPlaintextValue(EncryptRequest $request)
+    {
+        if (!$request->getPlaintextValue()) {
+            $plaintextValue = $request->getPlaintextQuestionAsker()->askQuestion();
+        } else {
+            $plaintextValue = $request->getPlaintextValue();
+        }
+
+        return $plaintextValue;
     }
 }

@@ -78,11 +78,10 @@ class AlgorithmRegistrationHandlerTest extends \PHPUnit_Framework_TestCase
         $this->bundleConfigValidator = null;
     }
 
-    /**
-     * @expectedException \Picodexter\ParameterEncryptionBundle\Exception\Configuration\InvalidBundleConfigurationException
-     */
     public function testRegisterAlgorithmsExceptionInvalidConfig()
     {
+        $this->expectException(InvalidBundleConfigurationException::class);
+
         $bundleConfig = [];
 
         $container = $this->createContainerBuilderMock();

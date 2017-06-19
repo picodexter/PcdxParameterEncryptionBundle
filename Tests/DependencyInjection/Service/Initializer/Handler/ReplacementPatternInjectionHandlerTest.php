@@ -70,11 +70,10 @@ class ReplacementPatternInjectionHandlerTest extends \PHPUnit_Framework_TestCase
         $this->bundleConfigValidator = null;
     }
 
-    /**
-     * @expectedException \Picodexter\ParameterEncryptionBundle\Exception\Configuration\InvalidBundleConfigurationException
-     */
     public function testInjectReplacementPatternsIntoRegistryExceptionInvalidConfig()
     {
+        $this->expectException(InvalidBundleConfigurationException::class);
+
         $bundleConfig = [];
 
         $container = $this->createContainerBuilderMock();

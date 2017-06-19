@@ -15,6 +15,7 @@ use Picodexter\ParameterEncryptionBundle\Configuration\Key\KeyConfiguration;
 use Picodexter\ParameterEncryptionBundle\Configuration\Key\KeyConfigurationFactory;
 use Picodexter\ParameterEncryptionBundle\Configuration\Key\Type\KeyTypeInterface;
 use Picodexter\ParameterEncryptionBundle\Configuration\Key\Type\KeyTypeRegistryInterface;
+use Picodexter\ParameterEncryptionBundle\Exception\Configuration\UnknownKeyTypeException;
 
 class KeyConfigurationFactoryTest extends \PHPUnit_Framework_TestCase
 {
@@ -47,11 +48,10 @@ class KeyConfigurationFactoryTest extends \PHPUnit_Framework_TestCase
         $this->keyTypeRegistry = null;
     }
 
-    /**
-     * @expectedException \Picodexter\ParameterEncryptionBundle\Exception\Configuration\UnknownKeyTypeException
-     */
     public function testCreateKeyConfigurationExceptionInvalidType()
     {
+        $this->expectException(UnknownKeyTypeException::class);
+
         $keyTypeName = 'invalid_key_type';
 
         $this->keyTypeRegistry->expects($this->once())

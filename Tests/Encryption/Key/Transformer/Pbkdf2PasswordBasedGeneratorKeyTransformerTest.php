@@ -16,6 +16,8 @@ use Picodexter\ParameterEncryptionBundle\Configuration\Key\Type\GeneratedKeyType
 use Picodexter\ParameterEncryptionBundle\Configuration\Key\Type\KeyTypeInterface;
 use Picodexter\ParameterEncryptionBundle\Configuration\Key\Type\StaticKeyType;
 use Picodexter\ParameterEncryptionBundle\Encryption\Key\Transformer\Pbkdf2PasswordBasedGeneratorKeyTransformer;
+use Picodexter\ParameterEncryptionBundle\Exception\Configuration\InvalidKeyConfigurationException;
+use Picodexter\ParameterEncryptionBundle\Exception\Configuration\UnknownHashAlgorithmException;
 
 class Pbkdf2PasswordBasedGeneratorKeyTransformerTest extends \PHPUnit_Framework_TestCase
 {
@@ -82,11 +84,10 @@ class Pbkdf2PasswordBasedGeneratorKeyTransformerTest extends \PHPUnit_Framework_
         ];
     }
 
-    /**
-     * @expectedException \Picodexter\ParameterEncryptionBundle\Exception\Configuration\UnknownHashAlgorithmException
-     */
     public function testTransformExceptionUnknownHashAlgorithm()
     {
+        $this->expectException(UnknownHashAlgorithmException::class);
+
         $key = 'some key';
 
         $keyConfig = $this->createKeyConfiguration(new GeneratedKeyType(), 'pbkdf2');
@@ -103,10 +104,11 @@ class Pbkdf2PasswordBasedGeneratorKeyTransformerTest extends \PHPUnit_Framework_
      * @param int|null    $cost
      *
      * @dataProvider provideInvalidKeyConfigurationData
-     * @expectedException \Picodexter\ParameterEncryptionBundle\Exception\Configuration\InvalidKeyConfigurationException
      */
     public function testTransformExceptionInvalidKeyConfiguration($hashAlgorithm, $salt, $cost)
     {
+        $this->expectException(InvalidKeyConfigurationException::class);
+
         $key = 'some key';
 
         $keyConfig = $this->createKeyConfiguration(new GeneratedKeyType(), 'pbkdf2');

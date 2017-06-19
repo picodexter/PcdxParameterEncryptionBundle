@@ -11,15 +11,15 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Tests\Replacement\Pattern;
 
+use Picodexter\ParameterEncryptionBundle\Exception\Configuration\EmptyPrefixException;
 use Picodexter\ParameterEncryptionBundle\Replacement\Pattern\ValuePrefixReplacementPattern;
 
 class ValuePrefixReplacementPatternTest extends \PHPUnit_Framework_TestCase
 {
-    /**
-     * @expectedException \Picodexter\ParameterEncryptionBundle\Exception\Configuration\EmptyPrefixException
-     */
     public function testConstructorExceptionMissingPrefix()
     {
+        $this->expectException(EmptyPrefixException::class);
+
         new ValuePrefixReplacementPattern('');
     }
 

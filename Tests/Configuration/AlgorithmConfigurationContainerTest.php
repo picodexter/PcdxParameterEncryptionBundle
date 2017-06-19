@@ -16,6 +16,7 @@ use Picodexter\ParameterEncryptionBundle\Configuration\AlgorithmConfigurationCon
 use Picodexter\ParameterEncryptionBundle\Configuration\Key\KeyConfiguration;
 use Picodexter\ParameterEncryptionBundle\Encryption\Decrypter\DecrypterInterface;
 use Picodexter\ParameterEncryptionBundle\Encryption\Encrypter\EncrypterInterface;
+use Picodexter\ParameterEncryptionBundle\Exception\Configuration\DuplicateAlgorithmIdException;
 use Picodexter\ParameterEncryptionBundle\Replacement\Pattern\ReplacementPatternInterface;
 
 class AlgorithmConfigurationContainerTest extends \PHPUnit_Framework_TestCase
@@ -24,10 +25,11 @@ class AlgorithmConfigurationContainerTest extends \PHPUnit_Framework_TestCase
      * @param array $algorithms
      *
      * @dataProvider provideDuplicateIdData
-     * @expectedException \Picodexter\ParameterEncryptionBundle\Exception\Configuration\DuplicateAlgorithmIdException
      */
     public function testConstructorExceptionDuplicateId(array $algorithms)
     {
+        $this->expectException(DuplicateAlgorithmIdException::class);
+
         new AlgorithmConfigurationContainer($algorithms);
     }
 
@@ -118,10 +120,11 @@ class AlgorithmConfigurationContainerTest extends \PHPUnit_Framework_TestCase
      * @param array $algorithms
      *
      * @dataProvider provideDuplicateIdData
-     * @expectedException \Picodexter\ParameterEncryptionBundle\Exception\Configuration\DuplicateAlgorithmIdException
      */
     public function testSetAlgorithmConfigurationsExceptionDuplicateId(array $algorithms)
     {
+        $this->expectException(DuplicateAlgorithmIdException::class);
+
         $algorithmConfig = new AlgorithmConfigurationContainer([]);
 
         $algorithmConfig->setAlgorithmConfigurations($algorithms);

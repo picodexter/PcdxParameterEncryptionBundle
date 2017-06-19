@@ -13,6 +13,7 @@ namespace Picodexter\ParameterEncryptionBundle\Tests\DependencyInjection\Service
 
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\ServiceNameGenerator;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\ServiceNames;
+use Picodexter\ParameterEncryptionBundle\Exception\Configuration\InvalidAlgorithmConfigurationException;
 
 class ServiceNameGeneratorTest extends \PHPUnit_Framework_TestCase
 {
@@ -41,10 +42,11 @@ class ServiceNameGeneratorTest extends \PHPUnit_Framework_TestCase
      * @param array $algorithmConfig
      *
      * @dataProvider provideInvalidAlgorithmConfigData
-     * @expectedException \Picodexter\ParameterEncryptionBundle\Exception\Configuration\InvalidAlgorithmConfigurationException
      */
     public function testGetAlgorithmConfigurationServiceNameForAlgorithmExceptionInvalidConfig(array $algorithmConfig)
     {
+        $this->expectException(InvalidAlgorithmConfigurationException::class);
+
         $this->generator->getAlgorithmConfigurationServiceNameForAlgorithm($algorithmConfig);
     }
 
@@ -85,11 +87,12 @@ class ServiceNameGeneratorTest extends \PHPUnit_Framework_TestCase
      * @param array $algorithmConfig
      *
      * @dataProvider provideInvalidAlgorithmConfigData
-     * @expectedException \Picodexter\ParameterEncryptionBundle\Exception\Configuration\InvalidAlgorithmConfigurationException
      */
     public function testGetReplacementPatternServiceNameForAlgorithmExceptionInvalidConfig(
         array $algorithmConfig
     ) {
+        $this->expectException(InvalidAlgorithmConfigurationException::class);
+
         $this->generator->getReplacementPatternServiceNameForAlgorithm($algorithmConfig);
     }
 
@@ -108,11 +111,12 @@ class ServiceNameGeneratorTest extends \PHPUnit_Framework_TestCase
      * @param array $algorithmConfig
      *
      * @dataProvider provideInvalidAlgorithmConfigData
-     * @expectedException \Picodexter\ParameterEncryptionBundle\Exception\Configuration\InvalidAlgorithmConfigurationException
      */
     public function testGetReplacementSourceDecrypterServiceNameForAlgorithmExceptionInvalidConfig(
         array $algorithmConfig
     ) {
+        $this->expectException(InvalidAlgorithmConfigurationException::class);
+
         $this->generator->getReplacementSourceDecrypterServiceNameForAlgorithm($algorithmConfig);
     }
 

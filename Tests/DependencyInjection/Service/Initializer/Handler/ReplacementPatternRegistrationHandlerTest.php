@@ -16,6 +16,7 @@ use Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\DefinitionF
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\Initializer\Handler\ReplacementPatternRegistrationHandler;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\ServiceNameGeneratorInterface;
 use Picodexter\ParameterEncryptionBundle\Exception\Configuration\InvalidBundleConfigurationException;
+use Picodexter\ParameterEncryptionBundle\Exception\Configuration\UnknownReplacementPatternTypeException;
 use Picodexter\ParameterEncryptionBundle\Replacement\Pattern\Registry\ReplacementPatternTypeRegistryInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
@@ -77,11 +78,10 @@ class ReplacementPatternRegistrationHandlerTest extends \PHPUnit_Framework_TestC
         $this->bundleConfigValidator = null;
     }
 
-    /**
-     * @expectedException \Picodexter\ParameterEncryptionBundle\Exception\Configuration\InvalidBundleConfigurationException
-     */
     public function testRegisterReplacementPatternsExceptionInvalidConfig()
     {
+        $this->expectException(InvalidBundleConfigurationException::class);
+
         $bundleConfig = [];
 
         $container = $this->createContainerBuilderMock();
@@ -94,11 +94,10 @@ class ReplacementPatternRegistrationHandlerTest extends \PHPUnit_Framework_TestC
         $this->handler->registerReplacementPatterns($bundleConfig, $container);
     }
 
-    /**
-     * @expectedException \Picodexter\ParameterEncryptionBundle\Exception\Configuration\UnknownReplacementPatternTypeException
-     */
     public function testRegisterReplacementPatternsExceptionUnknownReplacementPatternType()
     {
+        $this->expectException(UnknownReplacementPatternTypeException::class);
+
         $unknownPatternType = 'nonexistent_example';
         $bundleConfig = [
             'algorithms' => [

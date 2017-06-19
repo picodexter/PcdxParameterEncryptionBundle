@@ -15,11 +15,10 @@ use Picodexter\ParameterEncryptionBundle\DependencyInjection\ServiceNames;
 
 class ServiceNamesTest extends \PHPUnit_Framework_TestCase
 {
-    /**
-     * @expectedException \BadMethodCallException
-     */
     public function testConstructorExceptionInstantiation()
     {
+        $this->expectException(\BadMethodCallException::class);
+
         new ServiceNames();
     }
 }

@@ -14,6 +14,7 @@ namespace Picodexter\ParameterEncryptionBundle\Tests\DependencyInjection\Service
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\CryptoClassDetector;
 use Picodexter\ParameterEncryptionBundle\Encryption\Decrypter\CaesarDecrypter;
 use Picodexter\ParameterEncryptionBundle\Encryption\Encrypter\CaesarEncrypter;
+use Picodexter\ParameterEncryptionBundle\Exception\DependencyInjection\UnknownClassException;
 
 class CryptoClassDetectorTest extends \PHPUnit_Framework_TestCase
 {
@@ -38,11 +39,10 @@ class CryptoClassDetectorTest extends \PHPUnit_Framework_TestCase
         $this->detector = null;
     }
 
-    /**
-     * @expectedException \Picodexter\ParameterEncryptionBundle\Exception\DependencyInjection\UnknownClassException
-     */
     public function testIsDecrypterClassExceptionUnknownClass()
     {
+        $this->expectException(UnknownClassException::class);
+
         $this->detector->isDecrypterClass('\\Picodexter\\ParameterEncryptionBundle\\UnknownClass');
     }
 
@@ -76,11 +76,10 @@ class CryptoClassDetectorTest extends \PHPUnit_Framework_TestCase
         ];
     }
 
-    /**
-     * @expectedException \Picodexter\ParameterEncryptionBundle\Exception\DependencyInjection\UnknownClassException
-     */
     public function testIsEncrypterClassExceptionUnknownClass()
     {
+        $this->expectException(UnknownClassException::class);
+
         $this->detector->isDecrypterClass('\\Picodexter\\ParameterEncryptionBundle\\UnknownClass');
     }
 

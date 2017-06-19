@@ -12,6 +12,7 @@
 namespace Picodexter\ParameterEncryptionBundle\Tests\DependencyInjection;
 
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\Configuration;
+use Symfony\Component\Config\Definition\Exception\Exception as DefinitionException;
 use Symfony\Component\Config\Definition\Processor;
 
 class ConfigurationTest extends \PHPUnit_Framework_TestCase
@@ -223,10 +224,11 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
      * @param array $config
      *
      * @dataProvider provideConfigurationFailureData
-     * @expectedException \Symfony\Component\Config\Definition\Exception\Exception
      */
     public function testConfigurationFailure(array $config)
     {
+        $this->expectException(DefinitionException::class);
+
         $this->configProcessor->processConfiguration($this->configuration, $config);
     }
 

@@ -70,11 +70,10 @@ class AlgorithmInjectionHandlerTest extends \PHPUnit_Framework_TestCase
         $this->bundleConfigValidator = null;
     }
 
-    /**
-     * @expectedException \Picodexter\ParameterEncryptionBundle\Exception\Configuration\InvalidBundleConfigurationException
-     */
     public function testInjectAlgorithmConfigurationsIntoContainerExceptionInvalidConfig()
     {
+        $this->expectException(InvalidBundleConfigurationException::class);
+
         $bundleConfig = ['invalid_config'];
 
         $container = $this->createContainerBuilderMock();

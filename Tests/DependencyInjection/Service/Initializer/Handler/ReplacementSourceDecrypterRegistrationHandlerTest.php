@@ -78,11 +78,10 @@ class ReplacementSourceDecrypterRegistrationHandlerTest extends \PHPUnit_Framewo
         $this->bundleConfigValidator = null;
     }
 
-    /**
-     * @expectedException \Picodexter\ParameterEncryptionBundle\Exception\Configuration\InvalidBundleConfigurationException
-     */
     public function testRegisterReplacementSourceDecryptersExceptionInvalidConfig()
     {
+        $this->expectException(InvalidBundleConfigurationException::class);
+
         $bundleConfig = [];
 
         $container = $this->createContainerBuilderMock();

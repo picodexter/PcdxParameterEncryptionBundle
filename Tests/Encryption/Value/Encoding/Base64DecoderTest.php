@@ -12,6 +12,7 @@
 namespace Picodexter\ParameterEncryptionBundle\Tests\Encryption\Value\Encoding;
 
 use Picodexter\ParameterEncryptionBundle\Encryption\Value\Encoding\Base64Decoder;
+use Picodexter\ParameterEncryptionBundle\Exception\Encryption\InvalidBase64ValueException;
 
 class Base64DecoderTest extends \PHPUnit_Framework_TestCase
 {
@@ -36,11 +37,10 @@ class Base64DecoderTest extends \PHPUnit_Framework_TestCase
         $this->decoder = null;
     }
 
-    /**
-     * @expectedException \Picodexter\ParameterEncryptionBundle\Exception\Encryption\InvalidBase64ValueException
-     */
     public function testDecodeExceptionInvalidBase64Value()
     {
+        $this->expectException(InvalidBase64ValueException::class);
+
         $this->decoder->decode('!');
     }
 

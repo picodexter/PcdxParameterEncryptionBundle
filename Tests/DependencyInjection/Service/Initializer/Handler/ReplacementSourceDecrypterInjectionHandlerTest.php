@@ -70,11 +70,10 @@ class ReplacementSourceDecrypterInjectionHandlerTest extends \PHPUnit_Framework_
         $this->bundleConfigValidator = null;
     }
 
-    /**
-     * @expectedException \Picodexter\ParameterEncryptionBundle\Exception\Configuration\InvalidBundleConfigurationException
-     */
     public function testInjectReplacementSourceDecryptersIntoFetcherExceptionInvalidConfig()
     {
+        $this->expectException(InvalidBundleConfigurationException::class);
+
         $bundleConfig = [];
 
         $container = $this->createContainerBuilderMock();

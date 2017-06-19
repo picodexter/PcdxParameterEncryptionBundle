@@ -91,11 +91,10 @@ class EncryptProcessorTest extends \PHPUnit_Framework_TestCase
         $this->activeKeyConfigProvider = null;
     }
 
-    /**
-     * @expectedException \Picodexter\ParameterEncryptionBundle\Exception\Console\UnknownAlgorithmIdException
-     */
     public function testRenderEncryptOutputExceptionUnknownAlgorithmId()
     {
+        $this->expectException(UnknownAlgorithmIdException::class);
+
         $algorithmId = 'doesnotexist';
 
         $request = new EncryptRequest(

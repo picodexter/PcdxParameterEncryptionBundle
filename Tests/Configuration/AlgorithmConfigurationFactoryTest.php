@@ -17,6 +17,7 @@ use Picodexter\ParameterEncryptionBundle\Configuration\Key\KeyConfiguration;
 use Picodexter\ParameterEncryptionBundle\Configuration\Key\KeyConfigurationFactoryInterface;
 use Picodexter\ParameterEncryptionBundle\Encryption\Decrypter\DecrypterInterface;
 use Picodexter\ParameterEncryptionBundle\Encryption\Encrypter\EncrypterInterface;
+use Picodexter\ParameterEncryptionBundle\Exception\Configuration\InvalidAlgorithmConfigurationException;
 use Picodexter\ParameterEncryptionBundle\Replacement\Pattern\ReplacementPatternInterface;
 
 class AlgorithmConfigurationFactoryTest extends \PHPUnit_Framework_TestCase
@@ -54,10 +55,11 @@ class AlgorithmConfigurationFactoryTest extends \PHPUnit_Framework_TestCase
      * @param array $algorithmConfig
      *
      * @dataProvider provideInvalidConfigData
-     * @expectedException \Picodexter\ParameterEncryptionBundle\Exception\Configuration\InvalidAlgorithmConfigurationException
      */
     public function testCreateAlgorithmConfigurationExceptionInvalidConfig(array $algorithmConfig)
     {
+        $this->expectException(InvalidAlgorithmConfigurationException::class);
+
         $decrypter = $this->createDecrypterInterfaceMock();
         $encrypter = $this->createEncrypterInterfaceMock();
         $replacementPattern = $this->createReplacementPatternInterfaceMock();

@@ -13,6 +13,7 @@ namespace Picodexter\ParameterEncryptionBundle\Tests\Encryption\Key;
 
 use Picodexter\ParameterEncryptionBundle\Encryption\Key\KeyNotEmptyValidator;
 use Picodexter\ParameterEncryptionBundle\Encryption\Key\KeyNotEmptyValidatorInterface;
+use Picodexter\ParameterEncryptionBundle\Exception\Encryption\EmptyKeyException;
 
 class KeyNotEmptyValidatorTest extends \PHPUnit_Framework_TestCase
 {
@@ -37,11 +38,10 @@ class KeyNotEmptyValidatorTest extends \PHPUnit_Framework_TestCase
         $this->validator = null;
     }
 
-    /**
-     * @expectedException \Picodexter\ParameterEncryptionBundle\Exception\Encryption\EmptyKeyException
-     */
     public function testAssertKeyNotEmptyExceptionEmpty()
     {
+        $this->expectException(EmptyKeyException::class);
+
         $this->validator->assertKeyNotEmpty('');
     }
 

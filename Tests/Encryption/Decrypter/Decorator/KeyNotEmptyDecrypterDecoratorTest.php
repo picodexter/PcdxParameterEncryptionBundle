@@ -54,11 +54,10 @@ class KeyNotEmptyDecrypterDecoratorTest extends \PHPUnit_Framework_TestCase
         $this->decrypter = null;
     }
 
-    /**
-     * @expectedException \Picodexter\ParameterEncryptionBundle\Exception\Encryption\EmptyKeyException
-     */
     public function testDecryptValueExceptionKeyEmpty()
     {
+        $this->expectException(EmptyKeyException::class);
+
         $encryptedValue = 'some encrypted value';
         $decryptionKey = '';
 

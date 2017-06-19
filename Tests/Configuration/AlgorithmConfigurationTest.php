@@ -14,6 +14,7 @@ namespace Picodexter\ParameterEncryptionBundle\Tests\Configuration;
 use Picodexter\ParameterEncryptionBundle\Configuration\AlgorithmConfiguration;
 use Picodexter\ParameterEncryptionBundle\Encryption\Decrypter\DecrypterInterface;
 use Picodexter\ParameterEncryptionBundle\Encryption\Encrypter\EncrypterInterface;
+use Picodexter\ParameterEncryptionBundle\Exception\Configuration\InvalidAlgorithmIdException;
 use Picodexter\ParameterEncryptionBundle\Replacement\Pattern\ReplacementPatternInterface;
 
 class AlgorithmConfigurationTest extends \PHPUnit_Framework_TestCase
@@ -22,10 +23,11 @@ class AlgorithmConfigurationTest extends \PHPUnit_Framework_TestCase
      * @param string $id
      *
      * @dataProvider provideInvalidIdData
-     * @expectedException \Picodexter\ParameterEncryptionBundle\Exception\Configuration\InvalidAlgorithmIdException
      */
     public function testConstructorExceptionInvalidId($id)
     {
+        $this->expectException(InvalidAlgorithmIdException::class);
+
         $this->createAlgorithmConfigurationWithId($id);
     }
 
@@ -97,10 +99,11 @@ class AlgorithmConfigurationTest extends \PHPUnit_Framework_TestCase
      * @param string $id
      *
      * @dataProvider provideInvalidIdData
-     * @expectedException \Picodexter\ParameterEncryptionBundle\Exception\Configuration\InvalidAlgorithmIdException
      */
     public function testSetIdExceptionInvalidId($id)
     {
+        $this->expectException(InvalidAlgorithmIdException::class);
+
         $algorithm = $this->createAlgorithmConfigurationWithId('placeholder');
 
         $algorithm->setId($id);

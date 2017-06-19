@@ -13,6 +13,7 @@ namespace Picodexter\ParameterEncryptionBundle\Tests\Console\Helper;
 
 use Picodexter\ParameterEncryptionBundle\Configuration\AlgorithmConfigurationContainerInterface;
 use Picodexter\ParameterEncryptionBundle\Console\Helper\AlgorithmIdValidator;
+use Picodexter\ParameterEncryptionBundle\Exception\Console\UnknownAlgorithmIdException;
 
 class AlgorithmIdValidatorTest extends \PHPUnit_Framework_TestCase
 {
@@ -45,11 +46,10 @@ class AlgorithmIdValidatorTest extends \PHPUnit_Framework_TestCase
         $this->algorithmConfigContainer = null;
     }
 
-    /**
-     * @expectedException \Picodexter\ParameterEncryptionBundle\Exception\Console\UnknownAlgorithmIdException
-     */
     public function testAssertKnownAlgorithmIdExceptionUnknown()
     {
+        $this->expectException(UnknownAlgorithmIdException::class);
+
         $algorithmId = 'cannot_find_me';
 
         $this->setUpAlgorithmConfigurationContainerHas($algorithmId, false);

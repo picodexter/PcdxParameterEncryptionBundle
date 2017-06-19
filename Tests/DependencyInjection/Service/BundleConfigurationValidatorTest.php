@@ -12,6 +12,7 @@
 namespace Picodexter\ParameterEncryptionBundle\Tests\DependencyInjection\Service;
 
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\BundleConfigurationValidator;
+use Picodexter\ParameterEncryptionBundle\Exception\Configuration\InvalidBundleConfigurationException;
 
 class BundleConfigurationValidatorTest extends \PHPUnit_Framework_TestCase
 {
@@ -39,11 +40,12 @@ class BundleConfigurationValidatorTest extends \PHPUnit_Framework_TestCase
     /**
      * @param array $bundleConfig
      *
-     * @expectedException \Picodexter\ParameterEncryptionBundle\Exception\Configuration\InvalidBundleConfigurationException
      * @dataProvider provideInvalidBundleConfigData
      */
     public function testAssertValidBundleConfigurationExceptionInvalidConfig(array $bundleConfig)
     {
+        $this->expectException(InvalidBundleConfigurationException::class);
+
         $this->validator->assertValidBundleConfiguration($bundleConfig);
     }
 

@@ -18,7 +18,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Removed
 
-*   (empty)
+*   Removed PHP CS Fixer dist config file from git exports
 
 ### Fixed
 

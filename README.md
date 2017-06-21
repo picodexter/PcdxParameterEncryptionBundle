@@ -66,3 +66,16 @@ Please refer to the [Getting Started guide](Resources/doc/getting-started.rst).
 ## License
 
 This bundle is released under the [MIT license](LICENSE).
+
+## Authors
+
+*   picodexter | [GitHub](https://github.com/picodexter) | [picodexter.io](https://picodexter.io/)
+
+See also the [list of contributors](https://github.com/picodexter/PcdxParameterEncryptionBundle/contributors).
+
+## Contributing
+
+The official project repository with the issue tracker can be found
+[on GitHub](https://github.com/picodexter/PcdxParameterEncryptionBundle).
+
+Please refer to the [contributing document](CONTRIBUTING.md).

@@ -29,7 +29,12 @@ We may also ask for sample code in a fresh project based on the
 [Symfony Standard Edition](https://github.com/symfony/symfony-standard) if we cannot simulate it otherwise.
 Ideally, this would be as easy as cloning a repository and following a couple of steps.
 
-## Before Submitting a Pull Request
+## Contributing Code
+
+Please make sure that the documentation is still up to date and not missing any vital information relating to your
+changes!
+
+### Before Submitting a Pull Request
 
 In order to maintain a certain quality level for the code, this project is using several tools to help with testing and
 coding standards.

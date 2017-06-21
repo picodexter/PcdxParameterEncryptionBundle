@@ -19,6 +19,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Removed
 
 *   Removed PHP CS Fixer dist config file from git exports
+*   Removed PHPUnit dist config file from git exports
 
 ### Fixed
 

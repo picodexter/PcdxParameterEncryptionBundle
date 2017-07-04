@@ -29,9 +29,9 @@ interface RewriterInterface
     /**
      * Check if this rewriter applies.
      *
-     * @param string           $serviceId
-     * @param Definition       $definition
-     * @param array            $extensionConfig
+     * @param string     $serviceId
+     * @param Definition $definition
+     * @param array      $extensionConfig
      *
      * @return bool
      */
@@ -47,9 +47,9 @@ interface RewriterInterface
     /**
      * Process service definition.
      *
-     * @param string           $serviceId
-     * @param Definition       $definition
-     * @param array            $extensionConfig
+     * @param string     $serviceId
+     * @param Definition $definition
+     * @param array      $extensionConfig
      */
     public function processServiceDefinition($serviceId, Definition $definition, array $extensionConfig);
 }

@@ -193,6 +193,11 @@
             public="false">
         </service>
 
+        <service id="pcdx_parameter_encryption.dependency_injection.bundle_configuration.service_definition.argument_replacer"
+            class="Picodexter\ParameterEncryptionBundle\DependencyInjection\BundleConfiguration\ServiceDefinition\ArgumentReplacer"
+            public="false">
+        </service>
+
         <service id="pcdx_parameter_encryption.dependency_injection.service.bundle_configuration_validator"
             class="Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\BundleConfigurationValidator"
             public="false">

@@ -387,6 +387,11 @@
             <argument type="service" id="pcdx_parameter_encryption.dependency_injection.service.tag.decorator.definition_generator.key_not_empty" />
         </service>
 
+        <service id="pcdx_parameter_encryption.dependency_injection.service.tag.processor.bundle_configuration_service_definition_rewriter"
+            class="Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\Tag\BundleConfigurationServiceDefinitionRewriterTagProcessor">
+            <argument type="service" id="pcdx_parameter_encryption.dependency_injection.service.reference_factory" />
+        </service>
+
         <service id="pcdx_parameter_encryption.encryption.caesar_cipher"
             class="Picodexter\ParameterEncryptionBundle\Encryption\Algorithm\CaesarCipher\CaesarCipher"
             public="false">

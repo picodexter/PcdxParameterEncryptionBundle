@@ -203,6 +203,17 @@
             public="false">
         </service>
 
+        <service id="pcdx_parameter_encryption.dependency_injection.bundle_configuration.service_definition.rewriter.doctrine.config"
+            class="Picodexter\ParameterEncryptionBundle\DependencyInjection\BundleConfiguration\DummyConfiguration"
+            public="false">
+            <factory service="pcdx_parameter_encryption.dependency_injection.bundle_configuration.configuration.factory"
+                method="createConfiguration" />
+            <argument>Doctrine\Bundle\DoctrineBundle\DependencyInjection\Configuration</argument>
+            <argument type="collection">
+                <argument>%kernel.debug%</argument>
+            </argument>
+        </service>
+
         <service id="pcdx_parameter_encryption.dependency_injection.service.bundle_configuration_validator"
             class="Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\BundleConfigurationValidator"
             public="false">

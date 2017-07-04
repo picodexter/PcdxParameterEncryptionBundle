@@ -148,6 +148,7 @@ class DoctrineRewriterTest extends \PHPUnit_Framework_TestCase
             )
             ->will($this->returnCallback(function ($serviceConnArguments, $resolvedConnConfig, $argumentKey) {
                 $serviceConnArguments[$argumentKey] = 'REPLACED_VALUE';
+
                 return $serviceConnArguments;
             }));
 

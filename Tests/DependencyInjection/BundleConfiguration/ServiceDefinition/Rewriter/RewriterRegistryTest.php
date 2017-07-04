@@ -50,7 +50,7 @@ class RewriterRegistryTest extends \PHPUnit_Framework_TestCase
                     $this->createRewriterInterfaceMock(),
                     $this->createRewriterInterfaceMock(),
                 ],
-                3
+                3,
             ],
             'no valid rewriters' => [
                 [

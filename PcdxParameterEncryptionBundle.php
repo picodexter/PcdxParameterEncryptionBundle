@@ -11,6 +11,7 @@
 
 namespace Picodexter\ParameterEncryptionBundle;
 
+use Picodexter\ParameterEncryptionBundle\DependencyInjection\Compiler\BundleConfigurationServiceDefinitionRewriterServiceTagPass;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\Compiler\KeyNotEmptyServiceTagPass;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\Compiler\ParameterReplacementPass;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\Compiler\UpdateBundleConfigurationServiceDefinitionsWithResolvedParametersPass;
@@ -26,6 +27,7 @@ class PcdxParameterEncryptionBundle extends Bundle
     {
         parent::build($container);
 
+        $container->addCompilerPass(new BundleConfigurationServiceDefinitionRewriterServiceTagPass());
         $container->addCompilerPass(new KeyNotEmptyServiceTagPass());
         $container->addCompilerPass(new ParameterReplacementPass());
         $container->addCompilerPass(new UpdateBundleConfigurationServiceDefinitionsWithResolvedParametersPass());

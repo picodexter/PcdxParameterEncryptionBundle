@@ -53,8 +53,8 @@ class KeyNotEmptyTagProcessor implements KeyNotEmptyTagProcessorInterface
     {
         $taggedServices = $container->findTaggedServiceIds(self::TAG_NAME);
 
-        foreach ($taggedServices as $taggedServiceId => $tag) {
-            $this->processTaggedService($container, $taggedServiceId, $tag);
+        foreach ($taggedServices as $taggedServiceId => $tags) {
+            $this->processTaggedService($container, $taggedServiceId, $tags);
         }
     }
 
@@ -63,9 +63,9 @@ class KeyNotEmptyTagProcessor implements KeyNotEmptyTagProcessorInterface
      *
      * @param ContainerBuilder $container
      * @param string           $taggedServiceId
-     * @param array            $tag
+     * @param array            $tags
      */
-    private function processTaggedService(ContainerBuilder $container, $taggedServiceId, array $tag)
+    private function processTaggedService(ContainerBuilder $container, $taggedServiceId, array $tags)
     {
         $taggedDefinition = $container->getDefinition($taggedServiceId);
 
@@ -73,8 +73,8 @@ class KeyNotEmptyTagProcessor implements KeyNotEmptyTagProcessorInterface
         $decoratorClass = $this->decoratorClassResolver
             ->getDecoratorClassForDecoratedClass($taggedDefinition->getClass());
         $decorationPriority = (
-            array_key_exists('priority', $tag)
-            ? $tag['priority']
+            array_key_exists(0, $tags) && array_key_exists('priority', $tags[0])
+            ? $tags[0]['priority']
             : self::DEFAULT_DECORATION_PRIORITY
         );
 

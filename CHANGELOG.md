@@ -23,7 +23,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Fixed
 
-*   (empty)
+*   Fixed interpretation of priority value for service tag "pcdx_parameter_encryption.crypto.key_must_not_be_empty"
 
 ### Security
 

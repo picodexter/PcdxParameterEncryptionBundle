@@ -74,16 +74,16 @@ class KeyNotEmptyTagProcessorTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @param array  $serviceTag
+     * @param array  $serviceTags
      * @param int    $expectedDecPriority
      *
      * @dataProvider provideProcessData
      */
-    public function testProcessSuccessNotEmpty(array $serviceTag, $expectedDecPriority)
+    public function testProcessSuccessNotEmpty(array $serviceTags, $expectedDecPriority)
     {
         $serviceId = 'some_service';
         $taggedServices = [
-            $serviceId => $serviceTag,
+            $serviceId => $serviceTags,
         ];
         $serviceClass = '\\Some\\Encrypter\\Or\\Decrypter\\Class';
         $prepDecoratorClass = '\\Correct\\Encrypter\\Or\\Decrypter\\Decorator\\Class';
@@ -141,14 +141,18 @@ class KeyNotEmptyTagProcessorTest extends \PHPUnit_Framework_TestCase
         return [
             'service with priority' => [
                 [
-                    'name' => KeyNotEmptyTagProcessor::TAG_NAME,
-                    'priority' => 1234,
+                    [
+                        'name' => KeyNotEmptyTagProcessor::TAG_NAME,
+                        'priority' => 1234,
+                    ],
                 ],
                 1234,
             ],
             'service without priority' => [
                 [
-                    'name' => KeyNotEmptyTagProcessor::TAG_NAME,
+                    [
+                        'name' => KeyNotEmptyTagProcessor::TAG_NAME,
+                    ],
                 ],
                 KeyNotEmptyTagProcessor::DEFAULT_DECORATION_PRIORITY,
             ],

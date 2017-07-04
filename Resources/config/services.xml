@@ -260,7 +260,7 @@
             class="Picodexter\ParameterEncryptionBundle\DependencyInjection\BundleConfiguration\ServiceDefinition\Rewriter\RewriterRegistry"
             public="false">
             <argument type="collection">
-                <argument type="service" id="pcdx_parameter_encryption.dependency_injection.bundle_configuration.service_definition.rewriter.doctrine" />
+                <!-- automatically filled in at runtime -->
             </argument>
         </service>
 

@@ -36,6 +36,9 @@ final class ServiceNames
     const REPLACEMENT_SOURCE_DECRYPTER_ALGORITHM_PREFIX = 'pcdx_parameter_encryption.replacement.source.decrypter.';
     const SERVICE_DEFINITION_INITIALIZATION_MANAGER
         = 'pcdx_parameter_encryption.dependency_injection.service.definition_initialization_manager';
+    const SERVICE_TAG_PROCESSOR_BUNDLE_CONFIGURATION_SERVICE_DEFINITION_REWRITER
+        = 'pcdx_parameter_encryption.dependency_injection.service.tag.processor'
+        .'.bundle_configuration_service_definition_rewriter';
     const SERVICE_TAG_PROCESSOR_KEY_NOT_EMPTY
         = 'pcdx_parameter_encryption.dependency_injection.service.tag.processor.key_not_empty';
 

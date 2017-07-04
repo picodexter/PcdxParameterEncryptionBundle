@@ -244,6 +244,14 @@
             </argument>
         </service>
 
+        <service id="pcdx_parameter_encryption.dependency_injection.bundle_configuration.service_definition.rewriter.registry"
+            class="Picodexter\ParameterEncryptionBundle\DependencyInjection\BundleConfiguration\ServiceDefinition\Rewriter\RewriterRegistry"
+            public="false">
+            <argument type="collection">
+                <argument type="service" id="pcdx_parameter_encryption.dependency_injection.bundle_configuration.service_definition.rewriter.doctrine" />
+            </argument>
+        </service>
+
         <service id="pcdx_parameter_encryption.dependency_injection.service.bundle_configuration_validator"
             class="Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\BundleConfigurationValidator"
             public="false">

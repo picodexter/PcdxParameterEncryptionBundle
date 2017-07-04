@@ -203,6 +203,12 @@
             public="false">
         </service>
 
+        <service id="pcdx_parameter_encryption.dependency_injection.bundle_configuration.configuration.resolver"
+            class="Picodexter\ParameterEncryptionBundle\DependencyInjection\BundleConfiguration\ConfigurationResolver"
+            public="false">
+            <argument type="service" id="pcdx_parameter_encryption.dependency_injection.bundle_configuration.configuration.resolver.processor" />
+        </service>
+
         <service id="pcdx_parameter_encryption.dependency_injection.bundle_configuration.configuration.resolver.processor"
             class="Symfony\Component\Config\Definition\Processor"
             public="false">

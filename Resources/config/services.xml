@@ -193,6 +193,11 @@
             public="false">
         </service>
 
+        <service id="pcdx_parameter_encryption.dependency_injection.bundle_configuration.configuration.cache"
+            class="Picodexter\ParameterEncryptionBundle\DependencyInjection\BundleConfiguration\ConfigurationCache"
+            public="false">
+        </service>
+
         <service id="pcdx_parameter_encryption.dependency_injection.bundle_configuration.configuration.factory"
             class="Picodexter\ParameterEncryptionBundle\DependencyInjection\BundleConfiguration\ConfigurationFactory"
             public="false">

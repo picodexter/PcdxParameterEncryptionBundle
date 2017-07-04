@@ -226,6 +226,11 @@
             public="false">
         </service>
 
+        <service id="pcdx_parameter_encryption.dependency_injection.bundle_configuration.service_definition.processor"
+            class="Picodexter\ParameterEncryptionBundle\DependencyInjection\BundleConfiguration\ServiceDefinition\ServiceDefinitionProcessor">
+            <argument type="service" id="pcdx_parameter_encryption.dependency_injection.bundle_configuration.service_definition.rewriter.manager" />
+        </service>
+
         <service id="pcdx_parameter_encryption.dependency_injection.bundle_configuration.service_definition.rewriter.doctrine"
             class="Picodexter\ParameterEncryptionBundle\DependencyInjection\BundleConfiguration\ServiceDefinition\Rewriter\DoctrineRewriter"
             public="false">

@@ -9,3 +9,4 @@ automatically decrypt them during runtime.
 *   :doc:`/configuration`
 *   :doc:`/cli`
 *   :doc:`/supported-algorithms`
+*   :doc:`/bundle-configuration-service-definition-rewriting`

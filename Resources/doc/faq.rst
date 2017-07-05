@@ -49,3 +49,15 @@ However, even though it is possible right now, there is no guarantee that this
 will stay as a feature. In fact, the overall benefit of this approach is
 questionable if not convoluted and it could be more sensible to answer the
 question of "why" behind this choice in a different way.
+
+Why does bundle XYZ not get the decrypted values passed as its configuration?
+-----------------------------------------------------------------------------
+
+Symfony resolves parameters for bundle configurations before it executes any
+other compiler passes, including the one that is responsible for replacing
+encrypted parameter values with their decrypted counterparts. That is the
+reason why the Bundle Configuration Service Definition Rewriting feature
+exists.
+
+See :doc:`/bundle-configuration-service-definition-rewriting` for more
+information about the topic.

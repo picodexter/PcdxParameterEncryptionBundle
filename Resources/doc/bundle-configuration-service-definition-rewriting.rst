@@ -106,8 +106,8 @@ configuration key the rewriter is using so it can
 2.  get passed the correct (and resolved / parsed) bundle configuration to work with
 
 The tag attribute ``priority`` is optional and can be used to establish a processing order amongst the rewriters.
-As per usual with priorities in Symfony service tags, they are integers and higher priorities get executed earlier than
-lower ones. Default priority is 0.
+As per usual with priorities in Symfony service tags, they are integers, they can be negative, and higher priorities get
+executed earlier than lower ones. Default priority is 0.
 
 If you have written a Bundle Configuration Service Definition Rewriter for a Symfony bundle that is either part of the
 Symfony Standard Edition or very popular in its own right, please feel free to submit a pull request for it,

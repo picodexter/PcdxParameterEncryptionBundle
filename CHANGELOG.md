@@ -6,7 +6,11 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Added
 
-*   (empty)
+*   Added Bundle Configuration Service Definition Rewriting feature to replace parameters inside bundle configurations
+    for service definitions with their decrypted counterparts.
+
+    You can find more on this topic in the new
+    [Bundle Configuration Service Definition Rewriting documentation page](Resources/doc/bundle-configuration-service-definition-rewriting.rst).
 
 ### Changed
 

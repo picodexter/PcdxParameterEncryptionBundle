@@ -18,7 +18,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 class AbstractCryptRendererTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @var AbstractCryptRenderer|CryptRendererDummy
+     * @var AbstractCryptRenderer|DummyAbstractCryptRenderer
      */
     private $renderer;
 
@@ -27,7 +27,7 @@ class AbstractCryptRendererTest extends \PHPUnit_Framework_TestCase
      */
     public function setUp()
     {
-        $this->renderer = new CryptRendererDummy();
+        $this->renderer = new DummyAbstractCryptRenderer();
     }
 
     /**
@@ -52,8 +52,8 @@ class AbstractCryptRendererTest extends \PHPUnit_Framework_TestCase
         $output->expects($this->exactly(2))
             ->method('writeln')
             ->withConsecutive(
-                [$this->identicalTo(CryptRendererDummy::MESSAGE_FOR_GENERATED_KEY)],
-                [$this->identicalTo(CryptRendererDummy::MESSAGE_FOR_RESULT)]
+                [$this->identicalTo(DummyAbstractCryptRenderer::MESSAGE_FOR_GENERATED_KEY)],
+                [$this->identicalTo(DummyAbstractCryptRenderer::MESSAGE_FOR_RESULT)]
             );
 
         $this->renderer->renderOutput($result, $transformedKey, $output);
@@ -92,8 +92,8 @@ class AbstractCryptRendererTest extends \PHPUnit_Framework_TestCase
         $output->expects($this->exactly(2))
             ->method('writeln')
             ->withConsecutive(
-                [$this->identicalTo(CryptRendererDummy::MESSAGE_FOR_STATIC_KEY)],
-                [$this->identicalTo(CryptRendererDummy::MESSAGE_FOR_RESULT)]
+                [$this->identicalTo(DummyAbstractCryptRenderer::MESSAGE_FOR_STATIC_KEY)],
+                [$this->identicalTo(DummyAbstractCryptRenderer::MESSAGE_FOR_RESULT)]
             );
 
         $this->renderer->renderOutput($result, $transformedKey, $output);

@@ -14,9 +14,9 @@ namespace Picodexter\ParameterEncryptionBundle\Tests\Console\Renderer;
 use Picodexter\ParameterEncryptionBundle\Console\Renderer\AbstractCryptRenderer;
 
 /**
- * CryptRendererDummy.
+ * DummyAbstractCryptRenderer.
  */
-class CryptRendererDummy extends AbstractCryptRenderer
+class DummyAbstractCryptRenderer extends AbstractCryptRenderer
 {
     const MESSAGE_FOR_GENERATED_KEY = 'message for generated key';
     const MESSAGE_FOR_RESULT = 'message for result';

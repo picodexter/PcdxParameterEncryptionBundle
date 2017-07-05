@@ -27,6 +27,20 @@ interface RewriterInterface
     public function getConfiguration();
 
     /**
+     * Getter: extensionConfigurationKey.
+     *
+     * @return string
+     */
+    public function getExtensionConfigurationKey();
+
+    /**
+     * Setter: extensionConfigurationKey.
+     *
+     * @param string $extensionConfigKey
+     */
+    public function setExtensionConfigurationKey($extensionConfigKey);
+
+    /**
      * Check if this rewriter applies.
      *
      * @param string     $serviceId
@@ -36,13 +50,6 @@ interface RewriterInterface
      * @return bool
      */
     public function applies($serviceId, Definition $definition, array $extensionConfig);
-
-    /**
-     * Get extension configuration key.
-     *
-     * @return string
-     */
-    public function getExtensionConfigurationKey();
 
     /**
      * Process service definition.

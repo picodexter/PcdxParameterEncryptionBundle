@@ -97,23 +97,6 @@ class DoctrineRewriterTest extends \PHPUnit_Framework_TestCase
         ];
     }
 
-    public function testGetConfigurationSuccess()
-    {
-        $configuration = $this->createConfigurationInterfaceMock();
-
-        $rewriter = new DoctrineRewriter($this->argumentReplacer, $configuration);
-
-        $this->assertSame($configuration, $rewriter->getConfiguration());
-    }
-
-    public function testGetExtensionConfigurationKeySuccess()
-    {
-        $this->assertSame(
-            DoctrineRewriter::EXTENSION_CONFIGURATION_KEY,
-            $this->rewriter->getExtensionConfigurationKey()
-        );
-    }
-
     /**
      * @param array  $connectionConfig
      * @param array  $expectedConnConfig

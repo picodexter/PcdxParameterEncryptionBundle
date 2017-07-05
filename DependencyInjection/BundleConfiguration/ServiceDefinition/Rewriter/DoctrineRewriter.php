@@ -18,19 +18,12 @@ use Symfony\Component\DependencyInjection\Definition;
 /**
  * DoctrineRewriter.
  */
-class DoctrineRewriter implements RewriterInterface
+class DoctrineRewriter extends AbstractRewriter
 {
-    const EXTENSION_CONFIGURATION_KEY = 'doctrine';
-
     /**
      * @var ArgumentReplacerInterface
      */
     private $argumentReplacer;
-
-    /**
-     * @var ConfigurationInterface
-     */
-    private $configuration;
 
     /**
      * Constructor.
@@ -41,7 +34,7 @@ class DoctrineRewriter implements RewriterInterface
     public function __construct(ArgumentReplacerInterface $argumentReplacer, ConfigurationInterface $configuration)
     {
         $this->argumentReplacer = $argumentReplacer;
-        $this->configuration = $configuration;
+        $this->setConfiguration($configuration);
     }
 
     /**
@@ -52,22 +45,6 @@ class DoctrineRewriter implements RewriterInterface
         return ((0 === mb_strpos($serviceId, 'doctrine.dbal.'))
             && ((mb_strlen($serviceId) - 11) === mb_strpos($serviceId, '_connection'))
             && (mb_strlen($serviceId) > (mb_strlen('doctrine.dbal.') + mb_strlen('_connection'))));
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function getConfiguration()
-    {
-        return $this->configuration;
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function getExtensionConfigurationKey()
-    {
-        return self::EXTENSION_CONFIGURATION_KEY;
     }
 
     /**

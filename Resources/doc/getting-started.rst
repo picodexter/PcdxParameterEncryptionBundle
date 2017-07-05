@@ -12,21 +12,21 @@ Installation
 Step 1: Download the Bundle
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Open a command console, enter your project directory and execute the
-following command to download the latest stable version of this bundle:
+Open a command console, enter your project directory and execute the following command to download the latest stable
+version of this bundle:
 
 .. code-block:: terminal
 
     $ composer require picodexter/parameter-encryption-bundle "~1"
 
-This command requires you to have Composer installed globally, as explained
-in the `installation chapter`_ of the Composer documentation.
+This command requires you to have Composer installed globally, as explained in the `installation chapter`_ of the
+Composer documentation.
 
 Step 2: Enable the Bundle
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Then, enable the bundle by adding it to the list of registered bundles
-in the ``app/AppKernel.php`` file of your project:
+Then, enable the bundle by adding it to the list of registered bundles in the ``app/AppKernel.php`` file of your
+project:
 
 .. code-block:: php
 
@@ -55,12 +55,11 @@ Step 3: Configuration
 
 Example:
 
-In this example we will be looking at using the Caesar cipher as the encryption
-algorithm (which comes by default with this bundle), specifically with a
-rotation of 13 (ROT13).
+In this example we will be looking at using the Caesar cipher as the encryption algorithm (which comes by default with
+this bundle), specifically with a rotation of 13 (ROT13).
 
-As this type of encryption does not use any key, supplying one is pointless,
-however it is still shown in order to convey the main concept.
+As this type of encryption does not use any key, supplying one is pointless, however it is still shown in order to
+convey the main concept.
 
 1.  Application configuration:
 
@@ -181,8 +180,7 @@ Step 4: Test
 Step 5: Use Other Encryption Algorithms
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-There are currently two ways to get other encryption algorithms (apart from the
-one contained in this bundle) to work:
+There are currently two ways to get other encryption algorithms (apart from the one contained in this bundle) to work:
 
 1.  Get and install an add-on bundle.
 
@@ -190,13 +188,13 @@ one contained in this bundle) to work:
 
 2.  Code your own.
 
-    1.  Implement the :class:`Picodexter\ParameterEncryptionBundle\Encryption\Decrypter\DecrypterInterface`
-        and the :class:`Picodexter\ParameterEncryptionBundle\Encryption\Encrypter\EncrypterInterface`
-        respectively.
+    1.  Implement the :class:`Picodexter\ParameterEncryptionBundle\Encryption\Decrypter\DecrypterInterface` and the
+        :class:`Picodexter\ParameterEncryptionBundle\Encryption\Encrypter\EncrypterInterface` respectively.
 
     2.  Add Symfony services for the newly implemented classes.
 
     3.  Add an algorithm entry in the bundle configuration.
+
         See :doc:`/configuration`.
 
 .. _installation chapter: https://getcomposer.org/doc/00-intro.md

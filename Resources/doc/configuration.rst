@@ -1,11 +1,9 @@
 Configuration
 =============
 
-This bundle uses semantic configuration that can be used with either YAML, XML
-or PHP.
+This bundle uses semantic configuration that can be used with either YAML, XML or PHP.
 
-Every single directive has a description which can be shown by using the
-``config:dump-reference`` command:
+Every single directive has a description which can be shown by using the ``config:dump-reference`` command:
 
 .. code-block:: terminal
 
@@ -327,12 +325,13 @@ Directive Overview
 Replacement Pattern Types
 -------------------------
 
-Replacement patterns are used to identify a parameter that is encrypted and to
-extract the data that is the actual encrypted information.
+Replacement patterns are used to identify a parameter that is encrypted and to extract the data that is the actual
+encrypted information.
 
 The types of replacement patterns are registered with the service
-``pcdx_parameter_encryption.replacement.pattern.type_registry``. This is a list
-of replacement pattern types that are available by default:
+``pcdx_parameter_encryption.replacement.pattern.type_registry``.
+
+This is a list of replacement pattern types that are available by default:
 
 +-------------------+--------------------------------------------------------------------------+-----------------------+
 | Pattern Type Name | Description                                                              | Constructor Arguments |
@@ -348,6 +347,5 @@ of replacement pattern types that are available by default:
 
 You can add your own replacement patterns by implementing the
 :class:`Picodexter\ParameterEncryptionBundle\Replacement\Pattern\ReplacementPatternInterface`
-interface, overriding the service definition for
-``pcdx_parameter_encryption.replacement.pattern.type_registry``
+interface, overriding the service definition for ``pcdx_parameter_encryption.replacement.pattern.type_registry``
 and injecting your own class information into the registry.

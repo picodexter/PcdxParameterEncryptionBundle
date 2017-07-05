@@ -1,8 +1,7 @@
 PcdxParameterEncryptionBundle
 =============================
 
-This bundle lets you save Symfony parameters in an encrypted form and
-automatically decrypt them during runtime.
+This bundle lets you save Symfony parameters in an encrypted form and automatically decrypt them during runtime.
 
 *   :doc:`/getting-started`
 *   :doc:`/faq`

@@ -96,7 +96,7 @@ class BundleConfigurationServiceDefinitionRewriterTagProcessorTest extends \PHPU
          * prepare extension configuration results according to number of successful calls (= prepared references)
          */
         $prepExtensionConfigs = [];
-        for ($i = 0; $i < count($taggedServiceIds); $i++) {
+        for ($i = 0; $i < count($taggedServiceIds); ++$i) {
             if ($i < count($preparedReferences)) {
                 $prepExtensionConfigs[] = [['some_directive' => 'some_value']];
             } else {
@@ -136,7 +136,7 @@ class BundleConfigurationServiceDefinitionRewriterTagProcessorTest extends \PHPU
         );
 
         foreach ($preparedServiceDefs as $serviceDefinition) {
-            /** @var \PHPUnit_Framework_MockObject_MockObject $serviceDefinition */
+            /* @var \PHPUnit_Framework_MockObject_MockObject $serviceDefinition */
             $serviceDefinition->expects($this->once())
                 ->method('getMethodCalls')
                 ->with()

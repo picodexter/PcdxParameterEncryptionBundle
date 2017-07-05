@@ -27,7 +27,7 @@ Supporting Other Bundles
 
 You can write your own services
 
-*   either based on :class:`Picodexter\ParameterEncryptionBundle\DependencyInjection\BundleConfiguration\ServiceDefinition\Rewriter\AbstractRewriter`
+*   either extending :class:`Picodexter\ParameterEncryptionBundle\DependencyInjection\BundleConfiguration\ServiceDefinition\Rewriter\AbstractRewriter`
 *   or implementing :class:`Picodexter\ParameterEncryptionBundle\DependencyInjection\BundleConfiguration\ServiceDefinition\Rewriter\RewriterInterface`
 
 Please refer to the :class:`Picodexter\ParameterEncryptionBundle\DependencyInjection\BundleConfiguration\ServiceDefinition\Rewriter\DoctrineRewriter`

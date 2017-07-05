@@ -11,6 +11,7 @@
 
 namespace Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\Tag;
 
+use Picodexter\ParameterEncryptionBundle\Exception\DependencyInjection\MissingTagAttributeException;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 /**
@@ -22,6 +23,8 @@ interface BundleConfigurationServiceDefinitionRewriterTagProcessorInterface
      * Process container.
      *
      * @param ContainerBuilder $container
+     *
+     * @throws MissingTagAttributeException
      */
     public function process(ContainerBuilder $container);
 }

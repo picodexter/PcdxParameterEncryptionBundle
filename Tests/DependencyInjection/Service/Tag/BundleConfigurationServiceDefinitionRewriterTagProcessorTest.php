@@ -14,6 +14,7 @@ namespace Picodexter\ParameterEncryptionBundle\Tests\DependencyInjection\Service
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\ReferenceFactoryInterface;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\Tag\BundleConfigurationServiceDefinitionRewriterTagProcessor;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\ServiceNames;
+use Picodexter\ParameterEncryptionBundle\Exception\DependencyInjection\MissingTagAttributeException;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\DependencyInjection\Reference;
@@ -49,15 +50,39 @@ class BundleConfigurationServiceDefinitionRewriterTagProcessorTest extends \PHPU
         $this->referenceFactory = null;
     }
 
+    public function testProcessExceptionMissingTagAttribute()
+    {
+        $this->expectException(MissingTagAttributeException::class);
+
+        $taggedServiceIds = [
+            'some_service' => [
+                [
+                    'name' => BundleConfigurationServiceDefinitionRewriterTagProcessor::TAG_NAME,
+                ],
+            ],
+        ];
+
+        $container = $this->createContainerBuilderMock();
+
+        $this->setUpContainerFindTaggedServiceIds($container, $taggedServiceIds);
+
+        $this->processor->process($container);
+    }
+
     /**
      * @param array $taggedServiceIds
      * @param array $preparedReferences
+     * @param array $preparedServiceDefs
      * @param array $expectedRegistryArgs
      *
      * @dataProvider provideProcessData
      */
-    public function testProcessSuccess(array $taggedServiceIds, array $preparedReferences, array $expectedRegistryArgs)
-    {
+    public function testProcessSuccess(
+        array $taggedServiceIds,
+        array $preparedReferences,
+        array $preparedServiceDefs,
+        array $expectedRegistryArgs
+    ) {
         $prepRegistryArgs = [
             [],
         ];
@@ -67,23 +92,60 @@ class BundleConfigurationServiceDefinitionRewriterTagProcessorTest extends \PHPU
             $serviceIdConstraints[] = $this->identicalTo($taggedServiceId);
         }
 
+        /*
+         * prepare extension configuration results according to number of successful calls (= prepared references)
+         */
+        $prepExtensionConfigs = [];
+        for ($i = 0; $i < count($taggedServiceIds); $i++) {
+            if ($i < count($preparedReferences)) {
+                $prepExtensionConfigs[] = [['some_directive' => 'some_value']];
+            } else {
+                $prepExtensionConfigs[] = [];
+            }
+        }
+
         $container = $this->createContainerBuilderMock();
         $registryDefinition = $this->createDefinitionMock();
 
-        $container->expects($this->once())
-            ->method('findTaggedServiceIds')
-            ->with($this->identicalTo(BundleConfigurationServiceDefinitionRewriterTagProcessor::TAG_NAME))
-            ->will($this->returnValue($taggedServiceIds));
+        $this->setUpContainerFindTaggedServiceIds($container, $taggedServiceIds);
 
-        $mocker = $this->referenceFactory->expects($this->atLeastOnce())
+        $mocker = $container->expects($this->exactly(count($taggedServiceIds)))
+            ->method('getExtensionConfig');
+        call_user_func_array([$mocker, 'willReturnOnConsecutiveCalls'], $prepExtensionConfigs);
+
+        $mocker = $this->referenceFactory->expects($this->exactly(count($preparedReferences)))
             ->method('createReference');
         call_user_func_array([$mocker, 'withConsecutive'], $serviceIdConstraints);
         call_user_func_array([$mocker, 'willReturnOnConsecutiveCalls'], $preparedReferences);
 
-        $container->expects($this->once())
-            ->method('getDefinition')
-            ->with($this->identicalTo(ServiceNames::BUNDLE_CONFIGURATION_SERVICE_DEFINITION_REWRITER_REGISTRY))
-            ->will($this->returnValue($registryDefinition));
+        $mocker = $container->expects($this->exactly(count($preparedReferences) + 1))
+            ->method('getDefinition');
+        call_user_func_array(
+            [$mocker, 'withConsecutive'],
+            array_merge(
+                $serviceIdConstraints,
+                [$this->identicalTo(ServiceNames::BUNDLE_CONFIGURATION_SERVICE_DEFINITION_REWRITER_REGISTRY)]
+            )
+        );
+        call_user_func_array(
+            [$mocker, 'willReturnOnConsecutiveCalls'],
+            array_merge(
+                $preparedServiceDefs,
+                [$registryDefinition]
+            )
+        );
+
+        foreach ($preparedServiceDefs as $serviceDefinition) {
+            /** @var \PHPUnit_Framework_MockObject_MockObject $serviceDefinition */
+            $serviceDefinition->expects($this->once())
+                ->method('getMethodCalls')
+                ->with()
+                ->will($this->returnValue([]));
+
+            $serviceDefinition->expects($this->once())
+                ->method('setMethodCalls')
+                ->with($this->countOf(1));
+        }
 
         $registryDefinition->expects($this->once())
             ->method('getArguments')
@@ -111,16 +173,26 @@ class BundleConfigurationServiceDefinitionRewriterTagProcessorTest extends \PHPU
         $reference5 = $this->createReferenceMock();
 
         return [
+            'success - empty' => [
+                [],
+                [],
+                [],
+                [[]],
+            ],
             'success - 1 rewriter' => [
                 [
                     'some_service_1' => [
                         [
                             'name' => BundleConfigurationServiceDefinitionRewriterTagProcessor::TAG_NAME,
+                            'extension_configuration_key' => 'some_extension',
                         ],
                     ],
                 ],
                 [
                     $reference1,
+                ],
+                [
+                    $this->createDefinitionMock(),
                 ],
                 [
                     [
@@ -133,16 +205,19 @@ class BundleConfigurationServiceDefinitionRewriterTagProcessorTest extends \PHPU
                     'some_service_1' => [
                         [
                             'name' => BundleConfigurationServiceDefinitionRewriterTagProcessor::TAG_NAME,
+                            'extension_configuration_key' => 'some_extension',
                         ],
                     ],
                     'some_service_2' => [
                         [
                             'name' => BundleConfigurationServiceDefinitionRewriterTagProcessor::TAG_NAME,
+                            'extension_configuration_key' => 'some_extension',
                         ],
                     ],
                     'some_service_3' => [
                         [
                             'name' => BundleConfigurationServiceDefinitionRewriterTagProcessor::TAG_NAME,
+                            'extension_configuration_key' => 'some_extension',
                         ],
                     ],
                 ],
@@ -150,6 +225,11 @@ class BundleConfigurationServiceDefinitionRewriterTagProcessorTest extends \PHPU
                     $reference1,
                     $reference2,
                     $reference3,
+                ],
+                [
+                    $this->createDefinitionMock(),
+                    $this->createDefinitionMock(),
+                    $this->createDefinitionMock(),
                 ],
                 [
                     [
@@ -164,29 +244,34 @@ class BundleConfigurationServiceDefinitionRewriterTagProcessorTest extends \PHPU
                     'zebra' => [
                         [
                             'name' => BundleConfigurationServiceDefinitionRewriterTagProcessor::TAG_NAME,
+                            'extension_configuration_key' => 'some_extension',
                             'priority' => '-200',
                         ],
                     ],
                     'wolf' => [
                         [
                             'name' => BundleConfigurationServiceDefinitionRewriterTagProcessor::TAG_NAME,
+                            'extension_configuration_key' => 'some_extension',
                             'priority' => '3000',
                         ],
                     ],
                     'alpaca' => [
                         [
                             'name' => BundleConfigurationServiceDefinitionRewriterTagProcessor::TAG_NAME,
+                            'extension_configuration_key' => 'some_extension',
                         ],
                     ],
                     'dog' => [
                         [
                             'name' => BundleConfigurationServiceDefinitionRewriterTagProcessor::TAG_NAME,
+                            'extension_configuration_key' => 'some_extension',
                             'priority' => '3000',
                         ],
                     ],
                     'elk' => [
                         [
                             'name' => BundleConfigurationServiceDefinitionRewriterTagProcessor::TAG_NAME,
+                            'extension_configuration_key' => 'some_extension',
                         ],
                     ],
                 ],
@@ -198,12 +283,52 @@ class BundleConfigurationServiceDefinitionRewriterTagProcessorTest extends \PHPU
                     $reference5,
                 ],
                 [
+                    $this->createDefinitionMock(),
+                    $this->createDefinitionMock(),
+                    $this->createDefinitionMock(),
+                    $this->createDefinitionMock(),
+                    $this->createDefinitionMock(),
+                ],
+                [
                     [
                         $reference2,
                         $reference4,
                         $reference3,
                         $reference5,
                         $reference1,
+                    ],
+                ],
+            ],
+            'success - 3 rewriters, only 1 with matching extension config' => [
+                [
+                    'some_service_1' => [
+                        [
+                            'name' => BundleConfigurationServiceDefinitionRewriterTagProcessor::TAG_NAME,
+                            'extension_configuration_key' => 'unknown_extension',
+                        ],
+                    ],
+                    'some_service_2' => [
+                        [
+                            'name' => BundleConfigurationServiceDefinitionRewriterTagProcessor::TAG_NAME,
+                            'extension_configuration_key' => 'some_extension',
+                        ],
+                    ],
+                    'some_service_3' => [
+                        [
+                            'name' => BundleConfigurationServiceDefinitionRewriterTagProcessor::TAG_NAME,
+                            'extension_configuration_key' => 'other_unknown_extension',
+                        ],
+                    ],
+                ],
+                [
+                    $reference2,
+                ],
+                [
+                    $this->createDefinitionMock(),
+                ],
+                [
+                    [
+                        $reference2,
                     ],
                 ],
             ],
@@ -218,7 +343,7 @@ class BundleConfigurationServiceDefinitionRewriterTagProcessorTest extends \PHPU
     private function createContainerBuilderMock()
     {
         return $this->getMockBuilder(ContainerBuilder::class)
-            ->setMethods(['findTaggedServiceIds', 'getDefinition'])
+            ->setMethods(['findTaggedServiceIds', 'getDefinition', 'getExtensionConfig'])
             ->getMock();
     }
 
@@ -250,5 +375,19 @@ class BundleConfigurationServiceDefinitionRewriterTagProcessorTest extends \PHPU
     private function createReferenceMock()
     {
         return $this->getMockBuilder(Reference::class)->disableOriginalConstructor()->getMock();
+    }
+
+    /**
+     * Set up container: findTaggedServiceIds.
+     *
+     * @param ContainerBuilder|\PHPUnit_Framework_MockObject_MockObject $container
+     * @param array                                                     $taggedServiceIds
+     */
+    private function setUpContainerFindTaggedServiceIds(ContainerBuilder $container, array $taggedServiceIds)
+    {
+        $container->expects($this->once())
+            ->method('findTaggedServiceIds')
+            ->with($this->identicalTo(BundleConfigurationServiceDefinitionRewriterTagProcessor::TAG_NAME))
+            ->will($this->returnValue($taggedServiceIds));
     }
 }

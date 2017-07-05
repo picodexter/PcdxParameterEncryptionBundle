@@ -236,7 +236,8 @@
             public="false">
             <argument type="service" id="pcdx_parameter_encryption.dependency_injection.bundle_configuration.service_definition.argument_replacer" />
             <argument type="service" id="pcdx_parameter_encryption.dependency_injection.bundle_configuration.service_definition.rewriter.doctrine.config" />
-            <tag name="pcdx_parameter_encryption.bundle_configuration.service_definition_rewriter" />
+            <tag name="pcdx_parameter_encryption.bundle_configuration.service_definition_rewriter"
+                extension-configuration-key="doctrine" />
         </service>
 
         <service id="pcdx_parameter_encryption.dependency_injection.bundle_configuration.service_definition.rewriter.doctrine.config"

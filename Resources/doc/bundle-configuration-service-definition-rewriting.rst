@@ -3,7 +3,8 @@ Bundle Configuration Service Definition Rewriting
 
 This bundle uses compiler passes to replace encrypted parameters with their decrypted counterparts. Unfortunately,
 Symfony only executes compiler passes after it has already initialized all bundles with the resolved parameters that it
-had at that point in time, meaning that it has not gotten to the decryption part yet.
+had at that point in time, meaning that it has not gotten to the decryption part yet. That in turn leads to
+service definitions that are using encrypted parameters instead of decrypted ones.
 
 In order to make this work, this bundle uses small rewriter services that are run against all service definitions to
 replace their arguments with the decrypted parameters if applicable.

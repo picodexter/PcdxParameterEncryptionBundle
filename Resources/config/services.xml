@@ -7,21 +7,21 @@
     <services>
         <service id="pcdx_parameter_encryption.command.algorithm_list"
             class="Picodexter\ParameterEncryptionBundle\Command\AlgorithmListCommand"
-            public="false">
+            public="true">
             <argument type="service" id="pcdx_parameter_encryption.console.dispatcher.algorithm_list" />
             <tag name="console.command" />
         </service>
 
         <service id="pcdx_parameter_encryption.command.decrypt"
             class="Picodexter\ParameterEncryptionBundle\Command\DecryptCommand"
-            public="false">
+            public="true">
             <argument type="service" id="pcdx_parameter_encryption.console.dispatcher.decrypt" />
             <tag name="console.command" />
         </service>
 
         <service id="pcdx_parameter_encryption.command.encrypt"
             class="Picodexter\ParameterEncryptionBundle\Command\EncryptCommand"
-            public="false">
+            public="true">
             <argument type="service" id="pcdx_parameter_encryption.console.dispatcher.encrypt" />
             <tag name="console.command" />
         </service>

@@ -6,13 +6,14 @@ php:
   - 5.6
   - 7.0
   - 7.1
+  - 7.2
   - hhvm
 
 env:
   global:
-    - COVERALLS_EXECUTION_PHP_VERSION="7.1"
+    - COVERALLS_EXECUTION_PHP_VERSION="7.2"
     - PHP_CS_FIXER_COMMIT_RANGE="${TRAVIS_COMMIT_RANGE}"
-    - PHP_CS_FIXER_EXECUTION_PHP_VERSION="7.1"
+    - PHP_CS_FIXER_EXECUTION_PHP_VERSION="7.2"
 
 matrix:
   fast_finish: true

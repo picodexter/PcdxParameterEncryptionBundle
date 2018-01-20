@@ -6,8 +6,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Added
 
-*   Added support for Symfony version 4.x
-*   Added support for symfony/console version 4.x
+*   (empty)
 
 ### Changed
 
@@ -28,6 +27,13 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Security
 
 *   (empty)
+
+## 1.1.0 (2018-01-20)
+
+### Added
+
+*   Added support for Symfony version 4.x
+*   Added support for symfony/console version 4.x
 
 ## 1.0.2 (2018-01-20)
 

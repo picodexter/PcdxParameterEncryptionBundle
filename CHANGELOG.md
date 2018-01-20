@@ -22,12 +22,18 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Fixed
 
-*   Set visibility for console command services to public to prevent an exception in older Symfony versions when
-    executing the commands
+*   (empty)
 
 ### Security
 
 *   (empty)
+
+## 1.0.2 (2018-01-20)
+
+### Fixed
+
+*   Set visibility for console command services to public to prevent an exception in older Symfony versions when
+    executing the commands
 
 ## 1.0.1 (2017-07-05)
 

@@ -79,7 +79,7 @@ class DecryptProcessor implements DecryptProcessorInterface
 
         $algorithmConfig = $this->algorithmConfigContainer->get($request->getAlgorithmId());
 
-        $plaintextValue = $this->getEncryptedValue($request);
+        $encryptedValue = $this->getEncryptedValue($request);
 
         $activeKeyConfig = $this->activeKeyConfigProvider->getActiveKeyConfiguration(
             $request->isKeyProvided(),
@@ -90,7 +90,7 @@ class DecryptProcessor implements DecryptProcessorInterface
         $transformedKey = $this->transformedKeyProvider->getTransformedKey($activeKeyConfig);
 
         $decryptedValue = $algorithmConfig->getDecrypter()
-            ->decryptValue($plaintextValue, $transformedKey->getFinalKey());
+            ->decryptValue($encryptedValue, $transformedKey->getFinalKey());
 
         $this->renderer->renderOutput($decryptedValue, $transformedKey, $output);
     }

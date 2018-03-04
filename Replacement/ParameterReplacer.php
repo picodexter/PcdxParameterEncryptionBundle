@@ -11,6 +11,8 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Replacement;
 
+use Picodexter\ParameterEncryptionBundle\DependencyInjection\Parameter\EnvironmentPlaceholderResolverInterface;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 
 /**
@@ -19,6 +21,11 @@ use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 class ParameterReplacer implements ParameterReplacerInterface
 {
     /**
+     * @var EnvironmentPlaceholderResolverInterface
+     */
+    private $environmentPlaceholderResolver;
+
+    /**
      * @var ParameterReplacementFetcherInterface
      */
     private $replacementFetcher;
@@ -26,21 +33,25 @@ class ParameterReplacer implements ParameterReplacerInterface
     /**
      * Constructor.
      *
-     * @param ParameterReplacementFetcherInterface $replacementFetcher
+     * @param EnvironmentPlaceholderResolverInterface $environmentPlaceholderResolver
+     * @param ParameterReplacementFetcherInterface    $replacementFetcher
      */
-    public function __construct(ParameterReplacementFetcherInterface $replacementFetcher)
-    {
+    public function __construct(
+        EnvironmentPlaceholderResolverInterface $environmentPlaceholderResolver,
+        ParameterReplacementFetcherInterface $replacementFetcher
+    ) {
+        $this->environmentPlaceholderResolver = $environmentPlaceholderResolver;
         $this->replacementFetcher = $replacementFetcher;
     }
 
     /**
      * @inheritDoc
      */
-    public function processParameterBag(ParameterBagInterface $parameterBag)
+    public function processParameterBag(ParameterBagInterface $parameterBag, ContainerBuilder $container)
     {
         $parameters = $parameterBag->all();
 
-        $parameters = $this->processParameters($parameters);
+        $parameters = $this->processParameters($parameters, $container);
 
         $parameterBag->clear();
         $parameterBag->add($parameters);
@@ -51,19 +62,23 @@ class ParameterReplacer implements ParameterReplacerInterface
     /**
      * Process parameter array.
      *
-     * @param array $parameters
+     * @param array            $parameters
+     * @param ContainerBuilder $container
      *
      * @return array
      */
-    public function processParameters(array $parameters)
+    public function processParameters(array $parameters, ContainerBuilder $container)
     {
         foreach ($parameters as $parameterKey => &$parameterValue) {
             if (is_array($parameterValue)) {
-                $parameterValue = $this->processParameters($parameterValue);
+                $parameterValue = $this->processParameters($parameterValue, $container);
                 continue;
             }
 
-            $replacementValue = $this->replacementFetcher->getReplacedValueForParameter($parameterKey, $parameterValue);
+            $resolvedValue = $this->environmentPlaceholderResolver
+                ->resolveEnvironmentPlaceholders($parameterValue, $container);
+
+            $replacementValue = $this->replacementFetcher->getReplacedValueForParameter($parameterKey, $resolvedValue);
 
             if (null !== $replacementValue) {
                 $parameterValue = $replacementValue;

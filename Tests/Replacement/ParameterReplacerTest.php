@@ -11,12 +11,19 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Tests\Replacement;
 
+use Picodexter\ParameterEncryptionBundle\DependencyInjection\Parameter\EnvironmentPlaceholderResolverInterface;
 use Picodexter\ParameterEncryptionBundle\Replacement\ParameterReplacementFetcherInterface;
 use Picodexter\ParameterEncryptionBundle\Replacement\ParameterReplacer;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBag;
 
 class ParameterReplacerTest extends \PHPUnit_Framework_TestCase
 {
+    /**
+     * @var EnvironmentPlaceholderResolverInterface|\PHPUnit_Framework_MockObject_MockObject
+     */
+    private $environmentPlaceholderResolver;
+
     /**
      * @var ParameterReplacer
      */
@@ -32,8 +39,13 @@ class ParameterReplacerTest extends \PHPUnit_Framework_TestCase
      */
     public function setUp()
     {
+        $this->environmentPlaceholderResolver = $this->createEnvironmentPlaceholderResolverInterfaceMock();
         $this->replacementFetcher = $this->createParameterReplacementFetcherInterfaceMock();
-        $this->parameterReplacer = new ParameterReplacer($this->replacementFetcher);
+
+        $this->parameterReplacer = new ParameterReplacer(
+            $this->environmentPlaceholderResolver,
+            $this->replacementFetcher
+        );
     }
 
     /**
@@ -43,6 +55,7 @@ class ParameterReplacerTest extends \PHPUnit_Framework_TestCase
     {
         $this->parameterReplacer = null;
         $this->replacementFetcher = null;
+        $this->environmentPlaceholderResolver = null;
     }
 
     /**
@@ -55,9 +68,11 @@ class ParameterReplacerTest extends \PHPUnit_Framework_TestCase
     {
         $parameterBag = new ParameterBag($inputParameters);
 
+        $prepContainer = $this->createContainerBuilderMock();
+
         $this->prepareReplacementFetcherInterfaceMockForConditionalReplacement($this->replacementFetcher);
 
-        $processedBag = $this->parameterReplacer->processParameterBag($parameterBag);
+        $processedBag = $this->parameterReplacer->processParameterBag($parameterBag, $prepContainer);
 
         $this->assertSame(
             $parameterBag,
@@ -75,9 +90,11 @@ class ParameterReplacerTest extends \PHPUnit_Framework_TestCase
      */
     public function testProcessParametersSuccess(array $inputParameters, array $expectedParameters)
     {
+        $prepContainer = $this->createContainerBuilderMock();
+
         $this->prepareReplacementFetcherInterfaceMockForConditionalReplacement($this->replacementFetcher);
 
-        $processedParameters = $this->parameterReplacer->processParameters($inputParameters);
+        $processedParameters = $this->parameterReplacer->processParameters($inputParameters, $prepContainer);
 
         $this->assertSame($expectedParameters, $processedParameters);
     }
@@ -145,6 +162,28 @@ class ParameterReplacerTest extends \PHPUnit_Framework_TestCase
                 ],
             ],
         ];
+    }
+
+    /**
+     * Create mock for ContainerBuilder.
+     *
+     * @return ContainerBuilder|\PHPUnit_Framework_MockObject_MockObject
+     */
+    private function createContainerBuilderMock()
+    {
+        return $this->getMockBuilder(ContainerBuilder::class)
+            ->setMethods(['get'])
+            ->getMock();
+    }
+
+    /**
+     * Create mock for EnvironmentPlaceholderResolverInterface.
+     *
+     * @return EnvironmentPlaceholderResolverInterface|\PHPUnit_Framework_MockObject_MockObject
+     */
+    private function createEnvironmentPlaceholderResolverInterfaceMock()
+    {
+        return $this->getMockBuilder(EnvironmentPlaceholderResolverInterface::class)->getMock();
     }
 
     /**

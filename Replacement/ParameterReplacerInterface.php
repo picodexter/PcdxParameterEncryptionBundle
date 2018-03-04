@@ -11,6 +11,7 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Replacement;
 
+use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 
 /**
@@ -24,8 +25,9 @@ interface ParameterReplacerInterface
      * Applies changes to the original object.
      *
      * @param ParameterBagInterface $parameterBag
+     * @param ContainerBuilder      $container
      *
      * @return ParameterBagInterface
      */
-    public function processParameterBag(ParameterBagInterface $parameterBag);
+    public function processParameterBag(ParameterBagInterface $parameterBag, ContainerBuilder $container);
 }

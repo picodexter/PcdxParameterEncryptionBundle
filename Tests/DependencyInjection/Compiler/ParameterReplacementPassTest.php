@@ -40,7 +40,10 @@ class ParameterReplacementPassTest extends \PHPUnit_Framework_TestCase
 
         $parameterReplacer->expects($this->once())
             ->method('processParameterBag')
-            ->with($this->identicalTo($parameterBag));
+            ->with(
+                $this->identicalTo($parameterBag),
+                $this->identicalTo($container)
+            );
 
         $pass->process($container);
     }

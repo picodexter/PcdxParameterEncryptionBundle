@@ -33,6 +33,6 @@ class ParameterReplacementPass implements CompilerPassInterface
 
         $parameterReplacer = $container->get(ServiceNames::PARAMETER_REPLACER);
 
-        $parameterReplacer->processParameterBag($parameterBag);
+        $parameterReplacer->processParameterBag($parameterBag, $container);
     }
 }

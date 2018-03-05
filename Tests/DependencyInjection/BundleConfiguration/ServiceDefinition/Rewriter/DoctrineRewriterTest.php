@@ -127,7 +127,8 @@ class DoctrineRewriterTest extends \PHPUnit_Framework_TestCase
                 [$this->anything(), $this->anything(), $this->identicalTo('port')],
                 [$this->anything(), $this->anything(), $this->identicalTo('dbname')],
                 [$this->anything(), $this->anything(), $this->identicalTo('user')],
-                [$this->anything(), $this->anything(), $this->identicalTo('password')]
+                [$this->anything(), $this->anything(), $this->identicalTo('password')],
+                [$this->anything(), $this->anything(), $this->identicalTo('url')]
             )
             ->will($this->returnCallback(function ($serviceConnArguments, $resolvedConnConfig, $argumentKey) {
                 $serviceConnArguments[$argumentKey] = 'REPLACED_VALUE';
@@ -158,6 +159,7 @@ class DoctrineRewriterTest extends \PHPUnit_Framework_TestCase
                     'dbname'   => 'INITIAL_VALUE',
                     'user'     => 'INITIAL_VALUE',
                     'password' => 'INITIAL_VALUE',
+                    'url'      => 'INITIAL_VALUE',
                     'charset'  => 'UTF8',
                 ],
                 [
@@ -167,6 +169,7 @@ class DoctrineRewriterTest extends \PHPUnit_Framework_TestCase
                     'dbname'   => 'REPLACED_VALUE',
                     'user'     => 'REPLACED_VALUE',
                     'password' => 'REPLACED_VALUE',
+                    'url'      => 'REPLACED_VALUE',
                     'charset'  => 'UTF8',
                 ],
             ],
@@ -179,6 +182,7 @@ class DoctrineRewriterTest extends \PHPUnit_Framework_TestCase
                         'dbname'   => 'INITIAL_VALUE',
                         'user'     => 'INITIAL_VALUE',
                         'password' => 'INITIAL_VALUE',
+                        'url'      => 'INITIAL_VALUE',
                         'charset'  => 'UTF8',
                     ],
                     'slaves' => [
@@ -188,6 +192,7 @@ class DoctrineRewriterTest extends \PHPUnit_Framework_TestCase
                             'dbname'   => 'INITIAL_VALUE',
                             'user'     => 'INITIAL_VALUE',
                             'password' => 'INITIAL_VALUE',
+                            'url'      => 'INITIAL_VALUE',
                             'charset'  => 'UTF8',
                         ],
                     ],
@@ -200,6 +205,7 @@ class DoctrineRewriterTest extends \PHPUnit_Framework_TestCase
                         'dbname'   => 'REPLACED_VALUE',
                         'user'     => 'REPLACED_VALUE',
                         'password' => 'REPLACED_VALUE',
+                        'url'      => 'REPLACED_VALUE',
                         'charset'  => 'UTF8',
                     ],
                     'slaves' => [
@@ -209,6 +215,7 @@ class DoctrineRewriterTest extends \PHPUnit_Framework_TestCase
                             'dbname'   => 'REPLACED_VALUE',
                             'user'     => 'REPLACED_VALUE',
                             'password' => 'REPLACED_VALUE',
+                            'url'      => 'REPLACED_VALUE',
                             'charset'  => 'UTF8',
                         ],
                     ],
@@ -223,6 +230,7 @@ class DoctrineRewriterTest extends \PHPUnit_Framework_TestCase
                         'dbname'   => 'INITIAL_VALUE',
                         'user'     => 'INITIAL_VALUE',
                         'password' => 'INITIAL_VALUE',
+                        'url'      => 'INITIAL_VALUE',
                         'charset'  => 'UTF8',
                     ],
                     'shards' => [
@@ -233,6 +241,7 @@ class DoctrineRewriterTest extends \PHPUnit_Framework_TestCase
                             'dbname'   => 'INITIAL_VALUE',
                             'user'     => 'INITIAL_VALUE',
                             'password' => 'INITIAL_VALUE',
+                            'url'      => 'INITIAL_VALUE',
                             'charset'  => 'UTF8',
                         ],
                     ],
@@ -245,6 +254,7 @@ class DoctrineRewriterTest extends \PHPUnit_Framework_TestCase
                         'dbname'   => 'REPLACED_VALUE',
                         'user'     => 'REPLACED_VALUE',
                         'password' => 'REPLACED_VALUE',
+                        'url'      => 'REPLACED_VALUE',
                         'charset'  => 'UTF8',
                     ],
                     'shards' => [
@@ -255,6 +265,7 @@ class DoctrineRewriterTest extends \PHPUnit_Framework_TestCase
                             'dbname'   => 'REPLACED_VALUE',
                             'user'     => 'REPLACED_VALUE',
                             'password' => 'REPLACED_VALUE',
+                            'url'      => 'REPLACED_VALUE',
                             'charset'  => 'UTF8',
                         ],
                     ],

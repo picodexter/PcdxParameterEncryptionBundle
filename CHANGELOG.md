@@ -6,7 +6,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Added
 
-*   (empty)
+*   Added support for resolving Symfony parameters using environment placeholders (Symfony 3.2+)
+*   Added rewriting Doctrine configuration key "url" (Symfony 4.0+)
 
 ### Changed
 

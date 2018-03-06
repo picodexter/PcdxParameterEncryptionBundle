@@ -28,5 +28,11 @@
         "exclude-from-classmap": [
             "/Tests/"
         ]
+    },
+    "scripts": {
+        "cs": "php-cs-fixer fix -v --dry-run --diff",
+        "cs-nocache": "php-cs-fixer fix -v --dry-run --diff --using-cache=no",
+        "test": "phpunit -v",
+        "test-coverage": "phpunit -v --coverage-text"
     }
 }

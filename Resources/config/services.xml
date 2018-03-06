@@ -266,6 +266,12 @@
             </argument>
         </service>
 
+        <service id="pcdx_parameter_encryption.dependency_injection.parameter.environment_placeholder_resolver"
+            class="Picodexter\ParameterEncryptionBundle\DependencyInjection\Parameter\EnvironmentPlaceholderResolverInterface"
+            public="false">
+            <factory class="Picodexter\ParameterEncryptionBundle\DependencyInjection\Parameter\EnvironmentPlaceholderResolverFactory" method="createResolver" />
+        </service>
+
         <service id="pcdx_parameter_encryption.dependency_injection.service.bundle_configuration_validator"
             class="Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\BundleConfigurationValidator"
             public="false">
@@ -342,6 +348,7 @@
             public="false">
             <argument type="service" id="pcdx_parameter_encryption.dependency_injection.service.bundle_configuration_validator" />
             <argument type="service" id="pcdx_parameter_encryption.dependency_injection.service.definition_factory" />
+            <argument type="service" id="pcdx_parameter_encryption.dependency_injection.parameter.environment_placeholder_resolver" />
             <argument type="service" id="pcdx_parameter_encryption.dependency_injection.service.reference_factory" />
             <argument type="service" id="pcdx_parameter_encryption.dependency_injection.service.name_generator" />
         </service>
@@ -493,6 +500,7 @@
 
         <service id="pcdx_parameter_encryption.replacement.parameter_replacer"
             class="Picodexter\ParameterEncryptionBundle\Replacement\ParameterReplacer">
+            <argument type="service" id="pcdx_parameter_encryption.dependency_injection.parameter.environment_placeholder_resolver" />
             <argument type="service" id="pcdx_parameter_encryption.replacement.parameter_replacement_fetcher" />
         </service>
 

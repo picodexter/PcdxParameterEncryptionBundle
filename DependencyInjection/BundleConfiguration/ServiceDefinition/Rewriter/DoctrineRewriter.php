@@ -136,5 +136,7 @@ class DoctrineRewriter extends AbstractRewriter
             ->replaceArgumentIfExists($serviceConnArguments, $resolvedConnConfig, 'user');
         $serviceConnArguments = $this->argumentReplacer
             ->replaceArgumentIfExists($serviceConnArguments, $resolvedConnConfig, 'password');
+        $serviceConnArguments = $this->argumentReplacer
+            ->replaceArgumentIfExists($serviceConnArguments, $resolvedConnConfig, 'url');
     }
 }

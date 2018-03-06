@@ -12,6 +12,7 @@
 namespace Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\Initializer\Handler;
 
 use Picodexter\ParameterEncryptionBundle\Configuration\Key\KeyConfiguration;
+use Picodexter\ParameterEncryptionBundle\DependencyInjection\Parameter\EnvironmentPlaceholderResolverInterface;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\BundleConfigurationValidatorInterface;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\DefinitionFactoryInterface;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\ReferenceFactoryInterface;
@@ -36,6 +37,11 @@ class ReplacementSourceDecrypterRegistrationHandler implements ReplacementSource
     private $definitionFactory;
 
     /**
+     * @var EnvironmentPlaceholderResolverInterface
+     */
+    private $environmentPlaceholderResolver;
+
+    /**
      * @var ReferenceFactoryInterface
      */
     private $referenceFactory;
@@ -48,19 +54,22 @@ class ReplacementSourceDecrypterRegistrationHandler implements ReplacementSource
     /**
      * Constructor.
      *
-     * @param BundleConfigurationValidatorInterface $configValidator
-     * @param DefinitionFactoryInterface            $definitionFactory
-     * @param ReferenceFactoryInterface             $referenceFactory
-     * @param ServiceNameGeneratorInterface         $serviceNameGenerator
+     * @param BundleConfigurationValidatorInterface   $bundleConfigValidator
+     * @param DefinitionFactoryInterface              $definitionFactory
+     * @param EnvironmentPlaceholderResolverInterface $environmentPlaceholderResolver
+     * @param ReferenceFactoryInterface               $referenceFactory
+     * @param ServiceNameGeneratorInterface           $serviceNameGenerator
      */
     public function __construct(
-        BundleConfigurationValidatorInterface $configValidator,
+        BundleConfigurationValidatorInterface $bundleConfigValidator,
         DefinitionFactoryInterface $definitionFactory,
+        EnvironmentPlaceholderResolverInterface $environmentPlaceholderResolver,
         ReferenceFactoryInterface $referenceFactory,
         ServiceNameGeneratorInterface $serviceNameGenerator
     ) {
-        $this->bundleConfigValidator = $configValidator;
+        $this->bundleConfigValidator = $bundleConfigValidator;
         $this->definitionFactory = $definitionFactory;
+        $this->environmentPlaceholderResolver = $environmentPlaceholderResolver;
         $this->referenceFactory = $referenceFactory;
         $this->serviceNameGenerator = $serviceNameGenerator;
     }
@@ -75,9 +84,14 @@ class ReplacementSourceDecrypterRegistrationHandler implements ReplacementSource
         $definitions = [];
 
         foreach ($bundleConfig['algorithms'] as $algorithmConfig) {
+            $decryptionKeyConfig = $this->environmentPlaceholderResolver->resolveEnvironmentPlaceholders(
+                $algorithmConfig['decryption']['key'],
+                $container
+            );
+
             $decryptionKeyConfDef = $this->definitionFactory->createDefinition(
                 KeyConfiguration::class,
-                [$algorithmConfig['decryption']['key']]
+                [$decryptionKeyConfig]
             );
             $decryptionKeyConfDef->setFactory([
                 $this->referenceFactory->createReference(ServiceNames::KEY_CONFIGURATION_FACTORY),

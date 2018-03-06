@@ -11,6 +11,7 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Tests\DependencyInjection\Service\Initializer\Handler;
 
+use Picodexter\ParameterEncryptionBundle\DependencyInjection\Parameter\EnvironmentPlaceholderResolverInterface;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\BundleConfigurationValidatorInterface;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\DefinitionFactoryInterface;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\Initializer\Handler\ReplacementSourceDecrypterRegistrationHandler;
@@ -34,6 +35,11 @@ class ReplacementSourceDecrypterRegistrationHandlerTest extends \PHPUnit_Framewo
     private $definitionFactory;
 
     /**
+     * @var EnvironmentPlaceholderResolverInterface|\PHPUnit_Framework_MockObject_MockObject
+     */
+    private $environmentPlaceholderResolver;
+
+    /**
      * @var ReplacementSourceDecrypterRegistrationHandler
      */
     private $handler;
@@ -55,12 +61,14 @@ class ReplacementSourceDecrypterRegistrationHandlerTest extends \PHPUnit_Framewo
     {
         $this->bundleConfigValidator = $this->createBundleConfigurationValidatorInterfaceMock();
         $this->definitionFactory = $this->createDefinitionFactoryInterfaceMock();
+        $this->environmentPlaceholderResolver = $this->createEnvironmentPlaceholderResolverInterfaceMock();
         $this->referenceFactory = $this->createReferenceFactoryInterfaceMock();
         $this->serviceNameGenerator = $this->createServiceNameGeneratorInterfaceMock();
 
         $this->handler = new ReplacementSourceDecrypterRegistrationHandler(
             $this->bundleConfigValidator,
             $this->definitionFactory,
+            $this->environmentPlaceholderResolver,
             $this->referenceFactory,
             $this->serviceNameGenerator
         );
@@ -74,6 +82,7 @@ class ReplacementSourceDecrypterRegistrationHandlerTest extends \PHPUnit_Framewo
         $this->handler = null;
         $this->serviceNameGenerator = null;
         $this->referenceFactory = null;
+        $this->environmentPlaceholderResolver = null;
         $this->definitionFactory = null;
         $this->bundleConfigValidator = null;
     }
@@ -234,6 +243,16 @@ class ReplacementSourceDecrypterRegistrationHandlerTest extends \PHPUnit_Framewo
     private function createDefinitionMock()
     {
         return $this->getMockBuilder(Definition::class)->getMock();
+    }
+
+    /**
+     * Create mock for EnvironmentPlaceholderResolverInterface.
+     *
+     * @return EnvironmentPlaceholderResolverInterface|\PHPUnit_Framework_MockObject_MockObject
+     */
+    private function createEnvironmentPlaceholderResolverInterfaceMock()
+    {
+        return $this->getMockBuilder(EnvironmentPlaceholderResolverInterface::class)->getMock();
     }
 
     /**

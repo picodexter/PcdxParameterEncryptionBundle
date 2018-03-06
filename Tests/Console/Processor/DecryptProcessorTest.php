@@ -114,7 +114,7 @@ class DecryptProcessorTest extends \PHPUnit_Framework_TestCase
         $this->processor->renderDecryptOutput($request, $output);
     }
 
-    public function testRenderDecryptOutputSuccessPlaintextValueFromRequest()
+    public function testRenderDecryptOutputSuccessEncryptedValueFromRequest()
     {
         $algorithmId = 'algo_01';
         $key = 'secret key';
@@ -160,7 +160,7 @@ class DecryptProcessorTest extends \PHPUnit_Framework_TestCase
         $this->processor->renderDecryptOutput($request, $output);
     }
 
-    public function testRenderDecryptOutputSuccessPlaintextValueFromQuestionAsker()
+    public function testRenderDecryptOutputSuccessEncryptedValueFromQuestionAsker()
     {
         $algorithmId = 'algo_01';
         $key = 'secret key';

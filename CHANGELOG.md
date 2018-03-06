@@ -6,10 +6,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Added
 
-*   Added support for resolving Symfony parameters using environment placeholders (Symfony 3.2+)
-*   Added rewriting Doctrine configuration key "url" (Symfony 4.0+)
-*   Added Composer scripts for PHPUnit
-*   Added Composer scripts for PHP CS Fixer
+*   (empty)
 
 ### Changed
 
@@ -30,6 +27,15 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Security
 
 *   (empty)
+
+## 1.1.1 (2018-03-06)
+
+### Added
+
+*   Added support for resolving Symfony parameters using environment placeholders (Symfony 3.2+)
+*   Added rewriting Doctrine configuration key "url" (Symfony 4.0+)
+*   Added Composer scripts for PHPUnit
+*   Added Composer scripts for PHP CS Fixer
 
 ## 1.1.0 (2018-01-20)
 

@@ -46,13 +46,25 @@ The following steps are required:
 *   Check the code coverage in order to stay at 100%:
 
     ```console
+    $ composer test-coverage
+    ```
+
+    or
+
+    ```console
     $ ./vendor/bin/phpunit -v --coverage-text
     ```
 
 *   Run PHP CS Fixer for coding standards / code style:
 
     ```console
-    $ ./vendor/bin/php-cs-fixer fix -v --dry-run --diff .
+    $ composer cs
+    ```
+
+    or
+
+    ```console
+    $ ./vendor/bin/php-cs-fixer fix -v --dry-run --diff
     ```
 
 Automated versions of these checks will run during the build process.

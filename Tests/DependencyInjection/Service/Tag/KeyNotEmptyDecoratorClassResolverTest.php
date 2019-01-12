@@ -11,15 +11,17 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Tests\DependencyInjection\Service\Tag;
 
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\CryptoClassDetectorInterface;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\Tag\KeyNotEmptyDecoratorClassResolver;
 use Picodexter\ParameterEncryptionBundle\Encryption\Decrypter\Decorator\KeyNotEmptyDecrypterDecorator;
 use Picodexter\ParameterEncryptionBundle\Encryption\Encrypter\Decorator\KeyNotEmptyEncrypterDecorator;
 
-class KeyNotEmptyDecoratorClassResolverTest extends \PHPUnit_Framework_TestCase
+class KeyNotEmptyDecoratorClassResolverTest extends TestCase
 {
     /**
-     * @var CryptoClassDetectorInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @var CryptoClassDetectorInterface|MockObject
      */
     private $cryptoClassDetector;
 
@@ -72,7 +74,7 @@ class KeyNotEmptyDecoratorClassResolverTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for CryptoClassDetectorInterface.
      *
-     * @return CryptoClassDetectorInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return CryptoClassDetectorInterface|MockObject
      */
     private function createCryptoClassDetectorInterfaceMock()
     {

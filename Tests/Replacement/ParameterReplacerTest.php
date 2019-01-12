@@ -11,16 +11,18 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Tests\Replacement;
 
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\Parameter\EnvironmentPlaceholderResolverInterface;
 use Picodexter\ParameterEncryptionBundle\Replacement\ParameterReplacementFetcherInterface;
 use Picodexter\ParameterEncryptionBundle\Replacement\ParameterReplacer;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBag;
 
-class ParameterReplacerTest extends \PHPUnit_Framework_TestCase
+class ParameterReplacerTest extends TestCase
 {
     /**
-     * @var EnvironmentPlaceholderResolverInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @var EnvironmentPlaceholderResolverInterface|MockObject
      */
     private $environmentPlaceholderResolver;
 
@@ -30,7 +32,7 @@ class ParameterReplacerTest extends \PHPUnit_Framework_TestCase
     private $parameterReplacer;
 
     /**
-     * @var ParameterReplacementFetcherInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @var ParameterReplacementFetcherInterface|MockObject
      */
     private $replacementFetcher;
 
@@ -167,7 +169,7 @@ class ParameterReplacerTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for ContainerBuilder.
      *
-     * @return ContainerBuilder|\PHPUnit_Framework_MockObject_MockObject
+     * @return ContainerBuilder|MockObject
      */
     private function createContainerBuilderMock()
     {
@@ -179,7 +181,7 @@ class ParameterReplacerTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for EnvironmentPlaceholderResolverInterface.
      *
-     * @return EnvironmentPlaceholderResolverInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return EnvironmentPlaceholderResolverInterface|MockObject
      */
     private function createEnvironmentPlaceholderResolverInterfaceMock()
     {
@@ -189,7 +191,7 @@ class ParameterReplacerTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for ParameterReplacementFetcherInterface.
      *
-     * @return ParameterReplacementFetcherInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return ParameterReplacementFetcherInterface|MockObject
      */
     private function createParameterReplacementFetcherInterfaceMock()
     {
@@ -199,7 +201,7 @@ class ParameterReplacerTest extends \PHPUnit_Framework_TestCase
     /**
      * Prepare replacement fetcher for conditional replacement.
      *
-     * @param ParameterReplacementFetcherInterface|\PHPUnit_Framework_MockObject_MockObject $replacementFetcher
+     * @param ParameterReplacementFetcherInterface|MockObject $replacementFetcher
      */
     private function prepareReplacementFetcherInterfaceMockForConditionalReplacement(
         ParameterReplacementFetcherInterface $replacementFetcher

@@ -11,12 +11,14 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Tests\DependencyInjection\Service\Initializer;
 
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\Initializer\AlgorithmInitializer;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\Initializer\Handler\AlgorithmInjectionHandlerInterface;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\Initializer\Handler\AlgorithmRegistrationHandlerInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
-class AlgorithmInitializerTest extends \PHPUnit_Framework_TestCase
+class AlgorithmInitializerTest extends TestCase
 {
     /**
      * @var AlgorithmInitializer
@@ -24,12 +26,12 @@ class AlgorithmInitializerTest extends \PHPUnit_Framework_TestCase
     private $initializer;
 
     /**
-     * @var AlgorithmInjectionHandlerInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @var AlgorithmInjectionHandlerInterface|MockObject
      */
     private $injectionHandler;
 
     /**
-     * @var AlgorithmRegistrationHandlerInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @var AlgorithmRegistrationHandlerInterface|MockObject
      */
     private $registrationHandler;
 
@@ -80,7 +82,7 @@ class AlgorithmInitializerTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for AlgorithmInjectionHandlerInterface.
      *
-     * @return AlgorithmInjectionHandlerInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return AlgorithmInjectionHandlerInterface|MockObject
      */
     private function createAlgorithmInjectionHandlerInterfaceMock()
     {
@@ -90,7 +92,7 @@ class AlgorithmInitializerTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for AlgorithmRegistrationHandlerInterface.
      *
-     * @return AlgorithmRegistrationHandlerInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return AlgorithmRegistrationHandlerInterface|MockObject
      */
     private function createAlgorithmRegistrationHandlerInterfaceMock()
     {
@@ -100,7 +102,7 @@ class AlgorithmInitializerTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for ContainerBuilder.
      *
-     * @return ContainerBuilder|\PHPUnit_Framework_MockObject_MockObject
+     * @return ContainerBuilder|MockObject
      */
     private function createContainerBuilderMock()
     {

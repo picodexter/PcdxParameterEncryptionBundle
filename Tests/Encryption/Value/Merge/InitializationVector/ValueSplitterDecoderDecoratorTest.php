@@ -11,15 +11,17 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Tests\Encryption\Value\Merge\InitializationVector;
 
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 use Picodexter\ParameterEncryptionBundle\Encryption\Value\Encoding\DecoderInterface;
 use Picodexter\ParameterEncryptionBundle\Encryption\Value\Merge\InitializationVector\SplitValueBag;
 use Picodexter\ParameterEncryptionBundle\Encryption\Value\Merge\InitializationVector\ValueSplitterDecoderDecorator;
 use Picodexter\ParameterEncryptionBundle\Encryption\Value\Merge\InitializationVector\ValueSplitterInterface;
 
-class ValueSplitterDecoderDecoratorTest extends \PHPUnit_Framework_TestCase
+class ValueSplitterDecoderDecoratorTest extends TestCase
 {
     /**
-     * @var DecoderInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @var DecoderInterface|MockObject
      */
     private $decoder;
 
@@ -29,7 +31,7 @@ class ValueSplitterDecoderDecoratorTest extends \PHPUnit_Framework_TestCase
     private $decorator;
 
     /**
-     * @var ValueSplitterInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @var ValueSplitterInterface|MockObject
      */
     private $valueSplitter;
 
@@ -82,7 +84,7 @@ class ValueSplitterDecoderDecoratorTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for DecoderInterface.
      *
-     * @return DecoderInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return DecoderInterface|MockObject
      */
     private function createDecoderInterfaceMock()
     {
@@ -92,7 +94,7 @@ class ValueSplitterDecoderDecoratorTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for SplitValueBag.
      *
-     * @return SplitValueBag|\PHPUnit_Framework_MockObject_MockObject
+     * @return SplitValueBag|MockObject
      */
     private function createSplitValueBagMock()
     {
@@ -102,7 +104,7 @@ class ValueSplitterDecoderDecoratorTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for ValueSplitterInterface.
      *
-     * @return ValueSplitterInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return ValueSplitterInterface|MockObject
      */
     private function createValueSplitterInterfaceMock()
     {

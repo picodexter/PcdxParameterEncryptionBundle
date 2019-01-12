@@ -11,12 +11,13 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Tests\Encryption\Value\Merge\InitializationVector;
 
+use PHPUnit\Framework\TestCase;
 use Picodexter\ParameterEncryptionBundle\Encryption\Value\Merge\InitializationVector\SplitValueBag;
 use Picodexter\ParameterEncryptionBundle\Encryption\Value\Merge\InitializationVector\ValueSplitter;
 use Picodexter\ParameterEncryptionBundle\Exception\Encryption\InvalidInitializationVectorLengthException;
 use Picodexter\ParameterEncryptionBundle\Exception\Encryption\MergedValueTooShortException;
 
-class ValueSplitterTest extends \PHPUnit_Framework_TestCase
+class ValueSplitterTest extends TestCase
 {
     /**
      * @var ValueSplitter

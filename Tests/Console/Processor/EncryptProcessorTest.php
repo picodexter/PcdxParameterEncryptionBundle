@@ -11,6 +11,8 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Tests\Console\Processor;
 
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 use Picodexter\ParameterEncryptionBundle\Configuration\AlgorithmConfiguration;
 use Picodexter\ParameterEncryptionBundle\Configuration\AlgorithmConfigurationContainerInterface;
 use Picodexter\ParameterEncryptionBundle\Configuration\Key\KeyConfiguration;
@@ -26,20 +28,20 @@ use Picodexter\ParameterEncryptionBundle\Encryption\Encrypter\EncrypterInterface
 use Picodexter\ParameterEncryptionBundle\Exception\Console\UnknownAlgorithmIdException;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class EncryptProcessorTest extends \PHPUnit_Framework_TestCase
+class EncryptProcessorTest extends TestCase
 {
     /**
-     * @var ActiveKeyConfigurationProviderInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @var ActiveKeyConfigurationProviderInterface|MockObject
      */
     private $activeKeyConfigProvider;
 
     /**
-     * @var AlgorithmConfigurationContainerInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @var AlgorithmConfigurationContainerInterface|MockObject
      */
     private $algorithmConfigContainer;
 
     /**
-     * @var AlgorithmIdValidatorInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @var AlgorithmIdValidatorInterface|MockObject
      */
     private $algorithmIdValidator;
 
@@ -49,12 +51,12 @@ class EncryptProcessorTest extends \PHPUnit_Framework_TestCase
     private $processor;
 
     /**
-     * @var CryptRendererInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @var CryptRendererInterface|MockObject
      */
     private $renderer;
 
     /**
-     * @var TransformedKeyProviderInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @var TransformedKeyProviderInterface|MockObject
      */
     private $transformedKeyProvider;
 
@@ -215,7 +217,7 @@ class EncryptProcessorTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for ActiveKeyConfigurationProviderInterface.
      *
-     * @return ActiveKeyConfigurationProviderInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return ActiveKeyConfigurationProviderInterface|MockObject
      */
     private function createActiveKeyConfigurationProviderInterfaceMock()
     {
@@ -225,7 +227,7 @@ class EncryptProcessorTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for AlgorithmConfigurationContainerInterface.
      *
-     * @return AlgorithmConfigurationContainerInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return AlgorithmConfigurationContainerInterface|MockObject
      */
     private function createAlgorithmConfigurationContainerInterfaceMock()
     {
@@ -235,7 +237,7 @@ class EncryptProcessorTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for AlgorithmConfiguration.
      *
-     * @return AlgorithmConfiguration|\PHPUnit_Framework_MockObject_MockObject
+     * @return AlgorithmConfiguration|MockObject
      */
     private function createAlgorithmConfigurationMock()
     {
@@ -245,7 +247,7 @@ class EncryptProcessorTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for AlgorithmIdValidatorInterface.
      *
-     * @return AlgorithmIdValidatorInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return AlgorithmIdValidatorInterface|MockObject
      */
     private function createAlgorithmIdValidatorInterfaceMock()
     {
@@ -255,7 +257,7 @@ class EncryptProcessorTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for CryptRendererInterface.
      *
-     * @return CryptRendererInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return CryptRendererInterface|MockObject
      */
     private function createCryptRendererInterfaceMock()
     {
@@ -265,7 +267,7 @@ class EncryptProcessorTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for EncrypterInterface.
      *
-     * @return EncrypterInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return EncrypterInterface|MockObject
      */
     private function createEncrypterInterfaceMock()
     {
@@ -275,7 +277,7 @@ class EncryptProcessorTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for KeyConfiguration.
      *
-     * @return KeyConfiguration|\PHPUnit_Framework_MockObject_MockObject
+     * @return KeyConfiguration|MockObject
      */
     private function createKeyConfigurationMock()
     {
@@ -285,7 +287,7 @@ class EncryptProcessorTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for OutputInterface.
      *
-     * @return OutputInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return OutputInterface|MockObject
      */
     private function createOutputInterfaceMock()
     {
@@ -295,7 +297,7 @@ class EncryptProcessorTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for QuestionAskerInterface.
      *
-     * @return QuestionAskerInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return QuestionAskerInterface|MockObject
      */
     private function createQuestionAskerInterfaceMock()
     {
@@ -305,7 +307,7 @@ class EncryptProcessorTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for TransformedKey.
      *
-     * @return TransformedKey|\PHPUnit_Framework_MockObject_MockObject
+     * @return TransformedKey|MockObject
      */
     private function createTransformedKeyMock()
     {
@@ -315,7 +317,7 @@ class EncryptProcessorTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for TransformedKeyProviderInterface.
      *
-     * @return TransformedKeyProviderInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return TransformedKeyProviderInterface|MockObject
      */
     private function createTransformedKeyProviderInterfaceMock()
     {
@@ -365,8 +367,8 @@ class EncryptProcessorTest extends \PHPUnit_Framework_TestCase
     /**
      * Set up algorithm configuration: get encrypter.
      *
-     * @param AlgorithmConfiguration|\PHPUnit_Framework_MockObject_MockObject $algorithmConfig
-     * @param EncrypterInterface                                              $encrypter
+     * @param AlgorithmConfiguration|MockObject $algorithmConfig
+     * @param EncrypterInterface                $encrypter
      */
     private function setUpAlgorithmConfigurationGetEncrypter(
         AlgorithmConfiguration $algorithmConfig,
@@ -381,8 +383,8 @@ class EncryptProcessorTest extends \PHPUnit_Framework_TestCase
     /**
      * Set up AlgorithmConfiguration: getEncryptionKeyConfig.
      *
-     * @param AlgorithmConfiguration|\PHPUnit_Framework_MockObject_MockObject $algorithmConfig
-     * @param KeyConfiguration                                                $keyConfig
+     * @param AlgorithmConfiguration|MockObject $algorithmConfig
+     * @param KeyConfiguration                  $keyConfig
      */
     private function setUpAlgorithmConfigurationGetEncryptionKeyConfig(
         AlgorithmConfiguration $algorithmConfig,
@@ -418,10 +420,10 @@ class EncryptProcessorTest extends \PHPUnit_Framework_TestCase
     /**
      * Set up encrypter: encrypt value.
      *
-     * @param EncrypterInterface|\PHPUnit_Framework_MockObject_MockObject $encrypter
-     * @param string                                                      $plaintextValue
-     * @param string                                                      $key
-     * @param string                                                      $encryptedValue
+     * @param EncrypterInterface|MockObject $encrypter
+     * @param string                        $plaintextValue
+     * @param string                        $key
+     * @param string                        $encryptedValue
      */
     private function setUpEncrypterEncryptValue(EncrypterInterface $encrypter, $plaintextValue, $key, $encryptedValue)
     {
@@ -437,8 +439,8 @@ class EncryptProcessorTest extends \PHPUnit_Framework_TestCase
     /**
      * Set up TransformedKey: getFinalKey.
      *
-     * @param TransformedKey|\PHPUnit_Framework_MockObject_MockObject $transformedKey
-     * @param string                                                  $key
+     * @param TransformedKey|MockObject $transformedKey
+     * @param string                    $key
      */
     private function setUpTransformedKeyGetFinalKey(TransformedKey $transformedKey, $key)
     {

@@ -11,11 +11,13 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Tests\Encryption\Value\Merge\InitializationVector;
 
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 use Picodexter\ParameterEncryptionBundle\Encryption\Value\Encoding\EncoderInterface;
 use Picodexter\ParameterEncryptionBundle\Encryption\Value\Merge\InitializationVector\ValueMergerEncoderDecorator;
 use Picodexter\ParameterEncryptionBundle\Encryption\Value\Merge\InitializationVector\ValueMergerInterface;
 
-class ValueMergerEncoderDecoratorTest extends \PHPUnit_Framework_TestCase
+class ValueMergerEncoderDecoratorTest extends TestCase
 {
     /**
      * @var ValueMergerEncoderDecorator
@@ -23,12 +25,12 @@ class ValueMergerEncoderDecoratorTest extends \PHPUnit_Framework_TestCase
     private $decorator;
 
     /**
-     * @var EncoderInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @var EncoderInterface|MockObject
      */
     private $encoder;
 
     /**
-     * @var ValueMergerInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @var ValueMergerInterface|MockObject
      */
     private $valueMerger;
 
@@ -81,7 +83,7 @@ class ValueMergerEncoderDecoratorTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for EncoderInterface.
      *
-     * @return EncoderInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return EncoderInterface|MockObject
      */
     private function createEncoderInterfaceMock()
     {
@@ -91,7 +93,7 @@ class ValueMergerEncoderDecoratorTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for ValueMergerInterface.
      *
-     * @return ValueMergerInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return ValueMergerInterface|MockObject
      */
     private function createValueMergerInterfaceMock()
     {

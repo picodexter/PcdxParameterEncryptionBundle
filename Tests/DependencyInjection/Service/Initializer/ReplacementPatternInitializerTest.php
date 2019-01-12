@@ -11,12 +11,14 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Tests\DependencyInjection\Service\Initializer;
 
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\Initializer\Handler\ReplacementPatternInjectionHandlerInterface;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\Initializer\Handler\ReplacementPatternRegistrationHandlerInterface;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\Initializer\ReplacementPatternInitializer;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
-class ReplacementPatternInitializerTest extends \PHPUnit_Framework_TestCase
+class ReplacementPatternInitializerTest extends TestCase
 {
     /**
      * @var ReplacementPatternInitializer
@@ -24,12 +26,12 @@ class ReplacementPatternInitializerTest extends \PHPUnit_Framework_TestCase
     private $initializer;
 
     /**
-     * @var ReplacementPatternInjectionHandlerInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @var ReplacementPatternInjectionHandlerInterface|MockObject
      */
     private $injectionHandler;
 
     /**
-     * @var ReplacementPatternRegistrationHandlerInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @var ReplacementPatternRegistrationHandlerInterface|MockObject
      */
     private $registrationHandler;
 
@@ -81,7 +83,7 @@ class ReplacementPatternInitializerTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for ContainerBuilder.
      *
-     * @return ContainerBuilder|\PHPUnit_Framework_MockObject_MockObject
+     * @return ContainerBuilder|MockObject
      */
     private function createContainerBuilderMock()
     {
@@ -93,7 +95,7 @@ class ReplacementPatternInitializerTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for ReplacementPatternInjectionHandlerInterface.
      *
-     * @return ReplacementPatternInjectionHandlerInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return ReplacementPatternInjectionHandlerInterface|MockObject
      */
     private function createReplacementPatternInjectionHandlerInterfaceMock()
     {
@@ -103,7 +105,7 @@ class ReplacementPatternInitializerTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for ReplacementPatternRegistrationHandlerInterface.
      *
-     * @return ReplacementPatternRegistrationHandlerInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return ReplacementPatternRegistrationHandlerInterface|MockObject
      */
     private function createReplacementPatternRegistrationHandlerInterfaceMock()
     {

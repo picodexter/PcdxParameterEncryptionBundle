@@ -11,12 +11,14 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Tests\DependencyInjection\Compiler;
 
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\Compiler\BundleConfigurationServiceDefinitionRewriterServiceTagPass;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\Tag\BundleConfigurationServiceDefinitionRewriterTagProcessorInterface;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\ServiceNames;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
-class BundleConfigurationServiceDefinitionRewriterServiceTagPassTest extends \PHPUnit_Framework_TestCase
+class BundleConfigurationServiceDefinitionRewriterServiceTagPassTest extends TestCase
 {
     public function testProcessSuccess()
     {
@@ -42,7 +44,7 @@ class BundleConfigurationServiceDefinitionRewriterServiceTagPassTest extends \PH
     /**
      * Create mock for BundleConfigurationServiceDefinitionRewriterTagProcessorInterface.
      *
-     * @return BundleConfigurationServiceDefinitionRewriterTagProcessorInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return BundleConfigurationServiceDefinitionRewriterTagProcessorInterface|MockObject
      */
     private function createBundleConfigurationServiceDefinitionRewriterTagProcessorInterfaceMock()
     {
@@ -53,7 +55,7 @@ class BundleConfigurationServiceDefinitionRewriterServiceTagPassTest extends \PH
     /**
      * Create mock for ContainerBuilder.
      *
-     * @return ContainerBuilder|\PHPUnit_Framework_MockObject_MockObject
+     * @return ContainerBuilder|MockObject
      */
     private function createContainerBuilderMock()
     {

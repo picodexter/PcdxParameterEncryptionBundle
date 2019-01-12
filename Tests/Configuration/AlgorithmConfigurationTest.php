@@ -11,13 +11,15 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Tests\Configuration;
 
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 use Picodexter\ParameterEncryptionBundle\Configuration\AlgorithmConfiguration;
 use Picodexter\ParameterEncryptionBundle\Encryption\Decrypter\DecrypterInterface;
 use Picodexter\ParameterEncryptionBundle\Encryption\Encrypter\EncrypterInterface;
 use Picodexter\ParameterEncryptionBundle\Exception\Configuration\InvalidAlgorithmIdException;
 use Picodexter\ParameterEncryptionBundle\Replacement\Pattern\ReplacementPatternInterface;
 
-class AlgorithmConfigurationTest extends \PHPUnit_Framework_TestCase
+class AlgorithmConfigurationTest extends TestCase
 {
     /**
      * @param string $id
@@ -273,7 +275,7 @@ class AlgorithmConfigurationTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for DecrypterInterface.
      *
-     * @return DecrypterInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return DecrypterInterface|MockObject
      */
     private function createDecrypterInterfaceMock()
     {
@@ -283,7 +285,7 @@ class AlgorithmConfigurationTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for EncrypterInterface.
      *
-     * @return EncrypterInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return EncrypterInterface|MockObject
      */
     private function createEncrypterInterfaceMock()
     {
@@ -293,7 +295,7 @@ class AlgorithmConfigurationTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for KeyConfiguration.
      *
-     * @return \Picodexter\ParameterEncryptionBundle\Configuration\Key\KeyConfiguration|\PHPUnit_Framework_MockObject_MockObject
+     * @return \Picodexter\ParameterEncryptionBundle\Configuration\Key\KeyConfiguration|MockObject
      */
     private function createKeyConfigurationMock()
     {
@@ -303,7 +305,7 @@ class AlgorithmConfigurationTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for ReplacementPatternInterface.
      *
-     * @return ReplacementPatternInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return ReplacementPatternInterface|MockObject
      */
     private function createReplacementPatternInterfaceMock()
     {

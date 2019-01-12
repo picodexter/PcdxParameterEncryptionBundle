@@ -11,9 +11,10 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Tests\Replacement\Pattern\Registry;
 
+use PHPUnit\Framework\TestCase;
 use Picodexter\ParameterEncryptionBundle\Replacement\Pattern\Registry\ReplacementPatternTypeRegistry;
 
-class ReplacementPatternTypeRegistryTest extends \PHPUnit_Framework_TestCase
+class ReplacementPatternTypeRegistryTest extends TestCase
 {
     public function testGetSetPatternTypesSuccess()
     {

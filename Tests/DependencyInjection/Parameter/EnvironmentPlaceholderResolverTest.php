@@ -11,11 +11,13 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Tests\DependencyInjection\Parameter;
 
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\Parameter\EnvironmentPlaceholderResolver;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\ParameterBag\EnvPlaceholderParameterBag;
 
-class EnvironmentPlaceholderResolverTest extends \PHPUnit_Framework_TestCase
+class EnvironmentPlaceholderResolverTest extends TestCase
 {
     /**
      * @var EnvironmentPlaceholderResolver
@@ -66,7 +68,7 @@ class EnvironmentPlaceholderResolverTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for ContainerBuilder.
      *
-     * @return ContainerBuilder|\PHPUnit_Framework_MockObject_MockObject
+     * @return ContainerBuilder|MockObject
      */
     private function createContainerBuilderMock()
     {

@@ -11,9 +11,10 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Tests\DependencyInjection;
 
+use PHPUnit\Framework\TestCase;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\ServiceNames;
 
-class ServiceNamesTest extends \PHPUnit_Framework_TestCase
+class ServiceNamesTest extends TestCase
 {
     public function testConstructorExceptionInstantiation()
     {

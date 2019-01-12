@@ -11,12 +11,14 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Tests\Encryption\Encrypter\Decorator;
 
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 use Picodexter\ParameterEncryptionBundle\Encryption\Encrypter\Decorator\KeyNotEmptyEncrypterDecorator;
 use Picodexter\ParameterEncryptionBundle\Encryption\Encrypter\EncrypterInterface;
 use Picodexter\ParameterEncryptionBundle\Encryption\Key\KeyNotEmptyValidatorInterface;
 use Picodexter\ParameterEncryptionBundle\Exception\Encryption\EmptyKeyException;
 
-class KeyNotEmptyEncrypterDecoratorTest extends \PHPUnit_Framework_TestCase
+class KeyNotEmptyEncrypterDecoratorTest extends TestCase
 {
     /**
      * @var KeyNotEmptyEncrypterDecorator
@@ -24,12 +26,12 @@ class KeyNotEmptyEncrypterDecoratorTest extends \PHPUnit_Framework_TestCase
     private $decorator;
 
     /**
-     * @var EncrypterInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @var EncrypterInterface|MockObject
      */
     private $encrypter;
 
     /**
-     * @var KeyNotEmptyValidatorInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @var KeyNotEmptyValidatorInterface|MockObject
      */
     private $keyNotEmptyValidator;
 
@@ -91,7 +93,7 @@ class KeyNotEmptyEncrypterDecoratorTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for EncrypterInterface.
      *
-     * @return EncrypterInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return EncrypterInterface|MockObject
      */
     private function createEncrypterInterfaceMock()
     {
@@ -101,7 +103,7 @@ class KeyNotEmptyEncrypterDecoratorTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for KeyNotEmptyValidatorInterface.
      *
-     * @return KeyNotEmptyValidatorInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return KeyNotEmptyValidatorInterface|MockObject
      */
     private function createKeyNotEmptyValidatorInterfaceMock()
     {

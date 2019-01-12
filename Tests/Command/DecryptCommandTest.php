@@ -11,12 +11,14 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Tests\Command;
 
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 use Picodexter\ParameterEncryptionBundle\Command\DecryptCommand;
 use Picodexter\ParameterEncryptionBundle\Console\Dispatcher\DecryptDispatcherInterface;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class DecryptCommandTest extends \PHPUnit_Framework_TestCase
+class DecryptCommandTest extends TestCase
 {
     public function testExecuteSuccess()
     {
@@ -40,7 +42,7 @@ class DecryptCommandTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for DecryptDispatcherInterface.
      *
-     * @return DecryptDispatcherInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return DecryptDispatcherInterface|MockObject
      */
     private function createDecryptDispatcherInterfaceMock()
     {
@@ -50,7 +52,7 @@ class DecryptCommandTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for InputInterface.
      *
-     * @return InputInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return InputInterface|MockObject
      */
     private function createInputInterfaceMock()
     {
@@ -60,7 +62,7 @@ class DecryptCommandTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for OutputInterface.
      *
-     * @return OutputInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return OutputInterface|MockObject
      */
     private function createOutputInterfaceMock()
     {

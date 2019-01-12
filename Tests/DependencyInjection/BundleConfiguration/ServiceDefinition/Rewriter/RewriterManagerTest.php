@@ -11,6 +11,8 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Tests\DependencyInjection\BundleConfiguration\ServiceDefinition\Rewriter;
 
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\BundleConfiguration\ConfigurationFetcherInterface;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\BundleConfiguration\ServiceDefinition\Rewriter\RewriterInterface;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\BundleConfiguration\ServiceDefinition\Rewriter\RewriterManager;
@@ -18,10 +20,10 @@ use Picodexter\ParameterEncryptionBundle\DependencyInjection\BundleConfiguration
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
 
-class RewriterManagerTest extends \PHPUnit_Framework_TestCase
+class RewriterManagerTest extends TestCase
 {
     /**
-     * @var ConfigurationFetcherInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @var ConfigurationFetcherInterface|MockObject
      */
     private $configurationFetcher;
 
@@ -31,7 +33,7 @@ class RewriterManagerTest extends \PHPUnit_Framework_TestCase
     private $manager;
 
     /**
-     * @var RewriterRegistryInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @var RewriterRegistryInterface|MockObject
      */
     private $registry;
 
@@ -133,7 +135,7 @@ class RewriterManagerTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for ConfigurationFetcherInterface.
      *
-     * @return ConfigurationFetcherInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return ConfigurationFetcherInterface|MockObject
      */
     private function createConfigurationFetcherInterfaceMock()
     {
@@ -143,7 +145,7 @@ class RewriterManagerTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for ContainerBuilder.
      *
-     * @return ContainerBuilder|\PHPUnit_Framework_MockObject_MockObject
+     * @return ContainerBuilder|MockObject
      */
     private function createContainerBuilderMock()
     {
@@ -155,7 +157,7 @@ class RewriterManagerTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for Definition.
      *
-     * @return Definition|\PHPUnit_Framework_MockObject_MockObject
+     * @return Definition|MockObject
      */
     private function createDefinitionMock()
     {
@@ -165,7 +167,7 @@ class RewriterManagerTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for RewriterInterface.
      *
-     * @return RewriterInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return RewriterInterface|MockObject
      */
     private function createRewriterInterfaceMock()
     {
@@ -175,7 +177,7 @@ class RewriterManagerTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for RewriterRegistryInterface.
      *
-     * @return RewriterRegistryInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return RewriterRegistryInterface|MockObject
      */
     private function createRewriterRegistryInterfaceMock()
     {
@@ -210,11 +212,11 @@ class RewriterManagerTest extends \PHPUnit_Framework_TestCase
     /**
      * Set up rewriter: applies.
      *
-     * @param RewriterInterface|\PHPUnit_Framework_MockObject_MockObject $rewriter
-     * @param string                                                     $serviceId
-     * @param Definition                                                 $definition
-     * @param array                                                      $prepProcessedConfig
-     * @param bool                                                       $applies
+     * @param RewriterInterface|MockObject $rewriter
+     * @param string                       $serviceId
+     * @param Definition                   $definition
+     * @param array                        $prepProcessedConfig
+     * @param bool                         $applies
      */
     private function setUpRewriterApplies(
         RewriterInterface $rewriter,

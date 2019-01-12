@@ -11,12 +11,13 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Tests\DependencyInjection;
 
+use PHPUnit\Framework\TestCase;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\PcdxParameterEncryptionExtension;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\ServiceNames;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
 
-class PcdxParameterEncryptionExtensionIntegrationTest extends \PHPUnit_Framework_TestCase
+class PcdxParameterEncryptionExtensionIntegrationTest extends TestCase
 {
     public function testLoadInternalSuccessServices()
     {

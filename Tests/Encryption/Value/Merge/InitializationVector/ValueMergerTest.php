@@ -11,9 +11,10 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Tests\Encryption\Value\Merge\InitializationVector;
 
+use PHPUnit\Framework\TestCase;
 use Picodexter\ParameterEncryptionBundle\Encryption\Value\Merge\InitializationVector\ValueMerger;
 
-class ValueMergerTest extends \PHPUnit_Framework_TestCase
+class ValueMergerTest extends TestCase
 {
     public function testMergeSuccess()
     {

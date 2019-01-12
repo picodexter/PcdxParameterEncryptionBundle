@@ -11,12 +11,14 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Tests\DependencyInjection\Service\Initializer;
 
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\Initializer\Handler\ReplacementSourceDecrypterInjectionHandlerInterface;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\Initializer\Handler\ReplacementSourceDecrypterRegistrationHandlerInterface;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\Initializer\ReplacementSourceDecrypterInitializer;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
-class ReplacementSourceDecrypterInitializerTest extends \PHPUnit_Framework_TestCase
+class ReplacementSourceDecrypterInitializerTest extends TestCase
 {
     /**
      * @var ReplacementSourceDecrypterInitializer
@@ -24,12 +26,12 @@ class ReplacementSourceDecrypterInitializerTest extends \PHPUnit_Framework_TestC
     private $initializer;
 
     /**
-     * @var ReplacementSourceDecrypterInjectionHandlerInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @var ReplacementSourceDecrypterInjectionHandlerInterface|MockObject
      */
     private $injectionHandler;
 
     /**
-     * @var ReplacementSourceDecrypterRegistrationHandlerInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @var ReplacementSourceDecrypterRegistrationHandlerInterface|MockObject
      */
     private $registrationHandler;
 
@@ -85,7 +87,7 @@ class ReplacementSourceDecrypterInitializerTest extends \PHPUnit_Framework_TestC
     /**
      * Create mock for ContainerBuilder.
      *
-     * @return ContainerBuilder|\PHPUnit_Framework_MockObject_MockObject
+     * @return ContainerBuilder|MockObject
      */
     private function createContainerBuilderMock()
     {
@@ -97,7 +99,7 @@ class ReplacementSourceDecrypterInitializerTest extends \PHPUnit_Framework_TestC
     /**
      * Create mock for ReplacementSourceDecrypterInjectionHandlerInterface.
      *
-     * @return ReplacementSourceDecrypterInjectionHandlerInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return ReplacementSourceDecrypterInjectionHandlerInterface|MockObject
      */
     private function createReplacementSourceDecrypterInjectionHandlerInterfaceMock()
     {
@@ -107,7 +109,7 @@ class ReplacementSourceDecrypterInitializerTest extends \PHPUnit_Framework_TestC
     /**
      * Create mock for ReplacementSourceDecrypterRegistrationHandlerInterface.
      *
-     * @return ReplacementSourceDecrypterRegistrationHandlerInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return ReplacementSourceDecrypterRegistrationHandlerInterface|MockObject
      */
     private function createReplacementSourceDecrypterRegistrationHandlerInterfaceMock()
     {

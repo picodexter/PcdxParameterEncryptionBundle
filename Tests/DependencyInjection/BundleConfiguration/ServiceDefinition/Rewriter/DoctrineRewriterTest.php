@@ -11,25 +11,27 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Tests\DependencyInjection\BundleConfiguration\ServiceDefinition\Rewriter;
 
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\BundleConfiguration\ServiceDefinition\ArgumentReplacerInterface;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\BundleConfiguration\ServiceDefinition\Rewriter\DoctrineRewriter;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 use Symfony\Component\DependencyInjection\Definition;
 
-class DoctrineRewriterTest extends \PHPUnit_Framework_TestCase
+class DoctrineRewriterTest extends TestCase
 {
     /**
-     * @var ArgumentReplacerInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @var ArgumentReplacerInterface|MockObject
      */
     private $argumentReplacer;
 
     /**
-     * @var ConfigurationInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @var ConfigurationInterface|MockObject
      */
     private $configuration;
 
     /**
-     * @var DoctrineRewriter|\PHPUnit_Framework_MockObject_MockObject
+     * @var DoctrineRewriter|MockObject
      */
     private $rewriter;
 
@@ -277,7 +279,7 @@ class DoctrineRewriterTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for ArgumentReplacerInterface.
      *
-     * @return ArgumentReplacerInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return ArgumentReplacerInterface|MockObject
      */
     private function createArgumentReplacerInterfaceMock()
     {
@@ -287,7 +289,7 @@ class DoctrineRewriterTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for ConfigurationInterface.
      *
-     * @return ConfigurationInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return ConfigurationInterface|MockObject
      */
     private function createConfigurationInterfaceMock()
     {
@@ -297,7 +299,7 @@ class DoctrineRewriterTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for Definition.
      *
-     * @return Definition|\PHPUnit_Framework_MockObject_MockObject
+     * @return Definition|MockObject
      */
     private function createDefinitionMock()
     {

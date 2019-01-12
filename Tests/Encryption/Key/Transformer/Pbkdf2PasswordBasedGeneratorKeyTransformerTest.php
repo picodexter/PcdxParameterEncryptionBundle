@@ -11,6 +11,7 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Tests\Encryption\Key\Transformer;
 
+use PHPUnit\Framework\TestCase;
 use Picodexter\ParameterEncryptionBundle\Configuration\Key\KeyConfiguration;
 use Picodexter\ParameterEncryptionBundle\Configuration\Key\Type\GeneratedKeyType;
 use Picodexter\ParameterEncryptionBundle\Configuration\Key\Type\KeyTypeInterface;
@@ -19,7 +20,7 @@ use Picodexter\ParameterEncryptionBundle\Encryption\Key\Transformer\Pbkdf2Passwo
 use Picodexter\ParameterEncryptionBundle\Exception\Configuration\InvalidKeyConfigurationException;
 use Picodexter\ParameterEncryptionBundle\Exception\Configuration\UnknownHashAlgorithmException;
 
-class Pbkdf2PasswordBasedGeneratorKeyTransformerTest extends \PHPUnit_Framework_TestCase
+class Pbkdf2PasswordBasedGeneratorKeyTransformerTest extends TestCase
 {
     /**
      * @var Pbkdf2PasswordBasedGeneratorKeyTransformer

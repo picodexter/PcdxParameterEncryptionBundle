@@ -11,9 +11,10 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Tests\Encryption\Algorithm\CaesarCipher;
 
+use PHPUnit\Framework\TestCase;
 use Picodexter\ParameterEncryptionBundle\Encryption\Algorithm\CaesarCipher\CaesarCipher;
 
-class CaesarCipherTest extends \PHPUnit_Framework_TestCase
+class CaesarCipherTest extends TestCase
 {
     /**
      * @var CaesarCipher

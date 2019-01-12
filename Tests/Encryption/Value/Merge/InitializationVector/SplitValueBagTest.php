@@ -11,9 +11,10 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Tests\Encryption\Value\Merge\InitializationVector;
 
+use PHPUnit\Framework\TestCase;
 use Picodexter\ParameterEncryptionBundle\Encryption\Value\Merge\InitializationVector\SplitValueBag;
 
-class SplitValueBagTest extends \PHPUnit_Framework_TestCase
+class SplitValueBagTest extends TestCase
 {
     public function testGetSetEncryptedValueSuccess()
     {

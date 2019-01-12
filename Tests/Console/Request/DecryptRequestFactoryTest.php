@@ -11,11 +11,13 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Tests\Console\Request;
 
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 use Picodexter\ParameterEncryptionBundle\Console\Helper\QuestionAskerInterface;
 use Picodexter\ParameterEncryptionBundle\Console\Request\DecryptRequest;
 use Picodexter\ParameterEncryptionBundle\Console\Request\DecryptRequestFactory;
 
-class DecryptRequestFactoryTest extends \PHPUnit_Framework_TestCase
+class DecryptRequestFactoryTest extends TestCase
 {
     public function testCreateEncryptRequestSuccess()
     {
@@ -35,7 +37,7 @@ class DecryptRequestFactoryTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for QuestionAsker.
      *
-     * @return QuestionAskerInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return QuestionAskerInterface|MockObject
      */
     private function createQuestionAskerInterfaceMock()
     {

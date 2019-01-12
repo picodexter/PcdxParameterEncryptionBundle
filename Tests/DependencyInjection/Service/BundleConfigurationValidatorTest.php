@@ -11,10 +11,11 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Tests\DependencyInjection\Service;
 
+use PHPUnit\Framework\TestCase;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\BundleConfigurationValidator;
 use Picodexter\ParameterEncryptionBundle\Exception\Configuration\InvalidBundleConfigurationException;
 
-class BundleConfigurationValidatorTest extends \PHPUnit_Framework_TestCase
+class BundleConfigurationValidatorTest extends TestCase
 {
     /**
      * @var BundleConfigurationValidator

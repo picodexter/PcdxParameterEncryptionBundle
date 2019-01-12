@@ -11,12 +11,14 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Tests\Command;
 
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 use Picodexter\ParameterEncryptionBundle\Command\AlgorithmListCommand;
 use Picodexter\ParameterEncryptionBundle\Console\Dispatcher\AlgorithmListDispatcherInterface;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class AlgorithmListCommandTest extends \PHPUnit_Framework_TestCase
+class AlgorithmListCommandTest extends TestCase
 {
     public function testRunSuccess()
     {
@@ -39,7 +41,7 @@ class AlgorithmListCommandTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for AlgorithmListDispatcherInterface.
      *
-     * @return AlgorithmListDispatcherInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return AlgorithmListDispatcherInterface|MockObject
      */
     private function createAlgorithmListDispatcherInterfaceMock()
     {
@@ -49,7 +51,7 @@ class AlgorithmListCommandTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for InputInterface.
      *
-     * @return InputInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return InputInterface|MockObject
      */
     private function createInputInterfaceMock()
     {
@@ -59,7 +61,7 @@ class AlgorithmListCommandTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for OutputInterface.
      *
-     * @return OutputInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return OutputInterface|MockObject
      */
     private function createOutputInterfaceMock()
     {

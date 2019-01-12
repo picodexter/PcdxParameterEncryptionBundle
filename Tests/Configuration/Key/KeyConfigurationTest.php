@@ -11,11 +11,12 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Tests\Configuration\Key;
 
+use PHPUnit\Framework\TestCase;
 use Picodexter\ParameterEncryptionBundle\Configuration\Key\KeyConfiguration;
 use Picodexter\ParameterEncryptionBundle\Configuration\Key\Type\GeneratedKeyType;
 use Picodexter\ParameterEncryptionBundle\Configuration\Key\Type\StaticKeyType;
 
-class KeyConfigurationTest extends \PHPUnit_Framework_TestCase
+class KeyConfigurationTest extends TestCase
 {
     /**
      * @var KeyConfiguration

@@ -11,9 +11,10 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Tests\Console\Renderer;
 
+use PHPUnit\Framework\TestCase;
 use Picodexter\ParameterEncryptionBundle\Console\Renderer\DecryptRenderer;
 
-class DecryptRendererTest extends \PHPUnit_Framework_TestCase
+class DecryptRendererTest extends TestCase
 {
     /**
      * @var DecryptRenderer

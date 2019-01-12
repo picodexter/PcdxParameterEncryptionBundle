@@ -11,6 +11,8 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Tests\Console\Helper;
 
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 use Picodexter\ParameterEncryptionBundle\Console\Helper\QuestionAskerFactory;
 use Picodexter\ParameterEncryptionBundle\Console\Helper\QuestionAskerInterface;
 use Symfony\Component\Console\Helper\QuestionHelper;
@@ -18,7 +20,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Question\Question;
 
-class QuestionAskerFactoryTest extends \PHPUnit_Framework_TestCase
+class QuestionAskerFactoryTest extends TestCase
 {
     public function testCreateQuestionAskerSuccess()
     {
@@ -37,7 +39,7 @@ class QuestionAskerFactoryTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for InputInterface.
      *
-     * @return InputInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return InputInterface|MockObject
      */
     private function createInputInterfaceMock()
     {
@@ -47,7 +49,7 @@ class QuestionAskerFactoryTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for OutputInterface.
      *
-     * @return OutputInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return OutputInterface|MockObject
      */
     private function createOutputInterfaceMock()
     {
@@ -57,7 +59,7 @@ class QuestionAskerFactoryTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for QuestionHelper.
      *
-     * @return QuestionHelper|\PHPUnit_Framework_MockObject_MockObject
+     * @return QuestionHelper|MockObject
      */
     private function createQuestionHelperMock()
     {
@@ -67,7 +69,7 @@ class QuestionAskerFactoryTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for Question.
      *
-     * @return Question|\PHPUnit_Framework_MockObject_MockObject
+     * @return Question|MockObject
      */
     private function createQuestionMock()
     {

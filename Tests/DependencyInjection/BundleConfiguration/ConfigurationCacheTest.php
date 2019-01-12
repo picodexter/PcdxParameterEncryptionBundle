@@ -11,10 +11,12 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Tests\DependencyInjection\BundleConfiguration;
 
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\BundleConfiguration\ConfigurationCache;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\BundleConfiguration\ServiceDefinition\Rewriter\RewriterInterface;
 
-class ConfigurationCacheTest extends \PHPUnit_Framework_TestCase
+class ConfigurationCacheTest extends TestCase
 {
     /**
      * @var ConfigurationCache
@@ -71,7 +73,7 @@ class ConfigurationCacheTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for RewriterInterface.
      *
-     * @return RewriterInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return RewriterInterface|MockObject
      */
     private function createRewriterInterfaceMock()
     {

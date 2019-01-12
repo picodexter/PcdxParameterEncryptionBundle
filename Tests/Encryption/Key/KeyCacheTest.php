@@ -11,10 +11,11 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Tests\Encryption\Key;
 
+use PHPUnit\Framework\TestCase;
 use Picodexter\ParameterEncryptionBundle\Configuration\Key\KeyConfiguration;
 use Picodexter\ParameterEncryptionBundle\Encryption\Key\KeyCache;
 
-class KeyCacheTest extends \PHPUnit_Framework_TestCase
+class KeyCacheTest extends TestCase
 {
     /**
      * @var KeyCache

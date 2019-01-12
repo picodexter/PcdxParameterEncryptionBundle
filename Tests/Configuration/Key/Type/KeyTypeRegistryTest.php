@@ -11,13 +11,15 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Tests\Configuration\Key\Type;
 
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 use Picodexter\ParameterEncryptionBundle\Configuration\Key\Type\GeneratedKeyType;
 use Picodexter\ParameterEncryptionBundle\Configuration\Key\Type\KeyTypeInterface;
 use Picodexter\ParameterEncryptionBundle\Configuration\Key\Type\KeyTypeRegistry;
 use Picodexter\ParameterEncryptionBundle\Configuration\Key\Type\StaticKeyType;
 use stdClass;
 
-class KeyTypeRegistryTest extends \PHPUnit_Framework_TestCase
+class KeyTypeRegistryTest extends TestCase
 {
     /**
      * @var KeyTypeRegistry
@@ -200,7 +202,7 @@ class KeyTypeRegistryTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for KeyTypeInterface.
      *
-     * @return KeyTypeInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return KeyTypeInterface|MockObject
      */
     private function createKeyTypeInterfaceMock()
     {

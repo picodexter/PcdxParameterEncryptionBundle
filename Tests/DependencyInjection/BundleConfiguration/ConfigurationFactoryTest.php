@@ -11,11 +11,12 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Tests\DependencyInjection\BundleConfiguration;
 
+use PHPUnit\Framework\TestCase;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\BundleConfiguration\ConfigurationFactory;
 use Picodexter\ParameterEncryptionBundle\Exception\DependencyInjection\InvalidConfigurationClassException;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
-class ConfigurationFactoryTest extends \PHPUnit_Framework_TestCase
+class ConfigurationFactoryTest extends TestCase
 {
     /**
      * @var ConfigurationFactory

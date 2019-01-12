@@ -11,16 +11,18 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Tests\DependencyInjection\Service;
 
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\Initializer\AlgorithmInitializerInterface;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\Initializer\ReplacementPatternInitializerInterface;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\Initializer\ReplacementSourceDecrypterInitializerInterface;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\ServiceDefinitionInitializationManager;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
-class ServiceDefinitionInitializationManagerTest extends \PHPUnit_Framework_TestCase
+class ServiceDefinitionInitializationManagerTest extends TestCase
 {
     /**
-     * @var AlgorithmInitializerInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @var AlgorithmInitializerInterface|MockObject
      */
     private $algorithmInitializer;
 
@@ -30,12 +32,12 @@ class ServiceDefinitionInitializationManagerTest extends \PHPUnit_Framework_Test
     private $manager;
 
     /**
-     * @var ReplacementPatternInitializerInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @var ReplacementPatternInitializerInterface|MockObject
      */
     private $replacementPatternInitializer;
 
     /**
-     * @var ReplacementSourceDecrypterInitializerInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @var ReplacementSourceDecrypterInitializerInterface|MockObject
      */
     private $replacementSourceDecrypterInitializer;
 
@@ -100,7 +102,7 @@ class ServiceDefinitionInitializationManagerTest extends \PHPUnit_Framework_Test
     /**
      * Create mock for AlgorithmInitializerInterface.
      *
-     * @return AlgorithmInitializerInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return AlgorithmInitializerInterface|MockObject
      */
     private function createAlgorithmInitializerInterfaceMock()
     {
@@ -110,7 +112,7 @@ class ServiceDefinitionInitializationManagerTest extends \PHPUnit_Framework_Test
     /**
      * Create mock for ContainerBuilder.
      *
-     * @return ContainerBuilder|\PHPUnit_Framework_MockObject_MockObject
+     * @return ContainerBuilder|MockObject
      */
     private function createContainerBuilderMock()
     {
@@ -122,7 +124,7 @@ class ServiceDefinitionInitializationManagerTest extends \PHPUnit_Framework_Test
     /**
      * Create mock for ReplacementPatternInitializerInterface.
      *
-     * @return ReplacementPatternInitializerInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return ReplacementPatternInitializerInterface|MockObject
      */
     private function createReplacementPatternInitializerInterfaceMock()
     {
@@ -132,7 +134,7 @@ class ServiceDefinitionInitializationManagerTest extends \PHPUnit_Framework_Test
     /**
      * Create mock for ReplacementSourceDecrypterInitializerInterface.
      *
-     * @return ReplacementSourceDecrypterInitializerInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return ReplacementSourceDecrypterInitializerInterface|MockObject
      */
     private function createReplacementSourceDecrypterInitializerInterfaceMock()
     {

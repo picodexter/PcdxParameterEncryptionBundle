@@ -11,10 +11,11 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Tests\Console\Question;
 
+use PHPUnit\Framework\TestCase;
 use Picodexter\ParameterEncryptionBundle\Console\Question\QuestionFactory;
 use Symfony\Component\Console\Question\Question;
 
-class QuestionFactoryTest extends \PHPUnit_Framework_TestCase
+class QuestionFactoryTest extends TestCase
 {
     /**
      * @var QuestionFactory

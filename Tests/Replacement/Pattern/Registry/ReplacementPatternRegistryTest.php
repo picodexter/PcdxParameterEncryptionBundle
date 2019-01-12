@@ -11,10 +11,12 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Tests\Replacement\Pattern\Registry;
 
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 use Picodexter\ParameterEncryptionBundle\Replacement\Pattern\Registry\ReplacementPatternRegistry;
 use Picodexter\ParameterEncryptionBundle\Replacement\Pattern\ReplacementPatternInterface;
 
-class ReplacementPatternRegistryTest extends \PHPUnit_Framework_TestCase
+class ReplacementPatternRegistryTest extends TestCase
 {
     /**
      * @param array $replacementPatterns
@@ -134,7 +136,7 @@ class ReplacementPatternRegistryTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for ReplacementPatternInterface.
      *
-     * @return ReplacementPatternInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return ReplacementPatternInterface|MockObject
      */
     private function createReplacementPatternInterfaceMock()
     {

@@ -11,16 +11,18 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Tests\DependencyInjection\BundleConfiguration;
 
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\BundleConfiguration\ConfigurationCacheInterface;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\BundleConfiguration\ConfigurationFetcher;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\BundleConfiguration\ConfigurationResolverInterface;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\BundleConfiguration\ServiceDefinition\Rewriter\RewriterInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
-class ConfigurationFetcherTest extends \PHPUnit_Framework_TestCase
+class ConfigurationFetcherTest extends TestCase
 {
     /**
-     * @var ConfigurationCacheInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @var ConfigurationCacheInterface|MockObject
      */
     private $cache;
 
@@ -30,7 +32,7 @@ class ConfigurationFetcherTest extends \PHPUnit_Framework_TestCase
     private $fetcher;
 
     /**
-     * @var ConfigurationResolverInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @var ConfigurationResolverInterface|MockObject
      */
     private $resolver;
 
@@ -110,7 +112,7 @@ class ConfigurationFetcherTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for ConfigurationCacheInterface.
      *
-     * @return ConfigurationCacheInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return ConfigurationCacheInterface|MockObject
      */
     private function createConfigurationCacheInterfaceMock()
     {
@@ -120,7 +122,7 @@ class ConfigurationFetcherTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for ConfigurationResolverInterface.
      *
-     * @return ConfigurationResolverInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return ConfigurationResolverInterface|MockObject
      */
     private function createConfigurationResolverInterfaceMock()
     {
@@ -130,7 +132,7 @@ class ConfigurationFetcherTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for ContainerBuilder.
      *
-     * @return ContainerBuilder|\PHPUnit_Framework_MockObject_MockObject
+     * @return ContainerBuilder|MockObject
      */
     private function createContainerBuilderMock()
     {
@@ -142,7 +144,7 @@ class ConfigurationFetcherTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for RewriterInterface.
      *
-     * @return RewriterInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return RewriterInterface|MockObject
      */
     private function createRewriterInterfaceMock()
     {

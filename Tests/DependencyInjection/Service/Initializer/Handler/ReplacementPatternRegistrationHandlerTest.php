@@ -11,6 +11,8 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Tests\DependencyInjection\Service\Initializer\Handler;
 
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\BundleConfigurationValidatorInterface;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\DefinitionFactoryInterface;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\Initializer\Handler\ReplacementPatternRegistrationHandler;
@@ -21,15 +23,15 @@ use Picodexter\ParameterEncryptionBundle\Replacement\Pattern\Registry\Replacemen
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
 
-class ReplacementPatternRegistrationHandlerTest extends \PHPUnit_Framework_TestCase
+class ReplacementPatternRegistrationHandlerTest extends TestCase
 {
     /**
-     * @var BundleConfigurationValidatorInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @var BundleConfigurationValidatorInterface|MockObject
      */
     private $bundleConfigValidator;
 
     /**
-     * @var DefinitionFactoryInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @var DefinitionFactoryInterface|MockObject
      */
     private $definitionFactory;
 
@@ -39,12 +41,12 @@ class ReplacementPatternRegistrationHandlerTest extends \PHPUnit_Framework_TestC
     private $handler;
 
     /**
-     * @var ReplacementPatternTypeRegistryInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @var ReplacementPatternTypeRegistryInterface|MockObject
      */
     private $patternTypeRegistry;
 
     /**
-     * @var ServiceNameGeneratorInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @var ServiceNameGeneratorInterface|MockObject
      */
     private $serviceNameGenerator;
 
@@ -208,7 +210,7 @@ class ReplacementPatternRegistrationHandlerTest extends \PHPUnit_Framework_TestC
     /**
      * Create mock for BundleConfigurationValidatorInterface.
      *
-     * @return BundleConfigurationValidatorInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return BundleConfigurationValidatorInterface|MockObject
      */
     private function createBundleConfigurationValidatorInterfaceMock()
     {
@@ -218,7 +220,7 @@ class ReplacementPatternRegistrationHandlerTest extends \PHPUnit_Framework_TestC
     /**
      * Create mock for ContainerBuilder.
      *
-     * @return ContainerBuilder|\PHPUnit_Framework_MockObject_MockObject
+     * @return ContainerBuilder|MockObject
      */
     private function createContainerBuilderMock()
     {
@@ -230,7 +232,7 @@ class ReplacementPatternRegistrationHandlerTest extends \PHPUnit_Framework_TestC
     /**
      * Create mock for DefinitionFactoryInterface.
      *
-     * @return DefinitionFactoryInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return DefinitionFactoryInterface|MockObject
      */
     private function createDefinitionFactoryInterfaceMock()
     {
@@ -240,7 +242,7 @@ class ReplacementPatternRegistrationHandlerTest extends \PHPUnit_Framework_TestC
     /**
      * Create mock for Definition.
      *
-     * @return Definition|\PHPUnit_Framework_MockObject_MockObject
+     * @return Definition|MockObject
      */
     private function createDefitionMock()
     {
@@ -250,7 +252,7 @@ class ReplacementPatternRegistrationHandlerTest extends \PHPUnit_Framework_TestC
     /**
      * Create mock for ReplacementPatternTypeRegistryInterface.
      *
-     * @return ReplacementPatternTypeRegistryInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return ReplacementPatternTypeRegistryInterface|MockObject
      */
     private function createReplacementPatternTypeRegistryInterfaceMock()
     {
@@ -260,7 +262,7 @@ class ReplacementPatternRegistrationHandlerTest extends \PHPUnit_Framework_TestC
     /**
      * Create mock for ServiceNameGeneratorInterface.
      *
-     * @return ServiceNameGeneratorInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return ServiceNameGeneratorInterface|MockObject
      */
     private function createServiceGeneratorInterfaceMock()
     {

@@ -11,6 +11,8 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Tests\Console\Helper;
 
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 use Picodexter\ParameterEncryptionBundle\Console\Helper\HiddenInputQuestionAskerGenerator;
 use Picodexter\ParameterEncryptionBundle\Console\Helper\QuestionAskerGeneratorInterface;
 use Picodexter\ParameterEncryptionBundle\Console\Helper\QuestionAskerInterface;
@@ -19,7 +21,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Question\Question;
 
-class HiddenInputQuestionAskerGeneratorTest extends \PHPUnit_Framework_TestCase
+class HiddenInputQuestionAskerGeneratorTest extends TestCase
 {
     /**
      * @var HiddenInputQuestionAskerGenerator
@@ -27,12 +29,12 @@ class HiddenInputQuestionAskerGeneratorTest extends \PHPUnit_Framework_TestCase
     private $generator;
 
     /**
-     * @var QuestionAskerGeneratorInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @var QuestionAskerGeneratorInterface|MockObject
      */
     private $questionAskerGenerator;
 
     /**
-     * @var QuestionFactoryInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @var QuestionFactoryInterface|MockObject
      */
     private $questionFactory;
 
@@ -130,7 +132,7 @@ class HiddenInputQuestionAskerGeneratorTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for InputInterface.
      *
-     * @return InputInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return InputInterface|MockObject
      */
     private function createInputInterfaceMock()
     {
@@ -140,7 +142,7 @@ class HiddenInputQuestionAskerGeneratorTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for OutputInterface.
      *
-     * @return OutputInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return OutputInterface|MockObject
      */
     private function createOutputInterfaceMock()
     {
@@ -150,7 +152,7 @@ class HiddenInputQuestionAskerGeneratorTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for QuestionAskerGeneratorInterface.
      *
-     * @return QuestionAskerGeneratorInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return QuestionAskerGeneratorInterface|MockObject
      */
     private function createQuestionAskerGeneratorInterfaceMock()
     {
@@ -160,7 +162,7 @@ class HiddenInputQuestionAskerGeneratorTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for QuestionAskerInterface.
      *
-     * @return QuestionAskerInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return QuestionAskerInterface|MockObject
      */
     private function createQuestionAskerInterfaceMock()
     {
@@ -170,7 +172,7 @@ class HiddenInputQuestionAskerGeneratorTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for QuestionFactoryInterface.
      *
-     * @return QuestionFactoryInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return QuestionFactoryInterface|MockObject
      */
     private function createQuestionFactoryInterfaceMock()
     {
@@ -180,7 +182,7 @@ class HiddenInputQuestionAskerGeneratorTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for Question.
      *
-     * @return Question|\PHPUnit_Framework_MockObject_MockObject
+     * @return Question|MockObject
      */
     private function createQuestionMock()
     {
@@ -228,8 +230,8 @@ class HiddenInputQuestionAskerGeneratorTest extends \PHPUnit_Framework_TestCase
     /**
      * Set up question: set hidden fallback.
      *
-     * @param Question|\PHPUnit_Framework_MockObject_MockObject $question
-     * @param bool                                              $expectedFallback
+     * @param Question|MockObject $question
+     * @param bool                $expectedFallback
      */
     private function setUpQuestionSetHiddenFallback(Question $question, $expectedFallback)
     {

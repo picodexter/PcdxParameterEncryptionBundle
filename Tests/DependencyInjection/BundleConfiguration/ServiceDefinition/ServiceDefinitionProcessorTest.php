@@ -11,12 +11,14 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Tests\DependencyInjection\BundleConfiguration\ServiceDefinition;
 
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\BundleConfiguration\ServiceDefinition\Rewriter\RewriterManagerInterface;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\BundleConfiguration\ServiceDefinition\ServiceDefinitionProcessor;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
 
-class ServiceDefinitionProcessorTest extends \PHPUnit_Framework_TestCase
+class ServiceDefinitionProcessorTest extends TestCase
 {
     /**
      * @var ServiceDefinitionProcessor
@@ -24,7 +26,7 @@ class ServiceDefinitionProcessorTest extends \PHPUnit_Framework_TestCase
     private $processor;
 
     /**
-     * @var RewriterManagerInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @var RewriterManagerInterface|MockObject
      */
     private $rewriterManager;
 
@@ -86,7 +88,7 @@ class ServiceDefinitionProcessorTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for ContainerBuilder.
      *
-     * @return ContainerBuilder|\PHPUnit_Framework_MockObject_MockObject
+     * @return ContainerBuilder|MockObject
      */
     private function createContainerBuilderMock()
     {
@@ -98,7 +100,7 @@ class ServiceDefinitionProcessorTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for Definition.
      *
-     * @return Definition|\PHPUnit_Framework_MockObject_MockObject
+     * @return Definition|MockObject
      */
     private function createDefinitionMock()
     {
@@ -108,7 +110,7 @@ class ServiceDefinitionProcessorTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for RewriterManagerInterface.
      *
-     * @return RewriterManagerInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return RewriterManagerInterface|MockObject
      */
     private function createRewriterManagerInterfaceMock()
     {

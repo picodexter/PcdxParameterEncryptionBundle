@@ -11,10 +11,12 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Tests\DependencyInjection\BundleConfiguration\ServiceDefinition\Rewriter;
 
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\BundleConfiguration\ServiceDefinition\Rewriter\AbstractRewriter;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
-class AbstractRewriterTest extends \PHPUnit_Framework_TestCase
+class AbstractRewriterTest extends TestCase
 {
     /**
      * @var AbstractRewriter|DummyAbstractRewriter
@@ -62,7 +64,7 @@ class AbstractRewriterTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for ConfigurationInterface.
      *
-     * @return ConfigurationInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return ConfigurationInterface|MockObject
      */
     private function createConfigurationInterfaceMock()
     {

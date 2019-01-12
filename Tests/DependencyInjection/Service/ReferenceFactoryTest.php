@@ -11,10 +11,11 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Tests\DependencyInjection\Service;
 
+use PHPUnit\Framework\TestCase;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\ReferenceFactory;
 use Symfony\Component\DependencyInjection\Reference;
 
-class ReferenceFactoryTest extends \PHPUnit_Framework_TestCase
+class ReferenceFactoryTest extends TestCase
 {
     public function testCreateReferenceSuccess()
     {

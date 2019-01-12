@@ -11,9 +11,10 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Tests\Console\Processor;
 
+use PHPUnit\Framework\TestCase;
 use Picodexter\ParameterEncryptionBundle\Console\Processor\TransformedKey;
 
-class TransformedKeyTest extends \PHPUnit_Framework_TestCase
+class TransformedKeyTest extends TestCase
 {
     /**
      * @var TransformedKey

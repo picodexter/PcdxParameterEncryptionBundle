@@ -3,33 +3,29 @@ language: php
 dist: trusty
 
 php:
-  - 5.6
-  - 7.0
   - 7.1
   - 7.2
-  - hhvm
+  - 7.3
 
 env:
   global:
-    - COVERALLS_EXECUTION_PHP_VERSION="7.2"
+    - COVERALLS_EXECUTION_PHP_VERSION="7.3"
     - PHP_CS_FIXER_COMMIT_RANGE="${TRAVIS_COMMIT_RANGE}"
-    - PHP_CS_FIXER_EXECUTION_PHP_VERSION="7.2"
+    - PHP_CS_FIXER_EXECUTION_PHP_VERSION="7.3"
 
 matrix:
   fast_finish: true
   include:
     # Test against Symfony LTS versions
-    - php: 5.6
+    - php: 7.1
       env: SYMFONY_VERSION="2.7.*"
-    - php: 5.6
+    - php: 7.1
       env: SYMFONY_VERSION="2.8.*"
-    - php: 5.6
+    - php: 7.1
       env: SYMFONY_VERSION="3.4.*"
     # Test against dev versions
-    - php: 5.6
+    - php: 7.1
       env: DEPENDENCIES=dev
-  allow_failures:
-    - php: hhvm
 
 sudo: false
 

@@ -76,10 +76,10 @@ class KeyResolver implements KeyResolverInterface
     private function addTransformer(KeyTransformerInterface $keyTransformer)
     {
         $finds = array_filter($this->transformers, function ($transformer) use ($keyTransformer) {
-            return (get_class($transformer) === get_class($keyTransformer));
+            return (\get_class($transformer) === \get_class($keyTransformer));
         });
 
-        if (count($finds) < 1) {
+        if (\count($finds) < 1) {
             $this->transformers[] = $keyTransformer;
         }
     }

@@ -60,7 +60,7 @@ class ValueSplitter implements ValueSplitterInterface
      */
     private function assertValidMergedValueLength($mergedValue, $ivLength)
     {
-        if (strlen($mergedValue) <= $ivLength) {
+        if (\strlen($mergedValue) <= $ivLength) {
             throw new MergedValueTooShortException();
         }
     }

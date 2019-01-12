@@ -67,7 +67,7 @@ class CaesarCipher implements CaesarCipherInterface
             $newCharacterOffset = (($positionInAlphabet + $rotationAmount + $alphabetSize) % $alphabetSize)
                 - $positionInAlphabet;
 
-            $rotatedCharacter = chr(ord($character) + $newCharacterOffset);
+            $rotatedCharacter = \chr(\ord($character) + $newCharacterOffset);
         }
 
         return $rotatedCharacter;

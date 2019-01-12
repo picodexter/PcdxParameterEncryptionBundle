@@ -49,7 +49,7 @@ class ParameterReplacementFetcher implements ParameterReplacementFetcherInterfac
      */
     public function getReplacedValueForParameter($parameterKey, $parameterValue)
     {
-        if (!is_string($parameterValue)) {
+        if (!\is_string($parameterValue)) {
             return null;
         }
 

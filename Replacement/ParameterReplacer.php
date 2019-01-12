@@ -70,7 +70,7 @@ class ParameterReplacer implements ParameterReplacerInterface
     public function processParameters(array $parameters, ContainerBuilder $container)
     {
         foreach ($parameters as $parameterKey => &$parameterValue) {
-            if (is_array($parameterValue)) {
+            if (\is_array($parameterValue)) {
                 $parameterValue = $this->processParameters($parameterValue, $container);
                 continue;
             }

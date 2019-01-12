@@ -46,7 +46,7 @@ class ValueSplitterTest extends TestCase
 
         $mergedValue = 'short value';
 
-        $this->splitter->split($mergedValue, strlen($mergedValue));
+        $this->splitter->split($mergedValue, \strlen($mergedValue));
     }
 
     public function testSplitExceptionIvLengthTooShort()

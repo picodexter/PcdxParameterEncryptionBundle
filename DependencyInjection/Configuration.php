@@ -99,7 +99,7 @@ class Configuration implements ConfigurationInterface
                     ->info(ucfirst($type).'ion key settings.')
                     ->beforeNormalization()
                         ->ifTrue(function ($v) {
-                            return is_string($v);
+                            return \is_string($v);
                         })
                         ->then(function ($v) {
                             return ['value' => $v];

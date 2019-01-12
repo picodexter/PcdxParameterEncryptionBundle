@@ -92,7 +92,7 @@ class AlgorithmConfigurationFactory implements AlgorithmConfigurationFactoryInte
     {
         return (
             array_key_exists($type, $algorithmConfig)
-            && is_array($algorithmConfig[$type])
+            && \is_array($algorithmConfig[$type])
             && array_key_exists('key', $algorithmConfig[$type])
             && array_key_exists('service', $algorithmConfig[$type])
         );

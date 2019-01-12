@@ -22,7 +22,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Fixed
 
-*   (empty)
+*   PHP CS Fixer: Applied native constant invocation and native function invocation
 
 ### Security
 

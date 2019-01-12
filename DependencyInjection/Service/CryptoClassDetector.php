@@ -29,7 +29,7 @@ class CryptoClassDetector implements CryptoClassDetectorInterface
     {
         $reflectionClass = $this->getReflectionClass($className);
 
-        return in_array(DecrypterInterface::class, $reflectionClass->getInterfaceNames(), true);
+        return \in_array(DecrypterInterface::class, $reflectionClass->getInterfaceNames(), true);
     }
 
     /**
@@ -39,7 +39,7 @@ class CryptoClassDetector implements CryptoClassDetectorInterface
     {
         $reflectionClass = $this->getReflectionClass($className);
 
-        return in_array(EncrypterInterface::class, $reflectionClass->getInterfaceNames(), true);
+        return \in_array(EncrypterInterface::class, $reflectionClass->getInterfaceNames(), true);
     }
 
     /**

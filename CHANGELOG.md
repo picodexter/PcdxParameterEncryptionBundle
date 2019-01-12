@@ -18,7 +18,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Removed
 
-*   (empty)
+*   Removed support for PHP 5.6 and 7.0 (reached end of life)
 
 ### Fixed
 

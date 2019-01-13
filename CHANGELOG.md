@@ -6,6 +6,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Added
 
+*   Added Composer dev package "symfony/phpunit-bridge" to enable deprecation notices for tests
 *   Added strict typing
 
 ### Changed

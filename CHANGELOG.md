@@ -27,6 +27,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Fixed
 
+*   Fixed deprecations when instantiating TreeBuilder in Configuration
 *   PHP CS Fixer: Applied native constant invocation and native function invocation
 
 ### Security

@@ -6,7 +6,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Added
 
-*   (empty)
+*   Added strict typing
 
 ### Changed
 

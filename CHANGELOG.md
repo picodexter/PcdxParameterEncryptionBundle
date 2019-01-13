@@ -12,6 +12,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Changed
 
 *   PHP CS Fixer: Replaced rule set PHP56Migration with PHP70Migration and PHP70Migration:risky
+*   Set error_reporting level for tests to -1
 *   Updated Travis CI configuration for PHP 5.6 (end of life), PHP 7.0 (end of life), PHP 7.3 (new default) and HHVM (no longer supports PHP)
 *   Updated Travis CI configuration to use new Coveralls Composer package and version (2.1)
 *   Upgraded to PHPUnit 6.2+

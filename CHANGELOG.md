@@ -6,6 +6,32 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Added
 
+*   (empty)
+
+### Changed
+
+*   (empty)
+
+### Deprecated
+
+*   (empty)
+
+### Removed
+
+*   (empty)
+
+### Fixed
+
+*   (empty)
+
+### Security
+
+*   (empty)
+
+## 1.2.0 (2019-01-14)
+
+### Added
+
 *   Added Composer dev package "symfony/phpunit-bridge" to enable deprecation notices for tests
 *   Added strict typing
 
@@ -18,10 +44,6 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 *   Updated Travis CI configuration to use new Coveralls Composer package and version (2.1)
 *   Upgraded to PHPUnit 6.2+
 
-### Deprecated
-
-*   (empty)
-
 ### Removed
 
 *   Removed support for PHP 5.6 and 7.0 (reached end of life)
@@ -30,10 +52,6 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 *   Fixed deprecations when instantiating TreeBuilder in Configuration
 *   PHP CS Fixer: Applied native constant invocation and native function invocation
-
-### Security
-
-*   (empty)
 
 ## 1.1.1 (2018-03-06)
 

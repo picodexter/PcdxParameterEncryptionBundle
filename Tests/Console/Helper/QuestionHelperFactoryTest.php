@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the PcdxParameterEncryptionBundle package.
  *
@@ -11,10 +13,11 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Tests\Console\Helper;
 
+use PHPUnit\Framework\TestCase;
 use Picodexter\ParameterEncryptionBundle\Console\Helper\QuestionHelperFactory;
 use Symfony\Component\Console\Helper\QuestionHelper;
 
-class QuestionHelperFactoryTest extends \PHPUnit_Framework_TestCase
+class QuestionHelperFactoryTest extends TestCase
 {
     public function testCreateQuestionHelperSuccess()
     {

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the PcdxParameterEncryptionBundle package.
  *
@@ -11,6 +13,8 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Tests\DependencyInjection\Service\Tag;
 
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\ReferenceFactoryInterface;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\Tag\BundleConfigurationServiceDefinitionRewriterTagProcessor;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\ServiceNames;
@@ -19,7 +23,7 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\DependencyInjection\Reference;
 
-class BundleConfigurationServiceDefinitionRewriterTagProcessorTest extends \PHPUnit_Framework_TestCase
+class BundleConfigurationServiceDefinitionRewriterTagProcessorTest extends TestCase
 {
     /**
      * @var BundleConfigurationServiceDefinitionRewriterTagProcessor
@@ -27,7 +31,7 @@ class BundleConfigurationServiceDefinitionRewriterTagProcessorTest extends \PHPU
     private $processor;
 
     /**
-     * @var ReferenceFactoryInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @var ReferenceFactoryInterface|MockObject
      */
     private $referenceFactory;
 
@@ -96,8 +100,8 @@ class BundleConfigurationServiceDefinitionRewriterTagProcessorTest extends \PHPU
          * prepare extension configuration results according to number of successful calls (= prepared references)
          */
         $prepExtensionConfigs = [];
-        for ($i = 0; $i < count($taggedServiceIds); ++$i) {
-            if ($i < count($preparedReferences)) {
+        for ($i = 0; $i < \count($taggedServiceIds); ++$i) {
+            if ($i < \count($preparedReferences)) {
                 $prepExtensionConfigs[] = [['some_directive' => 'some_value']];
             } else {
                 $prepExtensionConfigs[] = [];
@@ -109,25 +113,25 @@ class BundleConfigurationServiceDefinitionRewriterTagProcessorTest extends \PHPU
 
         $this->setUpContainerFindTaggedServiceIds($container, $taggedServiceIds);
 
-        $mocker = $container->expects($this->exactly(count($taggedServiceIds)))
+        $mocker = $container->expects($this->exactly(\count($taggedServiceIds)))
             ->method('getExtensionConfig');
-        call_user_func_array([$mocker, 'willReturnOnConsecutiveCalls'], $prepExtensionConfigs);
+        \call_user_func_array([$mocker, 'willReturnOnConsecutiveCalls'], $prepExtensionConfigs);
 
-        $mocker = $this->referenceFactory->expects($this->exactly(count($preparedReferences)))
+        $mocker = $this->referenceFactory->expects($this->exactly(\count($preparedReferences)))
             ->method('createReference');
-        call_user_func_array([$mocker, 'withConsecutive'], $serviceIdConstraints);
-        call_user_func_array([$mocker, 'willReturnOnConsecutiveCalls'], $preparedReferences);
+        \call_user_func_array([$mocker, 'withConsecutive'], $serviceIdConstraints);
+        \call_user_func_array([$mocker, 'willReturnOnConsecutiveCalls'], $preparedReferences);
 
-        $mocker = $container->expects($this->exactly(count($preparedReferences) + 1))
+        $mocker = $container->expects($this->exactly(\count($preparedReferences) + 1))
             ->method('getDefinition');
-        call_user_func_array(
+        \call_user_func_array(
             [$mocker, 'withConsecutive'],
             array_merge(
                 $serviceIdConstraints,
                 [$this->identicalTo(ServiceNames::BUNDLE_CONFIGURATION_SERVICE_DEFINITION_REWRITER_REGISTRY)]
             )
         );
-        call_user_func_array(
+        \call_user_func_array(
             [$mocker, 'willReturnOnConsecutiveCalls'],
             array_merge(
                 $preparedServiceDefs,
@@ -136,7 +140,7 @@ class BundleConfigurationServiceDefinitionRewriterTagProcessorTest extends \PHPU
         );
 
         foreach ($preparedServiceDefs as $serviceDefinition) {
-            /* @var \PHPUnit_Framework_MockObject_MockObject $serviceDefinition */
+            /* @var MockObject $serviceDefinition */
             $serviceDefinition->expects($this->once())
                 ->method('getMethodCalls')
                 ->with()
@@ -338,7 +342,7 @@ class BundleConfigurationServiceDefinitionRewriterTagProcessorTest extends \PHPU
     /**
      * Create mock for ContainerBuilder.
      *
-     * @return ContainerBuilder|\PHPUnit_Framework_MockObject_MockObject
+     * @return ContainerBuilder|MockObject
      */
     private function createContainerBuilderMock()
     {
@@ -350,7 +354,7 @@ class BundleConfigurationServiceDefinitionRewriterTagProcessorTest extends \PHPU
     /**
      * Create mock for Definition.
      *
-     * @return Definition|\PHPUnit_Framework_MockObject_MockObject
+     * @return Definition|MockObject
      */
     private function createDefinitionMock()
     {
@@ -360,7 +364,7 @@ class BundleConfigurationServiceDefinitionRewriterTagProcessorTest extends \PHPU
     /**
      * Create mock for ReferenceFactoryInterface.
      *
-     * @return ReferenceFactoryInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return ReferenceFactoryInterface|MockObject
      */
     private function createReferenceFactoryInterfaceMock()
     {
@@ -370,7 +374,7 @@ class BundleConfigurationServiceDefinitionRewriterTagProcessorTest extends \PHPU
     /**
      * Create mock for Reference.
      *
-     * @return Reference|\PHPUnit_Framework_MockObject_MockObject
+     * @return Reference|MockObject
      */
     private function createReferenceMock()
     {
@@ -380,8 +384,8 @@ class BundleConfigurationServiceDefinitionRewriterTagProcessorTest extends \PHPU
     /**
      * Set up container: findTaggedServiceIds.
      *
-     * @param ContainerBuilder|\PHPUnit_Framework_MockObject_MockObject $container
-     * @param array                                                     $taggedServiceIds
+     * @param ContainerBuilder|MockObject $container
+     * @param array                       $taggedServiceIds
      */
     private function setUpContainerFindTaggedServiceIds(ContainerBuilder $container, array $taggedServiceIds)
     {

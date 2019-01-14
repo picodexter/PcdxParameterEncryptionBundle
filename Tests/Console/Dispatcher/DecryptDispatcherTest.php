@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the PcdxParameterEncryptionBundle package.
  *
@@ -11,6 +13,8 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Tests\Console\Dispatcher;
 
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 use Picodexter\ParameterEncryptionBundle\Console\Dispatcher\DecryptDispatcher;
 use Picodexter\ParameterEncryptionBundle\Console\Helper\HiddenInputQuestionAskerGeneratorInterface;
 use Picodexter\ParameterEncryptionBundle\Console\Helper\QuestionAskerInterface;
@@ -20,7 +24,7 @@ use Picodexter\ParameterEncryptionBundle\Console\Request\DecryptRequestFactoryIn
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class DecryptDispatcherTest extends \PHPUnit_Framework_TestCase
+class DecryptDispatcherTest extends TestCase
 {
     /**
      * @var DecryptDispatcher
@@ -28,17 +32,17 @@ class DecryptDispatcherTest extends \PHPUnit_Framework_TestCase
     private $dispatcher;
 
     /**
-     * @var DecryptProcessorInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @var DecryptProcessorInterface|MockObject
      */
     private $processor;
 
     /**
-     * @var HiddenInputQuestionAskerGeneratorInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @var HiddenInputQuestionAskerGeneratorInterface|MockObject
      */
     private $questionAskerGenerator;
 
     /**
-     * @var DecryptRequestFactoryInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @var DecryptRequestFactoryInterface|MockObject
      */
     private $requestFactory;
 
@@ -97,7 +101,7 @@ class DecryptDispatcherTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for DecryptProcessorInterface.
      *
-     * @return DecryptProcessorInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return DecryptProcessorInterface|MockObject
      */
     private function createDecryptProcessorInterfaceMock()
     {
@@ -107,7 +111,7 @@ class DecryptDispatcherTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for DecryptRequestFactoryInterface.
      *
-     * @return DecryptRequestFactoryInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return DecryptRequestFactoryInterface|MockObject
      */
     private function createDecryptRequestFactoryInterfaceMock()
     {
@@ -117,7 +121,7 @@ class DecryptDispatcherTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for DecryptRequest.
      *
-     * @return DecryptRequest|\PHPUnit_Framework_MockObject_MockObject
+     * @return DecryptRequest|MockObject
      */
     private function createDecryptRequestMock()
     {
@@ -127,7 +131,7 @@ class DecryptDispatcherTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for HiddenInputQuestionAskerGeneratorInterface.
      *
-     * @return HiddenInputQuestionAskerGeneratorInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return HiddenInputQuestionAskerGeneratorInterface|MockObject
      */
     private function createHiddenInputQuestionAskerGeneratorInterfaceMock()
     {
@@ -137,7 +141,7 @@ class DecryptDispatcherTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for InputInterface.
      *
-     * @return InputInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return InputInterface|MockObject
      */
     private function createInputInterfaceMock()
     {
@@ -147,7 +151,7 @@ class DecryptDispatcherTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for OutputInterface.
      *
-     * @return OutputInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return OutputInterface|MockObject
      */
     private function createOutputInterfaceMock()
     {
@@ -157,7 +161,7 @@ class DecryptDispatcherTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for QuestionAskerInterface.
      *
-     * @return QuestionAskerInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return QuestionAskerInterface|MockObject
      */
     private function createQuestionAskerInterfaceMock()
     {

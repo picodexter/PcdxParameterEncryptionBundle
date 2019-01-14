@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the PcdxParameterEncryptionBundle package.
  *
@@ -51,6 +53,9 @@ abstract class AbstractCryptRenderer implements CryptRendererInterface
      */
     public function renderOutput($result, TransformedKey $transformedKey, OutputInterface $output)
     {
+        /*
+         * @deprecated symfony/console 3.0 Use OutputInterface::isQuiet() instead
+         */
         if (OutputInterface::VERBOSITY_QUIET === $output->getVerbosity()) {
             $output->writeln($result, OutputInterface::VERBOSITY_QUIET);
         } else {

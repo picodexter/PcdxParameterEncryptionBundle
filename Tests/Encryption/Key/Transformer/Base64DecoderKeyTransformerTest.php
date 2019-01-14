@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the PcdxParameterEncryptionBundle package.
  *
@@ -11,14 +13,16 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Tests\Encryption\Key\Transformer;
 
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 use Picodexter\ParameterEncryptionBundle\Configuration\Key\KeyConfiguration;
 use Picodexter\ParameterEncryptionBundle\Encryption\Key\Transformer\Base64DecoderKeyTransformer;
 use Picodexter\ParameterEncryptionBundle\Encryption\Value\Encoding\Base64DecoderInterface;
 
-class Base64DecoderKeyTransformerTest extends \PHPUnit_Framework_TestCase
+class Base64DecoderKeyTransformerTest extends TestCase
 {
     /**
-     * @var Base64DecoderInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @var Base64DecoderInterface|MockObject
      */
     private $base64Decoder;
 
@@ -102,7 +106,7 @@ class Base64DecoderKeyTransformerTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for Base64DecoderInterface.
      *
-     * @return Base64DecoderInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return Base64DecoderInterface|MockObject
      */
     private function createBase64DecoderInterfaceMock()
     {

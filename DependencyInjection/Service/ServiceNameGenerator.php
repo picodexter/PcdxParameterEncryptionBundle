@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the PcdxParameterEncryptionBundle package.
  *
@@ -56,7 +58,7 @@ class ServiceNameGenerator implements ServiceNameGeneratorInterface
      */
     private function assertValidAlgorithmConfig(array $algorithmConfig)
     {
-        if (!array_key_exists('id', $algorithmConfig) || !is_string($algorithmConfig['id'])) {
+        if (!array_key_exists('id', $algorithmConfig) || !\is_string($algorithmConfig['id'])) {
             throw new InvalidAlgorithmConfigurationException();
         }
     }

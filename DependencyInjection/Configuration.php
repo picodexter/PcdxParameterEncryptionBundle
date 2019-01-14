@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the PcdxParameterEncryptionBundle package.
  *
@@ -26,9 +28,11 @@ class Configuration implements ConfigurationInterface
      */
     public function getConfigTreeBuilder()
     {
-        $treeBuilder = new TreeBuilder();
+        $nodeName = 'pcdx_parameter_encryption';
 
-        $rootNode = $treeBuilder->root('pcdx_parameter_encryption');
+        $treeBuilder = new TreeBuilder($nodeName);
+
+        $rootNode = $this->getRootNodeFromTreeBuilder($treeBuilder, $nodeName);
 
         $rootNode
             ->fixXmlConfig('algorithm')
@@ -82,10 +86,13 @@ class Configuration implements ConfigurationInterface
      */
     public function addCryptoNode($type)
     {
-        $builder = new TreeBuilder();
-        $node = $builder->root($type.'ion');
+        $nodeName = $type.'ion';
 
-        $node
+        $treeBuilder = new TreeBuilder($nodeName);
+
+        $rootNode = $this->getRootNodeFromTreeBuilder($treeBuilder, $nodeName);
+
+        $rootNode
             ->info('Configure '.$type.'er.')
             ->isRequired()
             ->fixXmlConfig('argument')
@@ -99,7 +106,7 @@ class Configuration implements ConfigurationInterface
                     ->info(ucfirst($type).'ion key settings.')
                     ->beforeNormalization()
                         ->ifTrue(function ($v) {
-                            return is_string($v);
+                            return \is_string($v);
                         })
                         ->then(function ($v) {
                             return ['value' => $v];
@@ -141,6 +148,23 @@ class Configuration implements ConfigurationInterface
                 ->end()
             ->end();
 
-        return $node;
+        return $rootNode;
+    }
+
+    /**
+     * Get root node from tree builder.
+     *
+     * @deprecated symfony/config 4.2 Simply use TreeBuilder::getRootNode()
+     *
+     * @param TreeBuilder $treeBuilder
+     * @param string      $nodeName
+     *
+     * @return NodeDefinition
+     */
+    private function getRootNodeFromTreeBuilder(TreeBuilder $treeBuilder, string $nodeName): NodeDefinition
+    {
+        return (method_exists($treeBuilder, 'getRootNode')
+            ? $treeBuilder->getRootNode()
+            : $treeBuilder->root($nodeName));
     }
 }

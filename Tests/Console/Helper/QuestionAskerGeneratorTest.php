@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the PcdxParameterEncryptionBundle package.
  *
@@ -11,6 +13,8 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Tests\Console\Helper;
 
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 use Picodexter\ParameterEncryptionBundle\Console\Helper\QuestionAsker;
 use Picodexter\ParameterEncryptionBundle\Console\Helper\QuestionAskerFactoryInterface;
 use Picodexter\ParameterEncryptionBundle\Console\Helper\QuestionAskerGenerator;
@@ -20,7 +24,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Question\Question;
 
-class QuestionAskerGeneratorTest extends \PHPUnit_Framework_TestCase
+class QuestionAskerGeneratorTest extends TestCase
 {
     /**
      * @var QuestionAskerGenerator
@@ -28,12 +32,12 @@ class QuestionAskerGeneratorTest extends \PHPUnit_Framework_TestCase
     private $generator;
 
     /**
-     * @var QuestionAskerFactoryInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @var QuestionAskerFactoryInterface|MockObject
      */
     private $questionAskerFactory;
 
     /**
-     * @var QuestionHelperFactoryInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @var QuestionHelperFactoryInterface|MockObject
      */
     private $questionHelperFactory;
 
@@ -90,7 +94,7 @@ class QuestionAskerGeneratorTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for InputInterface.
      *
-     * @return InputInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return InputInterface|MockObject
      */
     private function createInputInterfaceMock()
     {
@@ -100,7 +104,7 @@ class QuestionAskerGeneratorTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for OutputInterface.
      *
-     * @return OutputInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return OutputInterface|MockObject
      */
     private function createOutputInterfaceMock()
     {
@@ -110,7 +114,7 @@ class QuestionAskerGeneratorTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for QuestionAskerFactoryInterface.
      *
-     * @return QuestionAskerFactoryInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return QuestionAskerFactoryInterface|MockObject
      */
     private function createQuestionAskerFactoryInterfaceMock()
     {
@@ -120,7 +124,7 @@ class QuestionAskerGeneratorTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for QuestionAsker.
      *
-     * @return QuestionAsker|\PHPUnit_Framework_MockObject_MockObject
+     * @return QuestionAsker|MockObject
      */
     private function createQuestionAskerMock()
     {
@@ -130,7 +134,7 @@ class QuestionAskerGeneratorTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for QuestionHelperFactoryInterface.
      *
-     * @return QuestionHelperFactoryInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return QuestionHelperFactoryInterface|MockObject
      */
     private function createQuestionHelperFactoryInterfaceMock()
     {
@@ -140,7 +144,7 @@ class QuestionAskerGeneratorTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for QuestionHelper.
      *
-     * @return QuestionHelper|\PHPUnit_Framework_MockObject_MockObject
+     * @return QuestionHelper|MockObject
      */
     private function createQuestionHelperMock()
     {
@@ -150,7 +154,7 @@ class QuestionAskerGeneratorTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for Question.
      *
-     * @return Question|\PHPUnit_Framework_MockObject_MockObject
+     * @return Question|MockObject
      */
     private function createQuestionMock()
     {

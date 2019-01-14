@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the PcdxParameterEncryptionBundle package.
  *
@@ -11,9 +13,10 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Tests\Encryption\Algorithm\CaesarCipher;
 
+use PHPUnit\Framework\TestCase;
 use Picodexter\ParameterEncryptionBundle\Encryption\Algorithm\CaesarCipher\CaesarCipher;
 
-class CaesarCipherTest extends \PHPUnit_Framework_TestCase
+class CaesarCipherTest extends TestCase
 {
     /**
      * @var CaesarCipher

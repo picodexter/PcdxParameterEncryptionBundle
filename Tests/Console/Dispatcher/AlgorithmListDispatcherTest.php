@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the PcdxParameterEncryptionBundle package.
  *
@@ -11,6 +13,8 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Tests\Console\Dispatcher;
 
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 use Picodexter\ParameterEncryptionBundle\Console\Dispatcher\AlgorithmListDispatcher;
 use Picodexter\ParameterEncryptionBundle\Console\Helper\TableFactoryInterface;
 use Picodexter\ParameterEncryptionBundle\Console\Processor\AlgorithmListProcessorInterface;
@@ -18,7 +22,7 @@ use Symfony\Component\Console\Helper\Table;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class AlgorithmListDispatcherTest extends \PHPUnit_Framework_TestCase
+class AlgorithmListDispatcherTest extends TestCase
 {
     /**
      * @var AlgorithmListDispatcher
@@ -26,12 +30,12 @@ class AlgorithmListDispatcherTest extends \PHPUnit_Framework_TestCase
     private $dispatcher;
 
     /**
-     * @var AlgorithmListProcessorInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @var AlgorithmListProcessorInterface|MockObject
      */
     private $processor;
 
     /**
-     * @var TableFactoryInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @var TableFactoryInterface|MockObject
      */
     private $tableFactory;
 
@@ -77,7 +81,7 @@ class AlgorithmListDispatcherTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for AlgorithmListProcessorInterface.
      *
-     * @return AlgorithmListProcessorInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return AlgorithmListProcessorInterface|MockObject
      */
     private function createAlgorithmListProcessorInterfaceMock()
     {
@@ -87,7 +91,7 @@ class AlgorithmListDispatcherTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for InputInterface.
      *
-     * @return InputInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return InputInterface|MockObject
      */
     private function createInputInterfaceMock()
     {
@@ -97,7 +101,7 @@ class AlgorithmListDispatcherTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for OutputInterface.
      *
-     * @return OutputInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return OutputInterface|MockObject
      */
     private function createOutputInterfaceMock()
     {
@@ -107,7 +111,7 @@ class AlgorithmListDispatcherTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for TableFactoryInterface.
      *
-     * @return TableFactoryInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return TableFactoryInterface|MockObject
      */
     private function createTableFactoryInterfaceMock()
     {
@@ -117,7 +121,7 @@ class AlgorithmListDispatcherTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for Table.
      *
-     * @return Table|\PHPUnit_Framework_MockObject_MockObject
+     * @return Table|MockObject
      */
     private function createTableMock()
     {

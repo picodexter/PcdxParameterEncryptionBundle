@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the PcdxParameterEncryptionBundle package.
  *
@@ -11,14 +13,16 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Tests\Console\Helper;
 
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 use Picodexter\ParameterEncryptionBundle\Configuration\AlgorithmConfigurationContainerInterface;
 use Picodexter\ParameterEncryptionBundle\Console\Helper\AlgorithmIdValidator;
 use Picodexter\ParameterEncryptionBundle\Exception\Console\UnknownAlgorithmIdException;
 
-class AlgorithmIdValidatorTest extends \PHPUnit_Framework_TestCase
+class AlgorithmIdValidatorTest extends TestCase
 {
     /**
-     * @var AlgorithmConfigurationContainerInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @var AlgorithmConfigurationContainerInterface|MockObject
      */
     private $algorithmConfigContainer;
 
@@ -69,7 +73,7 @@ class AlgorithmIdValidatorTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for AlgorithmConfigurationContainerInterface.
      *
-     * @return AlgorithmConfigurationContainerInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return AlgorithmConfigurationContainerInterface|MockObject
      */
     private function createAlgorithmConfigurationContainerInterfaceMock()
     {

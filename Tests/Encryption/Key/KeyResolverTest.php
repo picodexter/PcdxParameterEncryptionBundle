@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the PcdxParameterEncryptionBundle package.
  *
@@ -11,13 +13,15 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Tests\Encryption\Key;
 
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 use Picodexter\ParameterEncryptionBundle\Configuration\Key\KeyConfiguration;
 use Picodexter\ParameterEncryptionBundle\Encryption\Key\KeyResolver;
 use Picodexter\ParameterEncryptionBundle\Encryption\Key\Transformer\KeyTransformerInterface;
 use ReflectionProperty;
 use stdClass;
 
-class KeyResolverTest extends \PHPUnit_Framework_TestCase
+class KeyResolverTest extends TestCase
 {
     /**
      * @var KeyResolver
@@ -224,7 +228,7 @@ class KeyResolverTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for KeyConfiguration.
      *
-     * @return KeyConfiguration|\PHPUnit_Framework_MockObject_MockObject
+     * @return KeyConfiguration|MockObject
      */
     private function createKeyConfigurationMock()
     {
@@ -252,8 +256,8 @@ class KeyResolverTest extends \PHPUnit_Framework_TestCase
     /**
      * Set up KeyConfiguration: getValue.
      *
-     * @param KeyConfiguration|\PHPUnit_Framework_MockObject_MockObject $keyConfig
-     * @param string                                                    $keyOrPassword
+     * @param KeyConfiguration|MockObject $keyConfig
+     * @param string                      $keyOrPassword
      */
     private function setUpKeyConfigGetValue($keyConfig, $keyOrPassword)
     {

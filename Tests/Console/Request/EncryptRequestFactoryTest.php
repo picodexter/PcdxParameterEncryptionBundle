@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the PcdxParameterEncryptionBundle package.
  *
@@ -11,11 +13,13 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Tests\Console\Request;
 
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 use Picodexter\ParameterEncryptionBundle\Console\Helper\QuestionAskerInterface;
 use Picodexter\ParameterEncryptionBundle\Console\Request\EncryptRequest;
 use Picodexter\ParameterEncryptionBundle\Console\Request\EncryptRequestFactory;
 
-class EncryptRequestFactoryTest extends \PHPUnit_Framework_TestCase
+class EncryptRequestFactoryTest extends TestCase
 {
     public function testCreateEncryptRequestSuccess()
     {
@@ -35,7 +39,7 @@ class EncryptRequestFactoryTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for QuestionAsker.
      *
-     * @return QuestionAskerInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return QuestionAskerInterface|MockObject
      */
     private function createQuestionAskerInterfaceMock()
     {

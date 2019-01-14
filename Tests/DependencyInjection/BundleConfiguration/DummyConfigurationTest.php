@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the PcdxParameterEncryptionBundle package.
  *
@@ -11,9 +13,10 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Tests\DependencyInjection\BundleConfiguration;
 
+use PHPUnit\Framework\TestCase;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\BundleConfiguration\DummyConfiguration;
 
-class DummyConfigurationTest extends \PHPUnit_Framework_TestCase
+class DummyConfigurationTest extends TestCase
 {
     public function testDummy()
     {

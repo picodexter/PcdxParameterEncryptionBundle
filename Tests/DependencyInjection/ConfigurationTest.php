@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the PcdxParameterEncryptionBundle package.
  *
@@ -11,11 +13,12 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Tests\DependencyInjection;
 
+use PHPUnit\Framework\TestCase;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\Configuration;
 use Symfony\Component\Config\Definition\Exception\Exception as DefinitionException;
 use Symfony\Component\Config\Definition\Processor;
 
-class ConfigurationTest extends \PHPUnit_Framework_TestCase
+class ConfigurationTest extends TestCase
 {
     /**
      * @var Configuration

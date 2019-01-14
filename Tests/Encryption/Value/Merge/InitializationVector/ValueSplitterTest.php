@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the PcdxParameterEncryptionBundle package.
  *
@@ -11,12 +13,13 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Tests\Encryption\Value\Merge\InitializationVector;
 
+use PHPUnit\Framework\TestCase;
 use Picodexter\ParameterEncryptionBundle\Encryption\Value\Merge\InitializationVector\SplitValueBag;
 use Picodexter\ParameterEncryptionBundle\Encryption\Value\Merge\InitializationVector\ValueSplitter;
 use Picodexter\ParameterEncryptionBundle\Exception\Encryption\InvalidInitializationVectorLengthException;
 use Picodexter\ParameterEncryptionBundle\Exception\Encryption\MergedValueTooShortException;
 
-class ValueSplitterTest extends \PHPUnit_Framework_TestCase
+class ValueSplitterTest extends TestCase
 {
     /**
      * @var ValueSplitter
@@ -45,7 +48,7 @@ class ValueSplitterTest extends \PHPUnit_Framework_TestCase
 
         $mergedValue = 'short value';
 
-        $this->splitter->split($mergedValue, strlen($mergedValue));
+        $this->splitter->split($mergedValue, \strlen($mergedValue));
     }
 
     public function testSplitExceptionIvLengthTooShort()

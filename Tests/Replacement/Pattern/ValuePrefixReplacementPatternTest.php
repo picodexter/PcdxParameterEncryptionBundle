@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the PcdxParameterEncryptionBundle package.
  *
@@ -11,10 +13,11 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Tests\Replacement\Pattern;
 
+use PHPUnit\Framework\TestCase;
 use Picodexter\ParameterEncryptionBundle\Exception\Configuration\EmptyPrefixException;
 use Picodexter\ParameterEncryptionBundle\Replacement\Pattern\ValuePrefixReplacementPattern;
 
-class ValuePrefixReplacementPatternTest extends \PHPUnit_Framework_TestCase
+class ValuePrefixReplacementPatternTest extends TestCase
 {
     public function testConstructorExceptionMissingPrefix()
     {

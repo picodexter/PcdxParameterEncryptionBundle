@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the PcdxParameterEncryptionBundle package.
  *
@@ -67,7 +69,7 @@ class CaesarCipher implements CaesarCipherInterface
             $newCharacterOffset = (($positionInAlphabet + $rotationAmount + $alphabetSize) % $alphabetSize)
                 - $positionInAlphabet;
 
-            $rotatedCharacter = chr(ord($character) + $newCharacterOffset);
+            $rotatedCharacter = \chr(\ord($character) + $newCharacterOffset);
         }
 
         return $rotatedCharacter;

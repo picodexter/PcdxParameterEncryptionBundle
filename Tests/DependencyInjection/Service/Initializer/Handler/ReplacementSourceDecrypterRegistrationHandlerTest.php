@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the PcdxParameterEncryptionBundle package.
  *
@@ -11,6 +13,8 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Tests\DependencyInjection\Service\Initializer\Handler;
 
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\Parameter\EnvironmentPlaceholderResolverInterface;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\BundleConfigurationValidatorInterface;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\DefinitionFactoryInterface;
@@ -22,20 +26,20 @@ use Picodexter\ParameterEncryptionBundle\Exception\Configuration\InvalidBundleCo
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
 
-class ReplacementSourceDecrypterRegistrationHandlerTest extends \PHPUnit_Framework_TestCase
+class ReplacementSourceDecrypterRegistrationHandlerTest extends TestCase
 {
     /**
-     * @var BundleConfigurationValidatorInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @var BundleConfigurationValidatorInterface|MockObject
      */
     private $bundleConfigValidator;
 
     /**
-     * @var DefinitionFactoryInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @var DefinitionFactoryInterface|MockObject
      */
     private $definitionFactory;
 
     /**
-     * @var EnvironmentPlaceholderResolverInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @var EnvironmentPlaceholderResolverInterface|MockObject
      */
     private $environmentPlaceholderResolver;
 
@@ -45,12 +49,12 @@ class ReplacementSourceDecrypterRegistrationHandlerTest extends \PHPUnit_Framewo
     private $handler;
 
     /**
-     * @var ReferenceFactoryInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @var ReferenceFactoryInterface|MockObject
      */
     private $referenceFactory;
 
     /**
-     * @var ServiceNameGeneratorInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @var ServiceNameGeneratorInterface|MockObject
      */
     private $serviceNameGenerator;
 
@@ -206,7 +210,7 @@ class ReplacementSourceDecrypterRegistrationHandlerTest extends \PHPUnit_Framewo
     /**
      * Create mock for BundleConfigurationValidatorInterface.
      *
-     * @return BundleConfigurationValidatorInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return BundleConfigurationValidatorInterface|MockObject
      */
     private function createBundleConfigurationValidatorInterfaceMock()
     {
@@ -216,7 +220,7 @@ class ReplacementSourceDecrypterRegistrationHandlerTest extends \PHPUnit_Framewo
     /**
      * Create mock for ContainerBuilder.
      *
-     * @return ContainerBuilder|\PHPUnit_Framework_MockObject_MockObject
+     * @return ContainerBuilder|MockObject
      */
     private function createContainerBuilderMock()
     {
@@ -228,7 +232,7 @@ class ReplacementSourceDecrypterRegistrationHandlerTest extends \PHPUnit_Framewo
     /**
      * Create mock for DefinitionFactoryInterface.
      *
-     * @return DefinitionFactoryInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return DefinitionFactoryInterface|MockObject
      */
     private function createDefinitionFactoryInterfaceMock()
     {
@@ -238,7 +242,7 @@ class ReplacementSourceDecrypterRegistrationHandlerTest extends \PHPUnit_Framewo
     /**
      * Create mock for Definition.
      *
-     * @return Definition|\PHPUnit_Framework_MockObject_MockObject
+     * @return Definition|MockObject
      */
     private function createDefinitionMock()
     {
@@ -248,7 +252,7 @@ class ReplacementSourceDecrypterRegistrationHandlerTest extends \PHPUnit_Framewo
     /**
      * Create mock for EnvironmentPlaceholderResolverInterface.
      *
-     * @return EnvironmentPlaceholderResolverInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return EnvironmentPlaceholderResolverInterface|MockObject
      */
     private function createEnvironmentPlaceholderResolverInterfaceMock()
     {
@@ -258,7 +262,7 @@ class ReplacementSourceDecrypterRegistrationHandlerTest extends \PHPUnit_Framewo
     /**
      * Create mock for ReferenceFactoryInterface.
      *
-     * @return ReferenceFactoryInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return ReferenceFactoryInterface|MockObject
      */
     private function createReferenceFactoryInterfaceMock()
     {
@@ -268,7 +272,7 @@ class ReplacementSourceDecrypterRegistrationHandlerTest extends \PHPUnit_Framewo
     /**
      * Create mock for ServiceNameGeneratorInterface.
      *
-     * @return ServiceNameGeneratorInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return ServiceNameGeneratorInterface|MockObject
      */
     private function createServiceNameGeneratorInterfaceMock()
     {

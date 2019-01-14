@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the PcdxParameterEncryptionBundle package.
  *
@@ -11,12 +13,13 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Tests\DependencyInjection\Service;
 
+use PHPUnit\Framework\TestCase;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\CryptoClassDetector;
 use Picodexter\ParameterEncryptionBundle\Encryption\Decrypter\CaesarDecrypter;
 use Picodexter\ParameterEncryptionBundle\Encryption\Encrypter\CaesarEncrypter;
 use Picodexter\ParameterEncryptionBundle\Exception\DependencyInjection\UnknownClassException;
 
-class CryptoClassDetectorTest extends \PHPUnit_Framework_TestCase
+class CryptoClassDetectorTest extends TestCase
 {
     /**
      * @var CryptoClassDetector

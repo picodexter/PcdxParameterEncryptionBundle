@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the PcdxParameterEncryptionBundle package.
  *
@@ -11,6 +13,8 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Tests\Configuration;
 
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 use Picodexter\ParameterEncryptionBundle\Configuration\AlgorithmConfiguration;
 use Picodexter\ParameterEncryptionBundle\Configuration\AlgorithmConfigurationFactory;
 use Picodexter\ParameterEncryptionBundle\Configuration\Key\KeyConfiguration;
@@ -20,7 +24,7 @@ use Picodexter\ParameterEncryptionBundle\Encryption\Encrypter\EncrypterInterface
 use Picodexter\ParameterEncryptionBundle\Exception\Configuration\InvalidAlgorithmConfigurationException;
 use Picodexter\ParameterEncryptionBundle\Replacement\Pattern\ReplacementPatternInterface;
 
-class AlgorithmConfigurationFactoryTest extends \PHPUnit_Framework_TestCase
+class AlgorithmConfigurationFactoryTest extends TestCase
 {
     /**
      * @var AlgorithmConfigurationFactory
@@ -28,7 +32,7 @@ class AlgorithmConfigurationFactoryTest extends \PHPUnit_Framework_TestCase
     private $factory;
 
     /**
-     * @var KeyConfigurationFactoryInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @var KeyConfigurationFactoryInterface|MockObject
      */
     private $keyConfigFactory;
 
@@ -152,7 +156,7 @@ class AlgorithmConfigurationFactoryTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for DecrypterInterface.
      *
-     * @return DecrypterInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return DecrypterInterface|MockObject
      */
     private function createDecrypterInterfaceMock()
     {
@@ -162,7 +166,7 @@ class AlgorithmConfigurationFactoryTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for EncrypterInterface.
      *
-     * @return EncrypterInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return EncrypterInterface|MockObject
      */
     private function createEncrypterInterfaceMock()
     {
@@ -172,7 +176,7 @@ class AlgorithmConfigurationFactoryTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for KeyConfigurationFactoryInterface.
      *
-     * @return KeyConfigurationFactoryInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return KeyConfigurationFactoryInterface|MockObject
      */
     private function createKeyConfigurationFactoryInterfaceMock()
     {
@@ -182,7 +186,7 @@ class AlgorithmConfigurationFactoryTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for KeyConfiguration.
      *
-     * @return KeyConfiguration|\PHPUnit_Framework_MockObject_MockObject
+     * @return KeyConfiguration|MockObject
      */
     private function createKeyConfigurationMock()
     {
@@ -192,7 +196,7 @@ class AlgorithmConfigurationFactoryTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for ReplacementPatternInterface.
      *
-     * @return ReplacementPatternInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return ReplacementPatternInterface|MockObject
      */
     private function createReplacementPatternInterfaceMock()
     {

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the PcdxParameterEncryptionBundle package.
  *
@@ -11,13 +13,14 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Tests\DependencyInjection\Parameter;
 
+use PHPUnit\Framework\TestCase;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\Parameter\EnvironmentPlaceholderResolver;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\Parameter\EnvironmentPlaceholderResolverFactory;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\Parameter\EnvironmentPlaceholderResolverInterface;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\Parameter\LegacyEnvironmentPlaceholderResolver;
 use stdClass;
 
-class EnvironmentPlaceholderResolverFactoryTest extends \PHPUnit_Framework_TestCase
+class EnvironmentPlaceholderResolverFactoryTest extends TestCase
 {
     /**
      * @param string $classNameToCheck

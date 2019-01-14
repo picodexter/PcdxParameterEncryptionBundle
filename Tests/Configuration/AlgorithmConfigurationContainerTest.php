@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the PcdxParameterEncryptionBundle package.
  *
@@ -11,6 +13,8 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Tests\Configuration;
 
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 use Picodexter\ParameterEncryptionBundle\Configuration\AlgorithmConfiguration;
 use Picodexter\ParameterEncryptionBundle\Configuration\AlgorithmConfigurationContainer;
 use Picodexter\ParameterEncryptionBundle\Configuration\Key\KeyConfiguration;
@@ -19,7 +23,7 @@ use Picodexter\ParameterEncryptionBundle\Encryption\Encrypter\EncrypterInterface
 use Picodexter\ParameterEncryptionBundle\Exception\Configuration\DuplicateAlgorithmIdException;
 use Picodexter\ParameterEncryptionBundle\Replacement\Pattern\ReplacementPatternInterface;
 
-class AlgorithmConfigurationContainerTest extends \PHPUnit_Framework_TestCase
+class AlgorithmConfigurationContainerTest extends TestCase
 {
     /**
      * @param array $algorithms
@@ -222,7 +226,7 @@ class AlgorithmConfigurationContainerTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for DecrypterInterface.
      *
-     * @return DecrypterInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return DecrypterInterface|MockObject
      */
     private function createDecrypterInterfaceMock()
     {
@@ -232,7 +236,7 @@ class AlgorithmConfigurationContainerTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for EncrypterInterface.
      *
-     * @return EncrypterInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return EncrypterInterface|MockObject
      */
     private function createEncrypterInterfaceMock()
     {
@@ -242,7 +246,7 @@ class AlgorithmConfigurationContainerTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for KeyConfiguration.
      *
-     * @return KeyConfiguration|\PHPUnit_Framework_MockObject_MockObject
+     * @return KeyConfiguration|MockObject
      */
     private function createKeyConfigurationMock()
     {
@@ -252,7 +256,7 @@ class AlgorithmConfigurationContainerTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for ReplacementPatternInterface.
      *
-     * @return ReplacementPatternInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return ReplacementPatternInterface|MockObject
      */
     private function createReplacementPatternInterfaceMock()
     {

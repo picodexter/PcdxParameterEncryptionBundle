@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the PcdxParameterEncryptionBundle package.
  *
@@ -11,10 +13,12 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Tests\DependencyInjection\Parameter;
 
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\Parameter\LegacyEnvironmentPlaceholderResolver;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
-class LegacyEnvironmentPlaceholderResolverTest extends \PHPUnit_Framework_TestCase
+class LegacyEnvironmentPlaceholderResolverTest extends TestCase
 {
     /**
      * @var LegacyEnvironmentPlaceholderResolver
@@ -51,7 +55,7 @@ class LegacyEnvironmentPlaceholderResolverTest extends \PHPUnit_Framework_TestCa
     /**
      * Create mock for ContainerBuilder.
      *
-     * @return ContainerBuilder|\PHPUnit_Framework_MockObject_MockObject
+     * @return ContainerBuilder|MockObject
      */
     private function createContainerBuilderMock()
     {

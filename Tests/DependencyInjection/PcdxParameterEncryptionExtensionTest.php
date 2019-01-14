@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the PcdxParameterEncryptionBundle package.
  *
@@ -11,12 +13,14 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Tests\DependencyInjection;
 
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\PcdxParameterEncryptionExtension;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\ServiceDefinitionInitializationManagerInterface;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\ServiceNames;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
-class PcdxParameterEncryptionExtensionTest extends \PHPUnit_Framework_TestCase
+class PcdxParameterEncryptionExtensionTest extends TestCase
 {
     /**
      * @var PcdxParameterEncryptionExtension
@@ -80,7 +84,7 @@ class PcdxParameterEncryptionExtensionTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for ContainerBuilder.
      *
-     * @return ContainerBuilder|\PHPUnit_Framework_MockObject_MockObject
+     * @return ContainerBuilder|MockObject
      */
     private function createContainerBuilderMock()
     {
@@ -92,7 +96,7 @@ class PcdxParameterEncryptionExtensionTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for ServiceDefinitionInitializationManagerInterface.
      *
-     * @return ServiceDefinitionInitializationManagerInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return ServiceDefinitionInitializationManagerInterface|MockObject
      */
     private function createServiceDefinitionInitializationManagerInterfaceMock()
     {

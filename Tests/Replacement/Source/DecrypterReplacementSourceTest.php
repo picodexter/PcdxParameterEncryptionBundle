@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the PcdxParameterEncryptionBundle package.
  *
@@ -11,31 +13,33 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Tests\Replacement\Source;
 
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 use Picodexter\ParameterEncryptionBundle\Configuration\Key\KeyConfiguration;
 use Picodexter\ParameterEncryptionBundle\Encryption\Decrypter\DecrypterInterface;
 use Picodexter\ParameterEncryptionBundle\Encryption\Key\KeyFetcherInterface;
 use Picodexter\ParameterEncryptionBundle\Replacement\Pattern\ReplacementPatternInterface;
 use Picodexter\ParameterEncryptionBundle\Replacement\Source\DecrypterReplacementSource;
 
-class DecrypterReplacementSourceTest extends \PHPUnit_Framework_TestCase
+class DecrypterReplacementSourceTest extends TestCase
 {
     /**
-     * @var DecrypterInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @var DecrypterInterface|MockObject
      */
     private $decrypter;
 
     /**
-     * @var KeyConfiguration|\PHPUnit_Framework_MockObject_MockObject
+     * @var KeyConfiguration|MockObject
      */
     private $keyConfig;
 
     /**
-     * @var KeyFetcherInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @var KeyFetcherInterface|MockObject
      */
     private $keyFetcher;
 
     /**
-     * @var ReplacementPatternInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @var ReplacementPatternInterface|MockObject
      */
     private $replacementPattern;
 
@@ -149,7 +153,7 @@ class DecrypterReplacementSourceTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for DecrypterInterface.
      *
-     * @return DecrypterInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return DecrypterInterface|MockObject
      */
     private function createDecrypterInterfaceMock()
     {
@@ -159,7 +163,7 @@ class DecrypterReplacementSourceTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for KeyConfiguration.
      *
-     * @return KeyConfiguration|\PHPUnit_Framework_MockObject_MockObject
+     * @return KeyConfiguration|MockObject
      */
     private function createKeyConfigurationMock()
     {
@@ -169,7 +173,7 @@ class DecrypterReplacementSourceTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for KeyFetcherInterface.
      *
-     * @return KeyFetcherInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return KeyFetcherInterface|MockObject
      */
     private function createKeyFetcherInterfaceMock()
     {
@@ -179,7 +183,7 @@ class DecrypterReplacementSourceTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for ReplacementPatternInterface.
      *
-     * @return ReplacementPatternInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return ReplacementPatternInterface|MockObject
      */
     private function createReplacementPatternInterfaceMock()
     {

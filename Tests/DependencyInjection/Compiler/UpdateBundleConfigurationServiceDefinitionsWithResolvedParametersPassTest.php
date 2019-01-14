@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the PcdxParameterEncryptionBundle package.
  *
@@ -11,12 +13,14 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Tests\DependencyInjection\Compiler;
 
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\BundleConfiguration\ServiceDefinition\ServiceDefinitionProcessorInterface;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\Compiler\UpdateBundleConfigurationServiceDefinitionsWithResolvedParametersPass;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\ServiceNames;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
-class UpdateBundleConfigurationServiceDefinitionsWithResolvedParametersPassTest extends \PHPUnit_Framework_TestCase
+class UpdateBundleConfigurationServiceDefinitionsWithResolvedParametersPassTest extends TestCase
 {
     public function testProcessSuccess()
     {
@@ -40,7 +44,7 @@ class UpdateBundleConfigurationServiceDefinitionsWithResolvedParametersPassTest 
     /**
      * Create mock for ContainerBuilder.
      *
-     * @return ContainerBuilder|\PHPUnit_Framework_MockObject_MockObject
+     * @return ContainerBuilder|MockObject
      */
     private function createContainerBuilderMock()
     {
@@ -52,7 +56,7 @@ class UpdateBundleConfigurationServiceDefinitionsWithResolvedParametersPassTest 
     /**
      * Create mock for ServiceDefinitionProcessorInterface.
      *
-     * @return ServiceDefinitionProcessorInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return ServiceDefinitionProcessorInterface|MockObject
      */
     private function createServiceDefinitionProcessorInterfaceMock()
     {

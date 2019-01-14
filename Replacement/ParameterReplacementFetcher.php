@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the PcdxParameterEncryptionBundle package.
  *
@@ -49,7 +51,7 @@ class ParameterReplacementFetcher implements ParameterReplacementFetcherInterfac
      */
     public function getReplacedValueForParameter($parameterKey, $parameterValue)
     {
-        if (!is_string($parameterValue)) {
+        if (!\is_string($parameterValue)) {
             return null;
         }
 

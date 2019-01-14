@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the PcdxParameterEncryptionBundle package.
  *
@@ -11,6 +13,8 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Tests\DependencyInjection\BundleConfiguration;
 
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\BundleConfiguration\ConfigurationResolver;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\BundleConfiguration\ServiceDefinition\Rewriter\RewriterInterface;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
@@ -18,10 +22,10 @@ use Symfony\Component\Config\Definition\Processor as ConfigurationProcessor;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 
-class ConfigurationResolverTest extends \PHPUnit_Framework_TestCase
+class ConfigurationResolverTest extends TestCase
 {
     /**
-     * @var ConfigurationProcessor|\PHPUnit_Framework_MockObject_MockObject
+     * @var ConfigurationProcessor|MockObject
      */
     private $configurationProcessor;
 
@@ -108,7 +112,7 @@ class ConfigurationResolverTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for ConfigurationInterface.
      *
-     * @return ConfigurationInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return ConfigurationInterface|MockObject
      */
     private function createConfigurationInterfaceMock()
     {
@@ -118,7 +122,7 @@ class ConfigurationResolverTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for ConfigurationProcessor.
      *
-     * @return ConfigurationProcessor|\PHPUnit_Framework_MockObject_MockObject
+     * @return ConfigurationProcessor|MockObject
      */
     private function createConfigurationProcessorMock()
     {
@@ -128,7 +132,7 @@ class ConfigurationResolverTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for ContainerBuilder.
      *
-     * @return ContainerBuilder|\PHPUnit_Framework_MockObject_MockObject
+     * @return ContainerBuilder|MockObject
      */
     private function createContainerBuilderMock()
     {
@@ -140,7 +144,7 @@ class ConfigurationResolverTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for ParameterBagInterface.
      *
-     * @return ParameterBagInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return ParameterBagInterface|MockObject
      */
     private function createParameterBagInterfaceMock()
     {
@@ -150,7 +154,7 @@ class ConfigurationResolverTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for RewriterInterface.
      *
-     * @return RewriterInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return RewriterInterface|MockObject
      */
     private function createRewriterInterfaceMock()
     {

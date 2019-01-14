@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the PcdxParameterEncryptionBundle package.
  *
@@ -11,11 +13,13 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Tests\Console\Renderer;
 
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 use Picodexter\ParameterEncryptionBundle\Console\Processor\TransformedKey;
 use Picodexter\ParameterEncryptionBundle\Console\Renderer\AbstractCryptRenderer;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class AbstractCryptRendererTest extends \PHPUnit_Framework_TestCase
+class AbstractCryptRendererTest extends TestCase
 {
     /**
      * @var AbstractCryptRenderer|DummyAbstractCryptRenderer
@@ -102,7 +106,7 @@ class AbstractCryptRendererTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for OutputInterface.
      *
-     * @return OutputInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return OutputInterface|MockObject
      */
     private function createOutputInterfaceMock()
     {
@@ -112,7 +116,7 @@ class AbstractCryptRendererTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for TransformedKey.
      *
-     * @return TransformedKey|\PHPUnit_Framework_MockObject_MockObject
+     * @return TransformedKey|MockObject
      */
     private function createTransformedKeyMock()
     {
@@ -122,8 +126,8 @@ class AbstractCryptRendererTest extends \PHPUnit_Framework_TestCase
     /**
      * Set up Output: getVerbosity.
      *
-     * @param OutputInterface|\PHPUnit_Framework_MockObject_MockObject $output
-     * @param int                                                      $verbosityLevel
+     * @param OutputInterface|MockObject $output
+     * @param int                        $verbosityLevel
      */
     private function setUpOutputGetVerbosity(OutputInterface $output, $verbosityLevel)
     {
@@ -136,8 +140,8 @@ class AbstractCryptRendererTest extends \PHPUnit_Framework_TestCase
     /**
      * Set up TransformedKey: hasChanged.
      *
-     * @param TransformedKey|\PHPUnit_Framework_MockObject_MockObject $transformedKey
-     * @param bool                                                    $hasChanged
+     * @param TransformedKey|MockObject $transformedKey
+     * @param bool                      $hasChanged
      */
     private function setUpTransformedKeyHasChanged(TransformedKey $transformedKey, $hasChanged)
     {

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the PcdxParameterEncryptionBundle package.
  *
@@ -23,7 +25,7 @@ class BundleConfigurationValidator implements BundleConfigurationValidatorInterf
      */
     public function assertValidBundleConfiguration(array $bundleConfig)
     {
-        if (!array_key_exists('algorithms', $bundleConfig) || !is_array($bundleConfig['algorithms'])) {
+        if (!array_key_exists('algorithms', $bundleConfig) || !\is_array($bundleConfig['algorithms'])) {
             throw new InvalidBundleConfigurationException();
         }
     }

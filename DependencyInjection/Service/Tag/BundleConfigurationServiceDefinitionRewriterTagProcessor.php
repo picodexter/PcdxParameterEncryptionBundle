@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the PcdxParameterEncryptionBundle package.
  *
@@ -54,10 +56,10 @@ class BundleConfigurationServiceDefinitionRewriterTagProcessor implements Bundle
             $rewriterReferences = $this->processTaggedService($container, $rewriterReferences, $taggedServiceId, $tags);
         }
 
-        if (count($rewriterReferences) > 0) {
+        if (\count($rewriterReferences) > 0) {
             krsort($rewriterReferences);
 
-            $flattenedReferences = call_user_func_array('array_merge', $rewriterReferences);
+            $flattenedReferences = \call_user_func_array('array_merge', $rewriterReferences);
         } else {
             $flattenedReferences = [];
         }
@@ -135,7 +137,7 @@ class BundleConfigurationServiceDefinitionRewriterTagProcessor implements Bundle
 
         $extensionConfigKey = $firstTag[self::TAG_ATTRIBUTE_EXTENSION_CONFIGURATION_KEY];
 
-        if (count($container->getExtensionConfig($extensionConfigKey)) < 1) {
+        if (\count($container->getExtensionConfig($extensionConfigKey)) < 1) {
             return $rewriterReferences;
         }
 

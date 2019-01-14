@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the PcdxParameterEncryptionBundle package.
  *
@@ -11,13 +13,15 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Tests\DependencyInjection\Compiler;
 
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\Compiler\ParameterReplacementPass;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\ServiceNames;
 use Picodexter\ParameterEncryptionBundle\Replacement\ParameterReplacerInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBag;
 
-class ParameterReplacementPassTest extends \PHPUnit_Framework_TestCase
+class ParameterReplacementPassTest extends TestCase
 {
     public function testProcessSuccess()
     {
@@ -51,7 +55,7 @@ class ParameterReplacementPassTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for ContainerBuilder.
      *
-     * @return ContainerBuilder|\PHPUnit_Framework_MockObject_MockObject
+     * @return ContainerBuilder|MockObject
      */
     private function createContainerBuilderMock()
     {
@@ -63,7 +67,7 @@ class ParameterReplacementPassTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for ParameterReplacerInterface.
      *
-     * @return ParameterReplacerInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return ParameterReplacerInterface|MockObject
      */
     private function createParameterReplacerInterfaceMock()
     {

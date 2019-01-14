@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the PcdxParameterEncryptionBundle package.
  *
@@ -11,9 +13,10 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Tests\Encryption\Value\Encoding;
 
+use PHPUnit\Framework\TestCase;
 use Picodexter\ParameterEncryptionBundle\Encryption\Value\Encoding\Base64Encoder;
 
-class Base64EncoderTest extends \PHPUnit_Framework_TestCase
+class Base64EncoderTest extends TestCase
 {
     /**
      * @param mixed  $plainValue

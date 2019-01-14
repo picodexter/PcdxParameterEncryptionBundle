@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the PcdxParameterEncryptionBundle package.
  *
@@ -11,10 +13,11 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Tests\DependencyInjection\Service;
 
+use PHPUnit\Framework\TestCase;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\DefinitionFactory;
 use Symfony\Component\DependencyInjection\Definition;
 
-class DefinitionFactoryTest extends \PHPUnit_Framework_TestCase
+class DefinitionFactoryTest extends TestCase
 {
     public function testCreateDefinitionSuccess()
     {

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the PcdxParameterEncryptionBundle package.
  *
@@ -11,12 +13,14 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Tests\Command;
 
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 use Picodexter\ParameterEncryptionBundle\Command\EncryptCommand;
 use Picodexter\ParameterEncryptionBundle\Console\Dispatcher\EncryptDispatcherInterface;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class EncryptCommandTest extends \PHPUnit_Framework_TestCase
+class EncryptCommandTest extends TestCase
 {
     public function testExecuteSuccess()
     {
@@ -40,7 +44,7 @@ class EncryptCommandTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for EncryptDispatcherInterface.
      *
-     * @return EncryptDispatcherInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return EncryptDispatcherInterface|MockObject
      */
     private function createEncryptDispatcherInterfaceMock()
     {
@@ -50,7 +54,7 @@ class EncryptCommandTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for InputInterface.
      *
-     * @return InputInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return InputInterface|MockObject
      */
     private function createInputInterfaceMock()
     {
@@ -60,7 +64,7 @@ class EncryptCommandTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for OutputInterface.
      *
-     * @return OutputInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return OutputInterface|MockObject
      */
     private function createOutputInterfaceMock()
     {

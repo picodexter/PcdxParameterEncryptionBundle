@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the PcdxParameterEncryptionBundle package.
  *
@@ -11,14 +13,16 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Tests\Console\Processor;
 
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 use Picodexter\ParameterEncryptionBundle\Configuration\Key\KeyConfiguration;
 use Picodexter\ParameterEncryptionBundle\Configuration\Key\KeyConfigurationFactoryInterface;
 use Picodexter\ParameterEncryptionBundle\Console\Processor\ActiveKeyConfigurationProvider;
 
-class ActiveKeyConfigurationProviderTest extends \PHPUnit_Framework_TestCase
+class ActiveKeyConfigurationProviderTest extends TestCase
 {
     /**
-     * @var KeyConfigurationFactoryInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @var KeyConfigurationFactoryInterface|MockObject
      */
     private $keyConfigFactory;
 
@@ -80,7 +84,7 @@ class ActiveKeyConfigurationProviderTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for KeyConfigurationFactoryInterface.
      *
-     * @return KeyConfigurationFactoryInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return KeyConfigurationFactoryInterface|MockObject
      */
     private function createKeyConfigurationFactoryInterfaceMock()
     {
@@ -90,7 +94,7 @@ class ActiveKeyConfigurationProviderTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for KeyConfiguration.
      *
-     * @return KeyConfiguration|\PHPUnit_Framework_MockObject_MockObject
+     * @return KeyConfiguration|MockObject
      */
     private function createKeyConfigurationMock()
     {

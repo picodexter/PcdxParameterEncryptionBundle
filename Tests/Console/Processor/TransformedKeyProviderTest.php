@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the PcdxParameterEncryptionBundle package.
  *
@@ -11,16 +13,18 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Tests\Console\Processor;
 
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 use Picodexter\ParameterEncryptionBundle\Configuration\Key\KeyConfiguration;
 use Picodexter\ParameterEncryptionBundle\Console\Processor\TransformedKey;
 use Picodexter\ParameterEncryptionBundle\Console\Processor\TransformedKeyFactoryInterface;
 use Picodexter\ParameterEncryptionBundle\Console\Processor\TransformedKeyProvider;
 use Picodexter\ParameterEncryptionBundle\Encryption\Key\KeyFetcherInterface;
 
-class TransformedKeyProviderTest extends \PHPUnit_Framework_TestCase
+class TransformedKeyProviderTest extends TestCase
 {
     /**
-     * @var KeyFetcherInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @var KeyFetcherInterface|MockObject
      */
     private $keyFetcher;
 
@@ -30,7 +34,7 @@ class TransformedKeyProviderTest extends \PHPUnit_Framework_TestCase
     private $provider;
 
     /**
-     * @var TransformedKeyFactoryInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @var TransformedKeyFactoryInterface|MockObject
      */
     private $transformedKeyFactory;
 
@@ -89,7 +93,7 @@ class TransformedKeyProviderTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for KeyConfiguration.
      *
-     * @return KeyConfiguration|\PHPUnit_Framework_MockObject_MockObject
+     * @return KeyConfiguration|MockObject
      */
     private function createKeyConfigurationMock()
     {
@@ -99,7 +103,7 @@ class TransformedKeyProviderTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for KeyFetcherInterface.
      *
-     * @return KeyFetcherInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return KeyFetcherInterface|MockObject
      */
     private function createKeyFetcherInterfaceMock()
     {
@@ -109,7 +113,7 @@ class TransformedKeyProviderTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for TransformedKeyFactoryInterface.
      *
-     * @return TransformedKeyFactoryInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return TransformedKeyFactoryInterface|MockObject
      */
     private function createTransformedKeyFactoryInterfaceMock()
     {
@@ -119,7 +123,7 @@ class TransformedKeyProviderTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for TransformedKey.
      *
-     * @return TransformedKey|\PHPUnit_Framework_MockObject_MockObject
+     * @return TransformedKey|MockObject
      */
     private function createTransformedKeyMock()
     {

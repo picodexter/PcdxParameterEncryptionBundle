@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the PcdxParameterEncryptionBundle package.
  *
@@ -11,10 +13,11 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Tests\Encryption\Value\Encoding;
 
+use PHPUnit\Framework\TestCase;
 use Picodexter\ParameterEncryptionBundle\Encryption\Value\Encoding\Base64Decoder;
 use Picodexter\ParameterEncryptionBundle\Exception\Encryption\InvalidBase64ValueException;
 
-class Base64DecoderTest extends \PHPUnit_Framework_TestCase
+class Base64DecoderTest extends TestCase
 {
     /**
      * @var Base64Decoder

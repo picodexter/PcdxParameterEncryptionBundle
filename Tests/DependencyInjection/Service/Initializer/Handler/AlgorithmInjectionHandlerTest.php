@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the PcdxParameterEncryptionBundle package.
  *
@@ -11,6 +13,8 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Tests\DependencyInjection\Service\Initializer\Handler;
 
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\BundleConfigurationValidatorInterface;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\Initializer\Handler\AlgorithmInjectionHandler;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\ReferenceFactoryInterface;
@@ -21,10 +25,10 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\DependencyInjection\Reference;
 
-class AlgorithmInjectionHandlerTest extends \PHPUnit_Framework_TestCase
+class AlgorithmInjectionHandlerTest extends TestCase
 {
     /**
-     * @var BundleConfigurationValidatorInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @var BundleConfigurationValidatorInterface|MockObject
      */
     private $bundleConfigValidator;
 
@@ -34,12 +38,12 @@ class AlgorithmInjectionHandlerTest extends \PHPUnit_Framework_TestCase
     private $handler;
 
     /**
-     * @var ReferenceFactoryInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @var ReferenceFactoryInterface|MockObject
      */
     private $referenceFactory;
 
     /**
-     * @var ServiceNameGeneratorInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @var ServiceNameGeneratorInterface|MockObject
      */
     private $serviceNameGenerator;
 
@@ -169,7 +173,7 @@ class AlgorithmInjectionHandlerTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for BundleConfigurationValidatorInterface.
      *
-     * @return BundleConfigurationValidatorInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return BundleConfigurationValidatorInterface|MockObject
      */
     private function createBundleConfigurationValidatorInterfaceMock()
     {
@@ -179,7 +183,7 @@ class AlgorithmInjectionHandlerTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for ContainerBuilder.
      *
-     * @return ContainerBuilder|\PHPUnit_Framework_MockObject_MockObject
+     * @return ContainerBuilder|MockObject
      */
     private function createContainerBuilderMock()
     {
@@ -191,7 +195,7 @@ class AlgorithmInjectionHandlerTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for Definition.
      *
-     * @return Definition|\PHPUnit_Framework_MockObject_MockObject
+     * @return Definition|MockObject
      */
     private function createDefinitionMock()
     {
@@ -201,7 +205,7 @@ class AlgorithmInjectionHandlerTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for ReferenceFactoryInterface.
      *
-     * @return ReferenceFactoryInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return ReferenceFactoryInterface|MockObject
      */
     private function createReferenceFactoryInterfaceMock()
     {
@@ -211,7 +215,7 @@ class AlgorithmInjectionHandlerTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for Reference.
      *
-     * @return Reference|\PHPUnit_Framework_MockObject_MockObject
+     * @return Reference|MockObject
      */
     private function createReferenceMock()
     {
@@ -221,7 +225,7 @@ class AlgorithmInjectionHandlerTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for ServiceNameGeneratorInterface.
      *
-     * @return ServiceNameGeneratorInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return ServiceNameGeneratorInterface|MockObject
      */
     private function createServiceNameGeneratorInterfaceMock()
     {

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the PcdxParameterEncryptionBundle package.
  *
@@ -11,9 +13,10 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Tests\DependencyInjection\BundleConfiguration\ServiceDefinition;
 
+use PHPUnit\Framework\TestCase;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\BundleConfiguration\ServiceDefinition\ArgumentReplacer;
 
-class ArgumentReplacerTest extends \PHPUnit_Framework_TestCase
+class ArgumentReplacerTest extends TestCase
 {
     /**
      * @param array  $arguments

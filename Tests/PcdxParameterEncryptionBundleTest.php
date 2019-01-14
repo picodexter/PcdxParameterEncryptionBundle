@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the PcdxParameterEncryptionBundle package.
  *
@@ -11,6 +13,8 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Tests;
 
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\Compiler\BundleConfigurationServiceDefinitionRewriterServiceTagPass;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\Compiler\KeyNotEmptyServiceTagPass;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\Compiler\ParameterReplacementPass;
@@ -18,7 +22,7 @@ use Picodexter\ParameterEncryptionBundle\DependencyInjection\Compiler\UpdateBund
 use Picodexter\ParameterEncryptionBundle\PcdxParameterEncryptionBundle;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
-class PcdxParameterEncryptionBundleTest extends \PHPUnit_Framework_TestCase
+class PcdxParameterEncryptionBundleTest extends TestCase
 {
     public function testBuildSuccess()
     {
@@ -41,7 +45,7 @@ class PcdxParameterEncryptionBundleTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for ContainerBuilder.
      *
-     * @return ContainerBuilder|\PHPUnit_Framework_MockObject_MockObject
+     * @return ContainerBuilder|MockObject
      */
     private function createContainerBuilderMock()
     {

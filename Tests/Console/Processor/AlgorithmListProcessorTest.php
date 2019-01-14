@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the PcdxParameterEncryptionBundle package.
  *
@@ -11,15 +13,17 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Tests\Console\Processor;
 
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 use Picodexter\ParameterEncryptionBundle\Configuration\AlgorithmConfiguration;
 use Picodexter\ParameterEncryptionBundle\Configuration\AlgorithmConfigurationContainerInterface;
 use Picodexter\ParameterEncryptionBundle\Console\Processor\AlgorithmListProcessor;
 use Symfony\Component\Console\Helper\Table;
 
-class AlgorithmListProcessorTest extends \PHPUnit_Framework_TestCase
+class AlgorithmListProcessorTest extends TestCase
 {
     /**
-     * @var AlgorithmConfigurationContainerInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @var AlgorithmConfigurationContainerInterface|MockObject
      */
     private $algorithmConfigContainer;
 
@@ -92,7 +96,7 @@ class AlgorithmListProcessorTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for AlgorithmConfigurationContainerInterface.
      *
-     * @return AlgorithmConfigurationContainerInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return AlgorithmConfigurationContainerInterface|MockObject
      */
     private function createAlgorithmConfigurationContainerInterfaceMock()
     {
@@ -102,7 +106,7 @@ class AlgorithmListProcessorTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for AlgorithmConfiguration.
      *
-     * @return AlgorithmConfiguration|\PHPUnit_Framework_MockObject_MockObject
+     * @return AlgorithmConfiguration|MockObject
      */
     private function createAlgorithmConfigurationMock()
     {
@@ -112,7 +116,7 @@ class AlgorithmListProcessorTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for Table.
      *
-     * @return Table|\PHPUnit_Framework_MockObject_MockObject
+     * @return Table|MockObject
      */
     private function createTableMock()
     {

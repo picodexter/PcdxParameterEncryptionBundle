@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the PcdxParameterEncryptionBundle package.
  *
@@ -11,12 +13,14 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Tests\Encryption\Decrypter\Decorator;
 
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 use Picodexter\ParameterEncryptionBundle\Encryption\Decrypter\Decorator\KeyNotEmptyDecrypterDecorator;
 use Picodexter\ParameterEncryptionBundle\Encryption\Decrypter\DecrypterInterface;
 use Picodexter\ParameterEncryptionBundle\Encryption\Key\KeyNotEmptyValidatorInterface;
 use Picodexter\ParameterEncryptionBundle\Exception\Encryption\EmptyKeyException;
 
-class KeyNotEmptyDecrypterDecoratorTest extends \PHPUnit_Framework_TestCase
+class KeyNotEmptyDecrypterDecoratorTest extends TestCase
 {
     /**
      * @var KeyNotEmptyDecrypterDecorator
@@ -24,12 +28,12 @@ class KeyNotEmptyDecrypterDecoratorTest extends \PHPUnit_Framework_TestCase
     private $decorator;
 
     /**
-     * @var DecrypterInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @var DecrypterInterface|MockObject
      */
     private $decrypter;
 
     /**
-     * @var KeyNotEmptyValidatorInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @var KeyNotEmptyValidatorInterface|MockObject
      */
     private $keyNotEmptyValidator;
 
@@ -91,7 +95,7 @@ class KeyNotEmptyDecrypterDecoratorTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for DecrypterInterface.
      *
-     * @return DecrypterInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return DecrypterInterface|MockObject
      */
     private function createDecrypterInterfaceMock()
     {
@@ -101,7 +105,7 @@ class KeyNotEmptyDecrypterDecoratorTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for KeyNotEmptyValidatorInterface.
      *
-     * @return KeyNotEmptyValidatorInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return KeyNotEmptyValidatorInterface|MockObject
      */
     private function createKeyNotEmptyValidatorInterfaceMock()
     {

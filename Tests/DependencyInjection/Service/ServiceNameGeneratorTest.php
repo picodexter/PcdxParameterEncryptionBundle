@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the PcdxParameterEncryptionBundle package.
  *
@@ -11,11 +13,12 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Tests\DependencyInjection\Service;
 
+use PHPUnit\Framework\TestCase;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\ServiceNameGenerator;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\ServiceNames;
 use Picodexter\ParameterEncryptionBundle\Exception\Configuration\InvalidAlgorithmConfigurationException;
 
-class ServiceNameGeneratorTest extends \PHPUnit_Framework_TestCase
+class ServiceNameGeneratorTest extends TestCase
 {
     /**
      * @var ServiceNameGenerator

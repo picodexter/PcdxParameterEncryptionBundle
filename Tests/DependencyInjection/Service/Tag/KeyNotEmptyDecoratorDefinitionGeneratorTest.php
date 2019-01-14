@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the PcdxParameterEncryptionBundle package.
  *
@@ -11,6 +13,8 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Tests\DependencyInjection\Service\Tag;
 
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\DefinitionFactoryInterface;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\ReferenceFactoryInterface;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\Tag\KeyNotEmptyDecoratorDefinitionGenerator;
@@ -18,10 +22,10 @@ use Picodexter\ParameterEncryptionBundle\DependencyInjection\ServiceNames;
 use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\DependencyInjection\Reference;
 
-class KeyNotEmptyDecoratorDefinitionGeneratorTest extends \PHPUnit_Framework_TestCase
+class KeyNotEmptyDecoratorDefinitionGeneratorTest extends TestCase
 {
     /**
-     * @var DefinitionFactoryInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @var DefinitionFactoryInterface|MockObject
      */
     private $definitionFactory;
 
@@ -31,7 +35,7 @@ class KeyNotEmptyDecoratorDefinitionGeneratorTest extends \PHPUnit_Framework_Tes
     private $generator;
 
     /**
-     * @var ReferenceFactoryInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @var ReferenceFactoryInterface|MockObject
      */
     private $referenceFactory;
 
@@ -117,7 +121,7 @@ class KeyNotEmptyDecoratorDefinitionGeneratorTest extends \PHPUnit_Framework_Tes
     /**
      * Create mock for DefinitionFactoryInterface.
      *
-     * @return DefinitionFactoryInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return DefinitionFactoryInterface|MockObject
      */
     private function createDefinitionFactoryInterfaceMock()
     {
@@ -127,7 +131,7 @@ class KeyNotEmptyDecoratorDefinitionGeneratorTest extends \PHPUnit_Framework_Tes
     /**
      * Create mock for Definition.
      *
-     * @return Definition|\PHPUnit_Framework_MockObject_MockObject
+     * @return Definition|MockObject
      */
     private function createDefinitionMock()
     {
@@ -137,7 +141,7 @@ class KeyNotEmptyDecoratorDefinitionGeneratorTest extends \PHPUnit_Framework_Tes
     /**
      * Create mock for ReferenceFactoryInterface.
      *
-     * @return ReferenceFactoryInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return ReferenceFactoryInterface|MockObject
      */
     private function createReferenceFactoryInterfaceMock()
     {
@@ -147,7 +151,7 @@ class KeyNotEmptyDecoratorDefinitionGeneratorTest extends \PHPUnit_Framework_Tes
     /**
      * Create mock for Reference.
      *
-     * @return Reference|\PHPUnit_Framework_MockObject_MockObject
+     * @return Reference|MockObject
      */
     private function createReferenceMock()
     {

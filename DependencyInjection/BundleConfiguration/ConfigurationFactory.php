@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the PcdxParameterEncryptionBundle package.
  *
@@ -32,7 +34,7 @@ class ConfigurationFactory implements ConfigurationFactoryInterface
             throw new InvalidConfigurationClassException($className);
         }
 
-        if (!in_array(ConfigurationInterface::class, $reflectionClass->getInterfaceNames(), true)) {
+        if (!\in_array(ConfigurationInterface::class, $reflectionClass->getInterfaceNames(), true)) {
             throw new InvalidConfigurationClassException($className);
         }
 

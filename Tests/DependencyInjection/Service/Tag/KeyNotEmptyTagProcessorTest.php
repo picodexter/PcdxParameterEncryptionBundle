@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the PcdxParameterEncryptionBundle package.
  *
@@ -11,21 +13,23 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Tests\DependencyInjection\Service\Tag;
 
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\Tag\KeyNotEmptyDecoratorClassResolverInterface;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\Tag\KeyNotEmptyDecoratorDefinitionGeneratorInterface;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\Tag\KeyNotEmptyTagProcessor;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
 
-class KeyNotEmptyTagProcessorTest extends \PHPUnit_Framework_TestCase
+class KeyNotEmptyTagProcessorTest extends TestCase
 {
     /**
-     * @var KeyNotEmptyDecoratorClassResolverInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @var KeyNotEmptyDecoratorClassResolverInterface|MockObject
      */
     private $decoratorClassResolver;
 
     /**
-     * @var KeyNotEmptyDecoratorDefinitionGeneratorInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @var KeyNotEmptyDecoratorDefinitionGeneratorInterface|MockObject
      */
     private $decoratorDefinitionGenerator;
 
@@ -162,7 +166,7 @@ class KeyNotEmptyTagProcessorTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for ContainerBuilder.
      *
-     * @return ContainerBuilder|\PHPUnit_Framework_MockObject_MockObject
+     * @return ContainerBuilder|MockObject
      */
     private function createContainerBuilderMock()
     {
@@ -174,7 +178,7 @@ class KeyNotEmptyTagProcessorTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for Definition.
      *
-     * @return Definition|\PHPUnit_Framework_MockObject_MockObject
+     * @return Definition|MockObject
      */
     private function createDefinitionMock()
     {
@@ -184,7 +188,7 @@ class KeyNotEmptyTagProcessorTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for KeyNotEmptyDecoratorClassResolverInterface.
      *
-     * @return KeyNotEmptyDecoratorClassResolverInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return KeyNotEmptyDecoratorClassResolverInterface|MockObject
      */
     private function createKeyNotEmptyDecoratorClassResolverInterfaceMock()
     {
@@ -194,7 +198,7 @@ class KeyNotEmptyTagProcessorTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for KeyNotEmptyDecoratorDefinitionGeneratorInterface.
      *
-     * @return KeyNotEmptyDecoratorDefinitionGeneratorInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return KeyNotEmptyDecoratorDefinitionGeneratorInterface|MockObject
      */
     private function createKeyNotEmptyDecoratorDefinitionGeneratorInterfaceMock()
     {

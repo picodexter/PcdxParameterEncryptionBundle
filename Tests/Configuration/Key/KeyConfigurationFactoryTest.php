@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the PcdxParameterEncryptionBundle package.
  *
@@ -11,13 +13,15 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Tests\Configuration\Key;
 
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 use Picodexter\ParameterEncryptionBundle\Configuration\Key\KeyConfiguration;
 use Picodexter\ParameterEncryptionBundle\Configuration\Key\KeyConfigurationFactory;
 use Picodexter\ParameterEncryptionBundle\Configuration\Key\Type\KeyTypeInterface;
 use Picodexter\ParameterEncryptionBundle\Configuration\Key\Type\KeyTypeRegistryInterface;
 use Picodexter\ParameterEncryptionBundle\Exception\Configuration\UnknownKeyTypeException;
 
-class KeyConfigurationFactoryTest extends \PHPUnit_Framework_TestCase
+class KeyConfigurationFactoryTest extends TestCase
 {
     /**
      * @var KeyConfigurationFactory
@@ -25,7 +29,7 @@ class KeyConfigurationFactoryTest extends \PHPUnit_Framework_TestCase
     private $factory;
 
     /**
-     * @var KeyTypeRegistryInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @var KeyTypeRegistryInterface|MockObject
      */
     private $keyTypeRegistry;
 
@@ -153,7 +157,7 @@ class KeyConfigurationFactoryTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for KeyTypeInterface.
      *
-     * @return KeyTypeInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return KeyTypeInterface|MockObject
      */
     private function createKeyTypeInterfaceMock()
     {
@@ -163,7 +167,7 @@ class KeyConfigurationFactoryTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for KeyTypeRegistryInterface.
      *
-     * @return KeyTypeRegistryInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return KeyTypeRegistryInterface|MockObject
      */
     private function createKeyTypeRegistryInterfaceMock()
     {

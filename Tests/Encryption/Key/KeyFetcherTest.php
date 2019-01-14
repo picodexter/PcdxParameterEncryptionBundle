@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the PcdxParameterEncryptionBundle package.
  *
@@ -11,12 +13,14 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Tests\Encryption\Key;
 
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 use Picodexter\ParameterEncryptionBundle\Configuration\Key\KeyConfiguration;
 use Picodexter\ParameterEncryptionBundle\Encryption\Key\KeyCacheInterface;
 use Picodexter\ParameterEncryptionBundle\Encryption\Key\KeyFetcher;
 use Picodexter\ParameterEncryptionBundle\Encryption\Key\KeyResolverInterface;
 
-class KeyFetcherTest extends \PHPUnit_Framework_TestCase
+class KeyFetcherTest extends TestCase
 {
     /**
      * @var KeyFetcher
@@ -24,12 +28,12 @@ class KeyFetcherTest extends \PHPUnit_Framework_TestCase
     private $fetcher;
 
     /**
-     * @var KeyCacheInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @var KeyCacheInterface|MockObject
      */
     private $keyCache;
 
     /**
-     * @var KeyResolverInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @var KeyResolverInterface|MockObject
      */
     private $keyResolver;
 
@@ -100,7 +104,7 @@ class KeyFetcherTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for KeyCacheInterface.
      *
-     * @return KeyCacheInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return KeyCacheInterface|MockObject
      */
     private function createKeyCacheInterfaceMock()
     {
@@ -110,7 +114,7 @@ class KeyFetcherTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for KeyConfiguration.
      *
-     * @return KeyConfiguration|\PHPUnit_Framework_MockObject_MockObject
+     * @return KeyConfiguration|MockObject
      */
     private function createKeyConfigurationMock()
     {
@@ -120,7 +124,7 @@ class KeyFetcherTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for KeyResolverInterface.
      *
-     * @return KeyResolverInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return KeyResolverInterface|MockObject
      */
     private function createKeyResolverInterfaceMock()
     {

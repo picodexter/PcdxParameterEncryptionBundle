@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the PcdxParameterEncryptionBundle package.
  *
@@ -11,12 +13,14 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Tests\Replacement;
 
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 use Picodexter\ParameterEncryptionBundle\Replacement\ParameterReplacementFetcher;
 use Picodexter\ParameterEncryptionBundle\Replacement\Source\ReplacementSourceInterface;
 use ReflectionProperty;
 use stdClass;
 
-class ParameterReplacementFetcherTest extends \PHPUnit_Framework_TestCase
+class ParameterReplacementFetcherTest extends TestCase
 {
     /**
      * @param array $replacementSources
@@ -207,7 +211,7 @@ class ParameterReplacementFetcherTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for ReplacementSourceInterface.
      *
-     * @return ReplacementSourceInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return ReplacementSourceInterface|MockObject
      */
     private function createReplacementSourceInterfaceMock()
     {
@@ -233,10 +237,10 @@ class ParameterReplacementFetcherTest extends \PHPUnit_Framework_TestCase
     /**
      * Prepare replacement source for replacement.
      *
-     * @param ReplacementSourceInterface|\PHPUnit_Framework_MockObject_MockObject $source
-     * @param string                                                              $parameterKey
-     * @param string                                                              $parameterValue
-     * @param string|null                                                         $replacedValue
+     * @param ReplacementSourceInterface|MockObject $source
+     * @param string                                $parameterKey
+     * @param string                                $parameterValue
+     * @param string|null                           $replacedValue
      */
     private function prepareReplacementSourceInterfaceMockForReplacement(
         ReplacementSourceInterface $source,

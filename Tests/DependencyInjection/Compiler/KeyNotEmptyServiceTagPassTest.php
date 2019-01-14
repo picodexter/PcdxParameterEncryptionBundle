@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the PcdxParameterEncryptionBundle package.
  *
@@ -11,12 +13,14 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Tests\DependencyInjection\Compiler;
 
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\Compiler\KeyNotEmptyServiceTagPass;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\Service\Tag\KeyNotEmptyTagProcessorInterface;
 use Picodexter\ParameterEncryptionBundle\DependencyInjection\ServiceNames;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
-class KeyNotEmptyServiceTagPassTest extends \PHPUnit_Framework_TestCase
+class KeyNotEmptyServiceTagPassTest extends TestCase
 {
     public function testProcessSuccess()
     {
@@ -40,7 +44,7 @@ class KeyNotEmptyServiceTagPassTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for ContainerBuilder.
      *
-     * @return ContainerBuilder|\PHPUnit_Framework_MockObject_MockObject
+     * @return ContainerBuilder|MockObject
      */
     private function createContainerBuilderMock()
     {
@@ -52,7 +56,7 @@ class KeyNotEmptyServiceTagPassTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for KeyNotEmptyTagProcessorInterface.
      *
-     * @return KeyNotEmptyTagProcessorInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return KeyNotEmptyTagProcessorInterface|MockObject
      */
     private function createKeyNotEmptyTagProcessorInterfaceMock()
     {

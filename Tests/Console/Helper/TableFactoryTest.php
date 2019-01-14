@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the PcdxParameterEncryptionBundle package.
  *
@@ -11,11 +13,13 @@
 
 namespace Picodexter\ParameterEncryptionBundle\Tests\Console\Helper;
 
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 use Picodexter\ParameterEncryptionBundle\Console\Helper\TableFactory;
 use Symfony\Component\Console\Helper\Table;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class TableFactoryTest extends \PHPUnit_Framework_TestCase
+class TableFactoryTest extends TestCase
 {
     /**
      * @var TableFactory
@@ -50,7 +54,7 @@ class TableFactoryTest extends \PHPUnit_Framework_TestCase
     /**
      * Create mock for OutputInterface.
      *
-     * @return OutputInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return OutputInterface|MockObject
      */
     private function createOutputInterfaceMock()
     {

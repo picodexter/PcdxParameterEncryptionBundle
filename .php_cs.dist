@@ -14,8 +14,8 @@ EOF;
 return \PhpCsFixer\Config::create()
     ->setRiskyAllowed(true)
     ->setRules([
-        '@PHP70Migration' => true,
-        '@PHP70Migration:risky' => true,
+        '@PHP71Migration' => true,
+        '@PHP71Migration:risky' => true,
         '@Symfony' => true,
         '@Symfony:risky' => true,
 

@@ -10,7 +10,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Changed
 
-*   (empty)
+*   PHP CS Fixer: Replaced rule sets "@PHP70Migration" and "@PHP70Migration:risky" with "@PHP71Migration" and
+    "@PHP71Migration:risky"
 
 ### Deprecated
 

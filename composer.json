@@ -35,5 +35,6 @@
         "cs-nocache": "php-cs-fixer fix -v --dry-run --diff --using-cache=no",
         "test": "phpunit -v",
         "test-coverage": "phpunit -v --coverage-text"
-    }
+    },
+    "abandoned": true
 }
